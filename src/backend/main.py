@@ -1,40 +1,53 @@
 import os
 import sys
-# DON'T CHANGE THIS !!!
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+from pathlib import Path
+
+# Add parent directory to path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from src.models.user import db
-from src.routes.user import user_bp
-from src.routes.recipes import recipes_bp
-from src.routes.ingredients import ingredients_bp
-from src.routes.meal_plans import meal_plans_bp
+from models.user import db
+from database.config import get_config
 
-app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
-app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
+def create_app(config_name=None):
+    """Application factory pattern"""
+    app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
+    
+    # Load configuration
+    config = get_config(config_name)
+    app.config.from_object(config)
+    
+    # Initialize extensions
+    db.init_app(app)
+    CORS(app, origins=app.config['CORS_ORIGINS'])
+    
+    # Register blueprints
+    from routes.user import user_bp
+    from routes.recipes import recipes_bp
+    from routes.ingredients import ingredients_bp
+    from routes.meal_plans import meal_plans_bp
+    
+    api_prefix = app.config.get('API_PREFIX', '/api')
+    app.register_blueprint(user_bp, url_prefix=api_prefix)
+    app.register_blueprint(recipes_bp, url_prefix=api_prefix)
+    app.register_blueprint(ingredients_bp, url_prefix=api_prefix)
+    app.register_blueprint(meal_plans_bp, url_prefix=api_prefix)
+    
+    return app
 
-# Enable CORS for all routes
-CORS(app)
-
-# Register blueprints
-app.register_blueprint(user_bp, url_prefix='/api')
-app.register_blueprint(recipes_bp, url_prefix='/api')
-app.register_blueprint(ingredients_bp, url_prefix='/api')
-app.register_blueprint(meal_plans_bp, url_prefix='/api')
-
-# Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db.init_app(app)
+# Create app instance
+app = create_app()
 
 # Import all models to ensure they are registered
-from src.models.ingredient import Ingredient
-from src.models.recipe import Recipe
-from src.models.meal_plan import MealPlan, ShoppingList
+from models.ingredient import Ingredient
+from models.recipe import Recipe
+from models.meal_plan import MealPlan, ShoppingList
 
-with app.app_context():
-    db.create_all()
+# Create tables if running directly
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
 
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
@@ -54,4 +67,9 @@ def serve(path):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    config = get_config()
+    app.run(
+        host=config.HOST,
+        port=config.PORT,
+        debug=config.DEBUG if hasattr(config, 'DEBUG') else False
+    )

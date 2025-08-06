@@ -1,16 +1,24 @@
 #!/usr/bin/env python3
 """
-Script d'initialisation de la base de données avec les données de la diète de Fabien
+Script d'initialisation de la base de données DietTracker
+Crée les tables et insère les données initiales (ingrédients, recettes)
 """
 
-import os
 import sys
-sys.path.insert(0, os.path.dirname(__file__))
+import os
+from pathlib import Path
+from datetime import datetime, date
 
-from src.main import app
-from src.models.user import db
-from src.models.ingredient import Ingredient
-from src.models.recipe import Recipe
+# Add backend to path
+backend_path = Path(__file__).resolve().parents[1] / 'src' / 'backend'
+sys.path.insert(0, str(backend_path))
+
+from flask import Flask
+from models.user import db, User
+from models.ingredient import Ingredient
+from models.recipe import Recipe
+from models.meal_plan import MealPlan, ShoppingList
+from database.config import get_config
 
 def init_ingredients():
     """Initialiser les ingrédients de base"""
@@ -421,30 +429,97 @@ def init_recipes():
     db.session.commit()
     print(f"✅ {len(recipes_data)} recettes initialisées")
 
-def main():
-    """Fonction principale d'initialisation"""
+def create_app():
+    """Create Flask application with configuration"""
+    app = Flask(__name__)
+    config = get_config('development')
+    app.config.from_object(config)
+    
+    # Initialize database
+    db.init_app(app)
+    
+    return app
+
+def init_database():
+    """Initialize database with tables"""
+    app = create_app()
+    
     with app.app_context():
-        print("🚀 Initialisation de la base de données...")
-        
-        # Créer les tables
+        # Create all tables
         db.create_all()
-        print("✅ Tables créées")
+        print("✅ Tables créées avec succès")
         
-        # Vérifier si les données existent déjà
-        if Ingredient.query.count() > 0:
-            print("⚠️ Des données existent déjà dans la base")
+        # Check if data already exists
+        if Ingredient.query.first():
+            print("⚠️  Des données existent déjà. Utilisez --force pour réinitialiser.")
             return
         
-        # Initialiser les données
+        # Initialize ingredients
         init_ingredients()
+        
+        # Initialize recipes
         init_recipes()
         
-        print("🎉 Initialisation terminée avec succès!")
-        print("\nPour démarrer l'application:")
-        print("cd diet-tracker-backend")
-        print("source venv/bin/activate")
-        print("python src/main.py")
+        # Create default user
+        init_default_user()
+        
+        print("\n🎉 Base de données initialisée avec succès!")
+        print(f"📊 {Ingredient.query.count()} ingrédients créés")
+        print(f"🍽️  {Recipe.query.count()} recettes créées")
+        print(f"👤 {User.query.count()} utilisateur(s) créé(s)")
 
-if __name__ == "__main__":
-    main()
+def init_default_user():
+    """Create default user for testing"""
+    user = User(
+        username='fabien',
+        email='fabien@diettracker.com',
+        current_weight=75.0,
+        target_weight=70.0,
+        height=175.0,
+        age=30,
+        gender='male',
+        activity_level='moderate',
+        daily_calories_target=1500,
+        daily_protein_target=150,
+        daily_carbs_target=85,
+        daily_fat_target=75
+    )
+    
+    db.session.add(user)
+    db.session.commit()
+    print("✅ Utilisateur par défaut créé (fabien@diettracker.com)")
+
+def reset_database():
+    """Reset database - drop all tables and recreate"""
+    app = create_app()
+    
+    with app.app_context():
+        # Drop all tables
+        db.drop_all()
+        print("🗑️  Tables supprimées")
+        
+        # Recreate all tables
+        db.create_all()
+        print("✅ Tables recréées")
+        
+        # Initialize data
+        init_ingredients()
+        init_recipes()
+        init_default_user()
+        
+        print("\n🎉 Base de données réinitialisée avec succès!")
+
+if __name__ == '__main__':
+    import argparse
+    
+    parser = argparse.ArgumentParser(description='Initialize DietTracker database')
+    parser.add_argument('--reset', action='store_true', help='Reset database (drop and recreate all tables)')
+    parser.add_argument('--force', action='store_true', help='Force initialization even if data exists')
+    
+    args = parser.parse_args()
+    
+    if args.reset or args.force:
+        reset_database()
+    else:
+        init_database()
 
