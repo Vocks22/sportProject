@@ -1,0 +1,204 @@
+{
+  "main": {
+    "id": "4f9e93038952fb73",
+    "type": "split",
+    "children": [
+      {
+        "id": "41a9f151f4afe4d0",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2a0815b1a548cd16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "plan_action_scrum_diettracker"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1450acd8d701038f",
+    "type": "split",
+    "children": [
+      {
+        "id": "10657913ec45c8db",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "13f7c68395bc38ba",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "12e5bd01526f900c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "dbddc082753c7a29",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "7a316390f4a2dd35",
+    "type": "split",
+    "children": [
+      {
+        "id": "9c9fbfc76523f7ce",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "77b5d8fcd164638c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for plan_action_scrum_diettracker"
+            }
+          },
+          {
+            "id": "f50d7b21bfd4ad70",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from plan_action_scrum_diettracker"
+            }
+          },
+          {
+            "id": "bb823db5eeed5dda",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "0c3d8424a533fbac",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of plan_action_scrum_diettracker"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "2a0815b1a548cd16",
+  "lastOpenFiles": [
+    "PROJECT_STRUCTURE.md",
+    "README.md",
+    "PROJECT_STRUCTURE.md.tmp.144462.1754491556893",
+    "config/production.env.example",
+    "config/production.env.example.tmp.144462.1754491523805",
+    "config/development.env",
+    "config/development.env.tmp.144462.1754491516074",
+    "requirements.txt",
+    "requirements.txt.tmp.144462.1754491509392",
+    "package.json",
+    "package.json.tmp.144462.1754491501627",
+    "docs/technical/plan_action_scrum_diettracker.md",
+    "README.md.tmp.144462.1754491484781",
+    "src/frontend/assets/WhatsAppImage2025-08-06à09.45.10_c7f10969.jpg",
+    "src/frontend/assets/IMG_6764.png",
+    "docs/user/Enrichissement Complet de la Bibliothèque de Recettes - DietTracker.md",
+    "docs/user/Corrections Mobiles Appliquées - DietTracker.md",
+    "docs/user/Corrections Finales Appliquées - DietTracker.md",
+    "docs/user/Bibliothèque Complète de Recettes DietTracker.md",
+    "docs/user/todo.md",
+    "docs/user/analyse_diete.md",
+    "docs/user/DietTracker - Guide Utilisateur.md",
+    "plan_action_scrum_diettracker.md",
+    "docs/technical/evaluation_diettracker.md",
+    "docs/technical/problemes_mobiles_detectes.md",
+    "docs/technical/maquettes_interface.md",
+    "docs/technical/base_donnees_nutritionnelles.md",
+    "docs/technical/architecture_application.md",
+    "docs/technical/documentation_technique.md",
+    "evaluation_diettracker.md"
+  ]
+}

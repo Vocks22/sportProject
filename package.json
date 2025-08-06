@@ -1,0 +1,59 @@
+{
+  "name": "diettracker",
+  "version": "1.0.0",
+  "description": "Application de suivi nutritionnel et planification de repas",
+  "private": true,
+  "scripts": {
+    "dev": "cd src/frontend && vite",
+    "build": "cd src/frontend && vite build",
+    "preview": "cd src/frontend && vite preview",
+    "lint": "eslint src/frontend --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:e2e": "cypress run",
+    "backend": "cd src/backend && python main.py",
+    "init-db": "cd src/backend && python ../../scripts/init_data.py"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.0",
+    "lucide-react": "^0.263.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.3",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "jest": "^29.6.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/jest-dom": "^6.0.0",
+    "cypress": "^13.0.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "vite": "^4.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/diettracker.git"
+  },
+  "keywords": [
+    "nutrition",
+    "diet",
+    "meal-planning",
+    "health",
+    "fitness"
+  ],
+  "author": "Fabien",
+  "license": "MIT"
+}
