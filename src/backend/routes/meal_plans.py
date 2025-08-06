@@ -1,8 +1,8 @@
 from flask import Blueprint, request, jsonify
-from src.models.user import db
-from src.models.meal_plan import MealPlan, ShoppingList
-from src.models.recipe import Recipe
-from src.models.ingredient import Ingredient
+from database import db
+from models.meal_plan import MealPlan, ShoppingList
+from models.recipe import Recipe
+from models.ingredient import Ingredient
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 

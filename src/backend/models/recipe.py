@@ -1,8 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+from database import db
 from datetime import datetime
 import json
-
-db = SQLAlchemy()
 
 class Recipe(db.Model):
     __tablename__ = 'recipes'

@@ -12,6 +12,7 @@
 - 2-3 Développeurs Full Stack
 - 1 UX/UI Designer (temps partiel)
 
+
 ---
 
 ## 📊 TABLEAU DE BORD DU PROJET

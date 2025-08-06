@@ -7,7 +7,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from flask import Flask, send_from_directory
 from flask_cors import CORS
-from models.user import db
+from database import db
 from database.config import get_config
 
 def create_app(config_name=None):

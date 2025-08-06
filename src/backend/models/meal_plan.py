@@ -1,8 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+from database import db
 from datetime import datetime, date
 import json
-
-db = SQLAlchemy()
 
 class MealPlan(db.Model):
     __tablename__ = 'meal_plans'
