@@ -51,9 +51,22 @@ class MealPlan(db.Model):
     @staticmethod
     def create_from_dict(data):
         nutrition = data.get('nutrition_summary', {})
+        
+        # Handle week_start - can be string or date object
+        week_start_value = data.get('week_start')
+        if week_start_value:
+            if isinstance(week_start_value, str):
+                week_start_date = datetime.fromisoformat(week_start_value).date()
+            elif isinstance(week_start_value, date):
+                week_start_date = week_start_value
+            else:
+                week_start_date = date.today()
+        else:
+            week_start_date = date.today()
+        
         meal_plan = MealPlan(
             user_id=data.get('user_id'),
-            week_start=datetime.fromisoformat(data['week_start']).date() if data.get('week_start') else date.today(),
+            week_start=week_start_date,
             daily_calories=nutrition.get('daily_calories', 0),
             daily_protein=nutrition.get('daily_protein', 0),
             daily_carbs=nutrition.get('daily_carbs', 0),
@@ -102,9 +115,21 @@ class ShoppingList(db.Model):
     
     @staticmethod
     def create_from_dict(data):
+        # Handle week_start - can be string or date object
+        week_start_value = data.get('week_start')
+        if week_start_value:
+            if isinstance(week_start_value, str):
+                week_start_date = datetime.fromisoformat(week_start_value).date()
+            elif isinstance(week_start_value, date):
+                week_start_date = week_start_value
+            else:
+                week_start_date = date.today()
+        else:
+            week_start_date = date.today()
+        
         shopping_list = ShoppingList(
             meal_plan_id=data['meal_plan_id'],
-            week_start=datetime.fromisoformat(data['week_start']).date() if data.get('week_start') else date.today(),
+            week_start=week_start_date,
             is_completed=data.get('is_completed', False)
         )
         
