@@ -24,7 +24,7 @@ class Config:
     API_PREFIX = os.environ.get('API_PREFIX', '/api')
     # Ajouter les domaines Netlify et localhost
     CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 
-        'http://localhost:5173,http://localhost:3000,http://localhost:5000,https://*.netlify.app').split(',')
+        'http://localhost:5173,http://localhost:3000,http://localhost:5000,https://diettracker-front.netlify.app').split(',')
     
     # Server Configuration
     HOST = os.environ.get('HOST', '0.0.0.0')

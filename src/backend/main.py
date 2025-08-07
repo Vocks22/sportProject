@@ -34,6 +34,26 @@ def create_app(config_name=None):
     app.register_blueprint(ingredients_bp, url_prefix=api_prefix)
     app.register_blueprint(meal_plans_bp, url_prefix=api_prefix)
     
+    # Health check endpoint
+    @app.route('/health')
+    def health_check():
+        return {'status': 'healthy', 'environment': app.config.get('FLASK_ENV', 'unknown')}, 200
+    
+    # API root endpoint
+    @app.route(f'{api_prefix}/')
+    def api_root():
+        return {
+            'name': 'DietTracker API',
+            'version': '1.0.0',
+            'status': 'running',
+            'endpoints': {
+                'users': f'{api_prefix}/users',
+                'recipes': f'{api_prefix}/recipes',
+                'ingredients': f'{api_prefix}/ingredients',
+                'meal_plans': f'{api_prefix}/meal-plans'
+            }
+        }, 200
+    
     return app
 
 # Create app instance
@@ -44,7 +64,35 @@ from models.ingredient import Ingredient
 from models.recipe import Recipe
 from models.meal_plan import MealPlan, ShoppingList
 from models.measurements import UserMeasurement
+from models.user import User
 # from models.shopping_history import ShoppingListHistory, StoreCategory  # Commenté car problème
+
+# Initialize database with app context
+with app.app_context():
+    try:
+        db.create_all()
+        print("✅ Tables de base de données créées/vérifiées")
+        
+        # Créer un utilisateur test s'il n'existe pas
+        if not User.query.filter_by(id=1).first():
+            test_user = User(
+                id=1,
+                username="testuser",
+                email="test@diettracker.com",
+                age=30,
+                gender="male",
+                height=175,
+                current_weight=75.0,
+                target_weight=70.0,
+                activity_level="moderate",
+                dietary_restrictions=[],
+                fitness_goal="weight_loss"
+            )
+            db.session.add(test_user)
+            db.session.commit()
+            print(f"✅ Utilisateur test créé avec ID: 1")
+    except Exception as e:
+        print(f"⚠️ Erreur lors de l'initialisation de la base de données: {e}")
 
 # Create tables if running directly
 if __name__ == '__main__':
