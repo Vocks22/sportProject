@@ -201,9 +201,9 @@ gh workflow run rollback-us16.yml \
 - **On-call**: @oncall
 
 ### Documentation
-- **Guide Complet**: [docs/technical/US1.6_DEPLOYMENT_GUIDE.md](./docs/technical/US1.6_DEPLOYMENT_GUIDE.md)
+- **Guide Complet**: [docs/technical/US1.6_DEPLOYMENT_GUIDE.md](US1.6_DEPLOYMENT_GUIDE.md)
 - **Architecture**: [docs/technical/US1.6_ARCHITECTURE_TECHNIQUE.md](./docs/technical/US1.6_ARCHITECTURE_TECHNIQUE.md)
-- **Tests**: [docs/technical/US1.6_TEST_STRATEGY_COMPLETE.md](./docs/technical/US1.6_TEST_STRATEGY_COMPLETE.md)
+- **Tests**: [docs/technical/US1.6_TEST_STRATEGY_COMPLETE.md](US1.6_TEST_STRATEGY_COMPLETE.md)
 
 ---
 
