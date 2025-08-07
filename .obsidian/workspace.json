@@ -170,6 +170,8 @@
   },
   "active": "2a0815b1a548cd16",
   "lastOpenFiles": [
+    "src/backend/create_initial_data.py",
+    "src/backend/create_initial_data.py.tmp.766.1754599233106",
     "src/backend/database/__pycache__/config.cpython-312.pyc.140566709216448",
     "src/backend/database/config.py.tmp.766.1754597608014",
     "src/frontend/pages/ProfilePage.jsx.tmp.766.1754597595834",
@@ -179,8 +181,6 @@
     "src/backend/main.py.tmp.766.1754597556548",
     "src/backend/main.py.tmp.766.1754597090493",
     "src/backend/main.py.tmp.766.1754597069590",
-    "src/backend/main.py.tmp.766.1754597063886",
-    "src/backend/main.py.tmp.766.1754597049114",
     "FIX_RENDER_ERROR.md",
     "RENDER_DEPLOY_NOW.md",
     "NETLIFY_DEPLOY_NOW.md",
