@@ -119,7 +119,7 @@ const MeasurementsPage = () => {
 
   const fetchMeasurements = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users/${userId}/measurements?days=365&limit=100`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/${userId}/measurements?days=365&limit=100`);
       if (response.ok) {
         const data = await response.json();
         setMeasurements(data);
@@ -145,7 +145,7 @@ const MeasurementsPage = () => {
     });
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users/${userId}/measurements`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/${userId}/measurements`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(dataToSend)

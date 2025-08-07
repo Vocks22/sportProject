@@ -77,6 +77,9 @@ class ProductionConfig(Config):
             DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
         SQLALCHEMY_DATABASE_URI = DATABASE_URL
     else:
+        # Erreur si pas de DATABASE_URL en production
+        if os.environ.get('RENDER'):
+            raise ValueError("DATABASE_URL must be set in production on Render")
         SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path(__file__).resolve().parents[1] / 'database' / 'diettracker_prod.db')
     
     # Security - Avec valeurs par défaut temporaires pour le déploiement initial

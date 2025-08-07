@@ -49,7 +49,7 @@ export function ProgressPage() {
     setLoading(true)
     try {
       // Récupérer TOUTES les mesures
-      const measResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users/${userId}/measurements?days=365&limit=100`)
+      const measResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/${userId}/measurements?days=365&limit=100`)
       if (measResponse.ok) {
         const measData = await measResponse.json()
         // Filtrer côté client selon la période sélectionnée
@@ -65,14 +65,14 @@ export function ProgressPage() {
       }
 
       // Récupérer le profil
-      const profileResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users/${userId}/profile`)
+      const profileResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/${userId}/profile`)
       if (profileResponse.ok) {
         const profileData = await profileResponse.json()
         setProfile(profileData)
       }
 
       // Récupérer l'historique de poids
-      const weightResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/users/${userId}/weight-history?days=365&limit=500`)
+      const weightResponse = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000/api"}/users/${userId}/weight-history?days=365&limit=500`)
       if (weightResponse.ok) {
         const weightData = await weightResponse.json()
         // Filtrer selon la période sélectionnée

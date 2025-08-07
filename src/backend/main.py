@@ -14,6 +14,11 @@ def create_app(config_name=None):
     """Application factory pattern"""
     app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
     
+    # Force production environment on Render
+    if os.environ.get('RENDER'):
+        config_name = 'production'
+        os.environ['FLASK_ENV'] = 'production'
+    
     # Load configuration
     config = get_config(config_name)
     app.config.from_object(config)
