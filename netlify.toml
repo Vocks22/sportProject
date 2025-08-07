@@ -4,8 +4,8 @@
   # Répertoire du frontend
   base = "src/frontend"
   
-  # Commande de build
-  command = "npm run build"
+  # Commande de build (installer les dépendances puis build)
+  command = "npm install && npm run build"
   
   # Dossier de publication
   publish = "dist"

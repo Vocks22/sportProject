@@ -1,0 +1,97 @@
+9:52:01 PM: build-image version: c440bb785c036c7461456dcbf56442db2c6157c7 (noble)
+9:52:01 PM: buildbot version: d69ef65aec534db75eb4ae0a82947fb6e6cab5d4
+9:52:02 PM: Fetching cached dependencies
+9:52:02 PM: Failed to fetch cache, continuing with build
+9:52:02 PM: Starting to prepare the repo for build
+9:52:02 PM: No cached dependencies found. Cloning fresh repo
+9:52:02 PM: git clone --filter=blob:none https://github.com/Vocks22/sportProject
+9:52:02 PM: Preparing Git Reference refs/heads/main
+9:52:08 PM: Custom publish path detected. Proceeding with the specified path: 'src/frontend/dist'
+9:52:09 PM: Starting to install dependencies
+9:52:10 PM: Downloading and installing node v18.20.8...
+9:52:10 PM: Downloading https://nodejs.org/dist/v18.20.8/node-v18.20.8-linux-x64.tar.xz...
+9:52:11 PM: Computing checksum with sha256sum
+9:52:11 PM: Checksums matched!
+9:52:20 PM: Now using node v18.20.8 (npm v10.8.2)
+9:52:20 PM: Enabling Node.js Corepack
+9:52:20 PM: Started restoring cached build plugins
+9:52:20 PM: Finished restoring cached build plugins
+9:52:20 PM: Successfully installed dependencies
+9:52:20 PM: Starting build script
+9:52:21 PM: Detected 2 framework(s)
+9:52:21 PM: "hydrogen" at version "unknown"
+9:52:21 PM: "remix" at version "unknown"
+9:52:21 PM: Section completed: initializing
+9:52:22 PM: ​
+9:52:22 PM: Netlify Build                                                 
+9:52:22 PM: ────────────────────────────────────────────────────────────────
+9:52:22 PM: ​
+9:52:22 PM: ❯ Version
+9:52:22 PM:   @netlify/build 35.0.4
+9:52:22 PM: ​
+9:52:22 PM: ❯ Flags
+9:52:22 PM:   accountId: 686eb35ed6b9687625a06957
+9:52:22 PM:   baseRelDir: true
+9:52:22 PM:   buildId: 689503defe0bd80bdcc68b79
+9:52:22 PM:   deployId: 689503defe0bd80bdcc68b7b
+9:52:23 PM: ​
+9:52:23 PM: ❯ Current directory
+9:52:23 PM:   /opt/build/repo/src/frontend
+9:52:23 PM: ​
+9:52:23 PM: ❯ Config file
+9:52:23 PM:   /opt/build/repo/netlify.toml
+9:52:23 PM: ​
+9:52:23 PM: ❯ Context
+9:52:23 PM:   production
+9:52:23 PM: ​
+9:52:23 PM: ❯ Installing extensions
+9:52:23 PM:    - neon
+9:52:50 PM: ​
+9:52:50 PM: ❯ Loading extensions
+9:52:50 PM:    - neon
+9:52:51 PM: ​
+9:52:51 PM: build.command from netlify.toml                               
+9:52:51 PM: ────────────────────────────────────────────────────────────────
+9:52:51 PM: ​
+9:52:51 PM: $ npm run build
+9:52:51 PM: > diettracker@1.0.0 build
+9:52:51 PM: > cd src/frontend && vite build
+9:52:51 PM: sh: 1: vite: not found
+9:52:51 PM: ​
+9:52:51 PM: "build.command" failed                                        
+9:52:51 PM: ────────────────────────────────────────────────────────────────
+9:52:51 PM: ​
+9:52:51 PM:   Error message
+9:52:51 PM:   Command failed with exit code 127: npm run build (https://ntl.fyi/exit-code-127)
+9:52:51 PM: ​
+9:52:51 PM:   Error location
+9:52:51 PM:   In build.command from netlify.toml:
+9:52:51 PM:   npm run build
+9:52:51 PM: ​
+9:52:51 PM:   Resolved config
+9:52:51 PM:   build:
+9:52:51 PM:     base: /opt/build/repo/src/frontend
+9:52:51 PM:     command: npm run build
+9:52:51 PM:     commandOrigin: config
+9:52:51 PM:     environment:
+9:52:51 PM:       - VITE_API_URL
+9:52:51 PM:       - NODE_VERSION
+9:52:51 PM:     publish: /opt/build/repo/src/frontend/dist
+9:52:51 PM:     publishOrigin: config
+9:52:51 PM:   headers:
+9:52:51 PM:     - for: /*
+      values:
+        Referrer-Policy: strict-origin-when-cross-origin
+        X-Content-Type-Options: nosniff
+        X-Frame-Options: DENY
+        X-XSS-Protection: 1; mode=block
+  headersOrigin: config
+  redirects:
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+9:52:51 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+9:52:51 PM: Failing build: Failed to build site
+9:52:52 PM: Finished processing build request in 50.218s
+9:52:52 PM: Failed during stage 'building site': Build script returned non-zero exit code: 2 (https://ntl.fyi/exit-code-2)
