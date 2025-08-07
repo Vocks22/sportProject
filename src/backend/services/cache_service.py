@@ -3,7 +3,13 @@ Service de cache Redis pour l'optimisation des performances (US1.5)
 Gère la mise en cache des agrégations et des listes de courses
 """
 
-import redis
+try:
+    import redis
+    REDIS_AVAILABLE = True
+except ImportError:
+    REDIS_AVAILABLE = False
+    print("Redis not available - Cache disabled")
+
 import json
 import hashlib
 from typing import Any, Dict, List, Optional, Union
@@ -21,18 +27,22 @@ class CacheService:
         Args:
             redis_url: URL de connexion Redis
         """
-        try:
-            self.redis_client = redis.from_url(
-                redis_url,
-                decode_responses=False,  # Pour supporter les objets pickle
-                socket_connect_timeout=5,
-                socket_timeout=5
-            )
-            # Test de connexion
-            self.redis_client.ping()
-            self.connected = True
-        except (redis.RedisError, Exception) as e:
-            print(f"Erreur de connexion Redis: {e}")
+        if REDIS_AVAILABLE:
+            try:
+                self.redis_client = redis.from_url(
+                    redis_url,
+                    decode_responses=False,  # Pour supporter les objets pickle
+                    socket_connect_timeout=5,
+                    socket_timeout=5
+                )
+                # Test de connexion
+                self.redis_client.ping()
+                self.connected = True
+            except (redis.RedisError, Exception) as e:
+                print(f"Erreur de connexion Redis: {e}")
+                self.redis_client = None
+                self.connected = False
+        else:
             self.redis_client = None
             self.connected = False
     

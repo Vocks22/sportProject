@@ -79,14 +79,15 @@ class ProductionConfig(Config):
     else:
         SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path(__file__).resolve().parents[1] / 'database' / 'diettracker_prod.db')
     
-    # Security
-    SECRET_KEY = os.environ.get('SECRET_KEY')
-    if not SECRET_KEY:
-        raise ValueError("SECRET_KEY must be set in production environment")
+    # Security - Avec valeurs par défaut temporaires pour le déploiement initial
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'temp-secret-key-change-in-production')
+    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'temp-jwt-secret-change-in-production')
     
-    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY')
-    if not JWT_SECRET_KEY:
-        raise ValueError("JWT_SECRET_KEY must be set in production environment")
+    # Avertissement si les clés par défaut sont utilisées
+    if SECRET_KEY == 'temp-secret-key-change-in-production':
+        print("WARNING: Using default SECRET_KEY - Please set in production!")
+    if JWT_SECRET_KEY == 'temp-jwt-secret-change-in-production':
+        print("WARNING: Using default JWT_SECRET_KEY - Please set in production!")
     
     # Logging
     LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')

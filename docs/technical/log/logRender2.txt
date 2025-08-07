@@ -1,0 +1,147 @@
+2025-08-07T19:25:43.534002941Z   Downloading typing_extensions-4.14.1-py3-none-any.whl.metadata (3.0 kB)
+2025-08-07T19:25:43.696213844Z Collecting greenlet!=0.4.17 (from SQLAlchemy==2.0.19->-r src/backend/requirements.txt (line 4))
+2025-08-07T19:25:43.701437958Z   Downloading greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+2025-08-07T19:25:43.742373047Z Collecting packaging (from gunicorn==21.2.0->-r src/backend/requirements.txt (line 6))
+2025-08-07T19:25:43.748837061Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-08-07T19:25:43.817137299Z Collecting MarkupSafe>=2.1.1 (from Werkzeug==2.3.6->-r src/backend/requirements.txt (line 8))
+2025-08-07T19:25:43.820530699Z   Downloading MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+2025-08-07T19:25:43.852459345Z Collecting six>=1.5 (from python-dateutil==2.8.2->-r src/backend/requirements.txt (line 9))
+2025-08-07T19:25:43.856121152Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-08-07T19:25:43.898044455Z Downloading Flask-2.3.2-py3-none-any.whl (96 kB)
+2025-08-07T19:25:43.906853674Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.9/96.9 kB 14.1 MB/s eta 0:00:00
+2025-08-07T19:25:43.91471556Z Downloading flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+2025-08-07T19:25:43.92569161Z Downloading Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+2025-08-07T19:25:43.943066032Z Downloading SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+2025-08-07T19:25:44.001319402Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.8/2.8 MB 49.8 MB/s eta 0:00:00
+2025-08-07T19:25:44.009473525Z Downloading python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2025-08-07T19:25:44.018265803Z Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+2025-08-07T19:25:44.025937955Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.2/80.2 kB 13.1 MB/s eta 0:00:00
+2025-08-07T19:25:44.0388043Z Downloading psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2025-08-07T19:25:44.099291773Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 51.9 MB/s eta 0:00:00
+2025-08-07T19:25:44.104435945Z Downloading Werkzeug-2.3.6-py3-none-any.whl (242 kB)
+2025-08-07T19:25:44.112932356Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 242.5/242.5 kB 36.5 MB/s eta 0:00:00
+2025-08-07T19:25:44.117500174Z Downloading python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+2025-08-07T19:25:44.125554815Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.7/247.7 kB 39.5 MB/s eta 0:00:00
+2025-08-07T19:25:44.131171548Z Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+2025-08-07T19:25:44.139551897Z Downloading click-8.2.1-py3-none-any.whl (102 kB)
+2025-08-07T19:25:44.146023Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 102.2/102.2 kB 20.8 MB/s eta 0:00:00
+2025-08-07T19:25:44.150170728Z Downloading greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+2025-08-07T19:25:44.160965494Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 587.7/587.7 kB 66.1 MB/s eta 0:00:00
+2025-08-07T19:25:44.165458871Z Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2025-08-07T19:25:44.17260164Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-08-07T19:25:44.179514584Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 25.3 MB/s eta 0:00:00
+2025-08-07T19:25:44.1835831Z Downloading MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+2025-08-07T19:25:44.203101762Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-08-07T19:25:44.210311473Z Downloading typing_extensions-4.14.1-py3-none-any.whl (43 kB)
+2025-08-07T19:25:44.216355176Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.9/43.9 kB 8.2 MB/s eta 0:00:00
+2025-08-07T19:25:44.226474496Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-08-07T19:25:44.236874782Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.5/66.5 kB 6.5 MB/s eta 0:00:00
+2025-08-07T19:25:44.359316383Z Installing collected packages: typing-extensions, six, python-dotenv, psycopg2-binary, packaging, MarkupSafe, itsdangerous, greenlet, click, blinker, Werkzeug, SQLAlchemy, python-dateutil, Jinja2, gunicorn, Flask, Flask-SQLAlchemy, Flask-CORS
+2025-08-07T19:25:45.980694275Z Successfully installed Flask-2.3.2 Flask-CORS-4.0.0 Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 MarkupSafe-3.0.2 SQLAlchemy-2.0.19 Werkzeug-2.3.6 blinker-1.9.0 click-8.2.1 greenlet-3.2.4 gunicorn-21.2.0 itsdangerous-2.2.0 packaging-25.0 psycopg2-binary-2.9.6 python-dateutil-2.8.2 python-dotenv-1.0.0 six-1.17.0 typing-extensions-4.14.1
+2025-08-07T19:25:46.14300628Z 
+2025-08-07T19:25:46.1430276Z [notice] A new release of pip is available: 24.0 -> 25.2
+2025-08-07T19:25:46.14303193Z [notice] To update, run: pip install --upgrade pip
+2025-08-07T19:25:57.065079803Z ==> Uploading build...
+2025-08-07T19:26:12.104225706Z ==> Uploaded in 11.8s. Compression took 3.2s
+2025-08-07T19:26:12.16644425Z ==> Build successful 🎉
+2025-08-07T19:26:15.889063006Z ==> Deploying...
+2025-08-07T19:26:43.329383655Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-07T19:26:56.269502432Z ==> Exited with status 1
+2025-08-07T19:26:56.414861405Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-08-07T19:26:54.342469846Z Traceback (most recent call last):
+2025-08-07T19:26:54.342491517Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-07T19:26:54.342497817Z     sys.exit(run())
+2025-08-07T19:26:54.342501827Z              ^^^^^
+2025-08-07T19:26:54.342506857Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-07T19:26:54.342513447Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-07T19:26:54.342517887Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-07T19:26:54.342521937Z     super().run()
+2025-08-07T19:26:54.342526107Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-07T19:26:54.342530267Z     Arbiter(self).run()
+2025-08-07T19:26:54.342534417Z     ^^^^^^^^^^^^^
+2025-08-07T19:26:54.342538288Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-07T19:26:54.342542308Z     self.setup(app)
+2025-08-07T19:26:54.342546278Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-07T19:26:54.342550198Z     self.app.wsgi()
+2025-08-07T19:26:54.342554128Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-07T19:26:54.342559188Z     self.callable = self.load()
+2025-08-07T19:26:54.342563478Z                     ^^^^^^^^^^^
+2025-08-07T19:26:54.342567558Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-07T19:26:54.342571748Z     return self.load_wsgiapp()
+2025-08-07T19:26:54.342575538Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:26:54.342580148Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-07T19:26:54.342583978Z     return util.import_app(self.app_uri)
+2025-08-07T19:26:54.342587738Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:26:54.342591769Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-07T19:26:54.342595718Z     mod = importlib.import_module(module)
+2025-08-07T19:26:54.342599619Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:26:54.342603849Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-07T19:26:54.342607929Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-07T19:26:54.342612009Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:26:54.342615819Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-07T19:26:54.342619549Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-07T19:26:54.342623499Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-07T19:26:54.342627529Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-07T19:26:54.342631519Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-07T19:26:54.342635489Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-07T19:26:54.342639479Z   File "/opt/render/project/src/src/backend/main.py", line 40, in <module>
+2025-08-07T19:26:54.342643499Z     app = create_app()
+2025-08-07T19:26:54.34264747Z           ^^^^^^^^^^^^
+2025-08-07T19:26:54.34265121Z   File "/opt/render/project/src/src/backend/main.py", line 26, in create_app
+2025-08-07T19:26:54.34266675Z     from routes.user import user_bp
+2025-08-07T19:26:54.34267089Z   File "/opt/render/project/src/src/backend/routes/user.py", line 10, in <module>
+2025-08-07T19:26:54.34267364Z     from services.nutrition_calculator_service import nutrition_calculator
+2025-08-07T19:26:54.3426764Z   File "/opt/render/project/src/src/backend/services/nutrition_calculator_service.py", line 14, in <module>
+2025-08-07T19:26:54.34267918Z     from services.cache_service import CacheService
+2025-08-07T19:26:54.34268163Z   File "/opt/render/project/src/src/backend/services/cache_service.py", line 6, in <module>
+2025-08-07T19:26:54.34268421Z     import redis
+2025-08-07T19:26:54.34268684Z ModuleNotFoundError: No module named 'redis'
+2025-08-07T19:27:02.183715828Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-07T19:27:15.025649911Z Traceback (most recent call last):
+2025-08-07T19:27:15.025669892Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-07T19:27:15.025769934Z     sys.exit(run())
+2025-08-07T19:27:15.025904616Z              ^^^^^
+2025-08-07T19:27:15.025911406Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-07T19:27:15.026044819Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-07T19:27:15.026054469Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-07T19:27:15.026295013Z     super().run()
+2025-08-07T19:27:15.026301523Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-07T19:27:15.026449856Z     Arbiter(self).run()
+2025-08-07T19:27:15.026458026Z     ^^^^^^^^^^^^^
+2025-08-07T19:27:15.026462756Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-07T19:27:15.026607539Z     self.setup(app)
+2025-08-07T19:27:15.026613959Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-07T19:27:15.026747111Z     self.app.wsgi()
+2025-08-07T19:27:15.026756151Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-07T19:27:15.026900094Z     self.callable = self.load()
+2025-08-07T19:27:15.026917274Z                     ^^^^^^^^^^^
+2025-08-07T19:27:15.026925415Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-07T19:27:15.027083077Z     return self.load_wsgiapp()
+2025-08-07T19:27:15.027127318Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:27:15.027151639Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-07T19:27:15.027273951Z     return util.import_app(self.app_uri)
+2025-08-07T19:27:15.027318622Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:27:15.027348532Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-07T19:27:15.027525965Z     mod = importlib.import_module(module)
+2025-08-07T19:27:15.027569706Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:27:15.027591267Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-07T19:27:15.027722339Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-07T19:27:15.02779324Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:27:15.02780409Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-07T19:27:15.027834761Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-07T19:27:15.027845701Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-07T19:27:15.027874342Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-07T19:27:15.027883822Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-07T19:27:15.027908602Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-07T19:27:15.027943533Z   File "/opt/render/project/src/src/backend/main.py", line 40, in <module>
+2025-08-07T19:27:15.028100636Z     app = create_app()
+2025-08-07T19:27:15.028110626Z           ^^^^^^^^^^^^
+2025-08-07T19:27:15.028120766Z   File "/opt/render/project/src/src/backend/main.py", line 26, in create_app
+2025-08-07T19:27:15.028557784Z     from routes.user import user_bp
+2025-08-07T19:27:15.028565704Z   File "/opt/render/project/src/src/backend/routes/user.py", line 10, in <module>
+2025-08-07T19:27:15.028735017Z     from services.nutrition_calculator_service import nutrition_calculator
+2025-08-07T19:27:15.028740677Z   File "/opt/render/project/src/src/backend/services/nutrition_calculator_service.py", line 14, in <module>
+2025-08-07T19:27:15.029495871Z     from services.cache_service import CacheService
+2025-08-07T19:27:15.029503131Z   File "/opt/render/project/src/src/backend/services/cache_service.py", line 6, in <module>
+2025-08-07T19:27:15.029505901Z     import redis
+2025-08-07T19:27:15.029508541Z ModuleNotFoundError: No module named 'redis'
