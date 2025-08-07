@@ -1,0 +1,133 @@
+2025-08-07T20:32:53.100475493Z ==> Cloning from https://github.com/Vocks22/sportProject
+2025-08-07T20:32:53.807377441Z ==> Checking out commit ba8bcccef1287bc114d68eeee4c948c0afd8da42 in branch main
+2025-08-07T20:32:55.101225528Z ==> Downloading cache...
+2025-08-07T20:33:05.930819247Z ==> Transferred 82MB in 7s. Extraction took 2s.
+2025-08-07T20:33:08.487335706Z ==> Installing Python version 3.11.10...
+2025-08-07T20:33:19.504560404Z ==> Using Python version 3.11.10 via environment variable PYTHON_VERSION
+2025-08-07T20:33:19.53021715Z ==> Docs on specifying a Python version: https://render.com/docs/python-version
+2025-08-07T20:33:24.500475282Z ==> Using Poetry version 2.1.3 (default)
+2025-08-07T20:33:24.557826155Z ==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+2025-08-07T20:33:24.578361717Z ==> Running build command ' pip install -r src/backend/requirements.txt'...
+2025-08-07T20:33:25.458226069Z Collecting Flask==2.3.2 (from -r src/backend/requirements.txt (line 1))
+2025-08-07T20:33:25.461318813Z   Using cached Flask-2.3.2-py3-none-any.whl.metadata (3.7 kB)
+2025-08-07T20:33:25.593639717Z Collecting Flask-SQLAlchemy==3.0.5 (from -r src/backend/requirements.txt (line 2))
+2025-08-07T20:33:25.595460685Z   Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl.metadata (3.3 kB)
+2025-08-07T20:33:25.807488243Z Collecting Flask-CORS==4.0.0 (from -r src/backend/requirements.txt (line 3))
+2025-08-07T20:33:25.809310672Z   Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl.metadata (5.4 kB)
+2025-08-07T20:33:26.290937753Z Collecting SQLAlchemy==2.0.19 (from -r src/backend/requirements.txt (line 4))
+2025-08-07T20:33:26.2930585Z   Using cached SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.4 kB)
+2025-08-07T20:33:26.586829792Z Collecting python-dotenv==1.0.0 (from -r src/backend/requirements.txt (line 5))
+2025-08-07T20:33:26.614764855Z   Using cached python_dotenv-1.0.0-py3-none-any.whl.metadata (21 kB)
+2025-08-07T20:33:26.832751787Z Collecting gunicorn==21.2.0 (from -r src/backend/requirements.txt (line 6))
+2025-08-07T20:33:26.834629149Z   Using cached gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+2025-08-07T20:33:27.072575869Z Collecting psycopg2-binary==2.9.6 (from -r src/backend/requirements.txt (line 7))
+2025-08-07T20:33:27.074467182Z   Using cached psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+2025-08-07T20:33:27.323722955Z Collecting Werkzeug==2.3.6 (from -r src/backend/requirements.txt (line 8))
+2025-08-07T20:33:27.326617717Z   Using cached Werkzeug-2.3.6-py3-none-any.whl.metadata (4.1 kB)
+2025-08-07T20:33:27.663329405Z Collecting python-dateutil==2.8.2 (from -r src/backend/requirements.txt (line 9))
+2025-08-07T20:33:27.735555783Z   Using cached python_dateutil-2.8.2-py2.py3-none-any.whl.metadata (8.2 kB)
+2025-08-07T20:33:28.124180291Z Collecting marshmallow==3.20.1 (from -r src/backend/requirements.txt (line 10))
+2025-08-07T20:33:28.125892283Z   Using cached marshmallow-3.20.1-py3-none-any.whl.metadata (7.8 kB)
+2025-08-07T20:33:28.267818999Z Collecting marshmallow-sqlalchemy==0.29.0 (from -r src/backend/requirements.txt (line 11))
+2025-08-07T20:33:28.269607155Z   Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl.metadata (6.8 kB)
+2025-08-07T20:33:28.445345674Z Collecting requests==2.31.0 (from -r src/backend/requirements.txt (line 12))
+2025-08-07T20:33:28.447154011Z   Using cached requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+2025-08-07T20:33:28.644796873Z Collecting Jinja2>=3.1.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-07T20:33:28.646567188Z   Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2025-08-07T20:33:28.797128958Z Collecting itsdangerous>=2.1.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-07T20:33:28.799395963Z   Using cached itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+2025-08-07T20:33:28.844902561Z Collecting click>=8.1.3 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-07T20:33:28.847353827Z   Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+2025-08-07T20:33:28.874777299Z Collecting blinker>=1.6.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-07T20:33:28.87764965Z   Using cached blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+2025-08-07T20:33:28.980072045Z Collecting typing-extensions>=4.2.0 (from SQLAlchemy==2.0.19->-r src/backend/requirements.txt (line 4))
+2025-08-07T20:33:28.983017761Z   Using cached typing_extensions-4.14.1-py3-none-any.whl.metadata (3.0 kB)
+2025-08-07T20:33:29.169708411Z Collecting greenlet!=0.4.17 (from SQLAlchemy==2.0.19->-r src/backend/requirements.txt (line 4))
+2025-08-07T20:33:29.171598813Z   Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+2025-08-07T20:33:29.209268175Z Collecting packaging (from gunicorn==21.2.0->-r src/backend/requirements.txt (line 6))
+2025-08-07T20:33:29.211153487Z   Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-08-07T20:33:29.276550599Z Collecting MarkupSafe>=2.1.1 (from Werkzeug==2.3.6->-r src/backend/requirements.txt (line 8))
+2025-08-07T20:33:29.278450782Z   Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+2025-08-07T20:33:29.303150902Z Collecting six>=1.5 (from python-dateutil==2.8.2->-r src/backend/requirements.txt (line 9))
+2025-08-07T20:33:29.30496469Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-08-07T20:33:29.49535115Z Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-07T20:33:29.497227401Z   Using cached charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+2025-08-07T20:33:29.523278522Z Collecting idna<4,>=2.5 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-07T20:33:29.524987304Z   Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
+2025-08-07T20:33:29.576199251Z Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-07T20:33:29.578090574Z   Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-08-07T20:33:29.609141932Z Collecting certifi>=2017.4.17 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-07T20:33:29.611032964Z   Using cached certifi-2025.8.3-py3-none-any.whl.metadata (2.4 kB)
+2025-08-07T20:33:29.669897577Z Using cached Flask-2.3.2-py3-none-any.whl (96 kB)
+2025-08-07T20:33:29.671804411Z Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+2025-08-07T20:33:29.673426977Z Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+2025-08-07T20:33:29.675018572Z Using cached SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+2025-08-07T20:33:29.681746262Z Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2025-08-07T20:33:29.68337719Z Using cached gunicorn-21.2.0-py3-none-any.whl (80 kB)
+2025-08-07T20:33:29.685555669Z Using cached psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2025-08-07T20:33:29.69531477Z Using cached Werkzeug-2.3.6-py3-none-any.whl (242 kB)
+2025-08-07T20:33:29.698265926Z Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+2025-08-07T20:33:29.701141917Z Using cached marshmallow-3.20.1-py3-none-any.whl (49 kB)
+2025-08-07T20:33:29.703458545Z Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl (16 kB)
+2025-08-07T20:33:29.705792873Z Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+2025-08-07T20:33:29.708143464Z Using cached blinker-1.9.0-py3-none-any.whl (8.5 kB)
+2025-08-07T20:33:29.710332244Z Using cached certifi-2025.8.3-py3-none-any.whl (161 kB)
+2025-08-07T20:33:29.7131295Z Using cached charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (147 kB)
+2025-08-07T20:33:29.71547877Z Using cached click-8.2.1-py3-none-any.whl (102 kB)
+2025-08-07T20:33:29.717280937Z Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+2025-08-07T20:33:29.719862571Z Using cached idna-3.10-py3-none-any.whl (70 kB)
+2025-08-07T20:33:29.721607835Z Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2025-08-07T20:33:29.72321051Z Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-08-07T20:33:29.725096922Z Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+2025-08-07T20:33:29.726707338Z Using cached packaging-25.0-py3-none-any.whl (66 kB)
+2025-08-07T20:33:29.72842325Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-08-07T20:33:29.730069278Z Using cached typing_extensions-4.14.1-py3-none-any.whl (43 kB)
+2025-08-07T20:33:29.731746628Z Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-08-07T20:33:29.87342768Z Installing collected packages: urllib3, typing-extensions, six, python-dotenv, psycopg2-binary, packaging, MarkupSafe, itsdangerous, idna, greenlet, click, charset-normalizer, certifi, blinker, Werkzeug, SQLAlchemy, requests, python-dateutil, marshmallow, Jinja2, gunicorn, marshmallow-sqlalchemy, Flask, Flask-SQLAlchemy, Flask-CORS
+2025-08-07T20:33:32.162159013Z Successfully installed Flask-2.3.2 Flask-CORS-4.0.0 Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 MarkupSafe-3.0.2 SQLAlchemy-2.0.19 Werkzeug-2.3.6 blinker-1.9.0 certifi-2025.8.3 charset-normalizer-3.4.2 click-8.2.1 greenlet-3.2.4 gunicorn-21.2.0 idna-3.10 itsdangerous-2.2.0 marshmallow-3.20.1 marshmallow-sqlalchemy-0.29.0 packaging-25.0 psycopg2-binary-2.9.6 python-dateutil-2.8.2 python-dotenv-1.0.0 requests-2.31.0 six-1.17.0 typing-extensions-4.14.1 urllib3-2.5.0
+2025-08-07T20:33:32.225635701Z 
+2025-08-07T20:33:32.225663892Z [notice] A new release of pip is available: 24.0 -> 25.2
+2025-08-07T20:33:32.225669883Z [notice] To update, run: pip install --upgrade pip
+2025-08-07T20:33:33.20007882Z ==> Uploading build...
+2025-08-07T20:33:47.311188732Z ==> Uploaded in 10.5s. Compression took 3.6s
+2025-08-07T20:33:47.372592406Z ==> Build successful 🎉
+2025-08-07T20:33:50.950988005Z ==> Deploying...
+2025-08-07T20:34:23.323688787Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-07T20:34:38.52680523Z [2025-08-07 20:34:38 +0000] [65] [INFO] Starting gunicorn 21.2.0
+2025-08-07T20:34:38.527606271Z [2025-08-07 20:34:38 +0000] [65] [INFO] Listening at: http://0.0.0.0:10000 (65)
+2025-08-07T20:34:38.527721469Z [2025-08-07 20:34:38 +0000] [65] [INFO] Using worker: sync
+2025-08-07T20:34:38.614324208Z [2025-08-07 20:34:38 +0000] [66] [INFO] Booting worker with pid: 66
+2025-08-07T20:34:39.493167116Z Redis not available - Cache disabled
+2025-08-07T20:34:39.493190787Z ✅ Tables de base de données créées/vérifiées
+2025-08-07T20:34:39.493195388Z ⚠️ Erreur lors de l'initialisation de la base de données: 'fitness_goal' is an invalid keyword argument for User
+2025-08-07T20:34:39.493216069Z 127.0.0.1 - - [07/Aug/2025:20:34:39 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2025-08-07T20:34:41.848343829Z ==> Your service is live 🎉
+2025-08-07T20:34:42.002938036Z ==> 
+2025-08-07T20:34:42.155528343Z ==> ///////////////////////////////////////////////////////////
+2025-08-07T20:34:42.30976631Z ==> 
+2025-08-07T20:34:42.462842697Z ==> Available at your primary URL https://diettracker-backend.onrender.com
+2025-08-07T20:34:42.616450214Z ==> 
+2025-08-07T20:34:42.769536411Z ==> ///////////////////////////////////////////////////////////
+2025-08-07T20:34:44.252623266Z 127.0.0.1 - - [07/Aug/2025:20:34:44 +0000] "GET / HTTP/1.1" 404 20 "-" "Go-http-client/2.0"
+2025-08-07T20:35:35.30983601Z 127.0.0.1 - - [07/Aug/2025:20:35:35 +0000] "GET /api/api/users/1/measurements?days=365 HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:35:35.442974043Z 127.0.0.1 - - [07/Aug/2025:20:35:35 +0000] "GET /api/api/users/1/profile HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:35:35.529891486Z 127.0.0.1 - - [07/Aug/2025:20:35:35 +0000] "GET /api/api/users/1/weight-history?days=365&limit=500 HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:35:38.423780913Z 127.0.0.1 - - [07/Aug/2025:20:35:38 +0000] "GET /api/api/users/1/measurements?days=365 HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:35:38.49860308Z 127.0.0.1 - - [07/Aug/2025:20:35:38 +0000] "GET /api/api/users/1/profile HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:35:38.575424588Z 127.0.0.1 - - [07/Aug/2025:20:35:38 +0000] "GET /api/api/users/1/weight-history?days=365&limit=500 HTTP/1.1" 404 20 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:38:51.515323173Z 127.0.0.1 - - [07/Aug/2025:20:38:51 +0000] "GET /api/users/1/measurements?days=365 HTTP/1.1" 200 3 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:38:51.673690384Z Erreur récupération profil utilisateur 1: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-08-07T20:38:51.675994719Z 127.0.0.1 - - [07/Aug/2025:20:38:51 +0000] "GET /api/users/1/profile HTTP/1.1" 500 148 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:38:51.766573717Z 127.0.0.1 - - [07/Aug/2025:20:38:51 +0000] "GET /api/users/1/weight-history?days=365&limit=500 HTTP/1.1" 200 264 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:38:52.942738945Z Erreur récupération profil utilisateur 1: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-08-07T20:38:52.94478407Z 127.0.0.1 - - [07/Aug/2025:20:38:52 +0000] "GET /api/users/1/profile HTTP/1.1" 500 148 "https://68950e86d78ce3000896d5a0--diettracker-front.netlify.app/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/131.0.6778.0 Safari/537.36"
+2025-08-07T20:39:10.637591378Z 127.0.0.1 - - [07/Aug/2025:20:39:10 +0000] "GET /api/users/1/measurements?days=365 HTTP/1.1" 200 3 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:39:10.729575463Z Erreur récupération profil utilisateur 1: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-08-07T20:39:10.731197026Z 127.0.0.1 - - [07/Aug/2025:20:39:10 +0000] "GET /api/users/1/profile HTTP/1.1" 500 148 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:39:10.830483664Z 127.0.0.1 - - [07/Aug/2025:20:39:10 +0000] "GET /api/users/1/weight-history?days=365&limit=500 HTTP/1.1" 200 264 "https://diettracker-front.netlify.app/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+2025-08-07T20:40:23.801998878Z [2025-08-07 20:40:23 +0000] [65] [INFO] Handling signal: term
+2025-08-07T20:40:23.802301211Z [2025-08-07 20:40:23 +0000] [66] [INFO] Worker exiting (pid: 66)
+2025-08-07T20:40:25.918685805Z [2025-08-07 20:40:25 +0000] [65] [INFO] Shutting down: Master
+2025-08-07T20:40:25.918846527Z Redis not available - Cache disabled
+2025-08-07T20:40:25.918860018Z ✅ Tables de base de données créées/vérifiées
+2025-08-07T20:40:25.918864148Z ⚠️ Erreur lors de l'initialisation de la base de données: 'fitness_goal' is an invalid keyword argument for User

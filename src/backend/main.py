@@ -97,8 +97,12 @@ with app.app_context():
                 current_weight=75.0,
                 target_weight=70.0,
                 activity_level="moderate",
-                dietary_restrictions=[],
-                fitness_goal="weight_loss"
+                dietary_restrictions="[]",
+                goals="weight_loss",
+                daily_calories_target=2000,
+                daily_protein_target=150,
+                daily_carbs_target=200,
+                daily_fat_target=65
             )
             db.session.add(test_user)
             db.session.commit()

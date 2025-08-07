@@ -71,7 +71,9 @@ def update_user(user_id):
 def get_user_profile(user_id):
     """Récupère le profil utilisateur complet avec calculs nutritionnels"""
     try:
-        user = User.query.get_or_404(user_id)
+        user = User.query.get(user_id)
+        if not user:
+            return jsonify({'error': f'User {user_id} not found'}), 404
         
         # Calculs nutritionnels
         nutrition_profile = nutrition_calculator.calculate_nutrition_profile(user)
