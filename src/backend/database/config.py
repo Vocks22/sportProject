@@ -22,7 +22,9 @@ class Config:
     
     # API Configuration
     API_PREFIX = os.environ.get('API_PREFIX', '/api')
-    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 'http://localhost:5173,http://localhost:3000').split(',')
+    # Ajouter les domaines Netlify et localhost
+    CORS_ORIGINS = os.environ.get('CORS_ORIGINS', 
+        'http://localhost:5173,http://localhost:3000,http://localhost:5000,https://*.netlify.app').split(',')
     
     # Server Configuration
     HOST = os.environ.get('HOST', '0.0.0.0')
@@ -68,10 +70,14 @@ class ProductionConfig(Config):
     FLASK_ENV = 'production'
     
     # Database - Use PostgreSQL in production
-    SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL',
-        'sqlite:///' + str(Path(__file__).resolve().parents[1] / 'database' / 'diettracker_prod.db')
-    )
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    if DATABASE_URL:
+        # Render utilise postgres:// mais SQLAlchemy veut postgresql://
+        if DATABASE_URL.startswith("postgres://"):
+            DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+        SQLALCHEMY_DATABASE_URI = DATABASE_URL
+    else:
+        SQLALCHEMY_DATABASE_URI = 'sqlite:///' + str(Path(__file__).resolve().parents[1] / 'database' / 'diettracker_prod.db')
     
     # Security
     SECRET_KEY = os.environ.get('SECRET_KEY')
