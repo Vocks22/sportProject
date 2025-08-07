@@ -1,0 +1,1 @@
+# Schémas de validation pour l'API
