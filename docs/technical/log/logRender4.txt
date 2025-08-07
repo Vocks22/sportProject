@@ -1,0 +1,98 @@
+2025-08-07T19:39:38.935257577Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-07T19:39:42.778254744Z Redis not available - Cache disabled
+2025-08-07T19:39:42.778256064Z Traceback (most recent call last):
+2025-08-07T19:39:42.778281995Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-07T19:39:42.778391907Z     sys.exit(run())
+2025-08-07T19:39:42.778398968Z              ^^^^^
+2025-08-07T19:39:42.778402948Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-07T19:39:42.778465439Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-07T19:39:42.77850287Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-07T19:39:42.778624513Z     super().run()
+2025-08-07T19:39:42.778630913Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-07T19:39:42.778738356Z     Arbiter(self).run()
+2025-08-07T19:39:42.778742076Z     ^^^^^^^^^^^^^
+2025-08-07T19:39:42.778748016Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-07T19:39:42.778886589Z     self.setup(app)
+2025-08-07T19:39:42.778898179Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-07T19:39:42.779000762Z     self.app.wsgi()
+2025-08-07T19:39:42.779006592Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-07T19:39:42.779117375Z     self.callable = self.load()
+2025-08-07T19:39:42.779123615Z                     ^^^^^^^^^^^
+2025-08-07T19:39:42.779126365Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-07T19:39:42.779239378Z     return self.load_wsgiapp()
+2025-08-07T19:39:42.779243678Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:42.779247188Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-07T19:39:42.77933703Z     return util.import_app(self.app_uri)
+2025-08-07T19:39:42.77934016Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:42.77934254Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-07T19:39:42.779463993Z     mod = importlib.import_module(module)
+2025-08-07T19:39:42.779466363Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:42.779470953Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-07T19:39:42.779572265Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-07T19:39:42.779601356Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:42.779606766Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-07T19:39:42.779608566Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-07T19:39:42.779610306Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-07T19:39:42.779614296Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-07T19:39:42.779616066Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-07T19:39:42.779617756Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-07T19:39:42.779619387Z   File "/opt/render/project/src/src/backend/main.py", line 40, in <module>
+2025-08-07T19:39:42.779712539Z     app = create_app()
+2025-08-07T19:39:42.779734949Z           ^^^^^^^^^^^^
+2025-08-07T19:39:42.77975915Z   File "/opt/render/project/src/src/backend/main.py", line 27, in create_app
+2025-08-07T19:39:42.779848362Z     from routes.recipes import recipes_bp
+2025-08-07T19:39:42.830462716Z   File "/opt/render/project/src/src/backend/routes/recipes.py", line 8, in <module>
+2025-08-07T19:39:42.830597599Z     from schemas.recipe import (
+2025-08-07T19:39:42.830602889Z   File "/opt/render/project/src/src/backend/schemas/recipe.py", line 2, in <module>
+2025-08-07T19:39:42.830705332Z     from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+2025-08-07T19:39:42.830719282Z ModuleNotFoundError: No module named 'marshmallow_sqlalchemy'
+2025-08-07T19:39:49.083159364Z ==> Exited with status 1
+2025-08-07T19:39:49.227325337Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-08-07T19:39:54.55312426Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-07T19:39:58.150241939Z Traceback (most recent call last):
+2025-08-07T19:39:58.15027948Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-07T19:39:58.15028066Z Redis not available - Cache disabled
+2025-08-07T19:39:58.150393722Z     sys.exit(run())
+2025-08-07T19:39:58.150400073Z              ^^^^^
+2025-08-07T19:39:58.150405913Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-07T19:39:58.150411833Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-07T19:39:58.150420143Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-07T19:39:58.150581177Z     super().run()
+2025-08-07T19:39:58.150588447Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-07T19:39:58.150697809Z     Arbiter(self).run()
+2025-08-07T19:39:58.150702Z     ^^^^^^^^^^^^^
+2025-08-07T19:39:58.15070595Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-07T19:39:58.150830673Z     self.setup(app)
+2025-08-07T19:39:58.150872464Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-07T19:39:58.150965856Z     self.app.wsgi()
+2025-08-07T19:39:58.150969196Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-07T19:39:58.151059928Z     self.callable = self.load()
+2025-08-07T19:39:58.151065078Z                     ^^^^^^^^^^^
+2025-08-07T19:39:58.151069328Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-07T19:39:58.151171931Z     return self.load_wsgiapp()
+2025-08-07T19:39:58.151174631Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:58.151179131Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-07T19:39:58.151275253Z     return util.import_app(self.app_uri)
+2025-08-07T19:39:58.151308844Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:58.151312134Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-07T19:39:58.151429957Z     mod = importlib.import_module(module)
+2025-08-07T19:39:58.151450187Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:58.151452857Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-07T19:39:58.15155725Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-07T19:39:58.151595411Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-07T19:39:58.151598831Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-07T19:39:58.151601151Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-07T19:39:58.151603271Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-07T19:39:58.151605521Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-07T19:39:58.151634122Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-07T19:39:58.151640182Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-07T19:39:58.151643372Z   File "/opt/render/project/src/src/backend/main.py", line 40, in <module>
+2025-08-07T19:39:58.151725914Z     app = create_app()
+2025-08-07T19:39:58.151730354Z           ^^^^^^^^^^^^
+2025-08-07T19:39:58.151744174Z   File "/opt/render/project/src/src/backend/main.py", line 27, in create_app
+2025-08-07T19:39:58.151842996Z     from routes.recipes import recipes_bp
+2025-08-07T19:39:58.151852867Z   File "/opt/render/project/src/src/backend/routes/recipes.py", line 8, in <module>
+2025-08-07T19:39:58.151943599Z     from schemas.recipe import (
+2025-08-07T19:39:58.151947669Z   File "/opt/render/project/src/src/backend/schemas/recipe.py", line 2, in <module>
+2025-08-07T19:39:58.152016271Z     from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+2025-08-07T19:39:58.152018931Z ModuleNotFoundError: No module named 'marshmallow_sqlalchemy'
