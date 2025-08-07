@@ -249,7 +249,7 @@ export function MobileShopping() {
                         >
                           <Checkbox
                             checked={item.checked}
-                            onCheckedChange={() => toggleItem(category.key, item.id)}
+                            onChange={() => toggleItem(category.key, item.id)}
                             className="flex-shrink-0"
                           />
                           <div className="flex-1 min-w-0">

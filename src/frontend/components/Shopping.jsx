@@ -461,7 +461,7 @@ export function Shopping() {
                   >
                     <Checkbox
                       checked={item.checked}
-                      onCheckedChange={() => handleToggleItem(item.id)}
+                      onChange={() => handleToggleItem(item.id)}
                       className="h-5 w-5"
                       disabled={isLoading}
                     />

@@ -3,7 +3,7 @@
  * Utilise Zustand pour l'état global et IndexedDB pour la persistance offline
  */
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
@@ -525,21 +525,25 @@ export const useShoppingList = () => {
  */
 export const useNetworkStatus = () => {
   const setOfflineMode = useShoppingListStore(state => state.setOfflineMode)
-  const syncPendingActions = useShoppingList().syncPendingActions
+  const offlineMode = useShoppingListStore(state => state.offlineMode)
+  
+  React.useEffect(() => {
+    // État initial - seulement au montage
+    const isOffline = !navigator.onLine
+    if (offlineMode !== isOffline) {
+      setOfflineMode(isOffline)
+    }
+  }, []) // Exécuter seulement au montage
   
   React.useEffect(() => {
     const handleOnline = () => {
       setOfflineMode(false)
-      // Déclencher la sync automatique après un délai
-      setTimeout(syncPendingActions, 1000)
+      // Note: syncPendingActions sera géré ailleurs pour éviter les dépendances circulaires
     }
     
     const handleOffline = () => {
       setOfflineMode(true)
     }
-    
-    // État initial
-    setOfflineMode(!navigator.onLine)
     
     // Écouter les changements
     window.addEventListener('online', handleOnline)
@@ -549,7 +553,7 @@ export const useNetworkStatus = () => {
       window.removeEventListener('online', handleOnline)
       window.removeEventListener('offline', handleOffline)
     }
-  }, [setOfflineMode, syncPendingActions])
+  }, [setOfflineMode])
 }
 
 export default useShoppingList
