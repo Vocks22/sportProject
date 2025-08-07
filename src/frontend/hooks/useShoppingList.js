@@ -3,10 +3,9 @@
  * Utilise Zustand pour l'état global et IndexedDB pour la persistance offline
  */
 
-import React from 'react'
+import { useState, useEffect } from 'react'
 import { create } from 'zustand'
-import { subscribeWithSelector, persist } from 'zustand/middleware'
-import { immer } from 'zustand/middleware/immer'
+import { persist } from 'zustand/middleware'
 
 // Configuration IndexedDB pour la persistance offline
 const INDEXED_DB_CONFIG = {
@@ -23,9 +22,8 @@ const INDEXED_DB_CONFIG = {
  * Store Zustand pour la gestion des listes de courses
  */
 export const useShoppingListStore = create(
-  subscribeWithSelector(
-    persist(
-      immer((set, get) => ({
+  persist(
+    (set, get) => ({
         // État principal
         currentList: null,
         checkedItems: {},
@@ -41,110 +39,119 @@ export const useShoppingListStore = create(
         pendingActions: [],
         
         // Actions
-        setCurrentList: (list) => set((state) => {
-          state.currentList = list
-          if (list) {
-            state.cachedLists[list.id] = list
-            // Initialiser l'état des cases cochées
-            if (list.checked_items) {
-              state.checkedItems = { ...state.checkedItems, ...list.checked_items }
-            }
-          }
-        }),
+        setCurrentList: (list) => set((state) => ({
+          ...state,
+          currentList: list,
+          cachedLists: list ? { ...state.cachedLists, [list.id]: list } : state.cachedLists,
+          checkedItems: list?.checked_items ? { ...state.checkedItems, ...list.checked_items } : state.checkedItems
+        })),
         
         toggleItem: (itemId, checked, optimistic = true) => set((state) => {
+          const updates = { ...state }
+          
           // Mise à jour optimiste
           if (optimistic) {
-            state.checkedItems[itemId] = checked
+            updates.checkedItems = { ...state.checkedItems, [itemId]: checked }
             
             // Mettre à jour l'item dans la liste actuelle
             if (state.currentList?.items) {
-              const item = state.currentList.items.find(item => 
-                String(item.id) === String(itemId)
-              )
-              if (item) {
-                item.checked = checked
+              updates.currentList = {
+                ...state.currentList,
+                items: state.currentList.items.map(item => 
+                  String(item.id) === String(itemId) 
+                    ? { ...item, checked }
+                    : item
+                )
               }
             }
           }
           
           // Ajouter l'action à la queue si offline
           if (state.offlineMode) {
-            state.pendingActions.push({
-              type: 'toggle_item',
-              itemId,
-              checked,
-              timestamp: Date.now(),
-              listId: state.currentList?.id
-            })
+            updates.pendingActions = [
+              ...state.pendingActions,
+              {
+                type: 'toggle_item',
+                itemId,
+                checked,
+                timestamp: Date.now(),
+                listId: state.currentList?.id
+              }
+            ]
           }
+          
+          return updates
         }),
         
         bulkToggleItems: (itemUpdates, optimistic = true) => set((state) => {
+          const updates = { ...state }
+          
           if (optimistic) {
+            const newCheckedItems = { ...state.checkedItems }
             itemUpdates.forEach(({ itemId, checked }) => {
-              state.checkedItems[itemId] = checked
-              
-              // Mettre à jour dans la liste actuelle
-              if (state.currentList?.items) {
-                const item = state.currentList.items.find(item => 
-                  String(item.id) === String(itemId)
-                )
-                if (item) {
-                  item.checked = checked
-                }
-              }
+              newCheckedItems[itemId] = checked
             })
+            updates.checkedItems = newCheckedItems
+            
+            // Mettre à jour dans la liste actuelle
+            if (state.currentList?.items) {
+              updates.currentList = {
+                ...state.currentList,
+                items: state.currentList.items.map(item => {
+                  const update = itemUpdates.find(({ itemId }) => String(item.id) === String(itemId))
+                  return update ? { ...item, checked: update.checked } : item
+                })
+              }
+            }
           }
           
           // Ajouter à la queue si offline
           if (state.offlineMode) {
-            state.pendingActions.push({
-              type: 'bulk_toggle',
-              items: itemUpdates,
-              timestamp: Date.now(),
-              listId: state.currentList?.id
-            })
+            updates.pendingActions = [
+              ...state.pendingActions,
+              {
+                type: 'bulk_toggle',
+                items: itemUpdates,
+                timestamp: Date.now(),
+                listId: state.currentList?.id
+              }
+            ]
           }
+          
+          return updates
         }),
         
         updateListData: (listData) => set((state) => {
           if (state.currentList && state.currentList.id === listData.id) {
-            state.currentList = { ...state.currentList, ...listData }
-            state.cachedLists[listData.id] = state.currentList
+            const updatedList = { ...state.currentList, ...listData }
+            return {
+              ...state,
+              currentList: updatedList,
+              cachedLists: { ...state.cachedLists, [listData.id]: updatedList }
+            }
           }
+          return state
         }),
         
-        setLoading: (loading) => set((state) => {
-          state.isLoading = loading
-        }),
+        setLoading: (loading) => set({ isLoading: loading }),
         
-        setError: (error) => set((state) => {
-          state.error = error
-        }),
+        setError: (error) => set({ error }),
         
-        clearError: () => set((state) => {
-          state.error = null
-        }),
+        clearError: () => set({ error: null }),
         
-        setOfflineMode: (offline) => set((state) => {
-          state.offlineMode = offline
-        }),
+        setOfflineMode: (offline) => set({ offlineMode: offline }),
         
-        addPendingAction: (action) => set((state) => {
-          state.pendingActions.push({
-            ...action,
-            timestamp: Date.now()
-          })
-        }),
+        addPendingAction: (action) => set((state) => ({
+          ...state,
+          pendingActions: [
+            ...state.pendingActions,
+            { ...action, timestamp: Date.now() }
+          ]
+        })),
         
-        clearPendingActions: () => set((state) => {
-          state.pendingActions = []
-        }),
+        clearPendingActions: () => set({ pendingActions: [] }),
         
-        updateLastSync: () => set((state) => {
-          state.lastSync = Date.now()
-        }),
+        updateLastSync: () => set({ lastSync: Date.now() }),
         
         // Getters calculés
         getCompletionStats: () => {
@@ -188,7 +195,7 @@ export const useShoppingListStore = create(
           const state = get()
           return state.pendingActions.length
         }
-      })),
+      }),
       {
         name: 'shopping-list-storage',
         partialize: (state) => ({
@@ -198,7 +205,6 @@ export const useShoppingListStore = create(
           pendingActions: state.pendingActions
         })
       }
-    )
   )
 )
 
