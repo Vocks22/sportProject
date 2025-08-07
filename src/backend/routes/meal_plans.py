@@ -7,8 +7,15 @@ from models.user import User
 from schemas.meal_plan import (
     meal_plan_schema, meal_plans_schema, meal_plan_update_schema,
     meal_plan_generation_schema, meal_plan_query_schema,
-    shopping_list_schema, shopping_lists_schema, shopping_list_update_schema
+    shopping_list_schema, shopping_lists_schema, shopping_list_update_schema,
+    # Nouveaux schémas US1.5
+    optimized_shopping_list_schema, optimized_shopping_lists_schema,
+    item_toggle_schema, bulk_toggle_schema, regenerate_list_schema,
+    aggregation_preferences_schema, shopping_list_export_schema,
+    shopping_list_statistics_schema, shopping_list_history_schema,
+    shopping_list_histories_schema
 )
+from services.shopping_service import ShoppingService
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 from marshmallow import ValidationError
@@ -258,7 +265,7 @@ def generate_meal_plan():
 
 @meal_plans_bp.route('/meal-plans/<int:plan_id>/shopping-list', methods=['POST'])
 def generate_shopping_list(plan_id):
-    """Générer une liste de courses pour un plan de repas"""
+    """Générer une liste de courses optimisée pour un plan de repas (US1.5)"""
     try:
         # Validation de l'ID
         if plan_id <= 0:
@@ -273,54 +280,37 @@ def generate_shopping_list(plan_id):
         if existing_list:
             return jsonify({'error': 'Une liste de courses existe déjà pour ce plan de repas'}), 409
         
-        # Collecter tous les ingrédients nécessaires
-        ingredient_quantities = defaultdict(float)
+        # Récupérer les préférences d'agrégation depuis le body de la requête
+        request_data = request.get_json() or {}
+        aggregation_preferences = request_data.get('aggregation_preferences', {})
         
-        for day, meals in meal_plan.meals.items():
-            for meal_type, recipe_id in meals.items():
-                if recipe_id:
-                    recipe = Recipe.query.get(recipe_id)
-                    if recipe:
-                        for ingredient_data in recipe.ingredients:
-                            ingredient_id = ingredient_data.get('ingredient_id')
-                            quantity = ingredient_data.get('quantity', 0)
-                            
-                            if ingredient_id:
-                                ingredient_quantities[ingredient_id] += quantity
+        # Générer la liste optimisée avec le nouveau service
+        optimized_data = ShoppingService.generate_optimized_shopping_list(
+            meal_plan, 
+            aggregation_preferences
+        )
         
-        if not ingredient_quantities:
-            return jsonify({'error': 'Aucun ingrédient trouvé dans le plan de repas'}), 400
-        
-        # Créer la liste d'articles
-        items = []
-        for ingredient_id, total_quantity in ingredient_quantities.items():
-            ingredient = Ingredient.query.get(ingredient_id)
-            if ingredient:
-                items.append({
-                    'ingredient_id': ingredient_id,
-                    'name': ingredient.name,
-                    'quantity': round(total_quantity, 2),
-                    'unit': ingredient.unit,
-                    'category': ingredient.category or 'other',
-                    'checked': False
-                })
-        
-        # Trier par catégorie
-        items.sort(key=lambda x: (x['category'], x['name']))
-        
-        # Créer la liste de courses
+        # Créer la liste de courses avec les nouvelles données
         shopping_list_data = {
             'meal_plan_id': plan_id,
             'week_start': meal_plan.week_start.isoformat(),
-            'items': items
+            'items': optimized_data['items'],
+            'category_grouping': optimized_data['category_grouping'],
+            'estimated_budget': optimized_data['estimated_budget'],
+            'aggregation_rules': optimized_data['aggregation_rules']
         }
         
         shopping_list = ShoppingList.create_from_dict(shopping_list_data)
         db.session.add(shopping_list)
         db.session.commit()
         
-        return jsonify(shopping_list_schema.dump(shopping_list)), 201
+        return jsonify({
+            'shopping_list': optimized_shopping_list_schema.dump(shopping_list),
+            'generation_info': optimized_data['statistics']
+        }), 201
     
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
@@ -547,4 +537,280 @@ def calculate_nutrition_accuracy(target, actual):
             'fat': 0,
             'overall': 0
         }
+
+# ===== NOUVEAUX ENDPOINTS US1.5 - LISTE DE COURSES INTERACTIVE =====
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/items/<item_id>/toggle', methods=['PATCH'])
+def toggle_shopping_item(list_id, item_id):
+    """Cocher/décocher un article de la liste de courses"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Récupérer les données de la requête
+        data = request.get_json() or {}
+        checked = data.get('checked', False)
+        user_id = data.get('user_id')
+        
+        # Utiliser le service pour mettre à jour l'état
+        success = ShoppingService.update_item_status(
+            shopping_list, 
+            item_id, 
+            checked, 
+            user_id
+        )
+        
+        if success:
+            return jsonify({
+                'success': True,
+                'shopping_list': optimized_shopping_list_schema.dump(shopping_list)
+            })
+        else:
+            return jsonify({'error': 'Échec de la mise à jour de l\'article'}), 500
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/regenerate', methods=['POST'])
+def regenerate_shopping_list(list_id):
+    """Régénérer une liste de courses existante"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Récupérer les options de régénération
+        data = request.get_json() or {}
+        preserve_checked = data.get('preserve_checked_items', True)
+        
+        # Régénérer avec le service
+        result = ShoppingService.regenerate_shopping_list(
+            shopping_list, 
+            preserve_checked
+        )
+        
+        if result['success']:
+            return jsonify(result)
+        else:
+            return jsonify({'error': result['error']}), 500
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/export', methods=['POST'])
+def export_shopping_list(list_id):
+    """Exporter une liste de courses (prépare les données pour l'export côté client)"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Récupérer le format d'export demandé
+        data = request.get_json() or {}
+        export_format = data.get('format', 'json')  # json, pdf, txt, email
+        
+        # Préparer les données d'export
+        export_data = {
+            'shopping_list': shopping_list.to_dict(),
+            'meal_plan': shopping_list.meal_plan.to_dict(),
+            'export_metadata': {
+                'generated_at': datetime.utcnow().isoformat(),
+                'format': export_format,
+                'total_items': len(shopping_list.items),
+                'completed_items': len([
+                    item for item_id, item in shopping_list.checked_items.items() 
+                    if item
+                ]),
+                'estimated_budget': shopping_list.estimated_budget
+            }
+        }
+        
+        return jsonify({
+            'success': True,
+            'export_data': export_data,
+            'download_url': f'/api/shopping-lists/{list_id}/download/{export_format}'
+        })
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/statistics', methods=['GET'])
+def get_shopping_list_statistics(list_id):
+    """Récupérer les statistiques détaillées d'une liste de courses (US1.5)"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Utiliser le service pour calculer les statistiques
+        statistics = ShoppingService.get_shopping_list_statistics(shopping_list)
+        
+        return jsonify(statistics)
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/bulk-toggle', methods=['PATCH'])
+def bulk_toggle_items(list_id):
+    """Cocher/décocher plusieurs articles en une fois"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Récupérer les données de la requête
+        data = request.get_json() or {}
+        items_to_update = data.get('items', [])  # [{'item_id': 'id', 'checked': bool}]
+        user_id = data.get('user_id')
+        
+        if not items_to_update:
+            return jsonify({'error': 'Aucun article à mettre à jour'}), 400
+        
+        # Mettre à jour en batch
+        success_count = 0
+        for item_update in items_to_update:
+            item_id = item_update.get('item_id')
+            checked = item_update.get('checked', False)
+            
+            if item_id:
+                success = ShoppingService.update_item_status(
+                    shopping_list, 
+                    item_id, 
+                    checked, 
+                    user_id
+                )
+                if success:
+                    success_count += 1
+        
+        return jsonify({
+            'success': True,
+            'updated_items': success_count,
+            'total_items': len(items_to_update),
+            'shopping_list': optimized_shopping_list_schema.dump(shopping_list)
+        })
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+# ===== NOUVEAUX ENDPOINTS US1.5 - FONCTIONNALITÉS AVANCÉES =====
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/history', methods=['GET'])
+def get_shopping_list_history(list_id):
+    """Récupérer l'historique des modifications d'une liste de courses"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Paramètres de pagination
+        page = request.args.get('page', 1, type=int)
+        per_page = min(request.args.get('per_page', 20, type=int), 100)
+        
+        # Récupérer l'historique
+        from models.shopping_history import ShoppingListHistory
+        
+        history_query = ShoppingListHistory.query.filter_by(
+            shopping_list_id=list_id
+        ).order_by(ShoppingListHistory.timestamp.desc())
+        
+        paginated_history = history_query.paginate(
+            page=page,
+            per_page=per_page,
+            error_out=False
+        )
+        
+        return jsonify({
+            'history': shopping_list_histories_schema.dump(paginated_history.items),
+            'pagination': {
+                'page': paginated_history.page,
+                'pages': paginated_history.pages,
+                'per_page': paginated_history.per_page,
+                'total': paginated_history.total,
+                'has_next': paginated_history.has_next,
+                'has_prev': paginated_history.has_prev
+            }
+        })
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/<int:list_id>/export-data', methods=['POST'])
+def prepare_shopping_list_export(list_id):
+    """Préparer les données d'export d'une liste de courses (version améliorée US1.5)"""
+    try:
+        # Validation de l'ID
+        if list_id <= 0:
+            return jsonify({'error': 'ID de liste invalide'}), 400
+        
+        shopping_list = ShoppingList.query.get(list_id)
+        if not shopping_list:
+            return jsonify({'error': 'Liste de courses non trouvée'}), 404
+        
+        # Validation des données de requête
+        try:
+            data = shopping_list_export_schema.load(request.get_json() or {})
+        except ValidationError as e:
+            return jsonify({'error': 'Données invalides', 'details': e.messages}), 400
+        
+        # Utiliser le service pour préparer l'export
+        export_result = ShoppingService.export_shopping_list_data(
+            shopping_list=shopping_list,
+            export_format=data['format'],
+            include_metadata=data['include_metadata'],
+            include_checked_items=data['include_checked_items']
+        )
+        
+        if export_result['success']:
+            return jsonify(export_result)
+        else:
+            return jsonify({'error': export_result['error']}), 500
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@meal_plans_bp.route('/shopping-lists/categories', methods=['GET'])
+def get_store_categories():
+    """Récupérer les catégories de rayons de magasin disponibles"""
+    try:
+        from models.shopping_history import StoreCategory
+        
+        # Récupérer les catégories pour l'utilisateur (ou globales)
+        user_id = request.args.get('user_id')
+        categories = StoreCategory.get_user_categories(user_id)
+        
+        # Convertir en dictionnaire
+        categories_data = [category.to_dict() for category in categories]
+        
+        return jsonify({
+            'categories': categories_data,
+            'total': len(categories_data)
+        })
+    
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 

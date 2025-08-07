@@ -182,6 +182,130 @@ class ShoppingListUpdateSchema(Schema):
     items = fields.List(fields.Nested(ShoppingListItemSchema))
     is_completed = fields.Boolean()
 
+# ===== NOUVEAUX SCHÉMAS US1.5 - LISTE DE COURSES INTERACTIVE =====
+
+class OptimizedShoppingItemSchema(Schema):
+    """Schéma pour un article de liste de courses optimisé (US1.5)"""
+    id = fields.String(required=True)  # ID unique généré
+    ingredient_id = fields.Integer(required=True, validate=validate.Range(min=1))
+    name = fields.String(required=True, validate=validate.Length(min=1, max=200))
+    quantity = fields.Float(required=True, validate=validate.Range(min=0.01))
+    unit = fields.String(required=True, validate=validate.Length(min=1, max=20))
+    category = fields.String(validate=validate.Length(min=1, max=50))
+    
+    # Nouvelles propriétés US1.5
+    checked = fields.Boolean(load_default=False)
+    original_quantity = fields.Float(allow_none=True)
+    original_unit = fields.String(allow_none=True)
+    conversion_applied = fields.String(allow_none=True)
+    note = fields.String(allow_none=True, validate=validate.Length(max=500))
+    sources = fields.List(fields.Dict(), load_default=list)
+    unit_price = fields.Float(allow_none=True, validate=validate.Range(min=0))
+    preferred_brand = fields.String(allow_none=True, validate=validate.Length(max=100))
+
+class CategoryGroupingSchema(Schema):
+    """Schéma pour le groupement par rayons de magasin"""
+    protein = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    nuts = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    vegetable = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    fruit = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    dairy = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    grain = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    frozen = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    condiment = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    supplement = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    bakery = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    beverages = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+    other = fields.List(fields.Nested(OptimizedShoppingItemSchema), load_default=list)
+
+class AggregationRulesSchema(Schema):
+    """Schéma pour les règles d'agrégation appliquées"""
+    total_raw_items = fields.Integer(validate=validate.Range(min=0))
+    total_optimized_items = fields.Integer(validate=validate.Range(min=0))
+    conversion_rules_applied = fields.List(fields.String())
+    timestamp = fields.DateTime(format='iso8601')
+    version = fields.String(load_default='1.0')
+
+class ShoppingListStatisticsSchema(Schema):
+    """Schéma pour les statistiques de liste"""
+    total_items = fields.Integer(validate=validate.Range(min=0))
+    total_categories = fields.Integer(validate=validate.Range(min=0))
+    aggregation_savings = fields.Dict(keys=fields.String(), values=fields.Raw())
+
+class OptimizedShoppingListSchema(Schema):
+    """Schéma pour les listes de courses optimisées (US1.5)"""
+    id = fields.Integer(dump_only=True)
+    meal_plan_id = fields.Integer(required=True, validate=validate.Range(min=1))
+    week_start = fields.Date(required=True)
+    
+    # Nouvelles propriétés US1.5
+    items = fields.List(fields.Nested(OptimizedShoppingItemSchema), required=True)
+    checked_items = fields.Dict(keys=fields.String(), values=fields.Boolean(), load_default=dict)
+    category_grouping = fields.Nested(CategoryGroupingSchema, load_default=dict)
+    aggregation_rules = fields.Nested(AggregationRulesSchema, allow_none=True)
+    estimated_budget = fields.Float(allow_none=True, validate=validate.Range(min=0))
+    
+    # Métadonnées étendues
+    generated_date = fields.DateTime(dump_only=True, format='iso8601')
+    last_updated = fields.DateTime(dump_only=True, format='iso8601')
+    is_completed = fields.Boolean(load_default=False)
+    completion_date = fields.DateTime(allow_none=True, format='iso8601')
+    version = fields.Integer(load_default=1, validate=validate.Range(min=1))
+
+class ItemToggleSchema(Schema):
+    """Schéma pour cocher/décocher un article"""
+    checked = fields.Boolean(required=True)
+    user_id = fields.String(allow_none=True, validate=validate.Length(min=1, max=50))
+
+class BulkToggleItemSchema(Schema):
+    """Schéma pour un article dans une mise à jour groupée"""
+    item_id = fields.String(required=True)
+    checked = fields.Boolean(required=True)
+
+class BulkToggleSchema(Schema):
+    """Schéma pour les mises à jour groupées d'articles"""
+    items = fields.List(
+        fields.Nested(BulkToggleItemSchema),
+        required=True,
+        validate=validate.Length(min=1, max=100)
+    )
+    user_id = fields.String(allow_none=True, validate=validate.Length(min=1, max=50))
+
+class RegenerateListSchema(Schema):
+    """Schéma pour la régénération d'une liste de courses"""
+    preserve_checked_items = fields.Boolean(load_default=True)
+    aggregation_preferences = fields.Dict(load_default=dict)
+
+class AggregationPreferencesSchema(Schema):
+    """Schéma pour les préférences d'agrégation"""
+    unit_preferences = fields.Dict(load_default=dict)
+    category_preferences = fields.Dict(load_default=dict)
+    brand_preferences = fields.Dict(load_default=dict)
+    budget_limit = fields.Float(allow_none=True, validate=validate.Range(min=0))
+
+class ShoppingListExportSchema(Schema):
+    """Schéma pour l'export de listes de courses"""
+    format = fields.String(
+        validate=validate.OneOf(['json', 'pdf', 'txt', 'email']),
+        load_default='json'
+    )
+    include_metadata = fields.Boolean(load_default=True)
+    include_checked_items = fields.Boolean(load_default=True)
+
+class ShoppingListHistorySchema(Schema):
+    """Schéma pour l'historique des modifications"""
+    id = fields.Integer(dump_only=True)
+    shopping_list_id = fields.Integer(required=True)
+    action = fields.String(required=True, validate=validate.OneOf([
+        'item_checked', 'item_unchecked', 'regenerated', 'created', 'bulk_update'
+    ]))
+    item_id = fields.String(allow_none=True)
+    old_value = fields.Dict(allow_none=True)
+    new_value = fields.Dict(allow_none=True)
+    user_id = fields.String(allow_none=True)
+    timestamp = fields.DateTime(dump_only=True, format='iso8601')
+    metadata_json = fields.Dict(allow_none=True)
+
 # Instances des schémas
 meal_plan_schema = MealPlanSchema()
 meal_plans_schema = MealPlanSchema(many=True)
@@ -192,3 +316,15 @@ meal_plan_query_schema = MealPlanQuerySchema()
 shopping_list_schema = ShoppingListSchema()
 shopping_lists_schema = ShoppingListSchema(many=True)
 shopping_list_update_schema = ShoppingListUpdateSchema()
+
+# Nouveaux schémas US1.5
+optimized_shopping_list_schema = OptimizedShoppingListSchema()
+optimized_shopping_lists_schema = OptimizedShoppingListSchema(many=True)
+item_toggle_schema = ItemToggleSchema()
+bulk_toggle_schema = BulkToggleSchema()
+regenerate_list_schema = RegenerateListSchema()
+aggregation_preferences_schema = AggregationPreferencesSchema()
+shopping_list_export_schema = ShoppingListExportSchema()
+shopping_list_statistics_schema = ShoppingListStatisticsSchema()
+shopping_list_history_schema = ShoppingListHistorySchema()
+shopping_list_histories_schema = ShoppingListHistorySchema(many=True)

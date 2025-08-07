@@ -85,12 +85,23 @@ class ShoppingList(db.Model):
     meal_plan_id = db.Column(db.Integer, db.ForeignKey('meal_plans.id'), nullable=False)
     week_start = db.Column(db.Date, nullable=False)
     
-    # Stockage JSON des articles
+    # Stockage JSON des articles avec état persistant (US1.5)
     items_json = db.Column(db.Text, nullable=False)
     
-    # Métadonnées
+    # Nouveaux champs pour US1.5 - Liste Interactive
+    checked_items_json = db.Column(db.Text, default='{}')  # État des cases cochées
+    aggregation_rules_json = db.Column(db.Text, nullable=True)  # Règles d'agrégation
+    category_grouping_json = db.Column(db.Text, nullable=True)  # Groupement par rayon
+    estimated_budget = db.Column(db.Float, nullable=True)  # Budget estimé
+    
+    # Métadonnées étendues
     generated_date = db.Column(db.DateTime, default=datetime.utcnow)
+    last_updated = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     is_completed = db.Column(db.Boolean, default=False)
+    completion_date = db.Column(db.DateTime, nullable=True)
+    
+    # Version pour gestion de conflits
+    version = db.Column(db.Integer, default=1)
     
     # Relation avec MealPlan
     meal_plan = db.relationship('MealPlan', backref=db.backref('shopping_lists', lazy=True))
@@ -103,14 +114,48 @@ class ShoppingList(db.Model):
     def items(self, value):
         self.items_json = json.dumps(value)
     
+    # Nouvelles propriétés pour US1.5
+    @property
+    def checked_items(self):
+        return json.loads(self.checked_items_json) if self.checked_items_json else {}
+    
+    @checked_items.setter
+    def checked_items(self, value):
+        self.checked_items_json = json.dumps(value)
+    
+    @property
+    def aggregation_rules(self):
+        return json.loads(self.aggregation_rules_json) if self.aggregation_rules_json else {}
+    
+    @aggregation_rules.setter
+    def aggregation_rules(self, value):
+        self.aggregation_rules_json = json.dumps(value)
+    
+    @property
+    def category_grouping(self):
+        return json.loads(self.category_grouping_json) if self.category_grouping_json else {}
+    
+    @category_grouping.setter
+    def category_grouping(self, value):
+        self.category_grouping_json = json.dumps(value)
+    
     def to_dict(self):
         return {
             'id': self.id,
             'meal_plan_id': self.meal_plan_id,
             'week_start': self.week_start.isoformat() if self.week_start else None,
             'items': self.items,
+            # Nouveaux champs US1.5
+            'checked_items': self.checked_items,
+            'aggregation_rules': self.aggregation_rules,
+            'category_grouping': self.category_grouping,
+            'estimated_budget': self.estimated_budget,
+            # Métadonnées étendues
             'generated_date': self.generated_date.isoformat() if self.generated_date else None,
-            'is_completed': self.is_completed
+            'last_updated': self.last_updated.isoformat() if self.last_updated else None,
+            'is_completed': self.is_completed,
+            'completion_date': self.completion_date.isoformat() if self.completion_date else None,
+            'version': self.version
         }
     
     @staticmethod

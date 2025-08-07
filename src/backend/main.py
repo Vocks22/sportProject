@@ -43,6 +43,7 @@ app = create_app()
 from models.ingredient import Ingredient
 from models.recipe import Recipe
 from models.meal_plan import MealPlan, ShoppingList
+from models.shopping_history import ShoppingListHistory, StoreCategory
 
 # Create tables if running directly
 if __name__ == '__main__':
