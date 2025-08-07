@@ -9,7 +9,7 @@ import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Progress } from '../components/ui/progress';
 import { useUserProfile } from '../hooks/useUserProfile';
-import WeightChart from '../components/WeightChart';
+import { WeightChartWithControls } from '../components/WeightChart';
 import {
   User,
   Target,
@@ -290,6 +290,250 @@ const WeightProgressCard = ({ profile, weightHistory, onAddWeight }) => {
 };
 
 // Formulaire modal pour ajouter une pesée
+// Formulaire modal pour éditer le profil
+const EditProfileModal = ({ isOpen, onClose, profile, onSubmit, loading }) => {
+  const [formData, setFormData] = useState({});
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  useEffect(() => {
+    // Ne réinitialiser que si le modal vient de s'ouvrir et n'a pas encore été initialisé
+    if (profile && isOpen && !isInitialized) {
+      setFormData({
+        current_weight: profile.current_weight || '',
+        target_weight: profile.target_weight || '',
+        height: profile.height || '',
+        age: profile.age || '',
+        gender: profile.gender || 'male',
+        activity_level: profile.activity_level || 'moderately_active',
+        goals: Array.isArray(profile.goals) ? profile.goals.join(', ') : (profile.goals || ''),
+        daily_calories_target: profile.daily_calories_target || 2000,
+        daily_protein_target: profile.daily_protein_target || 150,
+        daily_carbs_target: profile.daily_carbs_target || 200,
+        daily_fat_target: profile.daily_fat_target || 70
+      });
+      setIsInitialized(true);
+    }
+    
+    // Réinitialiser le flag quand le modal se ferme
+    if (!isOpen) {
+      setIsInitialized(false);
+    }
+  }, [profile, isOpen, isInitialized]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Convertir les valeurs en nombres avant la soumission
+    const dataToSubmit = {
+      ...formData,
+      current_weight: parseFloat(formData.current_weight) || 0,
+      target_weight: parseFloat(formData.target_weight) || 0,
+      height: parseFloat(formData.height) || 0,
+      age: parseInt(formData.age) || 0,
+      daily_calories_target: parseInt(formData.daily_calories_target) || 2000,
+      daily_protein_target: parseInt(formData.daily_protein_target) || 150,
+      daily_carbs_target: parseInt(formData.daily_carbs_target) || 200,
+      daily_fat_target: parseInt(formData.daily_fat_target) || 70
+    };
+    onSubmit(dataToSubmit);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+      <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between mb-4">
+          <h3 className="text-xl font-semibold">Modifier mon profil</h3>
+          <Button variant="ghost" size="sm" onClick={onClose}>
+            <X className="h-5 w-5" />
+          </Button>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="space-y-6">
+          {/* Section Mensurations */}
+          <div>
+            <h4 className="font-medium text-gray-900 mb-3">Mensurations et objectifs</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Poids actuel (kg) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  step="0.1"
+                  min="30"
+                  max="300"
+                  value={formData.current_weight || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, current_weight: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">Votre poids actuel (ex: 99)</p>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Objectif de poids (kg) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  step="0.1"
+                  min="30"
+                  max="300"
+                  value={formData.target_weight || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, target_weight: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">
+                  5kg/mois = {formData.current_weight ? (parseFloat(formData.current_weight) - 5).toFixed(1) : '?'} kg le mois prochain
+                </p>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Taille (cm) <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  min="100"
+                  max="250"
+                  value={formData.height || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, height: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Âge <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="number"
+                  min="15"
+                  max="100"
+                  value={formData.age || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, age: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Section Informations */}
+          <div>
+            <h4 className="font-medium text-gray-900 mb-3">Informations personnelles</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Genre</label>
+                <select
+                  value={formData.gender}
+                  onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                >
+                  <option value="male">Homme</option>
+                  <option value="female">Femme</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Niveau d'activité</label>
+                <select
+                  value={formData.activity_level}
+                  onChange={(e) => setFormData(prev => ({ ...prev, activity_level: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                >
+                  <option value="sedentary">Sédentaire</option>
+                  <option value="lightly_active">Légèrement actif</option>
+                  <option value="moderately_active">Modérément actif</option>
+                  <option value="very_active">Très actif</option>
+                  <option value="extra_active">Extrêmement actif</option>
+                </select>
+              </div>
+            </div>
+            
+            <div className="mt-4">
+              <label className="block text-sm font-medium mb-1">Objectifs personnels</label>
+              <textarea
+                value={formData.goals}
+                onChange={(e) => setFormData(prev => ({ ...prev, goals: e.target.value }))}
+                className="w-full p-2 border border-gray-300 rounded-md"
+                rows="2"
+                placeholder="Ex: Perdre 5kg par mois, améliorer ma condition physique..."
+              />
+            </div>
+          </div>
+
+          {/* Section Objectifs nutritionnels */}
+          <div>
+            <h4 className="font-medium text-gray-900 mb-3">Objectifs nutritionnels journaliers</h4>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">Calories (kcal)</label>
+                <input
+                  type="number"
+                  min="1000"
+                  max="5000"
+                  value={formData.daily_calories_target || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, daily_calories_target: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Protéines (g)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="500"
+                  value={formData.daily_protein_target || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, daily_protein_target: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Glucides (g)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="500"
+                  value={formData.daily_carbs_target || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, daily_carbs_target: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium mb-1">Lipides (g)</label>
+                <input
+                  type="number"
+                  min="0"
+                  max="200"
+                  value={formData.daily_fat_target || ''}
+                  onChange={(e) => setFormData(prev => ({ ...prev, daily_fat_target: e.target.value }))}
+                  className="w-full p-2 border border-gray-300 rounded-md"
+                />
+              </div>
+            </div>
+          </div>
+          
+          <div className="flex gap-2 pt-4 border-t">
+            <Button type="button" variant="outline" onClick={onClose} className="flex-1">
+              Annuler
+            </Button>
+            <Button type="submit" disabled={loading} className="flex-1 bg-green-600 hover:bg-green-700">
+              {loading ? 'Enregistrement...' : 'Enregistrer les modifications'}
+            </Button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
+
 const AddWeightModal = ({ isOpen, onClose, onSubmit, loading }) => {
   const [formData, setFormData] = useState({
     weight: '',
@@ -405,6 +649,7 @@ const ProfilePage = () => {
 
   const [showAddWeight, setShowAddWeight] = useState(false);
   const [editingProfile, setEditingProfile] = useState(false);
+  const [loadingUpdate, setLoadingUpdate] = useState(false);
 
   // Handlers
   const handleAddWeight = useCallback(async (weightData) => {
@@ -422,17 +667,46 @@ const ProfilePage = () => {
     setEditingProfile(true);
   }, []);
 
+  const handleSaveProfile = useCallback(async (profileData) => {
+    setLoadingUpdate(true);
+    try {
+      const response = await fetch(`http://localhost:5000/api/users/${userId}/profile`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(profileData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la mise à jour du profil');
+      }
+
+      // Rafraîchir les données
+      await refreshAll();
+      setEditingProfile(false);
+      
+      // Message de succès (vous pouvez ajouter un toast ici)
+      console.log('Profil mis à jour avec succès');
+    } catch (error) {
+      console.error('Erreur mise à jour profil:', error);
+      alert('Erreur lors de la mise à jour du profil');
+    } finally {
+      setLoadingUpdate(false);
+    }
+  }, [userId, refreshAll]);
+
   const handleEditNutrition = useCallback(() => {
-    // TODO: Ouvrir modal d'édition des objectifs nutritionnels
-    console.log('Édition objectifs nutritionnels');
+    // Ouvrir directement la modale d'édition du profil sur la section nutrition
+    setEditingProfile(true);
   }, []);
 
   // Chargement initial
   useEffect(() => {
-    if (userId) {
+    if (userId && !profile && !loading.profile) {
       refreshAll();
     }
-  }, [userId, refreshAll]);
+  }, [userId]); // Ne dépendre que de userId pour éviter la boucle infinie
 
   if (loading.profile && !profile) {
     return (
@@ -472,17 +746,19 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      {/* Erreurs */}
-      {Object.values(errors).some(Boolean) && (
+      {/* Erreurs - Filtrer les erreurs "Requête annulée" qui sont normales en développement */}
+      {Object.entries(errors).some(([key, error]) => error && !error.includes('Requête annulée')) && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4">
           <div className="flex items-center gap-2 text-red-700 mb-2">
             <AlertCircle className="h-4 w-4" />
             <span className="font-medium">Erreurs détectées</span>
           </div>
           <ul className="text-sm text-red-600 space-y-1">
-            {Object.entries(errors).map(([key, error]) => 
-              error && <li key={key}>• {error}</li>
-            )}
+            {Object.entries(errors)
+              .filter(([key, error]) => error && !error.includes('Requête annulée'))
+              .map(([key, error]) => 
+                <li key={key}>• {error}</li>
+              )}
           </ul>
         </div>
       )}
@@ -507,7 +783,7 @@ const ProfilePage = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <WeightChart 
+                <WeightChartWithControls 
                   data={weightHistory}
                   targetWeight={profile?.target_weight}
                   height={300}
@@ -586,6 +862,15 @@ const ProfilePage = () => {
           </Card>
         </div>
       </div>
+
+      {/* Modal édition profil */}
+      <EditProfileModal
+        isOpen={editingProfile}
+        onClose={() => setEditingProfile(false)}
+        profile={profile}
+        onSubmit={handleSaveProfile}
+        loading={loadingUpdate}
+      />
 
       {/* Modal ajout pesée */}
       <AddWeightModal

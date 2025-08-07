@@ -1,6 +1,7 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { ChefHat, Clock, Users, Star, X } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from './ui/button'
 import { CookingGuide } from './CookingGuide'
 
 const DIFFICULTY_COLORS = {

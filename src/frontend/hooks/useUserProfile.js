@@ -6,7 +6,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
 // Configuration des endpoints
-const API_BASE = '/api';
+const API_BASE = 'http://localhost:5000/api';
 const ENDPOINTS = {
   profile: (userId) => `${API_BASE}/users/${userId}/profile`,
   weightHistory: (userId) => `${API_BASE}/users/${userId}/weight-history`,
@@ -443,7 +443,7 @@ export const useUserProfile = (userId) => {
         abortControllerRef.current.abort();
       }
     };
-  }, [userId, fetchProfile]);
+  }, [userId]); // Ne dépendre que de userId pour éviter la boucle
 
   // Données dérivées
   const derivedData = {

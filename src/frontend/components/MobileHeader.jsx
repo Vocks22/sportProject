@@ -1,7 +1,8 @@
+import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Menu, X, User, Target } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from './ui/button'
 
 export function MobileHeader({ currentPage }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)

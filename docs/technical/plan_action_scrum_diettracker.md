@@ -294,6 +294,34 @@ J'attends d'avoir les ingrédients exacts pour savoir ce que je dois faire à ch
 - [ ] Historique du poids avec graphique
 - [ ] Ajustement automatique des portions
 
+Ok je suis satisfait de ce que je vois Par contre il y a toujours un problème c'est que je vois afficher 75 kilos alors que j'en fais 99 Je voudrais pouvoir avoir un une modale par exemple ou autre chose qui me permettrait en fait de modifier le poids que je fais pour le début de ma diète Et ensuite il faudrait penser dans l'interface pas de profil mais vraiment dans le suivi de ma diète de pouvoir rajouter tous les X jours Normalement c'est tous les samedis une nouvelle pesée pour avoir le poids exact que je fais et ensuite avoir un comparatif entre le poids que exact que je fais et celui que je devrais faire par rapport à à ma perte de 5 kilos par mois
+
+Alors au niveau de l'erreur ça sur le fait d'enregistrer Dans la modale des modifications ça maintenant ça prend le les changements que je fais Par exemple j'ai pu mettre femme au lieu d'homme Par contre quand j'essaye de d'enregistrer j'ai une erreur erreur lors de la mise à jour du profil Je te partage ma console pour que tu puisses voir ça et pour le graphique ça change toujours rien La barre de date continue à clignoter
+
+Peux tu me donner les commandes pour démarrer le serveur front et le serveur back
+
+Explique moi pourquoi tu as 2 commandes pour le Back
+
+Pourquoi YAT il toutes ces erreurs quand je lance mon Backend
+
+Je vois que il y a un tableau évolution du poids avec 16 mesures affichées Or aujourd'hui il peut y en avoir qu'une puisque je débute ma diète donc je voudrais déjà que tu me crées une page mesure où j'ajouterai un maximum d'éléments que ça soit le nombre de calories que j'ai dépensé dans la journée ou que ça soit le poids que je fais ou que ça soit le nombre de packs J'ai réalisé le nombre d'heures d'exercice Voilà un maximum d'éléments donc ça ça sera à moi de les remplir au fur et à mesure et que ça soit sauvegardé dans la base de données et afficher dans des tableaux comme évolution du poids qui est dans le profil Dans la page profil sur par exemple mon dashboard Aujourd'hui la le le tableau évolution du poids qui est dans le profil n'est pas bon puisque il démarre 75 kilos 4 le 8 juillet 2025 Et il termine aujourd'hui le 7 août à 80 kilos point un alors que c'est absolument pas le cas puisque aujourd'hui je fais 99 kilos D'ailleurs je comprends pas puisque c'est marqué dans le poids actuel dans progression du poids que je fais bien 99 kilos puisque je l'ai modifié
+
+Ayant de mes critères importants c'est que ça soit stocké dans une base de données Tout ce que j'ai tout ce que je stocke et tout ce que je j'inscris dans cette page il faut pas juste que ça soit inscrit Et puis basta il faut que ça soit vraiment Sauvegarder dans ma base de données
+
+Attends c'est la 2e fois que tu me fais supprimer et recréer une table dans ce projet je comprends pas trop pourquoi tu me l'avais déjà fait le coup avec la partie profil estce que tu es bien sûr que c'est la seule solution qu'il y a de supprimer la table et de recommencer tout à 0
+
+Ok j'aimerais que tu propages ces nouvelles données qui sont sauvegardées lors à base de données dans toutes les pages Je vois par exemple dans le profil le tableau de bord qui n'est pas mis à jour avec ces nouvelles données Je vois aussi dans suivi où je ne vois pas ces données qui sont inscrites et j'aimerais que tu me crées on va dire Une dizaine de données fictives avant le Entre pardon entre 1 juillet et 28 juillet Elles ne devront jamais dépasser Les 101 kilos Et aller en dessous Dès 99 Kilo Après pour le reste je te laisse improviser
+
+Oui OK d Ça paraît bien dans mesure Maintenant je vois bien toutes les mesures que tu as créées Mais il me manque maintenant de pouvoir les visualiser dans le dashboard Dans le suivi Et dans le profil je pense que tu dois avoir aussi un filtre même si je suis pas sûr parce que par exemple j'ai créé je crois de souvenirs une un enregistrement pour le 6 août et je le vois pas apparaître donc je pense que tu as un problème dans les graphiques et plus généralement t'as un problème dans le dans le suivi donc je te laisse pas pas dans le suivi mais dans la propagation de toutes les mesures qui sont dans la page mesure dans toutes les autres pages Faut vraiment être sûr à 100% Que on quand on rajoute une mesure Dans la partie dans la page mesure elle se propage bien partout et elle est bien pris en compte dans toutes les diagnostics analyses de poids de d'atteindre des objectifs Voilà il faut faut vraiment être sûr que ça se propage partout pour dire OK là on est passé à tel poids C'est une bonne chose ou c'est une mauvaise chose Si c'est une mauvaise chose signal d'alerte attention là tu dérives si c'est une bonne chose des des signaux verts des félicitations ça avance bien on va dans le bon sens Mais il faut que ces données se propagent
+
+Ok mais attends là je comprends pas parce que il y avait Un graphique sur le dashboard Sur le suivi Il est ils ont disparu tout simplement Et sur évolution de poids je vois pas toutes les mesures dans mon profil évolution de poids Je vois pas les mesures Qui que tu as mise dans la page mesure Et dans la base de données 
+
+Ok est ce que tu peux rajouter pour chaque graphique Qui affiche sur une durée par exemple du premier au 7 août ou ce genre de choses un élément permettant de choisir La date de début est la date de fin de l'axe des du temps Comme ça ça me permettra d'afficher par exemple au mois de juillet ou le mois de juin Et tous les éléments qui sont liés à ces mois
+
+3 mois est automatiquement sélectionné mais je ne vois que du premier au 7 août comme date identifiée Donc j'ai l'impression que ça ne marche pas Je devrais avoir plein d'enregistrements si je m'étais si j'étais bien 3 mois entre surtout sur le mois de juillet puisque sur le mois de juillet tu m'as créé plein d'enregistrements
+
+Je viens de voir que tu as enregistré pour 2024 tous les enregistrements de juillet Or ce que je voulais c'était 2025 juillet 2025 Donc estce que tu peux modifier les enregistrements que tu as créés pour bien mettre l'année 2025 et pas 2024 dedans
+
 ##### 🔴 US1.8 : Suivi des Repas Consommés
 **En tant qu** utilisateur  
 **Je veux** cocher les repas que j'ai consommés  

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
@@ -10,6 +10,8 @@ import { Recipes } from './components/Recipes'
 import { Shopping } from './components/Shopping'
 import { MobileShopping } from './components/MobileShopping'
 import { ProgressPage } from './components/Progress'
+import ProfilePage from './pages/ProfilePage'
+import MeasurementsPage from './pages/MeasurementsPage'
 import './App.css'
 
 function App() {
@@ -23,7 +25,9 @@ function App() {
       '/planning': 'planning',
       '/recipes': 'recipes',
       '/shopping': 'shopping',
-      '/progress': 'progress'
+      '/progress': 'progress',
+      '/profile': 'profile',
+      '/measurements': 'measurements'
     }
     setCurrentPage(pageMap[path] || 'dashboard')
   }, [])
@@ -84,6 +88,8 @@ function App() {
                 </>
               } />
               <Route path="/progress" element={<ProgressPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/measurements" element={<MeasurementsPage />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>

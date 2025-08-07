@@ -17,13 +17,13 @@ import {
   FileText,
   Share2
 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Badge } from '@/components/ui/badge'
-import { Progress as ProgressBar } from '@/components/ui/progress'
-import useShoppingList, { useNetworkStatus } from '@/hooks/useShoppingList'
-import { useNextWeekShopping } from '@/hooks/useISOWeek'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Button } from './ui/button'
+import { Checkbox } from './ui/checkbox'
+import { Badge } from './ui/badge'
+import { Progress as ProgressBar } from './ui/progress'
+import useShoppingList, { useNetworkStatus } from '../hooks/useShoppingList'
+import { useNextWeekShopping } from '../hooks/useISOWeek'
 
 export function Shopping() {
   // État et hooks

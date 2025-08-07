@@ -3,7 +3,7 @@
  * Utilise Recharts pour afficher l'historique des pesées avec ligne d'objectif
  */
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import {
   LineChart,
   Line,
@@ -146,25 +146,56 @@ const WeightChart = ({
       }))
       .sort((a, b) => a.date - b.date);
 
-    // Filtrer par période si nécessaire
-    const now = Date.now();
+    // Filtrer par période - basé sur les données disponibles, pas la date actuelle
     let filteredData = processedData;
     
-    switch (timeRange) {
-      case '1M':
-        filteredData = processedData.filter(item => (now - item.date) <= (30 * 24 * 60 * 60 * 1000));
-        break;
-      case '3M':
-        filteredData = processedData.filter(item => (now - item.date) <= (90 * 24 * 60 * 60 * 1000));
-        break;
-      case '6M':
-        filteredData = processedData.filter(item => (now - item.date) <= (180 * 24 * 60 * 60 * 1000));
-        break;
-      case '1Y':
-        filteredData = processedData.filter(item => (now - item.date) <= (365 * 24 * 60 * 60 * 1000));
-        break;
-      default:
-        break;
+    if (processedData.length > 0) {
+      // Utiliser la date la plus récente dans les données comme référence
+      const latestDate = Math.max(...processedData.map(item => item.date));
+      
+      switch (timeRange) {
+        case '1M':
+          // Afficher les données des 30 derniers jours par rapport à la dernière mesure
+          filteredData = processedData.filter(item => 
+            (latestDate - item.date) <= (30 * 24 * 60 * 60 * 1000)
+          );
+          // Si pas assez de données récentes, prendre les 30 dernières mesures
+          if (filteredData.length < 5) {
+            filteredData = processedData.slice(-30);
+          }
+          break;
+        case '3M':
+          // Afficher les données des 90 derniers jours par rapport à la dernière mesure
+          filteredData = processedData.filter(item => 
+            (latestDate - item.date) <= (90 * 24 * 60 * 60 * 1000)
+          );
+          // Si pas assez de données récentes, prendre les 90 dernières mesures
+          if (filteredData.length < 10) {
+            filteredData = processedData.slice(-90);
+          }
+          break;
+        case '6M':
+          // Afficher les données des 180 derniers jours par rapport à la dernière mesure
+          filteredData = processedData.filter(item => 
+            (latestDate - item.date) <= (180 * 24 * 60 * 60 * 1000)
+          );
+          // Si pas assez de données, prendre toutes les mesures
+          if (filteredData.length < 15) {
+            filteredData = processedData;
+          }
+          break;
+        case '1Y':
+          // Afficher les données de l'année par rapport à la dernière mesure
+          filteredData = processedData.filter(item => 
+            (latestDate - item.date) <= (365 * 24 * 60 * 60 * 1000)
+          );
+          break;
+        case 'ALL':
+        default:
+          // Afficher toutes les données
+          filteredData = processedData;
+          break;
+      }
     }
 
     return filteredData;
@@ -216,13 +247,13 @@ const WeightChart = ({
   }, [chartData, targetWeight]);
 
   // Format des dates pour l'axe X
-  const formatXAxisLabel = (tickItem) => {
+  const formatXAxisLabel = useCallback((tickItem) => {
     const date = new Date(tickItem);
     return date.toLocaleDateString('fr-FR', { 
       day: 'numeric', 
       month: 'short' 
     });
-  };
+  }, []);
 
   if (!chartData || chartData.length === 0) {
     return (
@@ -260,6 +291,8 @@ const WeightChart = ({
             domain={['dataMin', 'dataMax']}
             tickFormatter={formatXAxisLabel}
             stroke="#666"
+            tick={{ fontSize: 12 }}
+            interval="preserveStartEnd"
           />
           <YAxis 
             domain={yAxisDomain}
@@ -381,67 +414,200 @@ const WeightChart = ({
 
 // Composant wrapper avec sélection de période
 export const WeightChartWithControls = ({ data, targetWeight, ...props }) => {
-  const [timeRange, setTimeRange] = React.useState('3M');
+  // Par défaut, afficher toutes les données si elles sont anciennes
+  const defaultTimeRange = React.useMemo(() => {
+    if (!data || data.length === 0) return 'ALL';
+    
+    // Vérifier si les données sont récentes (moins de 90 jours)
+    const now = Date.now();
+    const latestDate = new Date(Math.max(...data.map(d => new Date(d.recorded_date).getTime())));
+    const daysDiff = (now - latestDate) / (1000 * 60 * 60 * 24);
+    
+    // Si les données les plus récentes ont plus de 30 jours, afficher tout
+    return daysDiff > 30 ? 'ALL' : '3M';
+  }, [data]);
+  
+  const [timeRange, setTimeRange] = React.useState(defaultTimeRange);
   const [showBodyFat, setShowBodyFat] = React.useState(false);
   const [showTrendLine, setShowTrendLine] = React.useState(true);
+  const [useCustomDates, setUseCustomDates] = React.useState(false);
+  const [startDate, setStartDate] = React.useState('');
+  const [endDate, setEndDate] = React.useState('');
+  
+  // Mettre à jour le timeRange si le défaut change
+  React.useEffect(() => {
+    setTimeRange(defaultTimeRange);
+  }, [defaultTimeRange]);
 
   // Vérifier si on a des données de masse grasse
   const hasBodyFatData = data?.some(item => item.body_fat_percentage);
+  
+  // Filtrer les données selon les dates personnalisées
+  const filteredData = React.useMemo(() => {
+    if (!useCustomDates || !startDate || !endDate || !data) return data;
+    
+    const start = new Date(startDate).getTime();
+    const end = new Date(endDate).getTime();
+    
+    return data.filter(item => {
+      const itemDate = new Date(item.recorded_date).getTime();
+      return itemDate >= start && itemDate <= end;
+    });
+  }, [data, useCustomDates, startDate, endDate]);
+  
+  // Obtenir les dates min et max disponibles
+  const dateRange = React.useMemo(() => {
+    if (!data || data.length === 0) return { min: '', max: '' };
+    
+    const dates = data.map(item => new Date(item.recorded_date));
+    const minDate = new Date(Math.min(...dates));
+    const maxDate = new Date(Math.max(...dates));
+    
+    return {
+      min: minDate.toISOString().split('T')[0],
+      max: maxDate.toISOString().split('T')[0]
+    };
+  }, [data]);
 
   return (
     <div>
       {/* Contrôles */}
-      <div className="flex flex-wrap items-center justify-between mb-4 gap-2">
-        <div className="flex gap-1">
-          {['1M', '3M', '6M', '1Y', 'ALL'].map((period) => (
+      <div className="space-y-3 mb-4">
+        {/* Sélection rapide ou personnalisée */}
+        <div className="flex flex-wrap items-center gap-2">
+          <div className="flex gap-1">
+            {['1M', '3M', '6M', '1Y', 'ALL'].map((period) => (
+              <button
+                key={period}
+                onClick={() => {
+                  setTimeRange(period);
+                  setUseCustomDates(false);
+                }}
+                className={`px-3 py-1 text-sm rounded transition-colors ${
+                  !useCustomDates && timeRange === period 
+                    ? 'bg-blue-500 text-white' 
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {period === 'ALL' ? 'Tout' : period}
+              </button>
+            ))}
             <button
-              key={period}
-              onClick={() => setTimeRange(period)}
+              onClick={() => setUseCustomDates(!useCustomDates)}
               className={`px-3 py-1 text-sm rounded transition-colors ${
-                timeRange === period 
-                  ? 'bg-blue-500 text-white' 
+                useCustomDates
+                  ? 'bg-purple-500 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              {period === 'ALL' ? 'Tout' : period}
+              📅 Personnalisé
             </button>
-          ))}
+          </div>
         </div>
         
-        <div className="flex items-center gap-4">
-          <label className="flex items-center gap-2 text-sm">
+        {/* Sélecteurs de dates personnalisées */}
+        {useCustomDates && (
+          <div className="flex flex-wrap items-center gap-2 p-3 bg-purple-50 rounded-lg">
+            <label className="text-sm font-medium">Du:</label>
             <input
-              type="checkbox"
-              checked={showTrendLine}
-              onChange={(e) => setShowTrendLine(e.target.checked)}
-              className="rounded"
+              type="date"
+              value={startDate}
+              onChange={(e) => setStartDate(e.target.value)}
+              min={dateRange.min}
+              max={dateRange.max}
+              className="px-2 py-1 text-sm border rounded"
             />
-            Tendance
-          </label>
-          
-          {hasBodyFatData && (
+            <label className="text-sm font-medium">Au:</label>
+            <input
+              type="date"
+              value={endDate}
+              onChange={(e) => setEndDate(e.target.value)}
+              min={dateRange.min}
+              max={dateRange.max}
+              className="px-2 py-1 text-sm border rounded"
+            />
+            {/* Boutons de périodes prédéfinies */}
+            <div className="flex gap-1 ml-auto">
+              <button
+                onClick={() => {
+                  const end = new Date();
+                  const start = new Date(2025, 6, 1); // Juillet 2025
+                  setStartDate(start.toISOString().split('T')[0]);
+                  setEndDate(new Date(2025, 6, 31).toISOString().split('T')[0]);
+                }}
+                className="px-2 py-1 text-xs bg-purple-100 hover:bg-purple-200 rounded"
+              >
+                Juillet 25
+              </button>
+              <button
+                onClick={() => {
+                  setStartDate(new Date(2025, 7, 1).toISOString().split('T')[0]);
+                  setEndDate(new Date(2025, 7, 31).toISOString().split('T')[0]);
+                }}
+                className="px-2 py-1 text-xs bg-purple-100 hover:bg-purple-200 rounded"
+              >
+                Août 25
+              </button>
+              <button
+                onClick={() => {
+                  const now = new Date();
+                  const start = new Date(now.getFullYear(), now.getMonth(), 1);
+                  setStartDate(start.toISOString().split('T')[0]);
+                  setEndDate(now.toISOString().split('T')[0]);
+                }}
+                className="px-2 py-1 text-xs bg-purple-100 hover:bg-purple-200 rounded"
+              >
+                Ce mois
+              </button>
+            </div>
+          </div>
+        )}
+        
+        {/* Options d'affichage */}
+        <div className="flex flex-wrap items-center justify-between">
+          <div className="flex items-center gap-4">
             <label className="flex items-center gap-2 text-sm">
               <input
                 type="checkbox"
-                checked={showBodyFat}
-                onChange={(e) => setShowBodyFat(e.target.checked)}
+                checked={showTrendLine}
+                onChange={(e) => setShowTrendLine(e.target.checked)}
                 className="rounded"
               />
-              Masse grasse
+              Tendance
             </label>
-          )}
+            
+            {hasBodyFatData && (
+              <label className="flex items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={showBodyFat}
+                  onChange={(e) => setShowBodyFat(e.target.checked)}
+                  className="rounded"
+                />
+                Masse grasse
+              </label>
+            )}
+          </div>
         </div>
       </div>
       
       {/* Graphique */}
       <WeightChart 
-        data={data}
+        data={useCustomDates ? filteredData : data}
         targetWeight={targetWeight}
-        timeRange={timeRange}
+        timeRange={useCustomDates ? 'ALL' : timeRange}
         showBodyFat={showBodyFat}
         showTrendLine={showTrendLine}
         {...props}
       />
+      
+      {/* Info sur la période affichée */}
+      {useCustomDates && startDate && endDate && (
+        <div className="mt-2 text-sm text-purple-600 text-center">
+          Période personnalisée : du {new Date(startDate).toLocaleDateString('fr-FR')} au {new Date(endDate).toLocaleDateString('fr-FR')}
+          {filteredData && ` (${filteredData.length} mesures)`}
+        </div>
+      )}
     </div>
   );
 };

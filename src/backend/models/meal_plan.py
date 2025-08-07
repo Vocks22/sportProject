@@ -1,12 +1,13 @@
 from database import db
 from datetime import datetime, date
+from sqlalchemy.orm import relationship
 import json
 
 class MealPlan(db.Model):
     __tablename__ = 'meal_plans'
     
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.String(50), nullable=True)  # Pour future authentification
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=True)  # Pour future authentification
     week_start = db.Column(db.Date, nullable=False)
     
     # Stockage JSON des repas pour chaque jour
@@ -22,6 +23,7 @@ class MealPlan(db.Model):
     is_active = db.Column(db.Boolean, default=True)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    
     
     @property
     def meals(self):

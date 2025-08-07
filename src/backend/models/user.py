@@ -75,8 +75,8 @@ class User(db.Model):
     # Relations
     weight_history = relationship('WeightHistory', back_populates='user', cascade='all, delete-orphan')
     goals_history = relationship('UserGoalsHistory', back_populates='user', cascade='all, delete-orphan')
-    measurements = relationship('UserMeasurement', back_populates='user', cascade='all, delete-orphan')
-    meal_plans = relationship('MealPlan', back_populates='user', cascade='all, delete-orphan')
+    # measurements = relationship('UserMeasurement', back_populates='user', cascade='all, delete-orphan')  # Défini dans measurements.py
+    meal_plans = relationship('MealPlan', backref='user', cascade='all, delete-orphan')
     
     def __repr__(self):
         return f'<User {self.username} (ID: {self.id})>'
@@ -514,36 +514,5 @@ class UserGoalsHistory(db.Model):
         }
 
 
-class UserMeasurement(db.Model):
-    """Mesures corporelles utilisateur"""
-    __tablename__ = 'user_measurements'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete='CASCADE'), nullable=False, index=True)
-    measurement_type = db.Column(db.String(50), nullable=False)
-    value = db.Column(db.Float, nullable=False)
-    unit = db.Column(db.String(10), default='cm', nullable=False)
-    recorded_date = db.Column(db.Date, nullable=False, index=True)
-    notes = db.Column(db.Text, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
-    
-    # Relation
-    user = relationship('User', back_populates='measurements')
-    
-    def __repr__(self):
-        return f'<UserMeasurement {self.user_id}: {self.measurement_type} = {self.value}{self.unit}>'
-    
-    def to_dict(self) -> Dict[str, Any]:
-        return {
-            'id': self.id,
-            'user_id': self.user_id,
-            'measurement_type': self.measurement_type,
-            'value': self.value,
-            'unit': self.unit,
-            'recorded_date': self.recorded_date.isoformat(),
-            'notes': self.notes,
-            'created_at': self.created_at.isoformat(),
-            'updated_at': self.updated_at.isoformat()
-        }
+# La classe UserMeasurement a été déplacée dans models/measurements.py
 

@@ -1,0 +1,3774 @@
+client.ts:19 [vite] connecting...
+client.ts:155 [vite] connected.
+chunk-LAV6FB6A.js?v=a7ddca4b:21580 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react-router-dom.js?v=a7ddca4b:4409 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ react-router-dom.js?v=a7ddca4b:4409
+logDeprecation @ react-router-dom.js?v=a7ddca4b:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=a7ddca4b:4415
+(anonymous) @ react-router-dom.js?v=a7ddca4b:5290
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+react-router-dom.js?v=a7ddca4b:4409 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ react-router-dom.js?v=a7ddca4b:4409
+logDeprecation @ react-router-dom.js?v=a7ddca4b:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=a7ddca4b:4418
+(anonymous) @ react-router-dom.js?v=a7ddca4b:5290
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+invokePassiveEffectMountInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:18352
+invokeEffectsInDev @ chunk-LAV6FB6A.js?v=a7ddca4b:19729
+commitDoubleInvokeEffectsInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:19714
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19531
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+invokePassiveEffectMountInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:18352
+invokeEffectsInDev @ chunk-LAV6FB6A.js?v=a7ddca4b:19729
+commitDoubleInvokeEffectsInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:19714
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19531
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+invokePassiveEffectMountInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:18352
+invokeEffectsInDev @ chunk-LAV6FB6A.js?v=a7ddca4b:19729
+commitDoubleInvokeEffectsInDEV @ chunk-LAV6FB6A.js?v=a7ddca4b:19714
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19531
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+performSyncWorkOnRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:18896
+flushSyncCallbacks @ chunk-LAV6FB6A.js?v=a7ddca4b:9135
+commitRootImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19460
+commitRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:19305
+finishConcurrentRender @ chunk-LAV6FB6A.js?v=a7ddca4b:18833
+performConcurrentWorkOnRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:18746
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+performSyncWorkOnRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:18896
+flushSyncCallbacks @ chunk-LAV6FB6A.js?v=a7ddca4b:9135
+commitRootImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19460
+commitRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:19305
+finishConcurrentRender @ chunk-LAV6FB6A.js?v=a7ddca4b:18833
+performConcurrentWorkOnRoot @ chunk-LAV6FB6A.js?v=a7ddca4b:18746
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur goals: Error: Requête annulée
+    at useUserProfile.js:134:15
+    at async useUserProfile.js:373:25
+    at async Promise.allSettled (index 3)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:107 Erreur nutritionProfile: Error: CacheService.set() got an unexpected keyword argument 'ttl_hours'
+    at useUserProfile.js:128:15
+    at async useUserProfile.js:332:29
+    at async Promise.allSettled (index 2)
+    at async useUserProfile.js:428:7
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+useUserProfile.js:117  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:433
+commitHookEffectListMount @ chunk-LAV6FB6A.js?v=a7ddca4b:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js?v=a7ddca4b:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js?v=a7ddca4b:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js?v=a7ddca4b:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js?v=a7ddca4b:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js?v=a7ddca4b:19475
+(anonymous) @ chunk-LAV6FB6A.js?v=a7ddca4b:19356
+workLoop @ chunk-LAV6FB6A.js?v=a7ddca4b:197
+flushWork @ chunk-LAV6FB6A.js?v=a7ddca4b:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js?v=a7ddca4b:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur goals: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:378
+await in (anonymous)
+(anonymous) @ useUserProfile.js:424
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+  GET http://localhost:5173/api/users/1/nutrition-profile?force_recalculate=true 500 (INTERNAL SERVER ERROR)
+(anonymous) @ useUserProfile.js:117
+(anonymous) @ useUserProfile.js:332
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384
+ Erreur nutritionProfile: 
+(anonymous) @ useUserProfile.js:107
+(anonymous) @ useUserProfile.js:339
+await in (anonymous)
+(anonymous) @ useUserProfile.js:423
+(anonymous) @ ProfilePage.jsx:779
+commitHookEffectListMount @ chunk-LAV6FB6A.js:16936
+commitPassiveMountOnFiber @ chunk-LAV6FB6A.js:18184
+commitPassiveMountEffects_complete @ chunk-LAV6FB6A.js:18157
+commitPassiveMountEffects_begin @ chunk-LAV6FB6A.js:18147
+commitPassiveMountEffects @ chunk-LAV6FB6A.js:18137
+flushPassiveEffectsImpl @ chunk-LAV6FB6A.js:19518
+flushPassiveEffects @ chunk-LAV6FB6A.js:19475
+(anonymous) @ chunk-LAV6FB6A.js:19356
+workLoop @ chunk-LAV6FB6A.js:197
+flushWork @ chunk-LAV6FB6A.js:176
+performWorkUntilDeadline @ chunk-LAV6FB6A.js:384

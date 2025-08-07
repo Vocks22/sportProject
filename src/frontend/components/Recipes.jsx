@@ -1,7 +1,8 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { Search, Clock, Users, ChefHat, Filter, Star, AlertCircle, Loader2 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Button } from './ui/button'
 import { CookingGuideButton, ChefModeBadge, ChefTipsPreview } from './CookingGuideButton'
 
 export function Recipes() {

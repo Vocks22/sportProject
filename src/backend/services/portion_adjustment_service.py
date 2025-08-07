@@ -9,7 +9,7 @@ from dataclasses import dataclass
 from decimal import Decimal, ROUND_HALF_UP
 
 from models.user import User
-from models.recipe import Recipe, RecipeIngredient
+from models.recipe import Recipe
 from services.nutrition_calculator_service import nutrition_calculator, NutritionCalculationResult
 
 # Configuration du logger

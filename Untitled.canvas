@@ -1,0 +1,27 @@
+{
+	"nodes":[
+		{"id":"aff36279dc468301","type":"text","text":"Ne pas louper un seul rendez vous","x":-500,"y":-280,"width":250,"height":60},
+		{"id":"d6627fda11871171","type":"text","text":"Rendez-vous et rappels","x":-220,"y":-480,"width":250,"height":60,"color":"1"},
+		{"id":"0b982a9198d5f45a","type":"text","text":"Mesures et visualisations et projections","x":-441,"y":880,"width":250,"height":60,"color":"4"},
+		{"id":"b907c4dd74e6193e","type":"text","text":"Mesurer l'efficacité de mon travail","x":-846,"y":1060,"width":250,"height":60},
+		{"id":"93fc90d4ad6bbdd1","type":"text","text":"Visualiser l'efficacité de mon travail","x":-566,"y":1060,"width":250,"height":60},
+		{"id":"3d51ef2867072434","type":"text","text":"Me donner envie de continuer mes efforts","x":-286,"y":1060,"width":250,"height":60},
+		{"id":"62c1055e8a2ac67c","type":"text","text":"Ne pas prendre du poids","x":-6,"y":1060,"width":250,"height":60},
+		{"id":"c8880d6b08cc87df","type":"text","text":"Ne pas louper une seule prise De compléments alimentaires","x":-220,"y":-280,"width":250,"height":81},
+		{"id":"f82a2f4ea1b20dda","type":"text","text":"Ne pas louper un seul repas","x":60,"y":-280,"width":250,"height":60},
+		{"id":"a4d1642d56ac59b2","type":"file","file":"diet a suivre.md","x":60,"y":-120,"width":557,"height":730},
+		{"id":"60ec8ce306fa3e98","type":"file","file":"les dates et horaires clés.md","x":-780,"y":-120,"width":810,"height":551}
+	],
+	"edges":[
+		{"id":"f6d7fdccc0421e28","fromNode":"aff36279dc468301","fromSide":"top","toNode":"d6627fda11871171","toSide":"bottom"},
+		{"id":"754ed63af68e3352","fromNode":"f82a2f4ea1b20dda","fromSide":"top","toNode":"d6627fda11871171","toSide":"bottom"},
+		{"id":"933e0bd4b9cafdca","fromNode":"c8880d6b08cc87df","fromSide":"top","toNode":"d6627fda11871171","toSide":"bottom"},
+		{"id":"45c0d088a72907e9","fromNode":"b907c4dd74e6193e","fromSide":"top","toNode":"0b982a9198d5f45a","toSide":"bottom"},
+		{"id":"81c947f7cb7b9299","fromNode":"93fc90d4ad6bbdd1","fromSide":"top","toNode":"0b982a9198d5f45a","toSide":"bottom"},
+		{"id":"4a585536ead8730f","fromNode":"3d51ef2867072434","fromSide":"top","toNode":"0b982a9198d5f45a","toSide":"bottom"},
+		{"id":"ba05e1e0c70f5bce","fromNode":"62c1055e8a2ac67c","fromSide":"top","toNode":"0b982a9198d5f45a","toSide":"bottom"},
+		{"id":"b5b09ca1447d567f","fromNode":"aff36279dc468301","fromSide":"bottom","toNode":"60ec8ce306fa3e98","toSide":"top"},
+		{"id":"ce016840b4f343e5","fromNode":"f82a2f4ea1b20dda","fromSide":"bottom","toNode":"a4d1642d56ac59b2","toSide":"top"},
+		{"id":"5fb7be88186c9775","fromNode":"c8880d6b08cc87df","fromSide":"bottom","toNode":"60ec8ce306fa3e98","toSide":"top"}
+	]
+}

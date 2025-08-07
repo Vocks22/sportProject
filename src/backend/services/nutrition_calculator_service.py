@@ -4,7 +4,7 @@ Implémente les calculs BMR/TDEE avec cache multi-niveau et optimisations perfor
 """
 
 from datetime import datetime, timedelta
-from typing import Dict, Any, Optional, Tuple
+from typing import Dict, Any, Optional, Tuple, List
 import math
 import logging
 from dataclasses import dataclass, asdict
@@ -156,7 +156,7 @@ class NutritionCalculatorService:
         
         # Mettre à jour le cache utilisateur et service
         self._update_user_cache(user, result)
-        self.cache.set(cache_key, result.to_dict(), ttl_hours=self.CACHE_TTL_HOURS)
+        self.cache.set(cache_key, result.to_dict(), ttl=self.CACHE_TTL_HOURS * 3600)  # Convertir heures en secondes
         
         logger.info(f"Profil nutritionnel calculé pour utilisateur {user.id}: BMR={bmr}, TDEE={tdee}")
         return result

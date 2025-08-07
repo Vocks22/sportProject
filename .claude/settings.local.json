@@ -32,7 +32,19 @@
       "Bash(wget:*)",
       "Bash(cp:*)",
       "Bash(npm install:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(sed:*)",
+      "Bash(grep:*)",
+      "Bash(for file in *.jsx)",
+      "Bash(do if ! grep -q \"^import React\" \"$file\")",
+      "Bash(then sed -i \"1s/^/import React from ''react''\\n/\" \"$file\")",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(for file in Header.jsx MobileHeader.jsx Sidebar.jsx Dashboard.jsx MobileDashboard.jsx)",
+      "Bash(do sed -i \"1s/^/import React from ''react''\\n/\" \"$file\")",
+      "Bash(do sed -i '/^import React from ''''react''''/N; s/import React from ''''react''''\\nimport React from ''''react''''/import React from ''''react''''/g' \"$file\")",
+      "Bash(npx tailwindcss:*)",
+      "Bash(PYTHONPATH:*)"
     ],
     "deny": []
   }

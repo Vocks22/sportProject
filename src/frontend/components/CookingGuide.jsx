@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { 
   Clock, 
@@ -14,8 +15,8 @@ import {
   CheckCircle,
   ArrowRight
 } from 'lucide-react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Button } from './ui/button'
 
 const DIFFICULTY_COLORS = {
   beginner: 'bg-green-100 text-green-800 border-green-200',

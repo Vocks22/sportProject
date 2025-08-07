@@ -1,7 +1,8 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { X, ChevronRight, ChevronLeft, HelpCircle, Lightbulb } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
+import { Button } from './ui/button'
+import { Card, CardContent } from './ui/card'
 
 export function TutorialSystem({ currentPage }) {
   const [isFirstVisit, setIsFirstVisit] = useState(false)

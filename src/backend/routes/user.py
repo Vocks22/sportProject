@@ -1,7 +1,12 @@
 from flask import Blueprint, jsonify, request
 from datetime import datetime, date, timedelta
 from database import db
-from models.user import User, WeightHistory, UserGoalsHistory, UserMeasurement
+from models.user import User, WeightHistory, UserGoalsHistory
+from models.measurements import UserMeasurement
+# Import des modèles pour les relations SQLAlchemy
+from models.meal_plan import MealPlan
+from models.recipe import Recipe
+from models.ingredient import Ingredient
 from services.nutrition_calculator_service import nutrition_calculator
 from services.portion_adjustment_service import portion_adjustment
 import logging
@@ -252,22 +257,27 @@ def get_weight_history(user_id):
     """Récupère l'historique des pesées d'un utilisateur"""
     try:
         # Paramètres de requête
-        days = request.args.get('days', 90, type=int)  # 90 jours par défaut
-        limit = request.args.get('limit', 100, type=int)  # Limite par défaut
+        days = request.args.get('days', 365, type=int)  # 365 jours par défaut pour tout récupérer
+        limit = request.args.get('limit', 500, type=int)  # Limite augmentée
         
-        # Validation des paramètres
-        days = max(7, min(days, 365))  # Entre 7 jours et 1 an
-        limit = max(10, min(limit, 500))  # Entre 10 et 500 entrées
-        
+        # Calculer la date de début pour les stats
         start_date = date.today() - timedelta(days=days)
         
-        # Requête avec filtres
-        query = WeightHistory.query.filter(
-            WeightHistory.user_id == user_id,
-            WeightHistory.recorded_date >= start_date
-        ).order_by(WeightHistory.recorded_date.desc())
-        
-        weight_entries = query.limit(limit).all()
+        # Si days >= 365, récupérer TOUT l'historique
+        if days >= 365:
+            # Récupérer TOUT sans limite de date
+            weight_entries = WeightHistory.query.filter(
+                WeightHistory.user_id == user_id
+            ).order_by(WeightHistory.recorded_date.desc()).limit(limit).all()
+            # Pour les stats, utiliser la date la plus ancienne disponible
+            if weight_entries:
+                start_date = min(entry.recorded_date for entry in weight_entries)
+        else:
+            # Sinon, filtrer par date
+            weight_entries = WeightHistory.query.filter(
+                WeightHistory.user_id == user_id,
+                WeightHistory.recorded_date >= start_date
+            ).order_by(WeightHistory.recorded_date.desc()).limit(limit).all()
         
         # Statistiques sur la période
         if weight_entries:
@@ -540,5 +550,189 @@ def create_user_goal(user_id):
         
     except Exception as e:
         logger.error(f"Erreur création objectif utilisateur {user_id}: {e}")
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+# ===== ROUTES POUR LES MESURES COMPLÈTES =====
+
+@user_bp.route('/users/<int:user_id>/measurements', methods=['GET'])
+def get_user_measurements(user_id):
+    """Récupère toutes les mesures de l'utilisateur"""
+    try:
+        # Paramètres de requête
+        limit = request.args.get('limit', 100, type=int)  # Augmenté à 100
+        days = request.args.get('days', 365, type=int)  # Augmenté à 365 jours par défaut
+        
+        # Récupérer TOUTES les mesures si days est très grand
+        if days >= 365:
+            # Récupérer toutes les mesures sans limite de date
+            measurements = UserMeasurement.query.filter(
+                UserMeasurement.user_id == user_id
+            ).order_by(UserMeasurement.date.desc()).limit(limit).all()
+        else:
+            # Récupérer les mesures des X derniers jours
+            from datetime import date, timedelta
+            cutoff_date = date.today() - timedelta(days=days)
+            measurements = UserMeasurement.query.filter(
+                UserMeasurement.user_id == user_id,
+                UserMeasurement.date >= cutoff_date
+            ).order_by(UserMeasurement.date.desc()).limit(limit).all()
+        
+        # Retourner les données
+        return jsonify([
+            measurement.to_dict() for measurement in measurements
+        ])
+        
+    except Exception as e:
+        logger.error(f"Erreur récupération mesures utilisateur {user_id}: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@user_bp.route('/users/<int:user_id>/measurements', methods=['POST'])
+def add_user_measurement(user_id):
+    """Ajoute une nouvelle mesure pour l'utilisateur"""
+    try:
+        user = User.query.get_or_404(user_id)
+        data = request.get_json()
+        
+        # Date de la mesure
+        measurement_date = date.today()
+        if 'date' in data and data['date']:
+            try:
+                measurement_date = datetime.fromisoformat(data['date']).date()
+            except ValueError:
+                return jsonify({'error': 'Format de date invalide'}), 400
+        
+        # Vérifier si une mesure existe déjà pour cette date
+        existing = UserMeasurement.query.filter(
+            UserMeasurement.user_id == user_id,
+            UserMeasurement.date == measurement_date
+        ).first()
+        
+        if existing:
+            # Mettre à jour la mesure existante
+            for key, value in data.items():
+                if key != 'date' and hasattr(existing, key):
+                    setattr(existing, key, value)
+            existing.updated_at = datetime.utcnow()
+            measurement = existing
+            created = False
+        else:
+            # Créer une nouvelle mesure
+            measurement = UserMeasurement(
+                user_id=user_id,
+                date=measurement_date,
+                data_source='mobile_app',
+                is_verified=True
+            )
+            
+            # Ajouter tous les champs fournis
+            for key, value in data.items():
+                if key != 'date' and hasattr(measurement, key):
+                    setattr(measurement, key, value)
+            
+            db.session.add(measurement)
+            created = True
+        
+        # Si le poids est fourni et que c'est la mesure du jour, mettre à jour le profil
+        if 'weight' in data and measurement_date == date.today():
+            user.current_weight = data['weight']
+            
+            # Ajouter aussi à l'historique de poids
+            weight_entry = WeightHistory.query.filter(
+                WeightHistory.user_id == user_id,
+                WeightHistory.recorded_date == measurement_date
+            ).first()
+            
+            if weight_entry:
+                weight_entry.weight = data['weight']
+                weight_entry.body_fat_percentage = data.get('body_fat')
+                weight_entry.muscle_mass_percentage = data.get('muscle_mass')
+                weight_entry.water_percentage = data.get('water_percentage')
+                weight_entry.updated_at = datetime.utcnow()
+            else:
+                weight_entry = WeightHistory(
+                    user_id=user_id,
+                    weight=data['weight'],
+                    body_fat_percentage=data.get('body_fat'),
+                    muscle_mass_percentage=data.get('muscle_mass'),
+                    water_percentage=data.get('water_percentage'),
+                    recorded_date=measurement_date,
+                    notes="Enregistré via la page Mesures",
+                    measurement_method="manual",
+                    data_source="measurements_page"
+                )
+                db.session.add(weight_entry)
+        
+        db.session.commit()
+        
+        logger.info(f"Mesure {'mise à jour' if not created else 'ajoutée'} pour utilisateur {user_id} le {measurement_date}")
+        
+        return jsonify({
+            'measurement': measurement.to_dict(),
+            'created': created,
+            'message': f'Mesure {"mise à jour" if not created else "enregistrée"} avec succès'
+        }), 201 if created else 200
+        
+    except Exception as e:
+        logger.error(f"Erreur ajout mesure utilisateur {user_id}: {e}")
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
+
+@user_bp.route('/users/<int:user_id>/measurements/<measurement_date>', methods=['GET'])
+def get_measurement_by_date(user_id, measurement_date):
+    """Récupère une mesure spécifique par date"""
+    try:
+        # Parser la date
+        try:
+            date_obj = datetime.fromisoformat(measurement_date).date()
+        except ValueError:
+            return jsonify({'error': 'Format de date invalide'}), 400
+        
+        # Récupérer la mesure
+        measurement = UserMeasurement.query.filter(
+            UserMeasurement.user_id == user_id,
+            UserMeasurement.date == date_obj
+        ).first()
+        
+        if not measurement:
+            return jsonify({'error': 'Mesure non trouvée'}), 404
+        
+        return jsonify(measurement.to_dict())
+        
+    except Exception as e:
+        logger.error(f"Erreur récupération mesure utilisateur {user_id} date {measurement_date}: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@user_bp.route('/users/<int:user_id>/measurements/<measurement_date>', methods=['DELETE'])
+def delete_measurement(user_id, measurement_date):
+    """Supprime une mesure spécifique"""
+    try:
+        # Parser la date
+        try:
+            date_obj = datetime.fromisoformat(measurement_date).date()
+        except ValueError:
+            return jsonify({'error': 'Format de date invalide'}), 400
+        
+        # Récupérer et supprimer la mesure
+        measurement = UserMeasurement.query.filter(
+            UserMeasurement.user_id == user_id,
+            UserMeasurement.date == date_obj
+        ).first()
+        
+        if not measurement:
+            return jsonify({'error': 'Mesure non trouvée'}), 404
+        
+        db.session.delete(measurement)
+        db.session.commit()
+        
+        logger.info(f"Mesure supprimée pour utilisateur {user_id} date {measurement_date}")
+        return jsonify({'message': 'Mesure supprimée avec succès'}), 200
+        
+    except Exception as e:
+        logger.error(f"Erreur suppression mesure utilisateur {user_id} date {measurement_date}: {e}")
         db.session.rollback()
         return jsonify({'error': str(e)}), 500

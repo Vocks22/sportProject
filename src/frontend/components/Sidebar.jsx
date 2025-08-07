@@ -1,3 +1,4 @@
+import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { 
   LayoutDashboard, 
@@ -5,9 +6,11 @@ import {
   ChefHat, 
   ShoppingCart, 
   TrendingUp,
-  X
+  User,
+  X,
+  Activity
 } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { Button } from './ui/button'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
@@ -15,6 +18,8 @@ const navigation = [
   { name: 'Recettes', href: '/recipes', icon: ChefHat },
   { name: 'Courses', href: '/shopping', icon: ShoppingCart },
   { name: 'Suivi', href: '/progress', icon: TrendingUp },
+  { name: 'Mesures', href: '/measurements', icon: Activity },
+  { name: 'Profil', href: '/profile', icon: User },
 ]
 
 export function Sidebar({ isOpen, onClose }) {

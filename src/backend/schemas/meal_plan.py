@@ -123,13 +123,11 @@ class MealPlanGenerationSchema(Schema):
     )
     max_repeats = fields.Integer(
         validate=validate.Range(min=1, max=7),
-        load_default=2,
-        description="Nombre maximum de fois qu'une recette peut se répéter dans la semaine"
+        load_default=2
     )
     preferred_categories = fields.List(
         fields.String(validate=validate.OneOf(['breakfast', 'lunch', 'dinner', 'snack'])),
-        allow_none=True,
-        description="Catégories de recettes préférées"
+        allow_none=True
     )
 
 class MealPlanQuerySchema(Schema):
