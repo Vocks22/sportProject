@@ -1,0 +1,449 @@
+name: US1.6 - Data Migration Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Target environment'
+        required: true
+        default: 'staging'
+        type: choice
+        options:
+          - staging
+          - production
+      dry_run:
+        description: 'Perform dry run only'
+        required: false
+        default: true
+        type: boolean
+      backup_before_migration:
+        description: 'Create backup before migration'
+        required: false
+        default: true
+        type: boolean
+
+env:
+  PYTHON_VERSION: '3.11'
+
+jobs:
+  # ========================================
+  # PRE-MIGRATION VALIDATION
+  # ========================================
+  pre-migration-checks:
+    name: 🔍 Pre-Migration Validation
+    runs-on: ubuntu-latest
+    
+    outputs:
+      migration_safe: ${{ steps.safety_check.outputs.safe }}
+      data_count: ${{ steps.data_analysis.outputs.record_count }}
+      estimated_duration: ${{ steps.data_analysis.outputs.duration_estimate }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Connect to Database
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          python -c "
+          import os
+          from sqlalchemy import create_engine
+          engine = create_engine(os.getenv('DATABASE_URL'))
+          with engine.connect() as conn:
+              result = conn.execute('SELECT 1')
+              print('Database connection successful')
+          "
+
+      - name: Analyze Current Data State
+        id: data_analysis
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          result=$(python -c "
+          import sys
+          sys.path.append('../src/backend')
+          from validate_us16_data_integrity import analyze_current_state
+          
+          analysis = analyze_current_state()
+          print(f'::set-output name=record_count::{analysis[\"total_records\"]}')
+          print(f'::set-output name=duration_estimate::{analysis[\"estimated_duration_minutes\"]}')
+          print(f'Data analysis: {analysis[\"total_records\"]} records, estimated {analysis[\"estimated_duration_minutes\"]} minutes')
+          ")
+
+      - name: Safety Checks
+        id: safety_check
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          safety_result=$(python -c "
+          import sys
+          sys.path.append('../src/backend')
+          from validate_us16_data_integrity import run_safety_checks
+          
+          checks_passed = run_safety_checks()
+          print('::set-output name=safe::' + str(checks_passed).lower())
+          print(f'Safety checks: {\"PASSED\" if checks_passed else \"FAILED\"}')
+          exit(0 if checks_passed else 1)
+          ")
+
+      - name: Generate Pre-Migration Report
+        run: |
+          cd scripts
+          python backup_restore_us16.py --analysis-report > pre-migration-report.txt
+          cat pre-migration-report.txt
+
+      - name: Upload Pre-Migration Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pre-migration-analysis
+          path: scripts/pre-migration-report.txt
+          retention-days: 90
+
+  # ========================================
+  # DATABASE BACKUP
+  # ========================================
+  create-backup:
+    name: 💾 Create Database Backup
+    runs-on: ubuntu-latest
+    needs: pre-migration-checks
+    if: github.event.inputs.backup_before_migration == 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create Full Database Backup
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          timestamp=$(date +"%Y%m%d_%H%M%S")
+          backup_file="backup_us16_pre_migration_${timestamp}.sql"
+          
+          python backup_restore_us16.py --create-backup --output="$backup_file"
+          
+          echo "Backup created: $backup_file"
+          echo "BACKUP_FILE=$backup_file" >> $GITHUB_ENV
+
+      - name: Verify Backup Integrity
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          python backup_restore_us16.py --verify-backup --file="$BACKUP_FILE"
+
+      - name: Upload Backup to Secure Storage
+        uses: actions/upload-artifact@v4
+        with:
+          name: database-backup-${{ github.event.inputs.environment }}
+          path: scripts/${{ env.BACKUP_FILE }}
+          retention-days: 365  # Keep backups for 1 year
+
+      - name: Store Backup Metadata
+        run: |
+          cd scripts
+          echo "{
+            \"backup_file\": \"$BACKUP_FILE\",
+            \"environment\": \"${{ github.event.inputs.environment }}\",
+            \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",
+            \"record_count\": ${{ needs.pre-migration-checks.outputs.data_count }},
+            \"git_commit\": \"${{ github.sha }}\",
+            \"workflow_run_id\": \"${{ github.run_id }}\"
+          }" > backup-metadata.json
+          
+      - name: Upload Backup Metadata
+        uses: actions/upload-artifact@v4
+        with:
+          name: backup-metadata-${{ github.event.inputs.environment }}
+          path: scripts/backup-metadata.json
+          retention-days: 365
+
+  # ========================================
+  # MIGRATION EXECUTION
+  # ========================================
+  execute-migration:
+    name: ⚡ Execute US1.6 Migration
+    runs-on: ubuntu-latest
+    needs: [pre-migration-checks, create-backup]
+    if: needs.pre-migration-checks.outputs.migration_safe == 'true'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Dry Run Migration (if requested)
+        if: github.event.inputs.dry_run == 'true'
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "🧪 Performing DRY RUN migration..."
+          python migrate_to_iso8601_weeks.py --dry-run --verbose > dry-run-results.txt
+          cat dry-run-results.txt
+
+      - name: Execute Actual Migration
+        if: github.event.inputs.dry_run == 'false'
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "🚀 Executing LIVE migration..."
+          
+          # Start migration with progress tracking
+          python migrate_to_iso8601_weeks.py \
+            --execute \
+            --verbose \
+            --progress-callback \
+            --batch-size=1000 \
+            > migration-execution.log 2>&1
+          
+          echo "Migration completed!"
+          tail -20 migration-execution.log
+
+      - name: Upload Migration Logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: migration-logs-${{ github.event.inputs.environment }}
+          path: |
+            scripts/dry-run-results.txt
+            scripts/migration-execution.log
+          retention-days: 180
+
+  # ========================================
+  # POST-MIGRATION VALIDATION
+  # ========================================
+  post-migration-validation:
+    name: ✅ Post-Migration Validation
+    runs-on: ubuntu-latest
+    needs: execute-migration
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validate Data Integrity
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "🔍 Validating data integrity post-migration..."
+          python validate_us16_data_integrity.py --post-migration --strict
+
+      - name: Validate US1.6 Implementation
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "📋 Validating US1.6 implementation..."
+          python validate_us16_implementation.py --full-validation
+
+      - name: Run Critical API Tests
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          echo "🧪 Running critical API tests..."
+          pytest tests/backend/test_meal_plans_api_us16.py -v -x
+          pytest tests/backend/test_date_utils_us16.py -v -x
+
+      - name: Performance Validation
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          echo "⚡ Validating performance post-migration..."
+          pytest tests/backend/test_performance_us16.py \
+            --benchmark-only \
+            --benchmark-json=post-migration-performance.json
+
+      - name: Generate Migration Success Report
+        run: |
+          cd scripts
+          echo "📊 Generating final migration report..."
+          python backup_restore_us16.py --migration-success-report > migration-success-report.txt
+          cat migration-success-report.txt
+
+      - name: Upload Validation Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: post-migration-validation-${{ github.event.inputs.environment }}
+          path: |
+            scripts/migration-success-report.txt
+            post-migration-performance.json
+          retention-days: 90
+
+  # ========================================
+  # ROLLBACK CAPABILITY
+  # ========================================
+  rollback-migration:
+    name: ⏪ Rollback Migration
+    runs-on: ubuntu-latest
+    needs: [create-backup, execute-migration, post-migration-validation]
+    if: failure() && github.event.inputs.dry_run == 'false'
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download Backup File
+        uses: actions/download-artifact@v4
+        with:
+          name: database-backup-${{ github.event.inputs.environment }}
+          path: scripts/
+
+      - name: Download Backup Metadata
+        uses: actions/download-artifact@v4
+        with:
+          name: backup-metadata-${{ github.event.inputs.environment }}
+          path: scripts/
+
+      - name: Execute Rollback
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          
+          # Get backup filename from metadata
+          backup_file=$(python -c "
+          import json
+          with open('backup-metadata.json') as f:
+              metadata = json.load(f)
+          print(metadata['backup_file'])
+          ")
+          
+          echo "🔄 Rolling back using backup: $backup_file"
+          python backup_restore_us16.py --restore-backup --file="$backup_file"
+          echo "Rollback completed!"
+
+      - name: Verify Rollback Success
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "✅ Verifying rollback..."
+          python validate_us16_data_integrity.py --pre-migration --verify-rollback
+
+      - name: Generate Rollback Report
+        run: |
+          cd scripts
+          echo "📋 Generating rollback report..."
+          python backup_restore_us16.py --rollback-report > rollback-report.txt
+          cat rollback-report.txt
+
+      - name: Upload Rollback Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-results-${{ github.event.inputs.environment }}
+          path: scripts/rollback-report.txt
+          retention-days: 180
+
+      - name: Notify Team - Migration Rollback
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: |
+            🚨 **US1.6 Migration Rollback Executed**
+            
+            Environment: ${{ github.event.inputs.environment }}
+            Reason: Migration validation failed
+            
+            Action required: Review migration logs and fix issues before retry.
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ========================================
+  # MIGRATION SUCCESS NOTIFICATION
+  # ========================================
+  notify-success:
+    name: 📢 Migration Success Notification
+    runs-on: ubuntu-latest
+    needs: [pre-migration-checks, execute-migration, post-migration-validation]
+    if: success() && github.event.inputs.dry_run == 'false'
+
+    steps:
+      - name: Notify Team - Migration Success
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          text: |
+            ✅ **US1.6 Migration Completed Successfully!**
+            
+            Environment: ${{ github.event.inputs.environment }}
+            Records migrated: ${{ needs.pre-migration-checks.outputs.data_count }}
+            Duration: ${{ needs.pre-migration-checks.outputs.estimated_duration }} minutes
+            
+            All validation checks passed! 🎉
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+  # ========================================
+  # DRY RUN NOTIFICATION
+  # ========================================
+  notify-dry-run:
+    name: 📋 Dry Run Report
+    runs-on: ubuntu-latest
+    needs: [pre-migration-checks, execute-migration]
+    if: success() && github.event.inputs.dry_run == 'true'
+
+    steps:
+      - name: Notify Team - Dry Run Results
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          text: |
+            🧪 **US1.6 Migration Dry Run Completed**
+            
+            Environment: ${{ github.event.inputs.environment }}
+            Records to migrate: ${{ needs.pre-migration-checks.outputs.data_count }}
+            Estimated duration: ${{ needs.pre-migration-checks.outputs.estimated_duration }} minutes
+            
+            Ready for live migration? Check the dry run results! ✅
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

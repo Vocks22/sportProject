@@ -4,14 +4,25 @@ import {
   ChevronRight, 
   Plus, 
   Shuffle,
-  Calendar as CalendarIcon
+  Calendar as CalendarIcon,
+  AlertCircle,
+  Clock
 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
+import { useMealPlanningWeek } from '@/hooks/useISOWeek'
 
 export function MealPlanning() {
-  const [currentWeek, setCurrentWeek] = useState(new Date())
+  const {
+    weekInfo,
+    weekDays,
+    planningMetrics,
+    goToPreviousWeek,
+    goToNextWeek,
+    goToCurrentWeek,
+    isWeekType
+  } = useMealPlanningWeek()
   
   // Données simulées du planning
   const weekPlan = {
@@ -66,15 +77,8 @@ export function MealPlanning() {
     }
   }
 
-  const days = [
-    { key: 'monday', label: 'Lun', date: '6' },
-    { key: 'tuesday', label: 'Mar', date: '7' },
-    { key: 'wednesday', label: 'Mer', date: '8' },
-    { key: 'thursday', label: 'Jeu', date: '9' },
-    { key: 'friday', label: 'Ven', date: '10' },
-    { key: 'saturday', label: 'Sam', date: '11' },
-    { key: 'sunday', label: 'Dim', date: '12' }
-  ]
+  // Les jours sont maintenant fournis par le hook useISOWeek
+  // et respectent automatiquement la norme ISO 8601 (lundi-dimanche)
 
   const mealTypes = [
     { key: 'repas1', label: 'Repas 1', color: 'bg-orange-100 text-orange-800' },
@@ -99,14 +103,41 @@ export function MealPlanning() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Planification des Repas</h1>
-          <p className="text-gray-600">Organisez vos repas pour la semaine</p>
+          <p className="text-gray-600">{planningMetrics.planningRecommendation}</p>
+          
+          {weekInfo.isPastWeek && (
+            <div className="flex items-center space-x-2 mt-2">
+              <AlertCircle className="h-4 w-4 text-amber-600" />
+              <span className="text-sm text-amber-700">
+                Cette semaine est passée. Les modifications ne sont pas recommandées.
+              </span>
+            </div>
+          )}
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm">
+          {!isWeekType('current') && (
+            <Button 
+              variant="outline" 
+              size="sm"
+              onClick={goToCurrentWeek}
+            >
+              <Clock className="h-4 w-4 mr-2" />
+              Semaine courante
+            </Button>
+          )}
+          <Button 
+            variant="outline" 
+            size="sm"
+            disabled={!planningMetrics.canPlanMeals}
+            title={planningMetrics.planningRecommendation}
+          >
             <Shuffle className="h-4 w-4 mr-2" />
             Générer Plan Auto
           </Button>
-          <Button size="sm">
+          <Button 
+            size="sm"
+            disabled={!planningMetrics.canPlanMeals}
+          >
             <Plus className="h-4 w-4 mr-2" />
             Nouvelle Recette
           </Button>
@@ -118,20 +149,50 @@ export function MealPlanning() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={goToPreviousWeek}
+                title="Semaine précédente"
+              >
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <div className="flex items-center space-x-2">
                 <CalendarIcon className="h-5 w-5 text-gray-500" />
-                <span className="text-lg font-semibold">Semaine du 6-12 Août 2025</span>
+                <span className="text-lg font-semibold">{weekInfo.displayRange}</span>
               </div>
-              <Button variant="outline" size="sm">
+              <Button 
+                variant="outline" 
+                size="sm"
+                onClick={goToNextWeek}
+                title="Semaine suivante"
+              >
                 <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
-            <Badge variant="outline">
-              Moyenne: {calculateWeekAverage()} kcal/jour
-            </Badge>
+            <div className="flex items-center space-x-2">
+              {/* Indicateurs de statut de la semaine */}
+              {weekInfo.isCurrentWeek && (
+                <Badge variant="default" className="flex items-center space-x-1">
+                  <Clock className="h-3 w-3" />
+                  <span>Semaine courante</span>
+                </Badge>
+              )}
+              {weekInfo.isNextWeek && (
+                <Badge variant="secondary" className="flex items-center space-x-1">
+                  <CalendarIcon className="h-3 w-3" />
+                  <span>Semaine prochaine</span>
+                </Badge>
+              )}
+              {weekInfo.isPastWeek && (
+                <Badge variant="outline" className="flex items-center space-x-1">
+                  <span>Semaine passée</span>
+                </Badge>
+              )}
+              <Badge variant="outline">
+                Moyenne: {calculateWeekAverage()} kcal/jour
+              </Badge>
+            </div>
           </div>
         </CardHeader>
       </Card>
@@ -144,10 +205,17 @@ export function MealPlanning() {
               <thead>
                 <tr className="border-b">
                   <th className="text-left p-4 font-medium text-gray-700 w-32">Repas</th>
-                  {days.map((day) => (
+                  {weekDays.map((day) => (
                     <th key={day.key} className="text-center p-4 font-medium text-gray-700 min-w-[140px]">
-                      <div>{day.label}</div>
-                      <div className="text-sm text-gray-500">{day.date}</div>
+                      <div className={`${day.isToday ? 'font-bold text-blue-600' : ''}`}>
+                        {day.label}
+                      </div>
+                      <div className={`text-sm ${day.isToday ? 'text-blue-500 font-medium' : 'text-gray-500'}`}>
+                        {day.dayNumber}
+                      </div>
+                      {day.isToday && (
+                        <div className="text-xs text-blue-600 font-medium">Aujourd'hui</div>
+                      )}
                     </th>
                   ))}
                 </tr>
@@ -160,12 +228,17 @@ export function MealPlanning() {
                         {mealType.label}
                       </Badge>
                     </td>
-                    {days.map((day) => {
+                    {weekDays.map((day) => {
                       const meal = weekPlan[day.key][mealType.key]
+                      const isToday = day.isToday
+                      const isWeekend = day.isWeekend
+                      
                       return (
-                        <td key={`${day.key}-${mealType.key}`} className="p-2">
+                        <td key={`${day.key}-${mealType.key}`} className={`p-2 ${isWeekend ? 'bg-gray-50' : ''}`}>
                           {meal ? (
-                            <div className="bg-white border border-gray-200 rounded-lg p-3 hover:shadow-md transition-shadow cursor-pointer">
+                            <div className={`bg-white border rounded-lg p-3 hover:shadow-md transition-shadow cursor-pointer ${
+                              isToday ? 'border-blue-300 ring-1 ring-blue-200' : 'border-gray-200'
+                            }`}>
                               <div className="text-center">
                                 <div className="text-2xl mb-1">{meal.image}</div>
                                 <div className="text-xs font-medium text-gray-900 leading-tight">
@@ -177,8 +250,11 @@ export function MealPlanning() {
                               </div>
                             </div>
                           ) : (
-                            <div className="bg-gray-50 border-2 border-dashed border-gray-300 rounded-lg p-3 h-20 flex items-center justify-center hover:border-gray-400 transition-colors cursor-pointer">
-                              <Plus className="h-4 w-4 text-gray-400" />
+                            <div className={`border-2 border-dashed rounded-lg p-3 h-20 flex items-center justify-center hover:border-gray-400 transition-colors cursor-pointer ${
+                              isToday ? 'bg-blue-50 border-blue-300' : 
+                              isWeekend ? 'bg-gray-100 border-gray-300' : 'bg-gray-50 border-gray-300'
+                            }`}>
+                              <Plus className={`h-4 w-4 ${isToday ? 'text-blue-400' : 'text-gray-400'}`} />
                             </div>
                           )}
                         </td>
@@ -189,9 +265,11 @@ export function MealPlanning() {
                 {/* Daily Totals Row */}
                 <tr className="bg-gray-50 font-medium">
                   <td className="p-4 text-gray-700">Total</td>
-                  {days.map((day) => (
-                    <td key={`${day.key}-total`} className="p-4 text-center">
-                      <div className="text-sm font-bold text-gray-900">
+                  {weekDays.map((day) => (
+                    <td key={`${day.key}-total`} className={`p-4 text-center ${day.isWeekend ? 'bg-gray-100' : ''}`}>
+                      <div className={`text-sm font-bold ${
+                        day.isToday ? 'text-blue-600' : 'text-gray-900'
+                      }`}>
                         {calculateDayTotal(weekPlan[day.key])} kcal
                       </div>
                     </td>

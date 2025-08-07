@@ -1,0 +1,30 @@
+# Staging Environment Configuration for US1.6
+name: staging
+url: https://diettracker-staging.herokuapp.com
+
+# Protection rules
+protection_rules:
+  reviewers:
+    - devops-team
+    - tech-leads
+  deployment_branch_policy:
+    protected_branches: true
+    custom_branch_policies: false
+
+# Environment variables (references to secrets)
+variables:
+  NODE_ENV: staging
+  FLASK_ENV: staging
+  DATABASE_POOL_SIZE: "5"
+  API_RATE_LIMIT: "1000"
+  CACHE_TTL: "300"
+  LOG_LEVEL: "INFO"
+  MONITORING_ENABLED: "true"
+
+# Deployment configuration
+deployment:
+  strategy: rolling
+  health_check_path: /health
+  health_check_interval: 30s
+  health_check_timeout: 10s
+  rollback_on_failure: true

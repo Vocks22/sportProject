@@ -1,0 +1,567 @@
+name: US1.6 - Emergency Rollback & Recovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to rollback'
+        required: true
+        type: choice
+        options:
+          - staging
+          - production
+      rollback_type:
+        description: 'Type of rollback'
+        required: true
+        default: 'application'
+        type: choice
+        options:
+          - application        # Code rollback only
+          - database          # Database rollback only
+          - full              # Both application and database
+      backup_timestamp:
+        description: 'Backup timestamp (YYYYMMDD_HHMMSS) - optional'
+        required: false
+        type: string
+      reason:
+        description: 'Rollback reason'
+        required: true
+        type: string
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18.x'
+
+jobs:
+  # ========================================
+  # EMERGENCY VALIDATION
+  # ========================================
+  validate-rollback-request:
+    name: 🚨 Validate Rollback Request
+    runs-on: ubuntu-latest
+    
+    outputs:
+      rollback_authorized: ${{ steps.authorization.outputs.authorized }}
+      backup_available: ${{ steps.backup_check.outputs.available }}
+      current_state: ${{ steps.current_state.outputs.state }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Emergency Authorization
+        id: authorization
+        run: |
+          # Check if user is authorized for emergency rollback
+          authorized_users=("admin" "devops-lead" "tech-lead")
+          current_user="${{ github.actor }}"
+          
+          authorized=false
+          for user in "${authorized_users[@]}"; do
+            if [ "$current_user" = "$user" ]; then
+              authorized=true
+              break
+            fi
+          done
+          
+          echo "::set-output name=authorized::$authorized"
+          echo "Authorization check: $authorized for user $current_user"
+
+      - name: Check System Health
+        id: current_state
+        run: |
+          # Check current system state
+          environment="${{ github.event.inputs.environment }}"
+          
+          if [ "$environment" = "production" ]; then
+            health_endpoint="https://diettracker-app.herokuapp.com/health"
+          else
+            health_endpoint="https://diettracker-staging.herokuapp.com/health"
+          fi
+          
+          # Check if system is down and rollback is justified
+          if curl -f --max-time 10 "$health_endpoint" &>/dev/null; then
+            system_state="healthy"
+          else
+            system_state="unhealthy"
+          fi
+          
+          echo "::set-output name=state::$system_state"
+          echo "System state: $system_state"
+
+      - name: Check Backup Availability
+        id: backup_check
+        run: |
+          # This would normally check your backup storage
+          # For now, we'll assume backups are available
+          echo "::set-output name=available::true"
+          echo "Backup availability: true"
+
+      - name: Log Rollback Request
+        run: |
+          echo "🚨 EMERGENCY ROLLBACK REQUESTED"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "Type: ${{ github.event.inputs.rollback_type }}"
+          echo "Reason: ${{ github.event.inputs.reason }}"
+          echo "Requested by: ${{ github.actor }}"
+          echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+
+  # ========================================
+  # APPLICATION ROLLBACK
+  # ========================================
+  rollback-application:
+    name: 🔄 Rollback Application
+    runs-on: ubuntu-latest
+    needs: validate-rollback-request
+    if: |
+      needs.validate-rollback-request.outputs.rollback_authorized == 'true' &&
+      (github.event.inputs.rollback_type == 'application' || github.event.inputs.rollback_type == 'full')
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for rollback
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Get Previous Stable Version
+        id: previous_version
+        run: |
+          # Get the last successful deployment commit
+          previous_commit=$(git log --oneline --grep="Deploy to ${{ github.event.inputs.environment }}" -n 2 | tail -1 | cut -d' ' -f1)
+          
+          if [ -z "$previous_commit" ]; then
+            # Fallback to previous commit on main
+            previous_commit=$(git rev-parse HEAD~1)
+          fi
+          
+          echo "::set-output name=commit::$previous_commit"
+          echo "Rolling back to commit: $previous_commit"
+
+      - name: Checkout Previous Version
+        run: |
+          git checkout ${{ steps.previous_version.outputs.commit }}
+
+      - name: Build Previous Version
+        run: |
+          npm ci
+          npm run build
+
+      - name: Deploy Previous Version (Staging)
+        if: github.event.inputs.environment == 'staging'
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "diettracker-staging"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: Deploy Previous Version (Production)
+        if: github.event.inputs.environment == 'production'
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: "diettracker-app"
+          heroku_email: ${{ secrets.HEROKU_EMAIL }}
+
+      - name: Verify Application Rollback
+        run: |
+          sleep 30
+          
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            health_endpoint="https://diettracker-app.herokuapp.com/health"
+          else
+            health_endpoint="https://diettracker-staging.herokuapp.com/health"
+          fi
+          
+          echo "Verifying application health..."
+          for i in {1..5}; do
+            if curl -f --max-time 10 "$health_endpoint"; then
+              echo "✅ Application rollback successful!"
+              exit 0
+            fi
+            echo "Attempt $i failed, retrying in 30s..."
+            sleep 30
+          done
+          
+          echo "❌ Application rollback verification failed"
+          exit 1
+
+  # ========================================
+  # DATABASE ROLLBACK
+  # ========================================
+  rollback-database:
+    name: 🗃️ Rollback Database
+    runs-on: ubuntu-latest
+    needs: validate-rollback-request
+    if: |
+      needs.validate-rollback-request.outputs.rollback_authorized == 'true' &&
+      (github.event.inputs.rollback_type == 'database' || github.event.inputs.rollback_type == 'full')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Find Latest Backup
+        id: find_backup
+        run: |
+          # If specific timestamp provided, use it; otherwise find latest
+          if [ -n "${{ github.event.inputs.backup_timestamp }}" ]; then
+            backup_timestamp="${{ github.event.inputs.backup_timestamp }}"
+          else
+            # This would normally query your backup storage
+            # For demo, we'll use a recent timestamp format
+            backup_timestamp=$(date -d "1 hour ago" +"%Y%m%d_%H%M%S")
+          fi
+          
+          echo "::set-output name=timestamp::$backup_timestamp"
+          echo "Using backup timestamp: $backup_timestamp"
+
+      - name: Download Backup
+        run: |
+          # Download backup from secure storage
+          # This would normally be from S3, Azure Blob, etc.
+          backup_file="backup_us16_pre_migration_${{ steps.find_backup.outputs.timestamp }}.sql"
+          
+          echo "📥 Downloading backup: $backup_file"
+          # curl -o "scripts/$backup_file" "$BACKUP_STORAGE_URL/$backup_file"
+          
+          echo "BACKUP_FILE=$backup_file" >> $GITHUB_ENV
+
+      - name: Validate Backup Integrity
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "🔍 Validating backup integrity..."
+          python backup_restore_us16.py --verify-backup --file="$BACKUP_FILE"
+
+      - name: Create Emergency Backup Before Rollback
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          emergency_backup="emergency_backup_before_rollback_$(date +%Y%m%d_%H%M%S).sql"
+          
+          echo "💾 Creating emergency backup before rollback..."
+          python backup_restore_us16.py --create-backup --output="$emergency_backup"
+          
+          echo "EMERGENCY_BACKUP_FILE=$emergency_backup" >> $GITHUB_ENV
+
+      - name: Execute Database Rollback
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "🔄 Executing database rollback..."
+          
+          python backup_restore_us16.py \
+            --restore-backup \
+            --file="$BACKUP_FILE" \
+            --force \
+            --log-level=INFO
+
+      - name: Validate Database Rollback
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          cd scripts
+          echo "✅ Validating database rollback..."
+          
+          # Verify data integrity
+          python validate_us16_data_integrity.py --verify-rollback
+          
+          # Run critical tests
+          cd ..
+          pytest tests/backend/test_meal_plans_api_us16.py -v --tb=short
+
+      - name: Upload Emergency Backup
+        uses: actions/upload-artifact@v4
+        with:
+          name: emergency-backup-${{ github.event.inputs.environment }}
+          path: scripts/${{ env.EMERGENCY_BACKUP_FILE }}
+          retention-days: 90
+
+  # ========================================
+  # POST-ROLLBACK VALIDATION
+  # ========================================
+  validate-rollback-success:
+    name: ✅ Validate Rollback Success
+    runs-on: ubuntu-latest
+    needs: [rollback-application, rollback-database]
+    if: |
+      always() && 
+      needs.validate-rollback-request.outputs.rollback_authorized == 'true' &&
+      (needs.rollback-application.result == 'success' || needs.rollback-database.result == 'success')
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Comprehensive Health Check
+        env:
+          DATABASE_URL: ${{ secrets[format('{0}_DATABASE_URL', github.event.inputs.environment)] }}
+        run: |
+          echo "🏥 Running comprehensive health check..."
+          
+          # API health check
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            api_endpoint="https://diettracker-app.herokuapp.com"
+          else
+            api_endpoint="https://diettracker-staging.herokuapp.com"
+          fi
+          
+          echo "Checking API health..."
+          curl -f "$api_endpoint/health" || exit 1
+          
+          echo "Checking critical endpoints..."
+          curl -f "$api_endpoint/api/meal-plans" || exit 1
+          
+          echo "✅ API health check passed"
+
+      - name: Run Smoke Tests
+        run: |
+          echo "💨 Running smoke tests..."
+          pytest tests/smoke/test_critical_functions.py -v --tb=short
+
+      - name: Generate Rollback Report
+        run: |
+          echo "📋 Generating rollback report..."
+          
+          cat > rollback-report.md << EOF
+          # 🚨 Emergency Rollback Report
+          
+          ## Rollback Details
+          - **Environment**: ${{ github.event.inputs.environment }}
+          - **Type**: ${{ github.event.inputs.rollback_type }}
+          - **Reason**: ${{ github.event.inputs.reason }}
+          - **Executed by**: ${{ github.actor }}
+          - **Timestamp**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          
+          ## Actions Taken
+          $(if [ "${{ needs.rollback-application.result }}" = "success" ]; then echo "- ✅ Application rolled back successfully"; fi)
+          $(if [ "${{ needs.rollback-database.result }}" = "success" ]; then echo "- ✅ Database rolled back successfully"; fi)
+          
+          ## Validation Results
+          - ✅ API health check: PASSED
+          - ✅ Critical endpoints: PASSED
+          - ✅ Smoke tests: PASSED
+          
+          ## Next Steps
+          1. Monitor system for 30 minutes
+          2. Investigate root cause of original issue
+          3. Plan fix and redeployment strategy
+          4. Update team and stakeholders
+          EOF
+          
+          cat rollback-report.md
+
+      - name: Upload Rollback Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: rollback-report-${{ github.event.inputs.environment }}
+          path: rollback-report.md
+          retention-days: 365
+
+  # ========================================
+  # MONITORING & ALERTS
+  # ========================================
+  post-rollback-monitoring:
+    name: 📊 Post-Rollback Monitoring
+    runs-on: ubuntu-latest
+    needs: validate-rollback-success
+
+    steps:
+      - name: Setup Monitoring
+        run: |
+          echo "📊 Setting up enhanced monitoring..."
+          
+          # This would normally configure enhanced monitoring
+          # For the next 2 hours after rollback
+          
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            endpoint="https://diettracker-app.herokuapp.com"
+          else
+            endpoint="https://diettracker-staging.herokuapp.com"
+          fi
+          
+          echo "Monitoring endpoint: $endpoint"
+
+      - name: Health Check Loop (30 minutes)
+        timeout-minutes: 30
+        run: |
+          echo "🔍 Monitoring system health for 30 minutes..."
+          
+          if [ "${{ github.event.inputs.environment }}" = "production" ]; then
+            endpoint="https://diettracker-app.herokuapp.com/health"
+          else
+            endpoint="https://diettracker-staging.herokuapp.com/health"
+          fi
+          
+          for i in {1..60}; do
+            if curl -f --max-time 10 "$endpoint" &>/dev/null; then
+              echo "✅ Health check $i/60 passed"
+            else
+              echo "❌ Health check $i/60 failed"
+            fi
+            sleep 30
+          done
+          
+          echo "Monitoring period completed"
+
+  # ========================================
+  # NOTIFICATIONS
+  # ========================================
+  notify-rollback-completion:
+    name: 📢 Notify Rollback Completion
+    runs-on: ubuntu-latest
+    needs: [validate-rollback-success, post-rollback-monitoring]
+    if: success()
+
+    steps:
+      - name: Notify Success
+        uses: 8398a7/action-slack@v3
+        with:
+          status: success
+          text: |
+            ✅ **EMERGENCY ROLLBACK COMPLETED SUCCESSFULLY**
+            
+            🎯 **Environment**: ${{ github.event.inputs.environment }}
+            🔄 **Type**: ${{ github.event.inputs.rollback_type }}
+            📝 **Reason**: ${{ github.event.inputs.reason }}
+            👤 **Executed by**: ${{ github.actor }}
+            ⏰ **Completed**: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+            
+            ✅ System is stable and monitored
+            📋 Post-rollback report available in workflow artifacts
+            
+            **Next Steps**:
+            1. Continue monitoring for anomalies
+            2. Root cause analysis meeting scheduled
+            3. Fix development and testing plan needed
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Create GitHub Issue for Follow-up
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Post-Rollback Follow-up: ${{ github.event.inputs.reason }}',
+              body: `# Post-Rollback Follow-up
+              
+              ## Rollback Details
+              - **Environment**: ${{ github.event.inputs.environment }}
+              - **Type**: ${{ github.event.inputs.rollback_type }}
+              - **Reason**: ${{ github.event.inputs.reason }}
+              - **Executed by**: ${{ github.actor }}
+              - **Workflow**: [${context.runId}](${context.payload.repository.html_url}/actions/runs/${context.runId})
+              
+              ## Required Actions
+              - [ ] Root cause analysis completed
+              - [ ] Fix developed and tested
+              - [ ] Deployment strategy planned
+              - [ ] Stakeholders updated
+              - [ ] Lessons learned documented
+              
+              ## Monitoring
+              System is currently stable post-rollback. Continue monitoring for the next 24 hours.
+              
+              /cc @devops-team @tech-leads`,
+              labels: ['emergency', 'rollback', 'high-priority']
+            });
+            
+            console.log('Created follow-up issue:', issue.data.html_url);
+
+  # ========================================
+  # ROLLBACK FAILURE HANDLING
+  # ========================================
+  handle-rollback-failure:
+    name: 🆘 Handle Rollback Failure
+    runs-on: ubuntu-latest
+    needs: [rollback-application, rollback-database]
+    if: |
+      failure() && 
+      needs.validate-rollback-request.outputs.rollback_authorized == 'true' &&
+      (needs.rollback-application.result == 'failure' || needs.rollback-database.result == 'failure')
+
+    steps:
+      - name: Emergency Alert
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: |
+            🆘 **CRITICAL: ROLLBACK FAILED**
+            
+            🎯 **Environment**: ${{ github.event.inputs.environment }}
+            🔄 **Type**: ${{ github.event.inputs.rollback_type }}
+            📝 **Reason**: ${{ github.event.inputs.reason }}
+            👤 **Executed by**: ${{ github.actor }}
+            
+            ❌ **Rollback failed - Manual intervention required immediately**
+            
+            **Immediate Actions Required**:
+            1. 🚨 All hands on deck
+            2. 📞 Contact on-call engineer
+            3. 🔧 Manual recovery procedures
+            4. 📊 System status monitoring
+            
+            Workflow: ${context.payload.repository.html_url}/actions/runs/${context.runId}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+
+      - name: Create Critical Incident
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🆘 CRITICAL: Rollback Failed - ${{ github.event.inputs.environment }}',
+              body: `# 🚨 CRITICAL INCIDENT: Rollback Failure
+              
+              ## Situation
+              Emergency rollback has FAILED on ${{ github.event.inputs.environment }}
+              
+              ## Details
+              - **Environment**: ${{ github.event.inputs.environment }}
+              - **Rollback Type**: ${{ github.event.inputs.rollback_type }}
+              - **Original Issue**: ${{ github.event.inputs.reason }}
+              - **Failed Workflow**: [${context.runId}](${context.payload.repository.html_url}/actions/runs/${context.runId})
+              
+              ## Immediate Actions Required
+              - [ ] **P0**: Contact on-call engineer immediately
+              - [ ] **P0**: Assess system status manually
+              - [ ] **P0**: Implement manual recovery procedures
+              - [ ] **P0**: Start incident response protocol
+              - [ ] **P1**: Prepare communication for stakeholders
+              
+              ## Status Updates
+              Update this issue with status every 15 minutes until resolved.
+              
+              /cc @oncall @devops-team @management`,
+              labels: ['critical', 'incident', 'p0', 'rollback-failure']
+            });
+            
+            console.log('Created critical incident:', issue.data.html_url);

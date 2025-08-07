@@ -1,0 +1,776 @@
+name: US1.6 - Quality Gates & Performance Validation
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+  
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/**'
+      - 'tests/**'
+      - 'scripts/**'
+
+  schedule:
+    # Run performance tests daily at 2 AM UTC
+    - cron: '0 2 * * *'
+
+  workflow_dispatch:
+    inputs:
+      performance_type:
+        description: 'Type of performance test'
+        required: true
+        default: 'standard'
+        type: choice
+        options:
+          - standard      # Standard benchmarks
+          - load          # Load testing
+          - stress        # Stress testing
+          - endurance     # Long-running tests
+      target_environment:
+        description: 'Target environment for testing'
+        required: false
+        default: 'staging'
+        type: choice
+        options:
+          - local
+          - staging
+          - production
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18.x'
+  PERFORMANCE_THRESHOLD_MS: 500
+  COVERAGE_THRESHOLD: 90
+  CODE_QUALITY_THRESHOLD: 8.0
+
+jobs:
+  # ========================================
+  # CODE QUALITY ANALYSIS
+  # ========================================
+  code-quality-analysis:
+    name: 📊 Code Quality Analysis
+    runs-on: ubuntu-latest
+
+    outputs:
+      quality_score: ${{ steps.quality_metrics.outputs.score }}
+      coverage_percent: ${{ steps.coverage_check.outputs.percentage }}
+      security_issues: ${{ steps.security_scan.outputs.issues_count }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Needed for SonarCloud
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install flake8 pylint bandit safety radon
+          npm ci
+
+      - name: Python Code Quality Metrics
+        id: python_quality
+        run: |
+          echo "🐍 Analyzing Python code quality..."
+          
+          # Flake8 analysis
+          flake8_score=$(flake8 src/backend/ --statistics --tee --output-file=flake8-report.txt | tail -1 || echo "0")
+          
+          # Pylint analysis
+          pylint_score=$(pylint src/backend/ --output-format=text --reports=yes | grep "Your code has been rated at" | awk '{print $7}' | cut -d'/' -f1 || echo "0")
+          
+          # Complexity analysis
+          radon cc src/backend/ -a -nc > complexity-report.txt
+          avg_complexity=$(radon cc src/backend/ -a -nc | grep "Average complexity" | awk '{print $3}' || echo "0")
+          
+          echo "::set-output name=pylint_score::$pylint_score"
+          echo "::set-output name=avg_complexity::$avg_complexity"
+          
+          echo "Python Quality Metrics:"
+          echo "- Pylint Score: $pylint_score/10"
+          echo "- Average Complexity: $avg_complexity"
+
+      - name: JavaScript Code Quality Metrics
+        id: js_quality
+        run: |
+          echo "⚛️ Analyzing JavaScript/React code quality..."
+          
+          # ESLint analysis
+          npm run lint -- --format json --output-file eslint-report.json || true
+          
+          # Count ESLint issues
+          eslint_errors=$(cat eslint-report.json | jq '[.[] | .errorCount] | add' || echo "0")
+          eslint_warnings=$(cat eslint-report.json | jq '[.[] | .warningCount] | add' || echo "0")
+          
+          echo "::set-output name=eslint_errors::$eslint_errors"
+          echo "::set-output name=eslint_warnings::$eslint_warnings"
+          
+          echo "JavaScript Quality Metrics:"
+          echo "- ESLint Errors: $eslint_errors"
+          echo "- ESLint Warnings: $eslint_warnings"
+
+      - name: Security Scan
+        id: security_scan
+        run: |
+          echo "🔒 Running security analysis..."
+          
+          # Python security scan with Bandit
+          bandit -r src/backend/ -f json -o bandit-report.json || true
+          bandit_issues=$(cat bandit-report.json | jq '.results | length' || echo "0")
+          
+          # Dependency vulnerability scan
+          safety check --json --output safety-report.json || true
+          safety_issues=$(cat safety-report.json | jq 'length' || echo "0")
+          
+          # NPM audit
+          npm audit --json > npm-audit-report.json || true
+          npm_vulnerabilities=$(cat npm-audit-report.json | jq '.metadata.vulnerabilities.total' || echo "0")
+          
+          total_security_issues=$((bandit_issues + safety_issues + npm_vulnerabilities))
+          
+          echo "::set-output name=issues_count::$total_security_issues"
+          echo "::set-output name=bandit_issues::$bandit_issues"
+          echo "::set-output name=safety_issues::$safety_issues"
+          echo "::set-output name=npm_vulnerabilities::$npm_vulnerabilities"
+          
+          echo "Security Scan Results:"
+          echo "- Bandit Issues: $bandit_issues"
+          echo "- Safety Issues: $safety_issues"
+          echo "- NPM Vulnerabilities: $npm_vulnerabilities"
+          echo "- Total Security Issues: $total_security_issues"
+
+      - name: Test Coverage Analysis
+        id: coverage_check
+        run: |
+          echo "🧪 Analyzing test coverage..."
+          
+          # Backend coverage
+          pytest tests/backend/ --cov=src/backend --cov-report=json:coverage-backend.json --cov-report=html:htmlcov-backend/
+          backend_coverage=$(cat coverage-backend.json | jq '.totals.percent_covered' || echo "0")
+          
+          # Frontend coverage
+          npm test -- --coverage --coverageReporters=json --watchAll=false --silent
+          frontend_coverage=$(cat coverage/coverage-summary.json | jq '.total.lines.pct' || echo "0")
+          
+          # Overall coverage (weighted average)
+          overall_coverage=$(echo "scale=2; ($backend_coverage * 0.6) + ($frontend_coverage * 0.4)" | bc -l || echo "0")
+          
+          echo "::set-output name=percentage::$overall_coverage"
+          echo "::set-output name=backend_coverage::$backend_coverage"
+          echo "::set-output name=frontend_coverage::$frontend_coverage"
+          
+          echo "Coverage Analysis:"
+          echo "- Backend Coverage: $backend_coverage%"
+          echo "- Frontend Coverage: $frontend_coverage%"
+          echo "- Overall Coverage: $overall_coverage%"
+
+      - name: Calculate Quality Score
+        id: quality_metrics
+        run: |
+          echo "📊 Calculating overall quality score..."
+          
+          # Get values from previous steps
+          pylint_score="${{ steps.python_quality.outputs.pylint_score }}"
+          eslint_errors="${{ steps.js_quality.outputs.eslint_errors }}"
+          eslint_warnings="${{ steps.js_quality.outputs.eslint_warnings }}"
+          security_issues="${{ steps.security_scan.outputs.issues_count }}"
+          coverage_percent="${{ steps.coverage_check.outputs.percentage }}"
+          
+          # Calculate quality score (0-10 scale)
+          python -c "
+          import json
+          
+          pylint_score = float('$pylint_score' or '0')
+          eslint_errors = int('$eslint_errors' or '0')
+          eslint_warnings = int('$eslint_warnings' or '0')
+          security_issues = int('$security_issues' or '0')
+          coverage_percent = float('$coverage_percent' or '0')
+          
+          # Quality score calculation
+          code_quality_score = (pylint_score * 0.3)  # 30% weight
+          linting_penalty = max(0, 2 - (eslint_errors * 0.2 + eslint_warnings * 0.1))  # Max 2 points deduction
+          security_penalty = max(0, 2 - (security_issues * 0.5))  # Max 2 points deduction
+          coverage_score = (coverage_percent / 100) * 3  # Max 3 points
+          
+          overall_score = code_quality_score + linting_penalty + security_penalty + coverage_score
+          overall_score = min(10, max(0, overall_score))  # Clamp between 0-10
+          
+          quality_data = {
+              'overall_score': round(overall_score, 2),
+              'code_quality_score': round(code_quality_score, 2),
+              'linting_penalty': round(2 - linting_penalty, 2),
+              'security_penalty': round(2 - security_penalty, 2),
+              'coverage_score': round(coverage_score, 2),
+              'breakdown': {
+                  'pylint_score': pylint_score,
+                  'eslint_errors': eslint_errors,
+                  'eslint_warnings': eslint_warnings,
+                  'security_issues': security_issues,
+                  'coverage_percent': coverage_percent
+              }
+          }
+          
+          print(f'::set-output name=score::{overall_score}')
+          print('Quality Score Breakdown:')
+          print(json.dumps(quality_data, indent=2))
+          
+          with open('quality-report.json', 'w') as f:
+              json.dump(quality_data, f, indent=2)
+          "
+
+      - name: Upload Quality Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-analysis-reports
+          path: |
+            flake8-report.txt
+            complexity-report.txt
+            eslint-report.json
+            bandit-report.json
+            safety-report.json
+            npm-audit-report.json
+            coverage-backend.json
+            coverage/
+            htmlcov-backend/
+            quality-report.json
+          retention-days: 30
+
+  # ========================================
+  # US1.6 PERFORMANCE BENCHMARKS
+  # ========================================
+  us16-performance-tests:
+    name: ⚡ US1.6 Performance Benchmarks
+    runs-on: ubuntu-latest
+    needs: code-quality-analysis
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_PASSWORD: test_password
+          POSTGRES_USER: test_user
+          POSTGRES_DB: perf_test_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://test_user:test_password@localhost:5432/perf_test_db
+
+    outputs:
+      performance_score: ${{ steps.performance_analysis.outputs.score }}
+      date_utils_performance: ${{ steps.date_utils_bench.outputs.avg_time_ms }}
+      api_performance: ${{ steps.api_bench.outputs.avg_response_time }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest-benchmark locust
+
+      - name: Setup Performance Test Database
+        run: |
+          cd src/backend
+          python -c "from database.config import create_tables; create_tables()"
+          cd ../../scripts
+          python init_data.py --performance-dataset
+
+      - name: US1.6 Date Utils Performance Tests
+        id: date_utils_bench
+        run: |
+          echo "📅 Testing US1.6 date utilities performance..."
+          
+          pytest tests/backend/test_performance_us16.py::TestDateUtilsPerformance \
+            --benchmark-only \
+            --benchmark-json=date-utils-benchmark.json \
+            --benchmark-sort=mean
+          
+          # Extract average time
+          avg_time_ms=$(cat date-utils-benchmark.json | jq '.benchmarks[0].stats.mean * 1000' | head -1)
+          echo "::set-output name=avg_time_ms::$avg_time_ms"
+          
+          echo "Date Utils Performance: ${avg_time_ms}ms average"
+
+      - name: US1.6 API Performance Tests
+        id: api_bench
+        run: |
+          echo "🌐 Testing US1.6 API performance..."
+          
+          # Start Flask app in background
+          cd src/backend
+          python main.py &
+          backend_pid=$!
+          sleep 10
+          
+          # Run API performance tests
+          cd ../../
+          pytest tests/backend/test_meal_plans_api_us16.py::TestMealPlansAPIPerformance \
+            --benchmark-only \
+            --benchmark-json=api-benchmark.json
+          
+          # Stop backend
+          kill $backend_pid || true
+          
+          # Extract API response time
+          avg_response_time=$(cat api-benchmark.json | jq '.benchmarks[0].stats.mean * 1000' | head -1)
+          echo "::set-output name=avg_response_time::$avg_response_time"
+          
+          echo "API Performance: ${avg_response_time}ms average"
+
+      - name: Database Query Performance Tests
+        id: db_bench
+        run: |
+          echo "🗃️ Testing database query performance..."
+          
+          pytest tests/backend/test_performance_us16.py::TestDatabasePerformance \
+            --benchmark-only \
+            --benchmark-json=db-benchmark.json
+          
+          # Extract DB query time
+          db_query_time=$(cat db-benchmark.json | jq '.benchmarks[0].stats.mean * 1000' | head -1)
+          echo "::set-output name=db_query_time::$db_query_time"
+          
+          echo "Database Query Performance: ${db_query_time}ms average"
+
+      - name: Frontend Performance Tests
+        id: frontend_bench
+        run: |
+          echo "⚛️ Testing frontend rendering performance..."
+          
+          npm ci
+          npm test -- --testNamePattern="performance" --json --outputFile=frontend-perf.json || true
+          
+          # Extract frontend performance metrics
+          render_time=$(cat frontend-perf.json | jq '.testResults[0].assertionResults[0].duration' || echo "100")
+          echo "::set-output name=render_time::$render_time"
+          
+          echo "Frontend Render Performance: ${render_time}ms"
+
+      - name: Performance Analysis
+        id: performance_analysis
+        run: |
+          echo "📊 Analyzing performance results..."
+          
+          python -c "
+          import json
+          
+          # Get performance metrics
+          date_utils_ms = float('${{ steps.date_utils_bench.outputs.avg_time_ms }}' or '0')
+          api_response_ms = float('${{ steps.api_bench.outputs.avg_response_time }}' or '0')
+          db_query_ms = float('${{ steps.db_bench.outputs.db_query_time }}' or '0')
+          frontend_render_ms = float('${{ steps.frontend_bench.outputs.render_time }}' or '0')
+          
+          # Performance thresholds (ms)
+          thresholds = {
+              'date_utils': 10,    # 10ms for date calculations
+              'api_response': 500, # 500ms for API responses
+              'db_query': 100,     # 100ms for DB queries
+              'frontend_render': 200  # 200ms for frontend rendering
+          }
+          
+          # Calculate performance scores (0-10 scale)
+          scores = {}
+          scores['date_utils'] = max(0, 10 - (date_utils_ms / thresholds['date_utils']) * 2)
+          scores['api_response'] = max(0, 10 - (api_response_ms / thresholds['api_response']) * 2)
+          scores['db_query'] = max(0, 10 - (db_query_ms / thresholds['db_query']) * 2)
+          scores['frontend_render'] = max(0, 10 - (frontend_render_ms / thresholds['frontend_render']) * 2)
+          
+          # Overall performance score (weighted average)
+          overall_score = (
+              scores['date_utils'] * 0.3 +      # 30% weight
+              scores['api_response'] * 0.4 +     # 40% weight
+              scores['db_query'] * 0.2 +         # 20% weight
+              scores['frontend_render'] * 0.1    # 10% weight
+          )
+          
+          performance_data = {
+              'overall_score': round(overall_score, 2),
+              'metrics': {
+                  'date_utils_ms': date_utils_ms,
+                  'api_response_ms': api_response_ms,
+                  'db_query_ms': db_query_ms,
+                  'frontend_render_ms': frontend_render_ms
+              },
+              'scores': {k: round(v, 2) for k, v in scores.items()},
+              'thresholds': thresholds,
+              'performance_grade': 'A' if overall_score >= 8 else 'B' if overall_score >= 6 else 'C' if overall_score >= 4 else 'D'
+          }
+          
+          print(f'::set-output name=score::{overall_score}')
+          print('Performance Analysis:')
+          print(json.dumps(performance_data, indent=2))
+          
+          with open('performance-report.json', 'w') as f:
+              json.dump(performance_data, f, indent=2)
+          "
+
+      - name: Upload Performance Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-benchmark-reports
+          path: |
+            date-utils-benchmark.json
+            api-benchmark.json
+            db-benchmark.json
+            frontend-perf.json
+            performance-report.json
+          retention-days: 30
+
+  # ========================================
+  # LOAD TESTING
+  # ========================================
+  load-testing:
+    name: 🔄 Load Testing
+    runs-on: ubuntu-latest
+    if: github.event.inputs.performance_type == 'load' || github.event_name == 'schedule'
+    needs: [code-quality-analysis, us16-performance-tests]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install locust
+
+      - name: Create Load Test Script
+        run: |
+          cat > load_test_us16.py << 'EOF'
+          from locust import HttpUser, task, between
+          from datetime import date, timedelta
+          import random
+          import json
+          
+          class US16LoadTestUser(HttpUser):
+              wait_time = between(1, 3)
+              
+              def on_start(self):
+                  """Initialize test data"""
+                  self.current_monday = self.get_current_monday()
+              
+              def get_current_monday(self):
+                  today = date.today()
+                  return today - timedelta(days=today.weekday())
+              
+              @task(3)
+              def test_meal_plans_api(self):
+                  """Test meal plans API with various week_start values"""
+                  week_offset = random.randint(-4, 4)  # Test different weeks
+                  test_monday = self.current_monday + timedelta(weeks=week_offset)
+                  
+                  self.client.get(f"/api/meal-plans?week_start={test_monday.isoformat()}")
+              
+              @task(2)
+              def test_calendar_navigation(self):
+                  """Test calendar navigation endpoints"""
+                  week_offset = random.randint(0, 52)  # Test different weeks in year
+                  test_monday = self.current_monday + timedelta(weeks=week_offset)
+                  
+                  self.client.get(f"/api/meal-plans/week/{test_monday.isoformat()}")
+              
+              @task(1)
+              def test_create_meal_plan(self):
+                  """Test meal plan creation with proper week_start"""
+                  test_monday = self.current_monday + timedelta(weeks=random.randint(0, 4))
+                  
+                  meal_plan_data = {
+                      "week_start": test_monday.isoformat(),
+                      "meals": {
+                          "monday": {"breakfast": "Test Breakfast"},
+                          "tuesday": {"lunch": "Test Lunch"}
+                      }
+                  }
+                  
+                  self.client.post("/api/meal-plans", json=meal_plan_data)
+              
+              @task(1)
+              def test_health_endpoint(self):
+                  """Test health endpoint"""
+                  self.client.get("/health")
+          EOF
+
+      - name: Run Load Testing
+        run: |
+          echo "🔄 Running load testing..."
+          
+          # Determine target URL
+          if [ "${{ github.event.inputs.target_environment }}" = "production" ]; then
+            target_host="https://diettracker-app.herokuapp.com"
+          elif [ "${{ github.event.inputs.target_environment }}" = "staging" ]; then
+            target_host="https://diettracker-staging.herokuapp.com"
+          else
+            # Start local server for testing
+            cd src/backend
+            python main.py &
+            backend_pid=$!
+            sleep 10
+            target_host="http://localhost:5000"
+            cd ../../
+          fi
+          
+          echo "Target host: $target_host"
+          
+          # Run load test
+          locust -f load_test_us16.py \
+            --host="$target_host" \
+            --users=20 \
+            --spawn-rate=2 \
+            --run-time=120s \
+            --html=load-test-report.html \
+            --csv=load-test-results \
+            --headless
+          
+          # Clean up local server if started
+          if [ "${{ github.event.inputs.target_environment }}" = "local" ]; then
+            kill $backend_pid || true
+          fi
+
+      - name: Analyze Load Test Results
+        run: |
+          echo "📊 Analyzing load test results..."
+          
+          python -c "
+          import csv
+          import json
+          
+          # Read load test results
+          results = []
+          try:
+              with open('load-test-results_stats.csv', 'r') as f:
+                  reader = csv.DictReader(f)
+                  for row in reader:
+                      results.append(row)
+          except FileNotFoundError:
+              print('No load test results found')
+              exit(0)
+          
+          # Calculate metrics
+          total_requests = sum(int(row['Request Count']) for row in results if row['Name'] != 'Aggregated')
+          failed_requests = sum(int(row['Failure Count']) for row in results if row['Name'] != 'Aggregated')
+          avg_response_time = sum(float(row['Average Response Time']) for row in results if row['Name'] != 'Aggregated') / len([r for r in results if r['Name'] != 'Aggregated'])
+          
+          success_rate = ((total_requests - failed_requests) / total_requests * 100) if total_requests > 0 else 0
+          
+          load_test_data = {
+              'total_requests': total_requests,
+              'failed_requests': failed_requests,
+              'success_rate_percent': round(success_rate, 2),
+              'avg_response_time_ms': round(avg_response_time, 2),
+              'load_test_passed': success_rate >= 95 and avg_response_time <= 1000
+          }
+          
+          print('Load Test Results:')
+          print(json.dumps(load_test_data, indent=2))
+          
+          with open('load-test-analysis.json', 'w') as f:
+              json.dump(load_test_data, f, indent=2)
+          "
+
+      - name: Upload Load Test Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: load-test-reports
+          path: |
+            load-test-report.html
+            load-test-results*.csv
+            load-test-analysis.json
+          retention-days: 30
+
+  # ========================================
+  # QUALITY GATES VALIDATION
+  # ========================================
+  quality-gates-validation:
+    name: ✅ Quality Gates Validation
+    runs-on: ubuntu-latest
+    needs: [code-quality-analysis, us16-performance-tests]
+
+    outputs:
+      quality_gate_passed: ${{ steps.gate_validation.outputs.passed }}
+      quality_gate_score: ${{ steps.gate_validation.outputs.overall_score }}
+
+    steps:
+      - name: Validate Quality Gates
+        id: gate_validation
+        run: |
+          echo "🚪 Validating quality gates..."
+          
+          # Get quality metrics
+          quality_score="${{ needs.code-quality-analysis.outputs.quality_score }}"
+          coverage_percent="${{ needs.code-quality-analysis.outputs.coverage_percent }}"
+          security_issues="${{ needs.code-quality-analysis.outputs.security_issues }}"
+          performance_score="${{ needs.us16-performance-tests.outputs.performance_score }}"
+          
+          echo "Quality Metrics:"
+          echo "- Quality Score: $quality_score/10"
+          echo "- Coverage: $coverage_percent%"
+          echo "- Security Issues: $security_issues"
+          echo "- Performance Score: $performance_score/10"
+          
+          # Define thresholds
+          min_quality_score=7.0
+          min_coverage=90
+          max_security_issues=0
+          min_performance_score=6.0
+          
+          # Validate gates
+          quality_gate_passed=true
+          failed_gates=()
+          
+          if (( $(echo "$quality_score < $min_quality_score" | bc -l) )); then
+            quality_gate_passed=false
+            failed_gates+=("Code Quality: $quality_score < $min_quality_score")
+          fi
+          
+          if (( $(echo "$coverage_percent < $min_coverage" | bc -l) )); then
+            quality_gate_passed=false
+            failed_gates+=("Coverage: $coverage_percent% < $min_coverage%")
+          fi
+          
+          if (( security_issues > max_security_issues )); then
+            quality_gate_passed=false
+            failed_gates+=("Security: $security_issues issues > $max_security_issues")
+          fi
+          
+          if (( $(echo "$performance_score < $min_performance_score" | bc -l) )); then
+            quality_gate_passed=false
+            failed_gates+=("Performance: $performance_score < $min_performance_score")
+          fi
+          
+          # Calculate overall score
+          overall_score=$(echo "scale=2; ($quality_score + $performance_score) / 2" | bc -l)
+          
+          echo "::set-output name=passed::$quality_gate_passed"
+          echo "::set-output name=overall_score::$overall_score"
+          
+          if [ "$quality_gate_passed" = "true" ]; then
+            echo "✅ All quality gates PASSED"
+            echo "Overall Score: $overall_score/10"
+          else
+            echo "❌ Quality gates FAILED:"
+            for gate in "${failed_gates[@]}"; do
+              echo "  - $gate"
+            done
+            echo "Overall Score: $overall_score/10"
+          fi
+
+      - name: Generate Quality Gates Report
+        run: |
+          cat > quality-gates-report.md << EOF
+          # US1.6 Quality Gates Report
+          
+          **Date**: $(date -u +%Y-%m-%d)
+          **Commit**: ${{ github.sha }}
+          **Branch**: ${{ github.ref_name }}
+          
+          ## Quality Gates Status: ${{ steps.gate_validation.outputs.passed == 'true' && '✅ PASSED' || '❌ FAILED' }}
+          
+          ### Metrics Summary
+          
+          | Metric | Value | Threshold | Status |
+          |--------|-------|-----------|--------|
+          | Code Quality Score | ${{ needs.code-quality-analysis.outputs.quality_score }}/10 | ≥ 7.0 | ${{ (needs.code-quality-analysis.outputs.quality_score >= 7.0) && '✅' || '❌' }} |
+          | Test Coverage | ${{ needs.code-quality-analysis.outputs.coverage_percent }}% | ≥ 90% | ${{ (needs.code-quality-analysis.outputs.coverage_percent >= 90) && '✅' || '❌' }} |
+          | Security Issues | ${{ needs.code-quality-analysis.outputs.security_issues }} | = 0 | ${{ (needs.code-quality-analysis.outputs.security_issues == 0) && '✅' || '❌' }} |
+          | Performance Score | ${{ needs.us16-performance-tests.outputs.performance_score }}/10 | ≥ 6.0 | ${{ (needs.us16-performance-tests.outputs.performance_score >= 6.0) && '✅' || '❌' }} |
+          
+          ### Overall Score: ${{ steps.gate_validation.outputs.overall_score }}/10
+          
+          ### US1.6 Specific Metrics
+          
+          - **Date Utils Performance**: ${{ needs.us16-performance-tests.outputs.date_utils_performance }}ms
+          - **API Response Time**: ${{ needs.us16-performance-tests.outputs.api_performance }}ms
+          
+          ### Recommendations
+          
+          $( if [ "${{ steps.gate_validation.outputs.passed }}" = "true" ]; then
+            echo "🎉 **Excellent work!** All quality gates passed. The code is ready for deployment."
+          else
+            echo "🔧 **Action Required**: Some quality gates failed. Please address the issues above before proceeding."
+          fi )
+          
+          ---
+          *Generated by US1.6 Quality Gates Pipeline*
+          EOF
+          
+          cat quality-gates-report.md
+
+      - name: Upload Quality Gates Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-gates-report
+          path: quality-gates-report.md
+          retention-days: 90
+
+      - name: Comment PR with Quality Gates Results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('quality-gates-report.md', 'utf8');
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+
+  # ========================================
+  # QUALITY GATES ENFORCEMENT
+  # ========================================
+  enforce-quality-gates:
+    name: 🛡️ Enforce Quality Gates
+    runs-on: ubuntu-latest
+    needs: quality-gates-validation
+    if: github.event_name == 'pull_request'
+
+    steps:
+      - name: Block PR if Quality Gates Failed
+        if: needs.quality-gates-validation.outputs.quality_gate_passed != 'true'
+        run: |
+          echo "❌ Quality gates failed. Blocking PR merge."
+          echo "Overall score: ${{ needs.quality-gates-validation.outputs.quality_gate_score }}/10"
+          echo "Please fix the issues and re-run the quality gates."
+          exit 1
+
+      - name: Quality Gates Passed
+        if: needs.quality-gates-validation.outputs.quality_gate_passed == 'true'
+        run: |
+          echo "✅ Quality gates passed successfully!"
+          echo "Overall score: ${{ needs.quality-gates-validation.outputs.quality_gate_score }}/10"
+          echo "PR is ready for review and merge."

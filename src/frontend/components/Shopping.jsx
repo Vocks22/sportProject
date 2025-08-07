@@ -23,6 +23,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { Badge } from '@/components/ui/badge'
 import { Progress as ProgressBar } from '@/components/ui/progress'
 import useShoppingList, { useNetworkStatus } from '@/hooks/useShoppingList'
+import { useNextWeekShopping } from '@/hooks/useISOWeek'
 
 export function Shopping() {
   // État et hooks
@@ -46,6 +47,15 @@ export function Shopping() {
   
   useNetworkStatus() // Active la détection réseau
   
+  // Hook pour la gestion de "semaine prochaine"
+  const {
+    nextWeekInfo,
+    nextWeekDays,
+    displayText,
+    isNextWeekFromToday,
+    goBackToCurrentWeek
+  } = useNextWeekShopping()
+  
   // États pour les nouvelles fonctionnalités US1.5
   const [showExportModal, setShowExportModal] = useState(false)
   const [showStatsModal, setShowStatsModal] = useState(false)
@@ -54,10 +64,13 @@ export function Shopping() {
   const [history, setHistory] = useState(null)
   const [isExporting, setIsExporting] = useState(false)
   
+  // État pour la vue "semaine prochaine" (US1.6)
+  const [showNextWeekView, setShowNextWeekView] = useState(false)
+  
   // Fallback vers les données de test si pas de liste actuelle
   const [fallbackList, setFallbackList] = useState({
     id: 1,
-    weekStart: "2025-08-06",
+    weekStart: showNextWeekView ? nextWeekInfo.mondayISO : "2025-08-06",
     generatedDate: "2025-08-03",
     isCompleted: false,
     items: [
@@ -297,14 +310,32 @@ export function Shopping() {
           </div>
           
           <p className="text-gray-600">
-            {activeList.week_start 
+            {showNextWeekView 
+              ? displayText
+              : activeList.week_start 
               ? `Semaine du ${new Date(activeList.week_start).toLocaleDateString('fr-FR')}`
               : 'Semaine du 6-12 Août 2025'
             }
+            {showNextWeekView && (
+              <span className="ml-2 text-blue-600 font-medium">
+                (Planification avancée)
+              </span>
+            )}
           </p>
         </div>
         
         <div className="flex items-center space-x-2">
+          {/* Bouton pour basculer vers semaine prochaine (US1.6) */}
+          <Button 
+            variant={showNextWeekView ? "default" : "outline"} 
+            size="sm"
+            onClick={() => setShowNextWeekView(!showNextWeekView)}
+            title={showNextWeekView ? "Retour à la semaine courante" : "Voir la semaine prochaine"}
+          >
+            <Calendar className="h-4 w-4 mr-2" />
+            {showNextWeekView ? "Semaine courante" : "Semaine prochaine"}
+          </Button>
+          
           <Button 
             variant="outline" 
             size="sm"
@@ -386,10 +417,12 @@ export function Shopping() {
             <div>
               <h3 className="text-lg font-semibold">Progression des courses</h3>
               <p className="text-sm text-gray-600">
-                {activeList.generated_date 
-                  ? `Générée le ${new Date(activeList.generated_date).toLocaleDateString('fr-FR')}`
-                  : 'Générée le 3 août 2025'
-                } • Budget estimé: {estimatedBudget}
+                {showNextWeekView 
+                  ? `Liste pour ${nextWeekInfo.displayRange} • Budget estimé: ${estimatedBudget}`
+                  : activeList.generated_date 
+                  ? `Générée le ${new Date(activeList.generated_date).toLocaleDateString('fr-FR')} • Budget estimé: ${estimatedBudget}`
+                  : `Générée le 3 août 2025 • Budget estimé: ${estimatedBudget}`
+                }
               </p>
             </div>
             <Badge variant="outline" className="text-lg px-3 py-1">
@@ -405,7 +438,8 @@ export function Shopping() {
                 variant="outline"
                 size="sm"
                 onClick={handleToggleAll}
-                disabled={isLoading}
+                disabled={isLoading || showNextWeekView}
+                title={showNextWeekView ? "Non disponible en mode planification" : ""}
               >
                 <Check className="h-4 w-4 mr-2" />
                 {activeCompletionStats.completed === activeCompletionStats.total ? 'Tout décocher' : 'Tout cocher'}
@@ -414,14 +448,32 @@ export function Shopping() {
                 variant="outline" 
                 size="sm"
                 onClick={handleRegenerate}
-                disabled={isLoading || !currentList}
+                disabled={isLoading || !currentList || showNextWeekView}
+                title={showNextWeekView ? "Non disponible en mode planification" : ""}
               >
                 <RefreshCw className={`h-4 w-4 mr-2 ${isLoading ? 'animate-spin' : ''}`} />
                 Régénérer
               </Button>
+              
+              {showNextWeekView && (
+                <Button 
+                  variant="default" 
+                  size="sm"
+                  onClick={() => {
+                    // Générer la liste pour la semaine prochaine
+                    console.log('Génération liste pour semaine prochaine:', nextWeekInfo.mondayISO)
+                  }}
+                >
+                  <Plus className="h-4 w-4 mr-2" />
+                  Générer liste
+                </Button>
+              )}
             </div>
             <div className="text-sm text-gray-600">
-              {activeCompletionStats.percentage}% terminé
+              {showNextWeekView 
+                ? `Planification pour ${nextWeekInfo.displayRange.split(' ').slice(-2).join(' ')}`
+                : `${activeCompletionStats.percentage}% terminé`
+              }
             </div>
           </div>
         </CardContent>
@@ -463,7 +515,8 @@ export function Shopping() {
                       checked={item.checked}
                       onChange={() => handleToggleItem(item.id)}
                       className="h-5 w-5"
-                      disabled={isLoading}
+                      disabled={isLoading || showNextWeekView}
+                      title={showNextWeekView ? "Mode planification - cocher non disponible" : ""}
                     />
                     <div className="flex-1">
                       <div className={`font-medium transition-all duration-200 ${
@@ -488,10 +541,13 @@ export function Shopping() {
                     
                     {/* Indicateurs d'état */}
                     <div className="flex items-center space-x-1">
-                      {offlineMode && item.checked && (
+                      {showNextWeekView && (
+                        <Calendar className="h-4 w-4 text-blue-500" title="Article planifié pour la semaine prochaine" />
+                      )}
+                      {!showNextWeekView && offlineMode && item.checked && (
                         <Clock className="h-4 w-4 text-orange-500" title="Modification en attente de synchronisation" />
                       )}
-                      {item.checked && (
+                      {!showNextWeekView && item.checked && (
                         <Check className="h-5 w-5 text-green-600" />
                       )}
                     </div>

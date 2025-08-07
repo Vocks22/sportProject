@@ -1,0 +1,48 @@
+# Production Environment Configuration for US1.6
+name: production
+url: https://diettracker-app.herokuapp.com
+
+# Protection rules - stricter for production
+protection_rules:
+  reviewers:
+    - devops-lead
+    - tech-lead
+    - security-team
+  required_reviewers: 2
+  deployment_branch_policy:
+    protected_branches: true
+    custom_branch_policies: false
+  wait_timer: 300  # 5 minute wait before deployment
+  prevent_self_review: true
+
+# Environment variables (references to secrets)
+variables:
+  NODE_ENV: production
+  FLASK_ENV: production
+  DATABASE_POOL_SIZE: "20"
+  API_RATE_LIMIT: "5000"
+  CACHE_TTL: "600"
+  LOG_LEVEL: "WARN"
+  MONITORING_ENABLED: "true"
+  BACKUP_ENABLED: "true"
+  SSL_REDIRECT: "true"
+  SECURE_HEADERS: "true"
+
+# Deployment configuration
+deployment:
+  strategy: blue_green
+  health_check_path: /health
+  health_check_interval: 15s
+  health_check_timeout: 5s
+  health_check_retries: 5
+  rollback_on_failure: true
+  canary_deployment: false
+  traffic_split: 100
+  
+  # Post-deployment monitoring
+  post_deployment_monitoring:
+    duration: 600  # 10 minutes
+    metrics:
+      - response_time_p95: 500ms
+      - error_rate: 1%
+      - success_rate: 99%
