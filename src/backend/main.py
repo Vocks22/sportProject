@@ -5,7 +5,7 @@ from pathlib import Path
 # Add parent directory to path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, request
 from flask_cors import CORS
 from database import db
 from database.config import get_config
@@ -20,7 +20,14 @@ def create_app(config_name=None):
     
     # Initialize extensions
     db.init_app(app)
-    CORS(app, origins=app.config['CORS_ORIGINS'])
+    
+    # Configuration CORS simplifiée et plus permissive pour la production
+    CORS(app, 
+         origins=["https://diettracker-front.netlify.app", "http://localhost:5173", "http://localhost:3000", "http://localhost:5000"],
+         allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
+         supports_credentials=True,
+         expose_headers=["Content-Range", "X-Content-Range"],
+         max_age=3600)
     
     # Register blueprints
     from routes.user import user_bp
@@ -37,7 +44,7 @@ def create_app(config_name=None):
     # Health check endpoint
     @app.route('/health')
     def health_check():
-        return {'status': 'healthy', 'environment': app.config.get('FLASK_ENV', 'unknown')}, 200
+        return {'status': 'healthy', 'environment': app.config.get('FLASK_ENV', 'unknown'), 'cors_configured': True}, 200
     
     # API root endpoint
     @app.route(f'{api_prefix}/')
