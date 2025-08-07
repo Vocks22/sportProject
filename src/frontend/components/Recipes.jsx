@@ -1,11 +1,14 @@
 import { useState } from 'react'
-import { Search, Clock, Users, ChefHat, Filter } from 'lucide-react'
+import { Search, Clock, Users, ChefHat, Filter, Star } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { CookingGuideButton, ChefModeBadge, ChefTipsPreview } from './CookingGuideButton'
 
 export function Recipes() {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
+  const [selectedDifficulty, setSelectedDifficulty] = useState('all')
+  const [showChefModeOnly, setShowChefModeOnly] = useState(false)
 
   // Bibliothèque complète de 65 recettes
   const recipes = [
@@ -21,7 +24,25 @@ export function Recipes() {
       protein: 28,
       ingredients: ["3 blancs d'œufs", "40g noix de cajou", "épices"],
       ustensils: ["Poêle antiadhésive"],
-      description: "L'omelette classique de votre programme, riche en protéines"
+      description: "L'omelette classique de votre programme, riche en protéines",
+      has_chef_mode: true,
+      difficulty_level: "beginner",
+      chef_tips: [
+        {
+          id: "tip1",
+          type: "tip",
+          title: "Température parfaite",
+          description: "Utilisez une température moyenne pour éviter que les blancs d'œufs ne brunissent trop vite",
+          importance: "high"
+        },
+        {
+          id: "tip2", 
+          type: "secret",
+          title: "Secret du chef",
+          description: "Ajoutez une pincée d'eau aux blancs d'œufs pour une texture plus moelleuse",
+          importance: "medium"
+        }
+      ]
     },
     {
       id: 2,
@@ -350,7 +371,25 @@ export function Recipes() {
       protein: 35,
       ingredients: ["180g blanc de poulet", "150g brocolis", "5g huile d'olive"],
       ustensils: ["Poêle", "cuit-vapeur"],
-      description: "Le classique de votre programme déjeuner"
+      description: "Le classique de votre programme déjeuner",
+      has_chef_mode: true,
+      difficulty_level: "intermediate",
+      chef_tips: [
+        {
+          id: "tip26-1",
+          type: "tip",
+          title: "Cuisson parfaite du poulet",
+          description: "La température interne doit atteindre 74°C pour une cuisson parfaite",
+          importance: "high"
+        },
+        {
+          id: "tip26-2",
+          type: "warning",
+          title: "Attention",
+          description: "Ne pas retourner le poulet trop souvent pour garder les jus à l'intérieur",
+          importance: "medium"
+        }
+      ]
     },
     {
       id: 27,
@@ -679,7 +718,25 @@ export function Recipes() {
       protein: 38,
       ingredients: ["200g filet de cabillaud", "salade verte", "5g huile d'olive", "citron"],
       ustensils: ["Four", "papier sulfurisé"],
-      description: "Le classique de votre programme dîner"
+      description: "Le classique de votre programme dîner",
+      has_chef_mode: true,
+      difficulty_level: "advanced",
+      chef_tips: [
+        {
+          id: "tip51-1",
+          type: "secret",
+          title: "Technique de papillote",
+          description: "Préchauffez le four à 200°C et fermez hermétiquement la papillote pour créer un effet vapeur",
+          importance: "high"
+        },
+        {
+          id: "tip51-2",
+          type: "tip",
+          title: "Test de cuisson",
+          description: "Le poisson est cuit quand sa chair se défait facilement à la fourchette",
+          importance: "medium"
+        }
+      ]
     },
     {
       id: 52,
@@ -874,11 +931,21 @@ export function Recipes() {
     { id: 'repas3', name: 'Dîner', count: recipes.filter(r => r.category === 'repas3').length }
   ]
 
+  const difficultyLevels = [
+    { id: 'all', name: 'Tous niveaux' },
+    { id: 'beginner', name: 'Débutant' },
+    { id: 'intermediate', name: 'Intermédiaire' },
+    { id: 'advanced', name: 'Avancé' }
+  ]
+
   const filteredRecipes = recipes.filter(recipe => {
     const matchesSearch = recipe.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          recipe.ingredients.some(ing => ing.toLowerCase().includes(searchTerm.toLowerCase()))
     const matchesCategory = selectedCategory === 'all' || recipe.category === selectedCategory
-    return matchesSearch && matchesCategory
+    const matchesDifficulty = selectedDifficulty === 'all' || recipe.difficulty_level === selectedDifficulty
+    const matchesChefMode = !showChefModeOnly || recipe.has_chef_mode === true
+    
+    return matchesSearch && matchesCategory && matchesDifficulty && matchesChefMode
   })
 
   return (
@@ -922,6 +989,40 @@ export function Recipes() {
             </button>
           ))}
         </div>
+
+        {/* Filtres supplémentaires */}
+        <div className="flex flex-wrap items-center gap-4">
+          {/* Filtre par difficulté */}
+          <div className="flex items-center gap-2">
+            <span className="text-sm font-medium text-gray-700">Difficulté:</span>
+            {difficultyLevels.map((level) => (
+              <button
+                key={level.id}
+                onClick={() => setSelectedDifficulty(level.id)}
+                className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+                  selectedDifficulty === level.id
+                    ? 'bg-orange-500 text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                }`}
+              >
+                {level.name}
+              </button>
+            ))}
+          </div>
+
+          {/* Filtre Mode Chef uniquement */}
+          <button
+            onClick={() => setShowChefModeOnly(!showChefModeOnly)}
+            className={`flex items-center px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              showChefModeOnly
+                ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+          >
+            <ChefHat className="w-3 h-3 mr-1" />
+            Mode Chef uniquement
+          </button>
+        </div>
       </div>
 
       {/* Résultats */}
@@ -949,6 +1050,9 @@ export function Recipes() {
             
             <CardContent className="space-y-4">
               <p className="text-sm text-gray-600">{recipe.description}</p>
+              
+              {/* Mode Chef Badge */}
+              <ChefModeBadge recipe={recipe} />
               
               {/* Infos nutritionnelles */}
               <div className="flex justify-between text-sm">
@@ -984,9 +1088,13 @@ export function Recipes() {
                 </div>
               </div>
 
+              {/* Aperçu conseils du chef */}
+              <ChefTipsPreview recipe={recipe} />
+
               {/* Actions */}
-              <div className="flex space-x-2 pt-2">
-                <Button size="sm" className="flex-1">
+              <div className="flex flex-col space-y-2 pt-2">
+                <CookingGuideButton recipe={recipe} />
+                <Button size="sm" variant="outline" className="flex-1">
                   <ChefHat className="w-4 h-4 mr-1" />
                   Ajouter au planning
                 </Button>
