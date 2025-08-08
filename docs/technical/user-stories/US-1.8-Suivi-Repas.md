@@ -67,6 +67,155 @@ apiRequest @ api.js?t=1754664886938:40
 
 ```
 
+Maintenant j'ai ces nouvelles erreurs quand j'essaye de me connecter à planning sur la partie suivie repas : 
+
+```
+client.ts:19 [vite] connecting...
+client.ts:155 [vite] connected.
+chunk-X6P5W3KJ.js?v=39d604fc:21580 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+logDeprecation @ react-router-dom.js?v=39d604fc:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=39d604fc:4415
+(anonymous) @ react-router-dom.js?v=39d604fc:5290
+commitHookEffectListMount @ chunk-X6P5W3KJ.js?v=39d604fc:16936
+commitPassiveMountOnFiber @ chunk-X6P5W3KJ.js?v=39d604fc:18184
+commitPassiveMountEffects_complete @ chunk-X6P5W3KJ.js?v=39d604fc:18157
+commitPassiveMountEffects_begin @ chunk-X6P5W3KJ.js?v=39d604fc:18147
+commitPassiveMountEffects @ chunk-X6P5W3KJ.js?v=39d604fc:18137
+flushPassiveEffectsImpl @ chunk-X6P5W3KJ.js?v=39d604fc:19518
+flushPassiveEffects @ chunk-X6P5W3KJ.js?v=39d604fc:19475
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:19356
+workLoop @ chunk-X6P5W3KJ.js?v=39d604fc:197
+flushWork @ chunk-X6P5W3KJ.js?v=39d604fc:176
+performWorkUntilDeadline @ chunk-X6P5W3KJ.js?v=39d604fc:384
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+logDeprecation @ react-router-dom.js?v=39d604fc:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=39d604fc:4418
+(anonymous) @ react-router-dom.js?v=39d604fc:5290
+commitHookEffectListMount @ chunk-X6P5W3KJ.js?v=39d604fc:16936
+commitPassiveMountOnFiber @ chunk-X6P5W3KJ.js?v=39d604fc:18184
+commitPassiveMountEffects_complete @ chunk-X6P5W3KJ.js?v=39d604fc:18157
+commitPassiveMountEffects_begin @ chunk-X6P5W3KJ.js?v=39d604fc:18147
+commitPassiveMountEffects @ chunk-X6P5W3KJ.js?v=39d604fc:18137
+flushPassiveEffectsImpl @ chunk-X6P5W3KJ.js?v=39d604fc:19518
+flushPassiveEffects @ chunk-X6P5W3KJ.js?v=39d604fc:19475
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:19356
+workLoop @ chunk-X6P5W3KJ.js?v=39d604fc:197
+flushWork @ chunk-X6P5W3KJ.js?v=39d604fc:176
+performWorkUntilDeadline @ chunk-X6P5W3KJ.js?v=39d604fc:384
+QuickAddModal.jsx:28 Uncaught ReferenceError: useMealTracking is not defined
+    at QuickAddModal (QuickAddModal.jsx:28:40)
+    at renderWithHooks (chunk-X6P5W3KJ.js?v=39d604fc:11568:26)
+    at mountIndeterminateComponent (chunk-X6P5W3KJ.js?v=39d604fc:14946:21)
+    at beginWork (chunk-X6P5W3KJ.js?v=39d604fc:15934:22)
+    at HTMLUnknownElement.callCallback2 (chunk-X6P5W3KJ.js?v=39d604fc:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-X6P5W3KJ.js?v=39d604fc:3699:24)
+    at invokeGuardedCallback (chunk-X6P5W3KJ.js?v=39d604fc:3733:39)
+    at beginWork$1 (chunk-X6P5W3KJ.js?v=39d604fc:19793:15)
+    at performUnitOfWork (chunk-X6P5W3KJ.js?v=39d604fc:19226:20)
+    at workLoopSync (chunk-X6P5W3KJ.js?v=39d604fc:19165:13)
+QuickAddModal @ QuickAddModal.jsx:28
+renderWithHooks @ chunk-X6P5W3KJ.js?v=39d604fc:11568
+mountIndeterminateComponent @ chunk-X6P5W3KJ.js?v=39d604fc:14946
+beginWork @ chunk-X6P5W3KJ.js?v=39d604fc:15934
+callCallback2 @ chunk-X6P5W3KJ.js?v=39d604fc:3674
+invokeGuardedCallbackDev @ chunk-X6P5W3KJ.js?v=39d604fc:3699
+invokeGuardedCallback @ chunk-X6P5W3KJ.js?v=39d604fc:3733
+beginWork$1 @ chunk-X6P5W3KJ.js?v=39d604fc:19793
+performUnitOfWork @ chunk-X6P5W3KJ.js?v=39d604fc:19226
+workLoopSync @ chunk-X6P5W3KJ.js?v=39d604fc:19165
+renderRootSync @ chunk-X6P5W3KJ.js?v=39d604fc:19144
+performSyncWorkOnRoot @ chunk-X6P5W3KJ.js?v=39d604fc:18902
+flushSyncCallbacks @ chunk-X6P5W3KJ.js?v=39d604fc:9135
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:18655
+QuickAddModal.jsx:28 Uncaught ReferenceError: useMealTracking is not defined
+    at QuickAddModal (QuickAddModal.jsx:28:40)
+    at renderWithHooks (chunk-X6P5W3KJ.js?v=39d604fc:11568:26)
+    at mountIndeterminateComponent (chunk-X6P5W3KJ.js?v=39d604fc:14946:21)
+    at beginWork (chunk-X6P5W3KJ.js?v=39d604fc:15934:22)
+    at HTMLUnknownElement.callCallback2 (chunk-X6P5W3KJ.js?v=39d604fc:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-X6P5W3KJ.js?v=39d604fc:3699:24)
+    at invokeGuardedCallback (chunk-X6P5W3KJ.js?v=39d604fc:3733:39)
+    at beginWork$1 (chunk-X6P5W3KJ.js?v=39d604fc:19793:15)
+    at performUnitOfWork (chunk-X6P5W3KJ.js?v=39d604fc:19226:20)
+    at workLoopSync (chunk-X6P5W3KJ.js?v=39d604fc:19165:13)
+QuickAddModal @ QuickAddModal.jsx:28
+renderWithHooks @ chunk-X6P5W3KJ.js?v=39d604fc:11568
+mountIndeterminateComponent @ chunk-X6P5W3KJ.js?v=39d604fc:14946
+beginWork @ chunk-X6P5W3KJ.js?v=39d604fc:15934
+callCallback2 @ chunk-X6P5W3KJ.js?v=39d604fc:3674
+invokeGuardedCallbackDev @ chunk-X6P5W3KJ.js?v=39d604fc:3699
+invokeGuardedCallback @ chunk-X6P5W3KJ.js?v=39d604fc:3733
+beginWork$1 @ chunk-X6P5W3KJ.js?v=39d604fc:19793
+performUnitOfWork @ chunk-X6P5W3KJ.js?v=39d604fc:19226
+workLoopSync @ chunk-X6P5W3KJ.js?v=39d604fc:19165
+renderRootSync @ chunk-X6P5W3KJ.js?v=39d604fc:19144
+recoverFromConcurrentError @ chunk-X6P5W3KJ.js?v=39d604fc:18764
+performSyncWorkOnRoot @ chunk-X6P5W3KJ.js?v=39d604fc:18907
+flushSyncCallbacks @ chunk-X6P5W3KJ.js?v=39d604fc:9135
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:18655
+chunk-X6P5W3KJ.js?v=39d604fc:14052 The above error occurred in the <QuickAddModal> component:
+
+    at QuickAddModal (http://localhost:5173/components/QuickAddModal.jsx?t=1754665403782:33:3)
+    at div
+    at MealTracker (http://localhost:5173/components/MealTracker.jsx?t=1754664886938:30:24)
+    at div
+    at MealPlanning (http://localhost:5173/components/MealPlanning.jsx?t=1754664886938:45:7)
+    at RenderedRoute (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=39d604fc:4103:5)
+    at Routes (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=39d604fc:4574:5)
+    at main
+    at div
+    at div
+    at Router (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=39d604fc:4517:15)
+    at BrowserRouter (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=39d604fc:5266:5)
+    at App (http://localhost:5173/App.jsx?t=1754664886938:32:41)
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-X6P5W3KJ.js?v=39d604fc:14052
+update.callback @ chunk-X6P5W3KJ.js?v=39d604fc:14072
+callCallback @ chunk-X6P5W3KJ.js?v=39d604fc:11268
+commitUpdateQueue @ chunk-X6P5W3KJ.js?v=39d604fc:11285
+commitLayoutEffectOnFiber @ chunk-X6P5W3KJ.js?v=39d604fc:17115
+commitLayoutMountEffects_complete @ chunk-X6P5W3KJ.js?v=39d604fc:18008
+commitLayoutEffects_begin @ chunk-X6P5W3KJ.js?v=39d604fc:17997
+commitLayoutEffects @ chunk-X6P5W3KJ.js?v=39d604fc:17948
+commitRootImpl @ chunk-X6P5W3KJ.js?v=39d604fc:19381
+commitRoot @ chunk-X6P5W3KJ.js?v=39d604fc:19305
+performSyncWorkOnRoot @ chunk-X6P5W3KJ.js?v=39d604fc:18923
+flushSyncCallbacks @ chunk-X6P5W3KJ.js?v=39d604fc:9135
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:18655
+chunk-X6P5W3KJ.js?v=39d604fc:9145 Uncaught ReferenceError: useMealTracking is not defined
+    at QuickAddModal (QuickAddModal.jsx:28:40)
+    at renderWithHooks (chunk-X6P5W3KJ.js?v=39d604fc:11568:26)
+    at mountIndeterminateComponent (chunk-X6P5W3KJ.js?v=39d604fc:14946:21)
+    at beginWork (chunk-X6P5W3KJ.js?v=39d604fc:15934:22)
+    at beginWork$1 (chunk-X6P5W3KJ.js?v=39d604fc:19781:22)
+    at performUnitOfWork (chunk-X6P5W3KJ.js?v=39d604fc:19226:20)
+    at workLoopSync (chunk-X6P5W3KJ.js?v=39d604fc:19165:13)
+    at renderRootSync (chunk-X6P5W3KJ.js?v=39d604fc:19144:15)
+    at recoverFromConcurrentError (chunk-X6P5W3KJ.js?v=39d604fc:18764:28)
+    at performSyncWorkOnRoot (chunk-X6P5W3KJ.js?v=39d604fc:18907:28)
+QuickAddModal @ QuickAddModal.jsx:28
+renderWithHooks @ chunk-X6P5W3KJ.js?v=39d604fc:11568
+mountIndeterminateComponent @ chunk-X6P5W3KJ.js?v=39d604fc:14946
+beginWork @ chunk-X6P5W3KJ.js?v=39d604fc:15934
+beginWork$1 @ chunk-X6P5W3KJ.js?v=39d604fc:19781
+performUnitOfWork @ chunk-X6P5W3KJ.js?v=39d604fc:19226
+workLoopSync @ chunk-X6P5W3KJ.js?v=39d604fc:19165
+renderRootSync @ chunk-X6P5W3KJ.js?v=39d604fc:19144
+recoverFromConcurrentError @ chunk-X6P5W3KJ.js?v=39d604fc:18764
+performSyncWorkOnRoot @ chunk-X6P5W3KJ.js?v=39d604fc:18907
+flushSyncCallbacks @ chunk-X6P5W3KJ.js?v=39d604fc:9135
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:18655
+
+```
+
+
+
+
 ---
 
 

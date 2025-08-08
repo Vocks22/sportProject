@@ -170,6 +170,7 @@
   },
   "active": "2a0815b1a548cd16",
   "lastOpenFiles": [
+    "src/frontend/components/QuickAddModal.jsx.tmp.766.1754665553347",
     "src/frontend/components/QuickAddModal.jsx.tmp.766.1754665403763",
     "src/frontend/components/QuickAddModal.jsx.tmp.766.1754665390489",
     "src/backend/routes/meal_tracking.py.tmp.766.1754665360162",
@@ -180,7 +181,6 @@
     "src/frontend/dist/assets/index-0d31aeb9.js",
     "src/frontend/dist/assets/index-d3b5173d.css",
     "src/frontend/components/QuickAddModal.jsx.tmp.766.1754665215960",
-    "src/frontend/components/RecipesFromAPI.jsx.tmp.766.1754664919810",
     "docs/technical/deployment/SEED_PRODUCTION_RECIPES.md",
     "docs/technical/SCRUM_DASHBOARD.md",
     "docs/technical/user-stories/US-1.8-Suivi-Repas.md",

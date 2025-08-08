@@ -25,7 +25,8 @@ const QuickAddModal = ({
   selectedDate, 
   onMealAdded 
 }) => {
-  const { userId, markMealConsumed } = useMealTracking()
+  // Utiliser un userId par défaut (normalement viendrait du contexte d'authentification)
+  const userId = 1 // TODO: Récupérer depuis le contexte utilisateur
   
   const [step, setStep] = useState('search') // search, custom, nutrition, confirm
   const [searchQuery, setSearchQuery] = useState('')
