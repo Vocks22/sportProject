@@ -47,6 +47,8 @@ Ok mais donc avec ce que tu as réalisé en production ça sera aussi visible ou
   cd src/backend
   python seed_recipes.py
 
+Ok c'est bon ça s'affiche bien par contre maintenant je vois qu'il y a un petit souci au niveau du moteur de recherche par exemple J'ai essayé d'ajouter un petit déjeuner avec une recherche d'une recette et quand je quand je tape OME Pour omelettes et bah y a rien qui sort donc c'est pas normal puisque y a bien des omelettes dans les dans les 65 recettes que tu as propagées
+
 ---
 
 

@@ -1,12 +1,14 @@
 // Configuration de l'API pour l'environnement
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 // Helper pour construire les URLs d'API
 export const getApiUrl = (endpoint) => {
   // Enlever le slash initial si présent
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint.slice(1) : endpoint;
-  return `${API_URL}/${cleanEndpoint}`;
+  // Ajouter /api si ce n'est pas déjà présent dans l'endpoint
+  const apiEndpoint = cleanEndpoint.startsWith('api/') ? cleanEndpoint : `api/${cleanEndpoint}`;
+  return `${API_URL}/${apiEndpoint}`;
 };
 
 // Configuration par défaut pour fetch

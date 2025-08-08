@@ -19,7 +19,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 
 // Configuration API
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
 const DIFFICULTY_COLORS = {
   beginner: 'bg-green-100 text-green-800 border-green-200',
@@ -53,7 +53,7 @@ export function CookingGuide({ recipeId, onBack }) {
   useEffect(() => {
     const fetchCookingGuide = async () => {
       try {
-        const response = await fetch(`${API_URL}/recipes/${recipeId}/cooking-guide`)
+        const response = await fetch(`${API_URL}/api/recipes/${recipeId}/cooking-guide`)
         if (!response.ok) {
           throw new Error('Guide de cuisson non disponible')
         }

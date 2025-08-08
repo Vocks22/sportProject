@@ -85,7 +85,7 @@ const QuickAddModal = ({
     
     setIsSearching(true)
     try {
-      const response = await apiRequest(`recipes?search=${encodeURIComponent(query)}&limit=10`)
+      const response = await apiRequest(`recipes?search=${encodeURIComponent(query)}&per_page=10`)
       setSearchResults(response.recipes || [])
     } catch (error) {
       console.error('Erreur de recherche:', error)
