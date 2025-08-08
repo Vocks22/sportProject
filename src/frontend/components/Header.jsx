@@ -8,11 +8,11 @@ export function Header({ sidebarOpen, setSidebarOpen }) {
       <div className="flex items-center justify-between h-full px-4">
         {/* Left side */}
         <div className="flex items-center space-x-4">
+          {/* Bouton menu toujours visible */}
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="lg:hidden"
           >
             <Menu className="h-5 w-5" />
           </Button>

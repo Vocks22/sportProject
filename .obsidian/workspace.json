@@ -170,6 +170,8 @@
   },
   "active": "2a0815b1a548cd16",
   "lastOpenFiles": [
+    "src/frontend/components/Sidebar.jsx.tmp.766.1754660709070",
+    "src/frontend/components/Header.jsx.tmp.766.1754660659317",
     "src/frontend/components/MealPlanning.jsx.tmp.766.1754660289452",
     "src/frontend/components/MealPlanning.jsx.tmp.766.1754660273132",
     "src/frontend/App.jsx.tmp.766.1754660262905",
@@ -180,8 +182,6 @@
     "docs/technical/SCRUM_DASHBOARD.md",
     "node_modules/@babel/core/lib/config/full.js",
     "src/frontend/node_modules",
-    "node_modules/caniuse-lite/data/features/css-clip-path.js",
-    "node_modules/electron-to-chromium/package.json",
     "docs/technical/user-stories/US-1.8-Suivi-Repas.md",
     "src/frontend/tests/README.md",
     "src/backend/tests/README.md",

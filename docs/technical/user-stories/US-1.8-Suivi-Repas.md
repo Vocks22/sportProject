@@ -35,6 +35,13 @@ Le problème persiste j'ai l'impression
 
 Je pense que tu peux faire ça pour toutes les pages de l'application puisque j'ai le même problème sur dashboard mais en règle générale je trouve que il y a un réel problème avec le responsive sur l'application Je sais pas comment c'est géré aujourd'hui mais je trouve que c'est extrêmement mal géré Je me demande s'il y aurait pas moyen de revoir ça et de refaire une refonte totale de la gestion du responsive de l'application
 
+Peuxtu m'expliquer clairement aujourd'hui comment est utilisé le responsive et avec quelle technologie Serenge sponsive estil maintenu et opérationnel Avec l'application telle qu'elle est pensée aujourd'hui
+
+Je voudrais simplifier le menu je voudrais que le menu maintenant reste à gauche mais soit un menu rétractable comme ça quand je suis sur mobile je peux afficher ou rétracter le menu pour avoir le même menu pour tous
+
+
+
+
 
 ---
 

@@ -2,95 +2,72 @@ import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { Header } from './components/Header'
 import { Sidebar } from './components/Sidebar'
-import { MobileHeader } from './components/MobileHeader'
 import { Dashboard } from './components/Dashboard'
-import { MobileDashboard } from './components/MobileDashboard'
 import { MealPlanning } from './components/MealPlanning'
 import { Recipes } from './components/Recipes'
 import { Shopping } from './components/Shopping'
-import { MobileShopping } from './components/MobileShopping'
 import { ProgressPage } from './components/Progress'
 import ProfilePage from './pages/ProfilePage'
 import MeasurementsPage from './pages/MeasurementsPage'
 import './App.css'
 
 function App() {
-  const [currentPage, setCurrentPage] = useState('dashboard')
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024)
 
-  // Mettre à jour currentPage quand l'URL change
+  // Détecter les changements de taille d'écran
   useEffect(() => {
-    const path = window.location.pathname
-    const pageMap = {
-      '/': 'dashboard',
-      '/planning': 'planning',
-      '/recipes': 'recipes',
-      '/shopping': 'shopping',
-      '/progress': 'progress',
-      '/profile': 'profile',
-      '/measurements': 'measurements'
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1024)
+      // Fermer automatiquement sur mobile
+      if (window.innerWidth < 1024) {
+        setSidebarOpen(false)
+      }
     }
-    setCurrentPage(pageMap[path] || 'dashboard')
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        {/* Header - Toujours visible */}
-        <Header />
+        {/* Header unifié avec bouton menu */}
+        <Header 
+          sidebarOpen={sidebarOpen} 
+          setSidebarOpen={setSidebarOpen}
+        />
         
-        {/* Mobile Header - Uniquement sur mobile */}
-        <div className="lg:hidden">
-          <MobileHeader 
-            currentPage={currentPage}
-          />
-        </div>
-        
-        {/* Conteneur principal avec padding-top pour compenser le header fixe */}
-        <div className="flex pt-16">
-          {/* Sidebar Desktop */}
-          <div className="hidden lg:block">
-            <Sidebar />
-          </div>
+        {/* Conteneur principal */}
+        <div className="flex pt-16 relative">
+          {/* Overlay pour mobile quand sidebar est ouvert */}
+          {sidebarOpen && isMobile && (
+            <div 
+              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
           
-          {/* Main content avec padding approprié */}
-          <main className="flex-1 lg:ml-64 p-4 lg:p-6">
+          {/* Sidebar rétractable unifié */}
+          <Sidebar 
+            isOpen={sidebarOpen} 
+            setIsOpen={setSidebarOpen}
+            isMobile={isMobile}
+          />
+          
+          {/* Contenu principal avec marge dynamique */}
+          <main className={`
+            flex-1 p-4 lg:p-6 transition-all duration-300
+            ${sidebarOpen && !isMobile ? 'ml-64' : 'ml-0'}
+          `}>
             <Routes>
-              <Route path="/" element={
-                <>
-                  <div className="lg:hidden">
-                    <MobileDashboard />
-                  </div>
-                  <div className="hidden lg:block">
-                    <Dashboard />
-                  </div>
-                </>
-              } />
-              <Route path="/dashboard" element={
-                <>
-                  <div className="lg:hidden">
-                    <MobileDashboard />
-                  </div>
-                  <div className="hidden lg:block">
-                    <Dashboard />
-                  </div>
-                </>
-              } />
+              <Route path="/" element={<Dashboard />} />
               <Route path="/planning" element={<MealPlanning />} />
               <Route path="/recipes" element={<Recipes />} />
-              <Route path="/shopping" element={
-                <>
-                  <div className="lg:hidden">
-                    <MobileShopping />
-                  </div>
-                  <div className="hidden lg:block">
-                    <Shopping />
-                  </div>
-                </>
-              } />
+              <Route path="/shopping" element={<Shopping />} />
               <Route path="/progress" element={<ProgressPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/measurements" element={<MeasurementsPage />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </main>
         </div>
@@ -100,4 +77,3 @@ function App() {
 }
 
 export default App
-
