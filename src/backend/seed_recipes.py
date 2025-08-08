@@ -1677,14 +1677,20 @@ def seed_recipes():
         
         if existing_count > 2:
             print("⚠️  Il y a déjà plus de 2 recettes dans la base.")
-            response = input("Voulez-vous les remplacer par les 65 nouvelles recettes? (oui/non): ")
-            if response.lower() != 'oui':
-                print("❌ Seeding annulé")
-                return
-            else:
-                print("🗑️  Suppression des recettes existantes...")
+            # En production, on ne demande pas confirmation
+            if os.environ.get('DATABASE_URL'):
+                print("🔄 Mode production: remplacement automatique des recettes...")
                 Recipe.query.delete()
                 db.session.commit()
+            else:
+                response = input("Voulez-vous les remplacer par les 65 nouvelles recettes? (oui/non): ")
+                if response.lower() != 'oui':
+                    print("❌ Seeding annulé")
+                    return
+                else:
+                    print("🗑️  Suppression des recettes existantes...")
+                    Recipe.query.delete()
+                    db.session.commit()
         
         # Créer les ingrédients si nécessaire
         print("\n🥗 Vérification des ingrédients...")
