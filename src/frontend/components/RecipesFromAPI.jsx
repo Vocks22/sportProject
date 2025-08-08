@@ -5,6 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 import { CookingGuideButton, ChefModeBadge, ChefTipsPreview } from './CookingGuideButton'
 
+// Configuration API
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+
 export function Recipes() {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(true)
@@ -24,7 +27,7 @@ export function Recipes() {
       setLoading(true)
       setError(null)
       
-      const response = await fetch('/api/recipes')
+      const response = await fetch(`${API_URL}/recipes`)
       if (!response.ok) {
         throw new Error('Erreur lors du chargement des recettes')
       }

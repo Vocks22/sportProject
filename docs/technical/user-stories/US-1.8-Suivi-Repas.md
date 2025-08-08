@@ -43,6 +43,10 @@ Ok très bien Une dernière action à réaliser je pense que ça soit en local o
 
 Ok mais donc avec ce que tu as réalisé en production ça sera aussi visible ou il faut que je fasse marcher le script pour que il Propage les recettes en production aussi
 
+  export DATABASE_URL="https://diettracker-backend.onrender.com"
+  cd src/backend
+  python seed_recipes.py
+
 ---
 
 
