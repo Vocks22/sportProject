@@ -39,7 +39,7 @@ Peuxtu m'expliquer clairement aujourd'hui comment est utilisé le responsive et 
 
 Je voudrais simplifier le menu je voudrais que le menu maintenant reste à gauche mais soit un menu rétractable comme ça quand je suis sur mobile je peux afficher ou rétracter le menu pour avoir le même menu pour tous
 
-
+Ok très bien Une dernière action à réaliser je pense que ça soit en local ou que ça soit même sur les serveurs en production Aujourd'hui je n'ai aucune recette dans le la partie recette de Mon application Or avant j'en avais plus de 60 avec des conseils de chef et cetera Je sais pas si c'est toujours existant ou si ça a été supprimé avec toutes les modifications qu'on a fait de la base de données estce que tu peux revérifier ça si tu ne trouves pas les recettes et les conseils de chef tu peux t'inspirer de ces documents docs\user
 
 
 
