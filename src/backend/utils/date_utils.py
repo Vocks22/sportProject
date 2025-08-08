@@ -7,6 +7,45 @@ from datetime import datetime, date, timedelta
 from typing import Tuple, Optional
 
 
+def parse_date(date_string: str) -> date:
+    """
+    Parse a date string in various formats to a date object
+    
+    Args:
+        date_string: Date string in format YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY
+        
+    Returns:
+        Date object
+        
+    Raises:
+        ValueError: If date string format is invalid
+    """
+    # Try different formats
+    formats = ['%Y-%m-%d', '%d/%m/%Y', '%d-%m-%Y']
+    
+    for fmt in formats:
+        try:
+            return datetime.strptime(date_string, fmt).date()
+        except ValueError:
+            continue
+    
+    raise ValueError(f"Invalid date format: {date_string}. Expected YYYY-MM-DD, DD/MM/YYYY, or DD-MM-YYYY")
+
+
+def get_week_dates(week_start: date) -> list:
+    """
+    Get all dates in a week starting from Monday
+    
+    Args:
+        week_start: Monday date of the week
+        
+    Returns:
+        List of all 7 dates in the week
+    """
+    validate_week_start_iso8601(week_start)
+    return [week_start + timedelta(days=i) for i in range(7)]
+
+
 def get_monday_of_week(input_date: date) -> date:
     """
     Calcule le lundi de la semaine pour une date donnée selon ISO 8601

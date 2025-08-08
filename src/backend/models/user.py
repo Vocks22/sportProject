@@ -77,6 +77,9 @@ class User(db.Model):
     goals_history = relationship('UserGoalsHistory', back_populates='user', cascade='all, delete-orphan')
     # measurements = relationship('UserMeasurement', back_populates='user', cascade='all, delete-orphan')  # Défini dans measurements.py
     meal_plans = relationship('MealPlan', backref='user', cascade='all, delete-orphan')
+    # US1.8 - Meal Tracking Relations
+    meal_trackings = relationship('MealTracking', backref='user', cascade='all, delete-orphan')
+    daily_nutrition_summaries = relationship('DailyNutritionSummary', backref='user', cascade='all, delete-orphan')
     
     def __repr__(self):
         return f'<User {self.username} (ID: {self.id})>'
@@ -347,6 +350,18 @@ class User(db.Model):
         
         progress = (current_change / total_change_needed) * 100
         return max(0, min(100, progress))  # Limiter entre 0 et 100%
+    
+    def get_daily_targets(self) -> Dict[str, float]:
+        """Get daily nutritional targets as dictionary for meal tracking"""
+        return {
+            'calories': self.daily_calories_target,
+            'protein': self.daily_protein_target,
+            'carbs': self.daily_carbs_target,
+            'fat': self.daily_fat_target,
+            'fiber': self.daily_fiber_target,
+            'sodium': self.daily_sodium_target,
+            'sugar': self.daily_sugar_target
+        }
     
     def to_dict(self, include_sensitive: bool = False, include_extended: bool = True) -> Dict[str, Any]:
         """Convertit l'utilisateur en dictionnaire avec options de personnalisation"""

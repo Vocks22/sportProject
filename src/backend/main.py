@@ -39,12 +39,14 @@ def create_app(config_name=None):
     from routes.recipes import recipes_bp
     from routes.ingredients import ingredients_bp
     from routes.meal_plans import meal_plans_bp
+    from routes.meal_tracking import meal_tracking_bp
     
     api_prefix = app.config.get('API_PREFIX', '/api')
     app.register_blueprint(user_bp, url_prefix=api_prefix)
     app.register_blueprint(recipes_bp, url_prefix=api_prefix)
     app.register_blueprint(ingredients_bp, url_prefix=api_prefix)
     app.register_blueprint(meal_plans_bp, url_prefix=api_prefix)
+    app.register_blueprint(meal_tracking_bp, url_prefix=api_prefix)
     
     # Health check endpoint
     @app.route('/health')
@@ -62,7 +64,8 @@ def create_app(config_name=None):
                 'users': f'{api_prefix}/users',
                 'recipes': f'{api_prefix}/recipes',
                 'ingredients': f'{api_prefix}/ingredients',
-                'meal_plans': f'{api_prefix}/meal-plans'
+                'meal_plans': f'{api_prefix}/meal-plans',
+                'meal_tracking': f'{api_prefix}/meal-tracking'
             }
         }, 200
     
@@ -77,6 +80,7 @@ from models.recipe import Recipe
 from models.meal_plan import MealPlan, ShoppingList
 from models.measurements import UserMeasurement
 from models.user import User
+from models.meal_tracking import MealTracking, DailyNutritionSummary
 # from models.shopping_history import ShoppingListHistory, StoreCategory  # Commenté car problème
 
 # Initialize database with app context

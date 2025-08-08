@@ -49,6 +49,9 @@ class Recipe(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
+    # US1.8 - Relations with meal tracking
+    # meal_trackings and replacement_trackings will be defined via backref in MealTracking model
+    
     @property
     def ingredients(self):
         return json.loads(self.ingredients_json) if self.ingredients_json else []

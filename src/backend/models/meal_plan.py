@@ -24,6 +24,9 @@ class MealPlan(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
+    # US1.8 - Relations with meal tracking
+    # meal_trackings will be defined via backref in MealTracking model
+    
     
     @property
     def meals(self):
@@ -105,7 +108,7 @@ class ShoppingList(db.Model):
     # Version pour gestion de conflits
     version = db.Column(db.Integer, default=1)
     
-    # Relation avec MealPlan
+    # Relations
     meal_plan = db.relationship('MealPlan', backref=db.backref('shopping_lists', lazy=True))
     
     @property

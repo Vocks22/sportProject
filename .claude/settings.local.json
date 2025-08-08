@@ -45,7 +45,8 @@
       "Bash(do sed -i '/^import React from ''''react''''/N; s/import React from ''''react''''\\nimport React from ''''react''''/import React from ''''react''''/g' \"$file\")",
       "Bash(npx tailwindcss:*)",
       "Bash(PYTHONPATH:*)",
-      "WebFetch(domain:diettracker-backend.onrender.com)"
+      "WebFetch(domain:diettracker-backend.onrender.com)",
+      "Bash(node:*)"
     ],
     "deny": []
   }
