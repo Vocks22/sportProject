@@ -60,6 +60,60 @@ portion_adjustment_schema = PortionAdjustmentSchema()
 
 # ===== API ENDPOINTS =====
 
+@meal_tracking_bp.route('/meal-tracking', methods=['POST'])
+def create_meal_tracking():
+    """Create a new meal tracking entry (US1.8)"""
+    try:
+        # Validate input data
+        data = meal_tracking_schema.load(request.json)
+        
+        # Check if user exists
+        user = User.query.get(data['user_id'])
+        if not user:
+            return jsonify({'error': 'User not found'}), 404
+        
+        # Create new meal tracking entry
+        tracking = MealTracking(
+            user_id=data['user_id'],
+            meal_plan_id=data.get('meal_plan_id'),
+            recipe_id=data.get('recipe_id'),
+            meal_date=data['meal_date'],
+            meal_type=data['meal_type'],
+            meal_name=data.get('meal_name'),
+            status=MealStatus.PLANNED,
+            created_at=datetime.now()
+        )
+        
+        # Set planned nutrition values from request or recipe
+        if 'planned_calories' in request.json:
+            tracking.planned_calories = request.json.get('planned_calories', 0)
+            tracking.planned_protein = request.json.get('planned_protein', 0)
+            tracking.planned_carbs = request.json.get('planned_carbs', 0)
+            tracking.planned_fat = request.json.get('planned_fat', 0)
+        elif data.get('recipe_id'):
+            recipe = Recipe.query.get(data['recipe_id'])
+            if recipe:
+                tracking.meal_name = recipe.name
+                tracking.planned_calories = recipe.total_calories
+                tracking.planned_protein = recipe.total_protein
+                tracking.planned_carbs = recipe.total_carbs
+                tracking.planned_fat = recipe.total_fat
+        
+        # Save to database
+        db.session.add(tracking)
+        db.session.commit()
+        
+        return jsonify({
+            'success': True,
+            'meal_tracking': tracking.to_dict()
+        }), 201
+        
+    except ValidationError as e:
+        return jsonify({'error': 'Invalid data', 'messages': e.messages}), 400
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
+
 @meal_tracking_bp.route('/meal-tracking/today', methods=['GET'])
 def get_today_meal_tracking():
     """Get today's meal tracking for a user (US1.8)"""

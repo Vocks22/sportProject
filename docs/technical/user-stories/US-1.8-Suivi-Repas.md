@@ -49,6 +49,24 @@ Ok mais donc avec ce que tu as réalisé en production ça sera aussi visible ou
 
 Ok c'est bon ça s'affiche bien par contre maintenant je vois qu'il y a un petit souci au niveau du moteur de recherche par exemple J'ai essayé d'ajouter un petit déjeuner avec une recherche d'une recette et quand je quand je tape OME Pour omelettes et bah y a rien qui sort donc c'est pas normal puisque y a bien des omelettes dans les dans les 65 recettes que tu as propagées
 
+J'ai ce type d'erreur quand je j'essaie de sauvegarder une nouvelle recette dans Ajouter un petit déjeuner : 
+
+```
+client.ts:19 [vite] connecting...
+client.ts:155 [vite] connected.
+chunk-X6P5W3KJ.js?v=39d604fc:21580 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+:5000/api/meal-tracking:1  Failed to load resource: the server responded with a status of 405 (METHOD NOT ALLOWED)
+api.js?t=1754664886938:40 API Request failed: Error: API Error: 405
+    at apiRequest (api.js?t=1754664886938:36:13)
+    at async handleConfirmAdd (QuickAddModal.jsx:152:24)
+apiRequest @ api.js?t=1754664886938:40
+
+```
+
 ---
 
 

@@ -4,7 +4,6 @@
  */
 
 import React, { useState, useEffect } from 'react'
-import { useMealTracking } from '../hooks/useMealTracking'
 import { apiRequest } from '../src/config/api'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
@@ -155,18 +154,8 @@ const QuickAddModal = ({
       })
       
       if (response.success) {
-        // Marquer immédiatement comme consommé si souhaité
-        const shouldMarkConsumed = window.confirm(
-          'Voulez-vous marquer ce repas comme consommé maintenant ?'
-        )
-        
-        if (shouldMarkConsumed) {
-          await markMealConsumed(response.meal_tracking.id, {
-            consumption_time: new Date().toISOString(),
-            satisfaction_rating: 4 // Note par défaut
-          })
-        }
-        
+        // Ne pas demander de confirmation immédiate
+        // L'utilisateur pourra marquer comme consommé depuis l'interface principale
         onMealAdded?.()
         onClose()
       }
