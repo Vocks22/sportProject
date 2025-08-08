@@ -90,11 +90,10 @@ class MealTracking(db.Model):
     last_sync_at = db.Column(db.DateTime, nullable=True)
     version = db.Column(db.Integer, default=1, nullable=False)
     
-    # Relations
-    user = relationship('User', backref='meal_trackings')
-    meal_plan = relationship('MealPlan', backref='meal_trackings') 
-    recipe = relationship('Recipe', foreign_keys=[recipe_id], backref='meal_trackings')
-    replacement_recipe = relationship('Recipe', foreign_keys=[replacement_recipe_id], backref='replacement_trackings')
+    # Relations (backrefs defined in parent models to avoid duplicates)
+    # user relationship is defined in User model with backref='user'
+    # meal_plan relationship is defined in MealPlan model with backref='meal_plan'  
+    # recipe relationships are defined in Recipe model with backrefs
     
     # Unique constraint to prevent duplicate tracking
     __table_args__ = (
@@ -519,8 +518,8 @@ class DailyNutritionSummary(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow, nullable=False)
     
-    # Relations
-    user = relationship('User', backref='daily_nutrition_summaries')
+    # Relations (backref defined in User model to avoid duplicate)
+    # user relationship is defined in User model
     
     # Unique constraint for one summary per user per day
     __table_args__ = (

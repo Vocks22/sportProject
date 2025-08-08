@@ -25,7 +25,7 @@ class MealPlan(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
     # US1.8 - Relations with meal tracking
-    # meal_trackings will be defined via backref in MealTracking model
+    # Note: Relationship is handled through foreign key in MealTracking model
     
     
     @property

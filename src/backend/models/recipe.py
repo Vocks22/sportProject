@@ -50,7 +50,7 @@ class Recipe(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
     # US1.8 - Relations with meal tracking
-    # meal_trackings and replacement_trackings will be defined via backref in MealTracking model
+    # Note: Relationships are handled through foreign keys in MealTracking model
     
     @property
     def ingredients(self):
