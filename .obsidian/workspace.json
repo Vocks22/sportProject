@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NETLIFY_DEPLOY_NOW.md",
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NETLIFY_DEPLOY_NOW"
+              "title": "plan_action_scrum_diettracker"
             }
           }
         ]
@@ -94,7 +94,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "NETLIFY_DEPLOY_NOW.md",
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,7 +104,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for NETLIFY_DEPLOY_NOW"
+              "title": "Backlinks for plan_action_scrum_diettracker"
             }
           },
           {
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "NETLIFY_DEPLOY_NOW.md",
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from NETLIFY_DEPLOY_NOW"
+              "title": "Outgoing links from plan_action_scrum_diettracker"
             }
           },
           {
@@ -142,13 +142,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NETLIFY_DEPLOY_NOW.md",
+                "file": "docs/technical/plan_action_scrum_diettracker.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of NETLIFY_DEPLOY_NOW"
+              "title": "Outline of plan_action_scrum_diettracker"
             }
           }
         ]
@@ -170,6 +170,12 @@
   },
   "active": "2a0815b1a548cd16",
   "lastOpenFiles": [
+    "docs/technical/RECAP_US16_TO_PRODUCTION.md",
+    "docs/technical/plan_action_scrum_diettracker.md.tmp.766.1754638320395",
+    "docs/technical/plan_action_scrum_diettracker.md",
+    "docs/technical/RECAP_US16_TO_PRODUCTION.md.tmp.766.1754638279879",
+    "Untitled.canvas",
+    "NETLIFY_DEPLOY_NOW.md",
     "src/frontend/package.json.tmp.766.1754599613241",
     "src/backend/routes/__pycache__/user.cpython-312.pyc.140493651917488",
     "src/backend/routes/user.py.tmp.766.1754599373317",
@@ -178,17 +184,11 @@
     "docs/technical/log/logRender5.txt",
     "docs/technical/log/logRender4 copy.txt",
     "src/backend/create_initial_data.py",
-    "src/backend/create_initial_data.py.tmp.766.1754599233106",
-    "src/backend/database/__pycache__/config.cpython-312.pyc.140566709216448",
-    "src/backend/database/config.py.tmp.766.1754597608014",
     "FIX_RENDER_ERROR.md",
     "RENDER_DEPLOY_NOW.md",
-    "NETLIFY_DEPLOY_NOW.md",
-    "docs/technical/plan_action_scrum_diettracker.md",
     "DEPLOYMENT.md",
     "docs/deployment/netlify-deployment-guide.md",
     "docs/features/date-selectors.md",
-    "Untitled.canvas",
     "diet a suivre.md",
     "les dates et horaires clés.md",
     "node_modules/victory-vendor/README.md",
@@ -206,7 +206,6 @@
     "node_modules/decimal.js-light/LICENCE.md",
     "node_modules/d3-time/README.md",
     "node_modules/eventemitter3/README.md",
-    "node_modules/tiny-invariant/README.md",
     "node_modules/@jest/reporters/assets/jest_logo.png",
     "node_modules/istanbul-reports/lib/html/assets/sort-arrow-sprite.png",
     "node_modules/istanbul-reports/lib/html-spa/assets/sort-arrow-sprite.png",
