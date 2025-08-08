@@ -15,7 +15,7 @@ import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import { Alert } from './ui/alert'
 import { Progress } from './ui/progress'
-import { Calendar, Plus, RefreshCw, Wifi, WifiOff, Sync, ChevronLeft, ChevronRight, BarChart3 } from 'lucide-react'
+import { Calendar, Plus, RefreshCw, Wifi, WifiOff, RefreshCcw, ChevronLeft, ChevronRight, BarChart3 } from 'lucide-react'
 
 const MealTracker = ({ className = '' }) => {
   const {
@@ -152,7 +152,7 @@ const MealTracker = ({ className = '' }) => {
                     variant="destructive" 
                     className="flex items-center gap-1 bg-red-100 text-red-800 animate-bounce"
                   >
-                    <Sync className="h-3 w-3 animate-spin" />
+                    <RefreshCcw className="h-3 w-3 animate-spin" />
                     <span className="sm:hidden">{pendingActionsCount}</span>
                     <span className="hidden sm:inline">{pendingActionsCount} en attente</span>
                   </Badge>
@@ -172,7 +172,7 @@ const MealTracker = ({ className = '' }) => {
                   className="flex items-center gap-1 transition-all duration-200 hover:bg-blue-50 hover:border-blue-300 flex-1 sm:flex-none"
                   aria-label="Synchroniser les actions en attente"
                 >
-                  <Sync className="h-4 w-4" />
+                  <RefreshCcw className="h-4 w-4" />
                   <span className="hidden sm:inline">Synchroniser</span>
                 </Button>
               )}

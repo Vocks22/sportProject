@@ -1,0 +1,50 @@
+2025-08-08T13:05:18.080169616Z Using cached Flask-2.3.2-py3-none-any.whl (96 kB)
+2025-08-08T13:05:18.082106641Z Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+2025-08-08T13:05:18.083974075Z Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+2025-08-08T13:05:18.085728136Z Using cached SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+2025-08-08T13:05:18.093127501Z Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2025-08-08T13:05:18.094295588Z Using cached gunicorn-21.2.0-py3-none-any.whl (80 kB)
+2025-08-08T13:05:18.096175353Z Using cached psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2025-08-08T13:05:18.102778658Z Using cached Werkzeug-2.3.6-py3-none-any.whl (242 kB)
+2025-08-08T13:05:18.104876617Z Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+2025-08-08T13:05:18.107874108Z Using cached marshmallow-3.20.1-py3-none-any.whl (49 kB)
+2025-08-08T13:05:18.109718201Z Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl (16 kB)
+2025-08-08T13:05:18.11136737Z Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+2025-08-08T13:05:18.113301216Z Using cached blinker-1.9.0-py3-none-any.whl (8.5 kB)
+2025-08-08T13:05:18.114986815Z Using cached certifi-2025.8.3-py3-none-any.whl (161 kB)
+2025-08-08T13:05:18.117163656Z Using cached charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (147 kB)
+2025-08-08T13:05:18.119096812Z Using cached click-8.2.1-py3-none-any.whl (102 kB)
+2025-08-08T13:05:18.121062138Z Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+2025-08-08T13:05:18.12411842Z Using cached idna-3.10-py3-none-any.whl (70 kB)
+2025-08-08T13:05:18.125922142Z Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2025-08-08T13:05:18.127795677Z Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-08-08T13:05:18.129720212Z Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+2025-08-08T13:05:18.131303859Z Using cached packaging-25.0-py3-none-any.whl (66 kB)
+2025-08-08T13:05:18.133094591Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-08-08T13:05:18.134671599Z Using cached typing_extensions-4.14.1-py3-none-any.whl (43 kB)
+2025-08-08T13:05:18.136478491Z Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-08-08T13:05:18.284271609Z Installing collected packages: urllib3, typing-extensions, six, python-dotenv, psycopg2-binary, packaging, MarkupSafe, itsdangerous, idna, greenlet, click, charset-normalizer, certifi, blinker, Werkzeug, SQLAlchemy, requests, python-dateutil, marshmallow, Jinja2, gunicorn, marshmallow-sqlalchemy, Flask, Flask-SQLAlchemy, Flask-CORS
+2025-08-08T13:05:20.890442155Z Successfully installed Flask-2.3.2 Flask-CORS-4.0.0 Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 MarkupSafe-3.0.2 SQLAlchemy-2.0.19 Werkzeug-2.3.6 blinker-1.9.0 certifi-2025.8.3 charset-normalizer-3.4.2 click-8.2.1 greenlet-3.2.4 gunicorn-21.2.0 idna-3.10 itsdangerous-2.2.0 marshmallow-3.20.1 marshmallow-sqlalchemy-0.29.0 packaging-25.0 psycopg2-binary-2.9.6 python-dateutil-2.8.2 python-dotenv-1.0.0 requests-2.31.0 six-1.17.0 typing-extensions-4.14.1 urllib3-2.5.0
+2025-08-08T13:05:20.968649746Z 
+2025-08-08T13:05:20.968684126Z [notice] A new release of pip is available: 24.0 -> 25.2
+2025-08-08T13:05:20.968691097Z [notice] To update, run: pip install --upgrade pip
+2025-08-08T13:05:25.702782213Z ==> Uploading build...
+2025-08-08T13:05:40.602659256Z ==> Uploaded in 10.8s. Compression took 4.1s
+2025-08-08T13:05:40.667245526Z ==> Build successful 🎉
+2025-08-08T13:05:44.215587606Z ==> Deploying...
+2025-08-08T13:06:22.680811638Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-08T13:06:25.595526789Z [2025-08-08 13:06:25 +0000] [70] [INFO] Starting gunicorn 21.2.0
+2025-08-08T13:06:25.596074701Z [2025-08-08 13:06:25 +0000] [70] [INFO] Listening at: http://0.0.0.0:10000 (70)
+2025-08-08T13:06:25.596106583Z [2025-08-08 13:06:25 +0000] [70] [INFO] Using worker: sync
+2025-08-08T13:06:25.600531055Z [2025-08-08 13:06:25 +0000] [72] [INFO] Booting worker with pid: 72
+2025-08-08T13:06:26.598084203Z Redis not available - Cache disabled
+2025-08-08T13:06:26.598116525Z ✅ Tables de base de données créées/vérifiées
+2025-08-08T13:06:26.598121045Z ⚠️ Erreur lors de l'initialisation de la base de données: Error creating backref 'user' on relationship 'User.meal_trackings': property of that name exists on mapper 'Mapper[MealTracking(meal_tracking)]'
+2025-08-08T13:06:26.598125916Z 127.0.0.1 - - [08/Aug/2025:13:06:26 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2025-08-08T13:06:36.092222196Z ==> Your service is live 🎉
+2025-08-08T13:06:36.96745148Z ==> 
+2025-08-08T13:06:37.12045443Z ==> ///////////////////////////////////////////////////////////
+2025-08-08T13:06:37.275073329Z ==> 
+2025-08-08T13:06:37.909435675Z ==> Available at your primary URL https://diettracker-backend.onrender.com
+2025-08-08T13:06:38.064061865Z ==> 
+2025-08-08T13:06:38.219957064Z ==> ///////////////////////////////////////////////////////////
