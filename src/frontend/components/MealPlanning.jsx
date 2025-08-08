@@ -105,13 +105,13 @@ export function MealPlanning() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
+      {/* Header avec boutons de bascule */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
             {activeView === 'planning' ? 'Planification des Repas' : 'Suivi des Repas Consommés'}
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-sm sm:text-base">
             {activeView === 'planning' 
               ? planningMetrics.planningRecommendation 
               : 'Cochez les repas consommés et ajustez les portions'}
@@ -126,7 +126,7 @@ export function MealPlanning() {
             </div>
           )}
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           {/* Boutons de bascule entre Planning et Suivi */}
           <div className="flex items-center bg-gray-100 rounded-lg p-1">
             <Button

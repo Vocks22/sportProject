@@ -35,24 +35,24 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen bg-gray-50">
-        {/* Header Desktop */}
-        <div className="hidden lg:block">
-          <Header />
-        </div>
+        {/* Header - Toujours visible */}
+        <Header />
         
-        {/* Header Mobile */}
+        {/* Mobile Header - Uniquement sur mobile */}
         <div className="lg:hidden">
           <MobileHeader 
             currentPage={currentPage}
           />
         </div>
         
-        <div className="flex">
+        {/* Conteneur principal avec padding-top pour compenser le header fixe */}
+        <div className="flex pt-16">
           {/* Sidebar Desktop */}
           <div className="hidden lg:block">
             <Sidebar />
           </div>
           
+          {/* Main content avec padding approprié */}
           <main className="flex-1 lg:ml-64 p-4 lg:p-6">
             <Routes>
               <Route path="/" element={

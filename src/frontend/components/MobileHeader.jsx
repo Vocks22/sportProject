@@ -23,8 +23,8 @@ export function MobileHeader({ currentPage }) {
 
   return (
     <>
-      {/* Header Mobile */}
-      <div className="lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
+      {/* Header Mobile - Only visible on small screens */}
+      <div className="block lg:hidden bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between sticky top-0 z-50">
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center">
             <span className="text-white font-bold text-sm">DT</span>

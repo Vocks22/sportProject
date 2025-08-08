@@ -1,0 +1,109 @@
+2025-08-08T13:16:29.153455811Z ==> Cloning from https://github.com/Vocks22/sportProject
+2025-08-08T13:16:29.780596487Z ==> Checking out commit 2e15db22d23b9022bb0574d755cfe9b783b07a49 in branch main
+2025-08-08T13:16:30.908520634Z ==> Downloading cache...
+2025-08-08T13:16:40.454697587Z ==> Transferred 82MB in 8s. Extraction took 1s.
+2025-08-08T13:16:43.882681469Z ==> Installing Python version 3.11.10...
+2025-08-08T13:16:51.654568481Z ==> Using Python version 3.11.10 via environment variable PYTHON_VERSION
+2025-08-08T13:16:51.681485546Z ==> Docs on specifying a Python version: https://render.com/docs/python-version
+2025-08-08T13:16:55.742498311Z ==> Using Poetry version 2.1.3 (default)
+2025-08-08T13:16:55.790237229Z ==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+2025-08-08T13:16:55.811546572Z ==> Running build command ' pip install -r src/backend/requirements.txt'...
+2025-08-08T13:16:56.365094029Z Collecting Flask==2.3.2 (from -r src/backend/requirements.txt (line 1))
+2025-08-08T13:16:56.367040881Z   Using cached Flask-2.3.2-py3-none-any.whl.metadata (3.7 kB)
+2025-08-08T13:16:56.391439041Z Collecting Flask-SQLAlchemy==3.0.5 (from -r src/backend/requirements.txt (line 2))
+2025-08-08T13:16:56.393769342Z   Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl.metadata (3.3 kB)
+2025-08-08T13:16:56.41946371Z Collecting Flask-CORS==4.0.0 (from -r src/backend/requirements.txt (line 3))
+2025-08-08T13:16:56.421249799Z   Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl.metadata (5.4 kB)
+2025-08-08T13:16:56.73102847Z Collecting SQLAlchemy==2.0.19 (from -r src/backend/requirements.txt (line 4))
+2025-08-08T13:16:56.733181076Z   Using cached SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.4 kB)
+2025-08-08T13:16:56.761383829Z Collecting python-dotenv==1.0.0 (from -r src/backend/requirements.txt (line 5))
+2025-08-08T13:16:56.763244929Z   Using cached python_dotenv-1.0.0-py3-none-any.whl.metadata (21 kB)
+2025-08-08T13:16:56.802236767Z Collecting gunicorn==21.2.0 (from -r src/backend/requirements.txt (line 6))
+2025-08-08T13:16:56.804136338Z   Using cached gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+2025-08-08T13:16:56.882305616Z Collecting psycopg2-binary==2.9.6 (from -r src/backend/requirements.txt (line 7))
+2025-08-08T13:16:56.88430231Z   Using cached psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+2025-08-08T13:16:56.92986721Z Collecting Werkzeug==2.3.6 (from -r src/backend/requirements.txt (line 8))
+2025-08-08T13:16:56.931895374Z   Using cached Werkzeug-2.3.6-py3-none-any.whl.metadata (4.1 kB)
+2025-08-08T13:16:56.959111925Z Collecting python-dateutil==2.8.2 (from -r src/backend/requirements.txt (line 9))
+2025-08-08T13:16:56.961764263Z   Using cached python_dateutil-2.8.2-py2.py3-none-any.whl.metadata (8.2 kB)
+2025-08-08T13:16:57.04676691Z Collecting marshmallow==3.20.1 (from -r src/backend/requirements.txt (line 10))
+2025-08-08T13:16:57.048695701Z   Using cached marshmallow-3.20.1-py3-none-any.whl.metadata (7.8 kB)
+2025-08-08T13:16:57.079129593Z Collecting marshmallow-sqlalchemy==0.29.0 (from -r src/backend/requirements.txt (line 11))
+2025-08-08T13:16:57.080992423Z   Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl.metadata (6.8 kB)
+2025-08-08T13:16:57.11995723Z Collecting requests==2.31.0 (from -r src/backend/requirements.txt (line 12))
+2025-08-08T13:16:57.121735299Z   Using cached requests-2.31.0-py3-none-any.whl.metadata (4.6 kB)
+2025-08-08T13:16:57.159309675Z Collecting Jinja2>=3.1.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-08T13:16:57.161066153Z   Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2025-08-08T13:16:57.180884144Z Collecting itsdangerous>=2.1.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-08T13:16:57.182718804Z   Using cached itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+2025-08-08T13:16:57.210058738Z Collecting click>=8.1.3 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-08T13:16:57.211700123Z   Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+2025-08-08T13:16:57.230524572Z Collecting blinker>=1.6.2 (from Flask==2.3.2->-r src/backend/requirements.txt (line 1))
+2025-08-08T13:16:57.232169358Z   Using cached blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+2025-08-08T13:16:57.305294527Z Collecting typing-extensions>=4.2.0 (from SQLAlchemy==2.0.19->-r src/backend/requirements.txt (line 4))
+2025-08-08T13:16:57.307040405Z   Using cached typing_extensions-4.14.1-py3-none-any.whl.metadata (3.0 kB)
+2025-08-08T13:16:57.450654965Z Collecting greenlet!=0.4.17 (from SQLAlchemy==2.0.19->-r src/backend/requirements.txt (line 4))
+2025-08-08T13:16:57.452496085Z   Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+2025-08-08T13:16:57.488023497Z Collecting packaging (from gunicorn==21.2.0->-r src/backend/requirements.txt (line 6))
+2025-08-08T13:16:57.489750494Z   Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-08-08T13:16:57.551452985Z Collecting MarkupSafe>=2.1.1 (from Werkzeug==2.3.6->-r src/backend/requirements.txt (line 8))
+2025-08-08T13:16:57.553391397Z   Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+2025-08-08T13:16:57.576947969Z Collecting six>=1.5 (from python-dateutil==2.8.2->-r src/backend/requirements.txt (line 9))
+2025-08-08T13:16:57.578710977Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-08-08T13:16:57.776695669Z Collecting charset-normalizer<4,>=2 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-08T13:16:57.778656161Z   Using cached charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (35 kB)
+2025-08-08T13:16:57.803990682Z Collecting idna<4,>=2.5 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-08T13:16:57.805779141Z   Using cached idna-3.10-py3-none-any.whl.metadata (10 kB)
+2025-08-08T13:16:57.853649171Z Collecting urllib3<3,>=1.21.1 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-08T13:16:57.855511091Z   Using cached urllib3-2.5.0-py3-none-any.whl.metadata (6.5 kB)
+2025-08-08T13:16:57.884413379Z Collecting certifi>=2017.4.17 (from requests==2.31.0->-r src/backend/requirements.txt (line 12))
+2025-08-08T13:16:57.88627686Z   Using cached certifi-2025.8.3-py3-none-any.whl.metadata (2.4 kB)
+2025-08-08T13:16:57.943088724Z Using cached Flask-2.3.2-py3-none-any.whl (96 kB)
+2025-08-08T13:16:57.94565613Z Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+2025-08-08T13:16:57.94796914Z Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+2025-08-08T13:16:57.949984604Z Using cached SQLAlchemy-2.0.19-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.8 MB)
+2025-08-08T13:16:57.958480808Z Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2025-08-08T13:16:57.960824879Z Using cached gunicorn-21.2.0-py3-none-any.whl (80 kB)
+2025-08-08T13:16:57.963248732Z Using cached psycopg2_binary-2.9.6-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+2025-08-08T13:16:57.971204855Z Using cached Werkzeug-2.3.6-py3-none-any.whl (242 kB)
+2025-08-08T13:16:57.973385582Z Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+2025-08-08T13:16:57.975635421Z Using cached marshmallow-3.20.1-py3-none-any.whl (49 kB)
+2025-08-08T13:16:57.97788507Z Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl (16 kB)
+2025-08-08T13:16:57.980277492Z Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+2025-08-08T13:16:57.982081371Z Using cached blinker-1.9.0-py3-none-any.whl (8.5 kB)
+2025-08-08T13:16:57.983777588Z Using cached certifi-2025.8.3-py3-none-any.whl (161 kB)
+2025-08-08T13:16:57.985739131Z Using cached charset_normalizer-3.4.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (147 kB)
+2025-08-08T13:16:57.987603691Z Using cached click-8.2.1-py3-none-any.whl (102 kB)
+2025-08-08T13:16:57.992672922Z Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+2025-08-08T13:16:57.99354602Z Using cached idna-3.10-py3-none-any.whl (70 kB)
+2025-08-08T13:16:57.996124857Z Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2025-08-08T13:16:57.99857454Z Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-08-08T13:16:58.00366879Z Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+2025-08-08T13:16:58.003822014Z Using cached packaging-25.0-py3-none-any.whl (66 kB)
+2025-08-08T13:16:58.006464371Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-08-08T13:16:58.009028177Z Using cached typing_extensions-4.14.1-py3-none-any.whl (43 kB)
+2025-08-08T13:16:58.013715319Z Using cached urllib3-2.5.0-py3-none-any.whl (129 kB)
+2025-08-08T13:16:58.156550022Z Installing collected packages: urllib3, typing-extensions, six, python-dotenv, psycopg2-binary, packaging, MarkupSafe, itsdangerous, idna, greenlet, click, charset-normalizer, certifi, blinker, Werkzeug, SQLAlchemy, requests, python-dateutil, marshmallow, Jinja2, gunicorn, marshmallow-sqlalchemy, Flask, Flask-SQLAlchemy, Flask-CORS
+2025-08-08T13:17:00.328297888Z Successfully installed Flask-2.3.2 Flask-CORS-4.0.0 Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 MarkupSafe-3.0.2 SQLAlchemy-2.0.19 Werkzeug-2.3.6 blinker-1.9.0 certifi-2025.8.3 charset-normalizer-3.4.2 click-8.2.1 greenlet-3.2.4 gunicorn-21.2.0 idna-3.10 itsdangerous-2.2.0 marshmallow-3.20.1 marshmallow-sqlalchemy-0.29.0 packaging-25.0 psycopg2-binary-2.9.6 python-dateutil-2.8.2 python-dotenv-1.0.0 requests-2.31.0 six-1.17.0 typing-extensions-4.14.1 urllib3-2.5.0
+2025-08-08T13:17:00.398142836Z 
+2025-08-08T13:17:00.398166976Z [notice] A new release of pip is available: 24.0 -> 25.2
+2025-08-08T13:17:00.398170387Z [notice] To update, run: pip install --upgrade pip
+2025-08-08T13:17:04.485025973Z ==> Uploading build...
+2025-08-08T13:17:18.402729866Z ==> Uploaded in 10.6s. Compression took 3.3s
+2025-08-08T13:17:18.47655117Z ==> Build successful 🎉
+2025-08-08T13:17:22.41053017Z ==> Deploying...
+2025-08-08T13:17:42.183392416Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-08T13:17:45.328036474Z [2025-08-08 13:17:45 +0000] [69] [INFO] Starting gunicorn 21.2.0
+2025-08-08T13:17:45.328475245Z [2025-08-08 13:17:45 +0000] [69] [INFO] Listening at: http://0.0.0.0:10000 (69)
+2025-08-08T13:17:45.328524776Z [2025-08-08 13:17:45 +0000] [69] [INFO] Using worker: sync
+2025-08-08T13:17:45.333631196Z [2025-08-08 13:17:45 +0000] [72] [INFO] Booting worker with pid: 72
+2025-08-08T13:17:45.457261164Z Redis not available - Cache disabled
+2025-08-08T13:17:45.457290445Z ✅ Tables de base de données créées/vérifiées
+2025-08-08T13:17:45.457294525Z 127.0.0.1 - - [08/Aug/2025:13:17:45 +0000] "HEAD / HTTP/1.1" 404 0 "-" "Go-http-client/1.1"
+2025-08-08T13:17:53.636623731Z ==> Your service is live 🎉
+2025-08-08T13:17:54.154922308Z ==> 
+2025-08-08T13:17:55.126285308Z ==> ///////////////////////////////////////////////////////////
+2025-08-08T13:17:55.770477701Z ==> 
+2025-08-08T13:17:55.925211145Z ==> Available at your primary URL https://diettracker-backend.onrender.com
+2025-08-08T13:17:56.082886729Z ==> 
+2025-08-08T13:17:56.686870666Z ==> ///////////////////////////////////////////////////////////

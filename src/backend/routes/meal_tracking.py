@@ -26,15 +26,15 @@ class MealTrackingSchema(Schema):
 
 class ConsumptionDataSchema(Schema):
     """Schema for meal consumption data"""
-    consumption_time = fields.DateTime(missing=datetime.utcnow)
-    nutrition = fields.Dict(missing={})
+    consumption_time = fields.DateTime(allow_none=True, load_default=None)
+    nutrition = fields.Dict(load_default=dict)
     portion_size = fields.Float(allow_none=True)
     notes = fields.String(allow_none=True)
     satisfaction_rating = fields.Integer(allow_none=True, validate=lambda x: 1 <= x <= 5)
     difficulty_rating = fields.Integer(allow_none=True, validate=lambda x: 1 <= x <= 5)
-    photo_urls = fields.List(fields.String(), missing=[])
-    modifications = fields.Dict(missing={})
-    substitutions = fields.Dict(missing={})
+    photo_urls = fields.List(fields.String(), load_default=list)
+    modifications = fields.Dict(load_default=dict)
+    substitutions = fields.Dict(load_default=dict)
 
 class SkipDataSchema(Schema):
     """Schema for meal skip data"""
@@ -45,12 +45,12 @@ class ReplaceDataSchema(Schema):
     replacement_recipe_id = fields.Integer(allow_none=True)
     replacement_name = fields.String(allow_none=True)
     reason = fields.String(allow_none=True)
-    nutrition = fields.Dict(missing={})
+    nutrition = fields.Dict(load_default=dict)
 
 class PortionAdjustmentSchema(Schema):
     """Schema for portion adjustments"""
     portion_multiplier = fields.Float(required=True, validate=lambda x: x > 0)
-    nutrition = fields.Dict(missing={})
+    nutrition = fields.Dict(load_default=dict)
 
 meal_tracking_schema = MealTrackingSchema()
 consumption_data_schema = ConsumptionDataSchema()
