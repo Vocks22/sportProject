@@ -11,6 +11,13 @@
 [[../SCRUM_DASHBOARD|← Dashboard]] | [[../epics/EPIC-1-MVP|← Epic MVP]]
 
 ---
+## Retour Utilisateur 
+
+Estce que tu peux me dire exactement où je peux trouver la fonctionnalité parce que là je la vois nulle part dans La page planning pour moi elle devait être dans la page planning mais j'ai l'impression qu'elle y est pas donc expliquemoi où estce que je dois cliquer pour trouver cette fonctionnalité
+
+
+---
+
 
 ## 📝 User Story
 

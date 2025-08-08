@@ -7,12 +7,14 @@ import {
   Shuffle,
   Calendar as CalendarIcon,
   AlertCircle,
-  Clock
+  Clock,
+  CheckCircle
 } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Button } from './ui/button'
 import { Badge } from './ui/badge'
 import { useMealPlanningWeek } from '../hooks/useISOWeek'
+import MealTracker from './MealTracker'
 
 export function MealPlanning() {
   const {
@@ -24,6 +26,9 @@ export function MealPlanning() {
     goToCurrentWeek,
     isWeekType
   } = useMealPlanningWeek()
+  
+  // État pour basculer entre Planning et Suivi
+  const [activeView, setActiveView] = useState('planning') // 'planning' ou 'tracking'
   
   // Données simulées du planning
   const weekPlan = {
@@ -103,8 +108,14 @@ export function MealPlanning() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Planification des Repas</h1>
-          <p className="text-gray-600">{planningMetrics.planningRecommendation}</p>
+          <h1 className="text-3xl font-bold text-gray-900">
+            {activeView === 'planning' ? 'Planification des Repas' : 'Suivi des Repas Consommés'}
+          </h1>
+          <p className="text-gray-600">
+            {activeView === 'planning' 
+              ? planningMetrics.planningRecommendation 
+              : 'Cochez les repas consommés et ajustez les portions'}
+          </p>
           
           {weekInfo.isPastWeek && (
             <div className="flex items-center space-x-2 mt-2">
@@ -116,35 +127,67 @@ export function MealPlanning() {
           )}
         </div>
         <div className="flex items-center space-x-2">
-          {!isWeekType('current') && (
-            <Button 
-              variant="outline" 
+          {/* Boutons de bascule entre Planning et Suivi */}
+          <div className="flex items-center bg-gray-100 rounded-lg p-1">
+            <Button
               size="sm"
-              onClick={goToCurrentWeek}
+              variant={activeView === 'planning' ? 'default' : 'ghost'}
+              onClick={() => setActiveView('planning')}
+              className="mr-1"
             >
-              <Clock className="h-4 w-4 mr-2" />
-              Semaine courante
+              <CalendarIcon className="h-4 w-4 mr-2" />
+              Planning
             </Button>
+            <Button
+              size="sm"
+              variant={activeView === 'tracking' ? 'default' : 'ghost'}
+              onClick={() => setActiveView('tracking')}
+            >
+              <CheckCircle className="h-4 w-4 mr-2" />
+              Suivi Repas
+            </Button>
+          </div>
+          
+          {activeView === 'planning' && (
+            <>
+              {!isWeekType('current') && (
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={goToCurrentWeek}
+                >
+                  <Clock className="h-4 w-4 mr-2" />
+                  Semaine courante
+                </Button>
+              )}
+              <Button 
+                variant="outline" 
+                size="sm"
+                disabled={!planningMetrics.canPlanMeals}
+                title={planningMetrics.planningRecommendation}
+              >
+                <Shuffle className="h-4 w-4 mr-2" />
+                Générer Plan Auto
+              </Button>
+              <Button 
+                size="sm"
+                disabled={!planningMetrics.canPlanMeals}
+              >
+                <Plus className="h-4 w-4 mr-2" />
+                Nouvelle Recette
+              </Button>
+            </>
           )}
-          <Button 
-            variant="outline" 
-            size="sm"
-            disabled={!planningMetrics.canPlanMeals}
-            title={planningMetrics.planningRecommendation}
-          >
-            <Shuffle className="h-4 w-4 mr-2" />
-            Générer Plan Auto
-          </Button>
-          <Button 
-            size="sm"
-            disabled={!planningMetrics.canPlanMeals}
-          >
-            <Plus className="h-4 w-4 mr-2" />
-            Nouvelle Recette
-          </Button>
         </div>
       </div>
 
+      {/* Affichage conditionnel Planning ou Tracking */}
+      {activeView === 'tracking' ? (
+        /* Composant de Suivi des Repas */
+        <MealTracker />
+      ) : (
+        /* Vue Planning existante */
+        <>
       {/* Week Navigation */}
       <Card>
         <CardHeader>
@@ -330,6 +373,8 @@ export function MealPlanning() {
           </div>
         </CardContent>
       </Card>
+        </>
+      )}
     </div>
   )
 }
