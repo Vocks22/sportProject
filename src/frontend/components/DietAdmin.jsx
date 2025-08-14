@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock } from 'lucide-react';
+import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock, Utensils } from 'lucide-react';
 import TimeRangePicker from './ui/TimeRangePicker';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
@@ -64,6 +64,30 @@ const DietAdmin = () => {
     } catch (error) {
       console.error('Erreur:', error);
       alert('Erreur lors de l\'initialisation');
+    }
+  };
+
+  const handleInitFoods = async () => {
+    if (!confirm('Initialiser les aliments par défaut pour tous les repas ? Cela remplacera les aliments existants.')) {
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/diet/admin/meals/init-foods`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' }
+      });
+      const data = await response.json();
+      
+      if (data.success) {
+        alert(`✅ ${data.message}\n\nDétails:\n${data.updated_meals.map(m => `- ${m.name}: ${m.foods_count} aliments`).join('\n')}`);
+        fetchMeals();
+      } else {
+        alert(`❌ Erreur: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('❌ Erreur lors de l\'initialisation des aliments');
     }
   };
 
@@ -191,6 +215,14 @@ const DietAdmin = () => {
               >
                 <RefreshCw className="w-4 h-4 mr-2" />
                 Initialiser 5 repas
+              </Button>
+              <Button 
+                onClick={handleInitFoods}
+                className="bg-orange-600 hover:bg-orange-700"
+                disabled={meals.length === 0}
+              >
+                <Utensils className="w-4 h-4 mr-2" />
+                Initialiser aliments
               </Button>
               <Button 
                 onClick={handleClearAll}

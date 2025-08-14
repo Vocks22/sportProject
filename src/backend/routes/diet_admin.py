@@ -195,3 +195,79 @@ def clear_all_meals():
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'error': str(e)}), 500
+
+@diet_admin_bp.route('/diet/admin/meals/init-foods', methods=['POST'])
+def init_default_foods():
+    """Initialiser les aliments par défaut pour tous les repas"""
+    try:
+        # Définir les aliments pour chaque type de repas
+        foods_by_type = {
+            "repas1": [  # Petit-déjeuner
+                {"name": "Blanc d'œuf", "quantity": "150", "unit": "g"},
+                {"name": "Flocons d'avoine", "quantity": "80", "unit": "g"},
+                {"name": "Myrtilles", "quantity": "100", "unit": "g"},
+                {"name": "Amandes", "quantity": "20", "unit": "g"},
+                {"name": "Banane", "quantity": "1", "unit": "unité"},
+                {"name": "Miel", "quantity": "1", "unit": "c.à.s"}
+            ],
+            "collation1": [  # Collation matin
+                {"name": "Shaker protéiné", "quantity": "30", "unit": "g"},
+                {"name": "Pomme", "quantity": "1", "unit": "unité"},
+                {"name": "Noix", "quantity": "30", "unit": "g"},
+                {"name": "Eau", "quantity": "500", "unit": "ml"}
+            ],
+            "repas2": [  # Déjeuner
+                {"name": "Poulet grillé", "quantity": "200", "unit": "g"},
+                {"name": "Riz basmati", "quantity": "150", "unit": "g cuit"},
+                {"name": "Brocoli", "quantity": "200", "unit": "g"},
+                {"name": "Huile d'olive", "quantity": "1", "unit": "c.à.s"},
+                {"name": "Salade verte", "quantity": "100", "unit": "g"}
+            ],
+            "collation2": [  # Collation après-midi
+                {"name": "Yaourt grec", "quantity": "150", "unit": "g"},
+                {"name": "Fruits rouges", "quantity": "100", "unit": "g"},
+                {"name": "Granola", "quantity": "30", "unit": "g"}
+            ],
+            "repas3": [  # Dîner
+                {"name": "Saumon", "quantity": "180", "unit": "g"},
+                {"name": "Patate douce", "quantity": "200", "unit": "g"},
+                {"name": "Asperges", "quantity": "150", "unit": "g"},
+                {"name": "Avocat", "quantity": "1/2", "unit": "unité"}
+            ],
+            "en_cas": []  # En-cas vide par défaut
+        }
+        
+        # Récupérer tous les repas
+        meals = DietProgram.query.all()
+        if not meals:
+            return jsonify({
+                'success': False,
+                'error': 'Aucun repas trouvé. Initialisez d\'abord les repas.'
+            }), 400
+        
+        updated_count = 0
+        updated_meals = []
+        
+        # Mettre à jour chaque repas avec ses aliments
+        for meal in meals:
+            meal_type = meal.meal_type
+            if meal_type in foods_by_type:
+                meal.foods = foods_by_type[meal_type]
+                updated_count += 1
+                updated_meals.append({
+                    'name': meal.meal_name,
+                    'foods_count': len(meal.foods)
+                })
+        
+        # Sauvegarder les modifications
+        db.session.commit()
+        
+        return jsonify({
+            'success': True,
+            'message': f'{updated_count} repas mis à jour avec leurs aliments',
+            'updated_meals': updated_meals
+        })
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'error': str(e)}), 500
