@@ -50,7 +50,8 @@
       "Bash(npm run build:*)",
       "Bash(venv/bin/pip install:*)",
       "Bash(./venv/bin/pip install:*)",
-      "Bash(./venv/bin/python:*)"
+      "Bash(./venv/bin/python:*)",
+      "Bash(kill:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"

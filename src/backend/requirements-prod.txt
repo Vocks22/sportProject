@@ -7,7 +7,7 @@ Flask-SQLAlchemy==3.0.5
 
 # Database (PostgreSQL pour production)
 SQLAlchemy==2.0.20
-psycopg2-binary==2.9.7
+psycopg2-binary==2.9.10
 alembic==1.11.3
 
 # Security
