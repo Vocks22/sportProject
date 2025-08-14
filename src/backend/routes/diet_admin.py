@@ -5,6 +5,8 @@ from flask import Blueprint, jsonify, request
 from database import db
 from models.diet_program import DietProgram
 from datetime import datetime
+import os
+import requests
 
 diet_admin_bp = Blueprint('diet_admin', __name__)
 
@@ -266,6 +268,139 @@ def init_default_foods():
             'success': True,
             'message': f'{updated_count} repas mis à jour avec leurs aliments',
             'updated_meals': updated_meals
+        })
+        
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@diet_admin_bp.route('/diet/admin/meals/export', methods=['GET'])
+def export_meals():
+    """Exporter tous les repas avec leurs aliments"""
+    try:
+        meals = DietProgram.query.order_by(DietProgram.order_index).all()
+        
+        export_data = []
+        for meal in meals:
+            meal_data = {
+                'meal_type': meal.meal_type,
+                'meal_name': meal.meal_name,
+                'time_slot': meal.time_slot,
+                'order_index': meal.order_index,
+                'foods': meal.foods if meal.foods else []
+            }
+            export_data.append(meal_data)
+        
+        return jsonify({
+            'success': True,
+            'data': export_data,
+            'count': len(export_data)
+        })
+        
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@diet_admin_bp.route('/diet/admin/meals/sync-to-production', methods=['POST'])
+def sync_to_production():
+    """Synchroniser les repas de préprod vers production"""
+    try:
+        # Vérifier la clé de sécurité
+        secret_key = request.json.get('secret_key')
+        if secret_key != 'sync2024-diet-tracker':
+            return jsonify({'success': False, 'error': 'Clé de sécurité invalide'}), 403
+        
+        # URL de production
+        production_url = request.json.get('production_url', 'https://diettracker-backend.onrender.com')
+        
+        # Exporter les données locales
+        meals = DietProgram.query.order_by(DietProgram.order_index).all()
+        export_data = []
+        for meal in meals:
+            meal_data = {
+                'meal_type': meal.meal_type,
+                'meal_name': meal.meal_name,
+                'time_slot': meal.time_slot,
+                'order_index': meal.order_index,
+                'foods': meal.foods if meal.foods else []
+            }
+            export_data.append(meal_data)
+        
+        # Envoyer vers production
+        response = requests.post(
+            f'{production_url}/api/diet/admin/meals/import-from-preprod',
+            json={
+                'secret_key': secret_key,
+                'meals': export_data
+            },
+            timeout=30
+        )
+        
+        if response.status_code == 200:
+            result = response.json()
+            return jsonify({
+                'success': True,
+                'message': 'Synchronisation réussie',
+                'details': result
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'error': f'Erreur de synchronisation: {response.status_code}',
+                'details': response.text
+            }), 500
+            
+    except requests.exceptions.RequestException as e:
+        return jsonify({
+            'success': False,
+            'error': f'Erreur de connexion: {str(e)}'
+        }), 500
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+@diet_admin_bp.route('/diet/admin/meals/import-from-preprod', methods=['POST'])
+def import_from_preprod():
+    """Importer les repas depuis la préprod (endpoint production)"""
+    try:
+        # Vérifier la clé de sécurité
+        secret_key = request.json.get('secret_key')
+        if secret_key != 'sync2024-diet-tracker':
+            return jsonify({'success': False, 'error': 'Clé de sécurité invalide'}), 403
+        
+        meals_data = request.json.get('meals', [])
+        
+        imported = 0
+        updated = 0
+        
+        for meal_data in meals_data:
+            # Chercher si le repas existe déjà
+            existing = DietProgram.query.filter_by(meal_type=meal_data['meal_type']).first()
+            
+            if existing:
+                # Mettre à jour le repas existant
+                existing.meal_name = meal_data['meal_name']
+                existing.time_slot = meal_data['time_slot']
+                existing.order_index = meal_data['order_index']
+                existing.foods = meal_data['foods']
+                updated += 1
+            else:
+                # Créer un nouveau repas
+                new_meal = DietProgram(
+                    meal_type=meal_data['meal_type'],
+                    meal_name=meal_data['meal_name'],
+                    time_slot=meal_data['time_slot'],
+                    order_index=meal_data['order_index'],
+                    foods=meal_data['foods']
+                )
+                db.session.add(new_meal)
+                imported += 1
+        
+        db.session.commit()
+        
+        return jsonify({
+            'success': True,
+            'imported': imported,
+            'updated': updated,
+            'total': len(meals_data)
         })
         
     except Exception as e:

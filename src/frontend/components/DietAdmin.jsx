@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock, Utensils, PlusCircle } from 'lucide-react';
+import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock, Utensils, PlusCircle, Upload } from 'lucide-react';
 import TimeRangePicker from './ui/TimeRangePicker';
 import FoodSelector from './FoodSelector';
 
@@ -24,6 +24,7 @@ const DietAdmin = () => {
   const [expandedMeal, setExpandedMeal] = useState(null);
   const [showCustomFood, setShowCustomFood] = useState(false);
   const [customFood, setCustomFood] = useState({ name: '', defaultUnit: 'g', caloriesPerUnit: 0 });
+  const [syncing, setSyncing] = useState(false);
 
   useEffect(() => {
     fetchMeals();
@@ -220,6 +221,39 @@ const DietAdmin = () => {
     setShowCustomFood(false);
   };
 
+  const handleSyncToProduction = async () => {
+    if (!confirm('⚠️ Êtes-vous sûr de vouloir synchroniser vos repas vers la production ?\n\nCela remplacera TOUS les repas en production par ceux de votre environnement actuel.')) {
+      return;
+    }
+
+    setSyncing(true);
+    try {
+      const response = await fetch(`${API_URL}/diet/admin/meals/sync-to-production`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          secret_key: 'sync2024-diet-tracker',
+          production_url: 'https://diettracker-backend.onrender.com'
+        })
+      });
+
+      const data = await response.json();
+      
+      if (data.success) {
+        alert(`✅ Synchronisation réussie !\n\n${data.details.updated} repas mis à jour\n${data.details.imported} nouveaux repas créés\n\nVérifiez sur https://diettracker.netlify.app`);
+      } else {
+        alert(`❌ Erreur de synchronisation: ${data.error}`);
+      }
+    } catch (error) {
+      console.error('Erreur sync:', error);
+      alert(`❌ Erreur de connexion: ${error.message}`);
+    } finally {
+      setSyncing(false);
+    }
+  };
+
   if (loading) {
     return <div className="p-8">Chargement...</div>;
   }
@@ -231,6 +265,14 @@ const DietAdmin = () => {
           <CardTitle className="flex justify-between items-center">
             <span>🛠️ Administration des Repas</span>
             <div className="space-x-2">
+              <Button 
+                onClick={handleSyncToProduction}
+                className="bg-purple-600 hover:bg-purple-700"
+                disabled={meals.length === 0 || syncing}
+              >
+                <Upload className="w-4 h-4 mr-2" />
+                {syncing ? 'Synchronisation...' : 'Synchroniser vers Production'}
+              </Button>
               <Button 
                 onClick={handleInitDefault}
                 className="bg-green-600 hover:bg-green-700"
