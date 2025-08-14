@@ -1,14 +1,14 @@
 # Configuration Netlify pour DietTracker
 
 [build]
-  # Répertoire du frontend
-  base = "src/frontend"
+  # Répertoire de base (racine du projet)
+  base = ""
   
-  # Commande de build (installer les dépendances puis build)
+  # Commande de build depuis la racine
   command = "npm install && npm run build"
   
-  # Dossier de publication
-  publish = "dist"
+  # Dossier de publication (relatif à base)
+  publish = "src/frontend/dist"
 
 [build.environment]
   # Version Node.js
