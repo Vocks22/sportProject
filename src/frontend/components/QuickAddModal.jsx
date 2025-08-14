@@ -144,8 +144,7 @@ const QuickAddModal = ({
         user_id: userId,
         meal_date: selectedDate,
         meal_type: mealType,
-        ...mealData,
-        status: 'planned'
+        ...mealData
       }
       
       // Appel API pour créer le tracking

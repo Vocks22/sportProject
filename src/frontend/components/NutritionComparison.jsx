@@ -255,162 +255,56 @@ const NutritionComparison = ({
           )
         })}
         
-        {/* Résumé global - Enhanced */}
-        <div className="mt-8 p-6 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-xl border border-blue-100 shadow-lg animate-in slide-in-from-bottom-4 duration-500">
-          <h4 className="font-bold text-lg mb-4 flex items-center gap-3 text-gray-800">
-            <div className="p-2 bg-blue-100 rounded-full">
-              <Activity className="h-5 w-5 text-blue-600" />
-            </div>
-            <span>Résumé quotidien</span>
-          </h4>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Calories Card */}
-            <div className="bg-white/70 p-4 rounded-lg border border-blue-100 backdrop-blur-sm">
-              <div className="text-gray-600 text-sm mb-1">Calories consommées</div>
-              <div className="font-bold text-2xl text-blue-600">
-                {formatValue(actualNutrition.calories || 0)}
-                <span className="text-sm text-gray-500 ml-1">kcal</span>
-              </div>
-              {targetNutrition.calories && (
-                <div className="text-xs text-gray-500 mt-1">
-                  sur {formatValue(targetNutrition.calories)} kcal
-                </div>
-              )}
-            </div>
-            
-            {/* Balance Card */}
-            <div className="bg-white/70 p-4 rounded-lg border border-blue-100 backdrop-blur-sm">
-              <div className="text-gray-600 text-sm mb-1">Balance nutritionnelle</div>
-              <div className="font-semibold">
-                {targetNutrition.calories ? (
-                  <div className="flex items-center gap-2">
-                    <Badge 
-                      className={`px-3 py-1 text-sm font-bold ${
-                        Math.abs(calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) - 100) <= 10 
-                          ? "bg-green-100 text-green-800" 
-                          : calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) > 110
-                          ? "bg-red-100 text-red-800"
-                          : "bg-yellow-100 text-yellow-800"
-                      }`}
-                    >
-                      {Math.round(calculateProgress(actualNutrition.calories || 0, targetNutrition.calories))}%
-                    </Badge>
-                    <span className="text-xs text-gray-500">
-                      {Math.abs(calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) - 100) <= 10 
-                        ? "Parfait !"
-                        : calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) > 110
-                        ? "Dépassé"
-                        : "En cours"}
-                    </span>
-                  </div>
-                ) : (
-                  <span className="text-gray-400">Objectif non défini</span>
-                )}
-              </div>
-            </div>
-            
-            {/* Proteins Card */}
-            <div className="bg-white/70 p-4 rounded-lg border border-green-100 backdrop-blur-sm">
-              <div className="text-gray-600 text-sm mb-1">Protéines</div>
-              <div className="font-bold text-xl text-green-600">
-                {formatValue(actualNutrition.protein || 0)}
-                <span className="text-sm text-gray-500 ml-1">g</span>
-                {targetNutrition.protein && (
-                  <span className="text-sm text-gray-500 ml-1">
-                    /{formatValue(targetNutrition.protein)}g
-                  </span>
-                )}
-              </div>
-            </div>
-            
-            {/* Quick Stats Card */}
-            <div className="bg-white/70 p-4 rounded-lg border border-purple-100 backdrop-blur-sm">
-              <div className="text-gray-600 text-sm mb-2">Répartition</div>
-              <div className="space-y-1 text-xs">
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Glucides:</span>
-                  <span className="font-semibold text-yellow-600">
-                    {formatValue(actualNutrition.carbs || 0)}g
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Lipides:</span>
-                  <span className="font-semibold text-purple-600">
-                    {formatValue(actualNutrition.fat || 0)}g
-                  </span>
-                </div>
-              </div>
-            </div>
+        {/* Résumé quotidien condensé */}
+        <div className="mt-6 p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-100">
+          <div className="flex items-center justify-between mb-3">
+            <h4 className="font-bold text-gray-800 flex items-center gap-2">
+              <Activity className="h-4 w-4 text-blue-600" />
+              Résumé quotidien
+            </h4>
+            {targetNutrition.calories && (
+              <Badge className={`text-xs ${
+                Math.abs(calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) - 100) <= 10 
+                  ? "bg-green-100 text-green-800" 
+                  : calculateProgress(actualNutrition.calories || 0, targetNutrition.calories) > 110
+                  ? "bg-red-100 text-red-800"
+                  : "bg-yellow-100 text-yellow-800"
+              }`}>
+                {Math.round(calculateProgress(actualNutrition.calories || 0, targetNutrition.calories))}%
+              </Badge>
+            )}
           </div>
           
-          {/* Conseil nutritionnel - Enhanced */}
-          {targetNutrition.calories && (
-            <div className="mt-6 p-4 bg-white/80 rounded-lg border border-gray-200 shadow-sm">
-              {(() => {
-                const calorieProgress = calculateProgress(actualNutrition.calories || 0, targetNutrition.calories)
-                const proteinProgress = calculateProgress(actualNutrition.protein || 0, targetNutrition.protein || 0)
-                
-                if (calorieProgress < 80) {
-                  return (
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                        <span className="text-sm">💡</span>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-orange-700 mb-1">Continuez à manger !</h5>
-                        <p className="text-orange-600 text-sm">
-                          Il vous reste environ <span className="font-bold">{Math.round(targetNutrition.calories - (actualNutrition.calories || 0))} kcal</span> à consommer pour atteindre votre objectif quotidien.
-                        </p>
-                      </div>
-                    </div>
-                  )
-                } else if (calorieProgress > 110) {
-                  return (
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                        <span className="text-sm">⚠️</span>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-red-700 mb-1">Objectif dépassé</h5>
-                        <p className="text-red-600 text-sm">
-                          Vous avez consommé <span className="font-bold">{Math.round((actualNutrition.calories || 0) - targetNutrition.calories)} kcal</span> de plus que votre objectif. Pas de panique, demain est un nouveau jour !
-                        </p>
-                      </div>
-                    </div>
-                  )
-                } else if (targetNutrition.protein && proteinProgress < 80) {
-                  return (
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                        <span className="text-sm">🥩</span>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-blue-700 mb-1">Plus de protéines</h5>
-                        <p className="text-blue-600 text-sm">
-                          Pensez à ajouter plus de protéines à votre alimentation. Il vous manque encore <span className="font-bold">{Math.round(targetNutrition.protein - (actualNutrition.protein || 0))}g</span>.
-                        </p>
-                      </div>
-                    </div>
-                  )
-                } else {
-                  return (
-                    <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                        <span className="text-sm">✅</span>
-                      </div>
-                      <div>
-                        <h5 className="font-semibold text-green-700 mb-1">Excellent travail !</h5>
-                        <p className="text-green-600 text-sm">
-                          Vous êtes en bonne voie pour atteindre vos objectifs nutritionnels. Continuez ainsi !
-                        </p>
-                      </div>
-                    </div>
-                  )
-                }
-              })()}
+          <div className="grid grid-cols-4 gap-3 text-center">
+            <div className="bg-white/80 p-2 rounded">
+              <div className="text-xl font-bold text-blue-600">{formatValue(actualNutrition.calories || 0)}</div>
+              <div className="text-xs text-gray-600">kcal</div>
+              {targetNutrition.calories && (
+                <div className="text-xs text-gray-500">/{formatValue(targetNutrition.calories)}</div>
+              )}
             </div>
-          )}
+            <div className="bg-white/80 p-2 rounded">
+              <div className="text-xl font-bold text-green-600">{formatValue(actualNutrition.protein || 0)}</div>
+              <div className="text-xs text-gray-600">protéines (g)</div>
+              {targetNutrition.protein && (
+                <div className="text-xs text-gray-500">/{formatValue(targetNutrition.protein)}</div>
+              )}
+            </div>
+            <div className="bg-white/80 p-2 rounded">
+              <div className="text-xl font-bold text-yellow-600">{formatValue(actualNutrition.carbs || 0)}</div>
+              <div className="text-xs text-gray-600">glucides (g)</div>
+              {targetNutrition.carbs && (
+                <div className="text-xs text-gray-500">/{formatValue(targetNutrition.carbs)}</div>
+              )}
+            </div>
+            <div className="bg-white/80 p-2 rounded">
+              <div className="text-xl font-bold text-purple-600">{formatValue(actualNutrition.fat || 0)}</div>
+              <div className="text-xs text-gray-600">lipides (g)</div>
+              {targetNutrition.fat && (
+                <div className="text-xs text-gray-500">/{formatValue(targetNutrition.fat)}</div>
+              )}
+            </div>
+          </div>
         </div>
       </CardContent>
     </Card>

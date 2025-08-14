@@ -106,19 +106,49 @@ export const useMealTrackingStore = create(
       getTodayNutritionTotals: () => {
         const state = get()
         if (!state.todayMealTrackings.length) {
-          return { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0 }
+          return { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0, sodium: 0, sugar: 0 }
         }
         
         return state.todayMealTrackings.reduce((totals, tracking) => {
-          const nutrition = tracking.effective_nutrition || {}
+          // Utiliser les valeurs effectives : actual si consommé/modifié, sinon planned
+          const isConsumed = ['consumed', 'modified', 'replaced'].includes(tracking.status)
+          
+          const effectiveCalories = isConsumed && tracking.actual_calories !== null 
+            ? tracking.actual_calories 
+            : tracking.planned_calories || 0
+            
+          const effectiveProtein = isConsumed && tracking.actual_protein !== null 
+            ? tracking.actual_protein 
+            : tracking.planned_protein || 0
+            
+          const effectiveCarbs = isConsumed && tracking.actual_carbs !== null 
+            ? tracking.actual_carbs 
+            : tracking.planned_carbs || 0
+            
+          const effectiveFat = isConsumed && tracking.actual_fat !== null 
+            ? tracking.actual_fat 
+            : tracking.planned_fat || 0
+            
+          const effectiveFiber = isConsumed && tracking.actual_fiber !== null 
+            ? tracking.actual_fiber 
+            : tracking.planned_fiber || 0
+            
+          const effectiveSodium = isConsumed && tracking.actual_sodium !== null 
+            ? tracking.actual_sodium 
+            : tracking.planned_sodium || 0
+            
+          const effectiveSugar = isConsumed && tracking.actual_sugar !== null 
+            ? tracking.actual_sugar 
+            : tracking.planned_sugar || 0
+          
           return {
-            calories: totals.calories + (nutrition.calories || 0),
-            protein: totals.protein + (nutrition.protein || 0),
-            carbs: totals.carbs + (nutrition.carbs || 0),
-            fat: totals.fat + (nutrition.fat || 0),
-            fiber: totals.fiber + (nutrition.fiber || 0),
-            sodium: totals.sodium + (nutrition.sodium || 0),
-            sugar: totals.sugar + (nutrition.sugar || 0)
+            calories: totals.calories + effectiveCalories,
+            protein: totals.protein + effectiveProtein,
+            carbs: totals.carbs + effectiveCarbs,
+            fat: totals.fat + effectiveFat,
+            fiber: totals.fiber + effectiveFiber,
+            sodium: totals.sodium + effectiveSodium,
+            sugar: totals.sugar + effectiveSugar
           }
         }, { calories: 0, protein: 0, carbs: 0, fat: 0, fiber: 0, sodium: 0, sugar: 0 })
       },

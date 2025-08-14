@@ -23,6 +23,12 @@ class MealTrackingSchema(Schema):
     meal_date = fields.Date(required=True)
     meal_type = fields.String(required=True, validate=lambda x: x in ['repas1', 'repas2', 'repas3', 'collation'])
     meal_name = fields.String(allow_none=True)
+    
+    # Optional nutrition fields for custom meals (US1.8)
+    planned_calories = fields.Float(allow_none=True, validate=lambda x: x >= 0 if x is not None else True)
+    planned_protein = fields.Float(allow_none=True, validate=lambda x: x >= 0 if x is not None else True)
+    planned_carbs = fields.Float(allow_none=True, validate=lambda x: x >= 0 if x is not None else True)
+    planned_fat = fields.Float(allow_none=True, validate=lambda x: x >= 0 if x is not None else True)
 
 class ConsumptionDataSchema(Schema):
     """Schema for meal consumption data"""
@@ -84,12 +90,12 @@ def create_meal_tracking():
             created_at=datetime.now()
         )
         
-        # Set planned nutrition values from request or recipe
-        if 'planned_calories' in request.json:
-            tracking.planned_calories = request.json.get('planned_calories', 0)
-            tracking.planned_protein = request.json.get('planned_protein', 0)
-            tracking.planned_carbs = request.json.get('planned_carbs', 0)
-            tracking.planned_fat = request.json.get('planned_fat', 0)
+        # Set planned nutrition values from validated data or recipe
+        if data.get('planned_calories') is not None:
+            tracking.planned_calories = data.get('planned_calories', 0)
+            tracking.planned_protein = data.get('planned_protein', 0)
+            tracking.planned_carbs = data.get('planned_carbs', 0)
+            tracking.planned_fat = data.get('planned_fat', 0)
         elif data.get('recipe_id'):
             recipe = Recipe.query.get(data['recipe_id'])
             if recipe:

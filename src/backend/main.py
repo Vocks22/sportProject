@@ -40,6 +40,7 @@ def create_app(config_name=None):
     from routes.ingredients import ingredients_bp
     from routes.meal_plans import meal_plans_bp
     from routes.meal_tracking import meal_tracking_bp
+    from routes.diet_tracking import diet_tracking_bp
     
     api_prefix = app.config.get('API_PREFIX', '/api')
     app.register_blueprint(user_bp, url_prefix=api_prefix)
@@ -47,6 +48,7 @@ def create_app(config_name=None):
     app.register_blueprint(ingredients_bp, url_prefix=api_prefix)
     app.register_blueprint(meal_plans_bp, url_prefix=api_prefix)
     app.register_blueprint(meal_tracking_bp, url_prefix=api_prefix)
+    app.register_blueprint(diet_tracking_bp)
     
     # Health check endpoint
     @app.route('/health')

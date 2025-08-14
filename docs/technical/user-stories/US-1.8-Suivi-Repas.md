@@ -214,6 +214,90 @@ flushSyncCallbacks @ chunk-X6P5W3KJ.js?v=39d604fc:9135
 ```
 
 
+Maintenant j'ai cette erreur : 
+
+```
+client.ts:19 [vite] connecting...
+client.ts:155 [vite] connected.
+chunk-X6P5W3KJ.js?v=39d604fc:21580 Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: React Router will begin wrapping state updates in `React.startTransition` in v7. You can use the `v7_startTransition` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_starttransition.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+logDeprecation @ react-router-dom.js?v=39d604fc:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=39d604fc:4415
+(anonymous) @ react-router-dom.js?v=39d604fc:5290
+commitHookEffectListMount @ chunk-X6P5W3KJ.js?v=39d604fc:16936
+commitPassiveMountOnFiber @ chunk-X6P5W3KJ.js?v=39d604fc:18184
+commitPassiveMountEffects_complete @ chunk-X6P5W3KJ.js?v=39d604fc:18157
+commitPassiveMountEffects_begin @ chunk-X6P5W3KJ.js?v=39d604fc:18147
+commitPassiveMountEffects @ chunk-X6P5W3KJ.js?v=39d604fc:18137
+flushPassiveEffectsImpl @ chunk-X6P5W3KJ.js?v=39d604fc:19518
+flushPassiveEffects @ chunk-X6P5W3KJ.js?v=39d604fc:19475
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:19356
+workLoop @ chunk-X6P5W3KJ.js?v=39d604fc:197
+flushWork @ chunk-X6P5W3KJ.js?v=39d604fc:176
+performWorkUntilDeadline @ chunk-X6P5W3KJ.js?v=39d604fc:384
+react-router-dom.js?v=39d604fc:4409 ⚠️ React Router Future Flag Warning: Relative route resolution within Splat routes is changing in v7. You can use the `v7_relativeSplatPath` future flag to opt-in early. For more information, see https://reactrouter.com/v6/upgrading/future#v7_relativesplatpath.
+warnOnce @ react-router-dom.js?v=39d604fc:4409
+logDeprecation @ react-router-dom.js?v=39d604fc:4412
+logV6DeprecationWarnings @ react-router-dom.js?v=39d604fc:4418
+(anonymous) @ react-router-dom.js?v=39d604fc:5290
+commitHookEffectListMount @ chunk-X6P5W3KJ.js?v=39d604fc:16936
+commitPassiveMountOnFiber @ chunk-X6P5W3KJ.js?v=39d604fc:18184
+commitPassiveMountEffects_complete @ chunk-X6P5W3KJ.js?v=39d604fc:18157
+commitPassiveMountEffects_begin @ chunk-X6P5W3KJ.js?v=39d604fc:18147
+commitPassiveMountEffects @ chunk-X6P5W3KJ.js?v=39d604fc:18137
+flushPassiveEffectsImpl @ chunk-X6P5W3KJ.js?v=39d604fc:19518
+flushPassiveEffects @ chunk-X6P5W3KJ.js?v=39d604fc:19475
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:19356
+workLoop @ chunk-X6P5W3KJ.js?v=39d604fc:197
+flushWork @ chunk-X6P5W3KJ.js?v=39d604fc:176
+performWorkUntilDeadline @ chunk-X6P5W3KJ.js?v=39d604fc:384
+client.ts:484 [vite] hot updated: /components/QuickAddModal.jsx
+client.ts:484 [vite] hot updated: /styles/index.css
+api.js?t=1754664886938:34  POST http://localhost:5000/api/meal-tracking 400 (BAD REQUEST)
+apiRequest @ api.js?t=1754664886938:34
+handleConfirmAdd @ QuickAddModal.jsx:152
+callCallback2 @ chunk-X6P5W3KJ.js?v=39d604fc:3674
+invokeGuardedCallbackDev @ chunk-X6P5W3KJ.js?v=39d604fc:3699
+invokeGuardedCallback @ chunk-X6P5W3KJ.js?v=39d604fc:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-X6P5W3KJ.js?v=39d604fc:3736
+executeDispatch @ chunk-X6P5W3KJ.js?v=39d604fc:7016
+processDispatchQueueItemsInOrder @ chunk-X6P5W3KJ.js?v=39d604fc:7036
+processDispatchQueue @ chunk-X6P5W3KJ.js?v=39d604fc:7045
+dispatchEventsForPlugins @ chunk-X6P5W3KJ.js?v=39d604fc:7053
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:7177
+batchedUpdates$1 @ chunk-X6P5W3KJ.js?v=39d604fc:18941
+batchedUpdates @ chunk-X6P5W3KJ.js?v=39d604fc:3579
+dispatchEventForPluginEventSystem @ chunk-X6P5W3KJ.js?v=39d604fc:7176
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-X6P5W3KJ.js?v=39d604fc:5478
+dispatchEvent @ chunk-X6P5W3KJ.js?v=39d604fc:5472
+dispatchDiscreteEvent @ chunk-X6P5W3KJ.js?v=39d604fc:5449
+api.js?t=1754664886938:40 API Request failed: Error: API Error: 400
+    at apiRequest (api.js?t=1754664886938:36:13)
+    at async handleConfirmAdd (QuickAddModal.jsx:152:24)
+apiRequest @ api.js?t=1754664886938:40
+await in apiRequest
+handleConfirmAdd @ QuickAddModal.jsx:152
+callCallback2 @ chunk-X6P5W3KJ.js?v=39d604fc:3674
+invokeGuardedCallbackDev @ chunk-X6P5W3KJ.js?v=39d604fc:3699
+invokeGuardedCallback @ chunk-X6P5W3KJ.js?v=39d604fc:3733
+invokeGuardedCallbackAndCatchFirstError @ chunk-X6P5W3KJ.js?v=39d604fc:3736
+executeDispatch @ chunk-X6P5W3KJ.js?v=39d604fc:7016
+processDispatchQueueItemsInOrder @ chunk-X6P5W3KJ.js?v=39d604fc:7036
+processDispatchQueue @ chunk-X6P5W3KJ.js?v=39d604fc:7045
+dispatchEventsForPlugins @ chunk-X6P5W3KJ.js?v=39d604fc:7053
+(anonymous) @ chunk-X6P5W3KJ.js?v=39d604fc:7177
+batchedUpdates$1 @ chunk-X6P5W3KJ.js?v=39d604fc:18941
+batchedUpdates @ chunk-X6P5W3KJ.js?v=39d604fc:3579
+dispatchEventForPluginEventSystem @ chunk-X6P5W3KJ.js?v=39d604fc:7176
+dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay @ chunk-X6P5W3KJ.js?v=39d604fc:5478
+dispatchEvent @ chunk-X6P5W3KJ.js?v=39d604fc:5472
+dispatchDiscreteEvent @ chunk-X6P5W3KJ.js?v=39d604fc:5449
+
+```
+
+
+Ok très bien je vois ce que tu as fait Par contre je comprends pas bien la partie progression des repas comparaison nutritionnelle calories protéines Que glucides lipides Et le résumé quotidien déjà il faudrait que ça soit beaucoup plus condensé que ce que c'est affiché aujourd'hui et ensuite il faudrait que tu m'expliques clairement comment tu calcules tout ça Puisque par exemple là moi je n'ai rien à part Custom protéines snacks émis automatiquement j'ai l'impression à la fin dans la partie collation et j'ai rajouté sol en croûte d'herbes et j'ai déjà 832 non attends 7% 6 G de lipides 8 G de glucides 20 G de protéines Et 100 kilocalories Donc j'aimerais que comprendre comment tu calcules tout ça
 
 
 ---

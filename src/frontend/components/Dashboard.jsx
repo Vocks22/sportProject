@@ -21,6 +21,7 @@ import {
 import { Link } from 'react-router-dom'
 import { WeightChartWithControls } from './WeightChart'
 import { ProgressAlerts } from './ProgressAlerts'
+import DietDashboard from './DietDashboard'
 
 export function Dashboard() {
   const [measurements, setMeasurements] = useState([])
@@ -149,6 +150,12 @@ export function Dashboard() {
             Ajouter mesure du jour
           </button>
         </Link>
+      </div>
+
+      {/* NOUVEAU : Dashboard de suivi de diète */}
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold text-gray-900 mb-4">Suivi de Diète Quotidien</h2>
+        <DietDashboard />
       </div>
 
       {/* Alertes et félicitations */}
