@@ -48,7 +48,9 @@
       "WebFetch(domain:diettracker-backend.onrender.com)",
       "Bash(node:*)",
       "Bash(npm run build:*)",
-      "Bash(venv/bin/pip install:*)"
+      "Bash(venv/bin/pip install:*)",
+      "Bash(./venv/bin/pip install:*)",
+      "Bash(./venv/bin/python:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
