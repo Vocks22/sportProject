@@ -5,7 +5,8 @@ import { Input } from './ui/input';
 import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock } from 'lucide-react';
 import TimeRangePicker from './ui/TimeRangePicker';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_URL = BASE_URL.includes('/api') ? BASE_URL : `${BASE_URL}/api`;
 
 const DietAdmin = () => {
   const [meals, setMeals] = useState([]);
@@ -28,7 +29,7 @@ const DietAdmin = () => {
 
   const fetchMeals = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals`);
+      const response = await fetch(`${API_URL}/diet/admin/meals`);
       const data = await response.json();
       if (data.success) {
         // Trier par order_index pour afficher dans le bon ordre
@@ -48,7 +49,7 @@ const DietAdmin = () => {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals/init`, {
+      const response = await fetch(`${API_URL}/diet/admin/meals/init`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' }
       });
@@ -72,7 +73,7 @@ const DietAdmin = () => {
     }
 
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals/clear?confirm=yes`, {
+      const response = await fetch(`${API_URL}/diet/admin/meals/clear?confirm=yes`, {
         method: 'DELETE'
       });
       const data = await response.json();
@@ -88,7 +89,7 @@ const DietAdmin = () => {
 
   const handleCreateMeal = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals`, {
+      const response = await fetch(`${API_URL}/diet/admin/meals`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newMeal)
@@ -110,7 +111,7 @@ const DietAdmin = () => {
 
   const handleUpdateMeal = async (meal) => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals/${meal.id}`, {
+      const response = await fetch(`${API_URL}/diet/admin/meals/${meal.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(meal)
@@ -131,7 +132,7 @@ const DietAdmin = () => {
     if (!confirm('Supprimer ce repas ?')) return;
 
     try {
-      const response = await fetch(`${API_URL}/api/diet/admin/meals/${id}`, {
+      const response = await fetch(`${API_URL}/diet/admin/meals/${id}`, {
         method: 'DELETE'
       });
       const data = await response.json();

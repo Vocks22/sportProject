@@ -55,22 +55,23 @@ export function Dashboard() {
   const fetchData = async () => {
     try {
       // Récupérer les mesures récentes
-      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000"
-      const measResponse = await fetch(`${apiUrl}/api/users/${userId}/measurements?days=365`)
+      const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000"
+      const apiUrl = baseUrl.includes('/api') ? baseUrl : `${baseUrl}/api`
+      const measResponse = await fetch(`${apiUrl}/users/${userId}/measurements?days=365`)
       if (measResponse.ok) {
         const measData = await measResponse.json()
         setMeasurements(measData)
       }
 
       // Récupérer le profil
-      const profileResponse = await fetch(`${apiUrl}/api/users/${userId}/profile`)
+      const profileResponse = await fetch(`${apiUrl}/users/${userId}/profile`)
       if (profileResponse.ok) {
         const profileData = await profileResponse.json()
         setProfile(profileData)
       }
 
       // Récupérer l'historique de poids
-      const weightResponse = await fetch(`${apiUrl}/api/users/${userId}/weight-history?days=365&limit=500`)
+      const weightResponse = await fetch(`${apiUrl}/users/${userId}/weight-history?days=365&limit=500`)
       if (weightResponse.ok) {
         const weightData = await weightResponse.json()
         setWeightHistory(weightData.weight_history || [])
