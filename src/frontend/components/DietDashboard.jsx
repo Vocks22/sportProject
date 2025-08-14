@@ -22,7 +22,9 @@ export default function DietDashboard() {
 
   const fetchTodayDiet = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/today`);
+      // Ajouter /api seulement si pas déjà présent dans l'URL
+      const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`;
+      const response = await fetch(`${apiUrl}/diet/today`);
       const data = await response.json();
       if (data.success) {
         setTodayDiet(data);
@@ -37,7 +39,9 @@ export default function DietDashboard() {
 
   const fetchStats = async () => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/stats`);
+      // Ajouter /api seulement si pas déjà présent dans l'URL
+      const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`;
+      const response = await fetch(`${apiUrl}/diet/stats`);
       const data = await response.json();
       if (data.success) {
         setStats(data);
@@ -49,7 +53,9 @@ export default function DietDashboard() {
 
   const validateMeal = async (mealId, completed) => {
     try {
-      const response = await fetch(`${API_URL}/api/diet/validate`, {
+      // Ajouter /api seulement si pas déjà présent dans l'URL
+      const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`;
+      const response = await fetch(`${apiUrl}/diet/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ meal_id: mealId, completed })

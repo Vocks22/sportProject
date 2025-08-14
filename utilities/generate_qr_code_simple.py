@@ -4,7 +4,7 @@ Génère un QR code simple pour DietTracker
 import qrcode
 
 # URL de votre application
-url = "https://diettracker.netlify.app"
+url = "https://diettracker-front.netlify.app"
 
 # Créer le QR code
 qr = qrcode.QRCode(
