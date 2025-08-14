@@ -26,77 +26,28 @@ def create_app(config_name=None):
     # Initialize extensions
     db.init_app(app)
     
-    # Initialiser la base de données au démarrage (seulement en production)
-    if os.environ.get('RENDER'):
-        with app.app_context():
-            try:
-                db.create_all()
-                print("✅ Tables de base de données créées/vérifiées")
-                
-                # Initialisation rapide du programme diététique si nécessaire
-                from models.diet_program import DietProgram, DietMeal
-                from datetime import datetime
-                
-                if not DietProgram.query.filter_by(user_id=1, is_active=True).first():
-                    program = DietProgram(
-                        user_id=1,
-                        name="Programme Prise de Masse",
-                        start_date=datetime.now().date(),
-                        is_active=True,
-                        daily_calories_target=3000,
-                        daily_protein_target=150,
-                        daily_carbs_target=400,
-                        daily_fat_target=100
-                    )
-                    db.session.add(program)
-                    db.session.commit()
-                    
-                    meals = [
-                        ("Repas 1 - Petit-déjeuner", "07:00", 1),
-                        ("Repas 2 - Collation matin", "10:00", 2),
-                        ("Repas 3 - Déjeuner", "12:30", 3),
-                        ("Repas 4 - Collation après-midi", "16:00", 4),
-                        ("Repas 5 - Dîner", "19:30", 5)
-                    ]
-                    
-                    for name, time, order in meals:
-                        meal = DietMeal(
-                            program_id=program.id,
-                            name=name,
-                            meal_time=time,
-                            meal_order=order
-                        )
-                        db.session.add(meal)
-                    
-                    db.session.commit()
-                    print("✅ Programme diététique initialisé automatiquement")
-            except Exception as e:
-                print(f"⚠️ Initialisation différée: {e}")
+    # Créer les tables au démarrage
+    with app.app_context():
+        try:
+            db.create_all()
+            print("✅ Tables de base de données créées/vérifiées")
+        except Exception as e:
+            print(f"⚠️ Erreur création tables: {e}")
     
     # Configuration CORS pour accepter toutes les URLs Netlify (incluant les previews)
-    allowed_origins = [
-        "https://diettracker-front.netlify.app",
-        "https://*.netlify.app",  # Pour les deploy previews
-        "http://localhost:5173",
-        "http://localhost:3000", 
-        "http://localhost:5000"
-    ]
-    
-    # En production, accepter toutes les origines Netlify
+    # En production, accepter un pattern regex pour toutes les URLs Netlify
     if os.environ.get('RENDER'):
+        # Utiliser regex pour accepter tous les subdomains Netlify
         CORS(app, 
-             origins=lambda origin: origin and (
-                 origin.endswith('.netlify.app') or 
-                 origin in allowed_origins or
-                 'localhost' in origin
-             ),
+             origins=r"^https://.*\.netlify\.app$",
              allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
              supports_credentials=True,
              expose_headers=["Content-Range", "X-Content-Range"],
              max_age=3600)
     else:
+        # En développement, liste explicite
         CORS(app, 
-             origins=allowed_origins,
+             origins=["http://localhost:5173", "http://localhost:3000", "http://localhost:5000"],
              allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
              supports_credentials=True,
              expose_headers=["Content-Range", "X-Content-Range"],

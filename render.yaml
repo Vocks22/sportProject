@@ -11,7 +11,7 @@ services:
         pip install --no-cache-dir -r src/backend/requirements.txt
       fi
     startCommand: |
-      cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+      cd src/backend && python initialize_db.py && gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
     envVars:
       - key: FLASK_ENV
         value: production

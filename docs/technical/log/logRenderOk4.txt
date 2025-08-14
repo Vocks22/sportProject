@@ -1,0 +1,50 @@
+2025-08-14T18:41:29.057999357Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 261, in <genexpr>
+2025-08-14T18:41:29.058001397Z     return any((c in maybe_regex for c in common_regex_chars))
+2025-08-14T18:41:29.058003447Z                 ^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058005477Z TypeError: argument of type 'function' is not iterable
+2025-08-14T18:41:29.058007458Z 
+2025-08-14T18:41:29.058009748Z During handling of the above exception, another exception occurred:
+2025-08-14T18:41:29.058011708Z 
+2025-08-14T18:41:29.058013788Z Traceback (most recent call last):
+2025-08-14T18:41:29.058015878Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 135, in handle
+2025-08-14T18:41:29.058017918Z     self.handle_request(listener, req, client, addr)
+2025-08-14T18:41:29.058020088Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/workers/sync.py", line 178, in handle_request
+2025-08-14T18:41:29.058022099Z     respiter = self.wsgi(environ, resp.start_response)
+2025-08-14T18:41:29.058025489Z                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058029269Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask/app.py", line 2213, in __call__
+2025-08-14T18:41:29.058030409Z 10.201.163.129 - - [14/Aug/2025:18:41:29 +0000] "GET /api/users/1/measurements?days=365 HTTP/1.1" 500 0 "-" "-"
+2025-08-14T18:41:29.058032909Z     return self.wsgi_app(environ, start_response)
+2025-08-14T18:41:29.05803941Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.05804262Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask/app.py", line 2193, in wsgi_app
+2025-08-14T18:41:29.058046281Z     response = self.handle_exception(e)
+2025-08-14T18:41:29.058050281Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058052511Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+2025-08-14T18:41:29.058070312Z     return cors_after_request(app.make_response(f(*args, **kwargs)))
+2025-08-14T18:41:29.058074213Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058077743Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/extension.py", line 196, in cors_after_request
+2025-08-14T18:41:29.058081153Z     set_cors_headers(resp, res_options)
+2025-08-14T18:41:29.058085344Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 245, in set_cors_headers
+2025-08-14T18:41:29.058092874Z     headers_to_set = get_cors_headers(options, request.headers, request.method)
+2025-08-14T18:41:29.058095044Z                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058097185Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 173, in get_cors_headers
+2025-08-14T18:41:29.058099285Z     origins_to_set = get_cors_origins(options, request_headers.get('Origin'))
+2025-08-14T18:41:29.058101345Z                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058103435Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 124, in get_cors_origins
+2025-08-14T18:41:29.058105545Z     elif try_match_any(request_origin, origins):
+2025-08-14T18:41:29.058107635Z          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058109715Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 272, in try_match_any
+2025-08-14T18:41:29.058111766Z     return any(try_match(inst, pattern) for pattern in patterns)
+2025-08-14T18:41:29.058113926Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058116006Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 272, in <genexpr>
+2025-08-14T18:41:29.058118066Z     return any(try_match(inst, pattern) for pattern in patterns)
+2025-08-14T18:41:29.058120106Z                ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058122227Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 279, in try_match
+2025-08-14T18:41:29.058124287Z     elif probably_regex(maybe_regex):
+2025-08-14T18:41:29.058126327Z          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058128367Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 261, in probably_regex
+2025-08-14T18:41:29.058130457Z     return any((c in maybe_regex for c in common_regex_chars))
+2025-08-14T18:41:29.058132497Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058134587Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_cors/core.py", line 261, in <genexpr>
+2025-08-14T18:41:29.058136608Z     return any((c in maybe_regex for c in common_regex_chars))
+2025-08-14T18:41:29.058138618Z                 ^^^^^^^^^^^^^^^^
+2025-08-14T18:41:29.058140678Z TypeError: argument of type 'function' is not iterable
