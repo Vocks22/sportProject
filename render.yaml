@@ -2,13 +2,25 @@ services:
   - type: web
     name: diettracker-backend
     runtime: python
-    buildCommand: "pip install -r src/backend/requirements.txt"
-    startCommand: "cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT"
+    buildCommand: |
+      # Build ultra-optimisé pour Render
+      # Utiliser requirements minimaux en production
+      if [ -f src/backend/requirements-prod.txt ]; then
+        pip install --no-cache-dir -r src/backend/requirements-prod.txt
+      else
+        pip install --no-cache-dir -r src/backend/requirements.txt
+      fi
+    startCommand: |
+      cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
     envVars:
       - key: FLASK_ENV
         value: production
       - key: PYTHON_VERSION
         value: 3.11.10
+      - key: PYTHONPATH
+        value: /opt/render/project/src/src/backend
+      - key: RENDER
+        value: "true"
       - fromGroup: diettracker-settings
 
 databases:

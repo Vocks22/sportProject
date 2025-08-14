@@ -1,0 +1,63 @@
+# Optimisation du build Render - Ignorer les fichiers non nécessaires
+
+# Documentation
+/docs
+*.md
+README.md
+LICENSE
+
+# Frontend (pas nécessaire pour le backend)
+/src/frontend
+/utilities/frontend-*
+
+# Tests
+/tests
+*.test.py
+*_test.py
+test_*.py
+*/tests/*
+
+# Développement local
+.vscode
+.idea
+*.pyc
+__pycache__
+.pytest_cache
+.coverage
+htmlcov
+*.egg-info
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Fichiers temporaires
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*~
+
+# Obsidian
+.obsidian
+
+# Images et médias non essentiels  
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+!src/backend/static/**
+
+# Scripts non essentiels
+/utilities/*.py
+!/utilities/init_*.py
+
+# Node (si présent dans le repo)
+node_modules
+package*.json
+*.jsx
+*.js
+!src/backend/static/**/*.js
