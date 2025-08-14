@@ -1,0 +1,316 @@
+2025-08-14T18:06:11.779521528Z ==> Cloning from https://github.com/Vocks22/sportProject
+2025-08-14T18:06:12.5026146Z ==> Checking out commit bd66db6ef59da6b80201c14d49aed04ba6d65521 in branch main
+2025-08-14T18:06:13.5634555Z ==> Downloading cache...
+2025-08-14T18:06:23.830166541Z ==> Transferred 107MB in 8s. Extraction took 2s.
+2025-08-14T18:06:28.452585184Z ==> Installing Python version 3.11.10...
+2025-08-14T18:06:36.145884905Z ==> Using Python version 3.11.10 via environment variable PYTHON_VERSION
+2025-08-14T18:06:36.172663119Z ==> Docs on specifying a Python version: https://render.com/docs/python-version
+2025-08-14T18:06:40.452642124Z ==> Using Poetry version 2.1.3 (default)
+2025-08-14T18:06:40.502655591Z ==> Docs on specifying a Poetry version: https://render.com/docs/poetry-version
+2025-08-14T18:06:40.523609097Z ==> Running build command ' pip install -r src/backend/requirements.txt'...
+2025-08-14T18:06:41.083539731Z Collecting Flask==2.3.3 (from -r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:41.086113956Z   Using cached flask-2.3.3-py3-none-any.whl.metadata (3.6 kB)
+2025-08-14T18:06:41.114517282Z Collecting Flask-CORS==4.0.0 (from -r src/backend/requirements.txt (line 3))
+2025-08-14T18:06:41.116288587Z   Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl.metadata (5.4 kB)
+2025-08-14T18:06:41.144428746Z Collecting Flask-SQLAlchemy==3.0.5 (from -r src/backend/requirements.txt (line 4))
+2025-08-14T18:06:41.146110329Z   Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl.metadata (3.3 kB)
+2025-08-14T18:06:41.462733157Z Collecting SQLAlchemy==2.0.20 (from -r src/backend/requirements.txt (line 7))
+2025-08-14T18:06:41.464649796Z   Using cached SQLAlchemy-2.0.20-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.4 kB)
+2025-08-14T18:06:41.515932356Z Collecting alembic==1.11.3 (from -r src/backend/requirements.txt (line 8))
+2025-08-14T18:06:41.518195804Z   Using cached alembic-1.11.3-py3-none-any.whl.metadata (7.2 kB)
+2025-08-14T18:06:41.553564038Z Collecting Flask-JWT-Extended==4.5.2 (from -r src/backend/requirements.txt (line 11))
+2025-08-14T18:06:41.555517698Z   Using cached Flask_JWT_Extended-4.5.2-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-08-14T18:06:41.583763319Z Collecting python-dotenv==1.0.0 (from -r src/backend/requirements.txt (line 12))
+2025-08-14T18:06:41.585426492Z   Using cached python_dotenv-1.0.0-py3-none-any.whl.metadata (21 kB)
+2025-08-14T18:06:41.63701544Z Collecting bcrypt==4.0.1 (from -r src/backend/requirements.txt (line 13))
+2025-08-14T18:06:41.638786235Z   Using cached bcrypt-4.0.1-cp36-abi3-manylinux_2_28_x86_64.whl.metadata (9.0 kB)
+2025-08-14T18:06:41.865841595Z Collecting cryptography==41.0.3 (from -r src/backend/requirements.txt (line 14))
+2025-08-14T18:06:41.86761988Z   Using cached cryptography-41.0.3-cp37-abi3-manylinux_2_28_x86_64.whl.metadata (5.2 kB)
+2025-08-14T18:06:41.918769197Z Collecting marshmallow==3.20.1 (from -r src/backend/requirements.txt (line 17))
+2025-08-14T18:06:41.92044351Z   Using cached marshmallow-3.20.1-py3-none-any.whl.metadata (7.8 kB)
+2025-08-14T18:06:41.951283678Z Collecting marshmallow-sqlalchemy==0.29.0 (from -r src/backend/requirements.txt (line 18))
+2025-08-14T18:06:41.952909609Z   Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl.metadata (6.8 kB)
+2025-08-14T18:06:41.974970853Z Collecting python-dateutil==2.8.2 (from -r src/backend/requirements.txt (line 21))
+2025-08-14T18:06:41.976495312Z   Using cached python_dateutil-2.8.2-py2.py3-none-any.whl.metadata (8.2 kB)
+2025-08-14T18:06:42.027653089Z Collecting pytz==2023.3 (from -r src/backend/requirements.txt (line 22))
+2025-08-14T18:06:42.029345302Z   Using cached pytz-2023.3-py2.py3-none-any.whl.metadata (22 kB)
+2025-08-14T18:06:42.048737877Z Collecting flask-shell-ipython==0.4.1 (from -r src/backend/requirements.txt (line 25))
+2025-08-14T18:06:42.050348348Z   Using cached flask_shell_ipython-0.4.1-py2.py3-none-any.whl.metadata (1.2 kB)
+2025-08-14T18:06:42.108597647Z Collecting ipython==8.14.0 (from -r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:42.110258259Z   Using cached ipython-8.14.0-py3-none-any.whl.metadata (5.8 kB)
+2025-08-14T18:06:42.171780421Z Collecting pytest==7.4.0 (from -r src/backend/requirements.txt (line 29))
+2025-08-14T18:06:42.174057439Z   Using cached pytest-7.4.0-py3-none-any.whl.metadata (8.0 kB)
+2025-08-14T18:06:42.204901977Z Collecting pytest-flask==1.2.0 (from -r src/backend/requirements.txt (line 30))
+2025-08-14T18:06:42.207067532Z   Using cached pytest_flask-1.2.0-py3-none-any.whl.metadata (6.5 kB)
+2025-08-14T18:06:42.236588347Z Collecting pytest-cov==4.1.0 (from -r src/backend/requirements.txt (line 31))
+2025-08-14T18:06:42.238658579Z   Using cached pytest_cov-4.1.0-py3-none-any.whl.metadata (26 kB)
+2025-08-14T18:06:42.346152456Z Collecting flask-testing==0.8.1 (from -r src/backend/requirements.txt (line 32))
+2025-08-14T18:06:42.346284169Z   Using cached flask_testing-0.8.1-py3-none-any.whl
+2025-08-14T18:06:42.375056674Z Collecting factory-boy==3.3.0 (from -r src/backend/requirements.txt (line 33))
+2025-08-14T18:06:42.376655385Z   Using cached factory_boy-3.3.0-py2.py3-none-any.whl.metadata (15 kB)
+2025-08-14T18:06:42.500519849Z Collecting faker==19.3.1 (from -r src/backend/requirements.txt (line 34))
+2025-08-14T18:06:42.502321465Z   Using cached Faker-19.3.1-py3-none-any.whl.metadata (15 kB)
+2025-08-14T18:06:42.529788696Z Collecting gunicorn==21.2.0 (from -r src/backend/requirements.txt (line 37))
+2025-08-14T18:06:42.531459059Z   Using cached gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+2025-08-14T18:06:42.555152075Z Collecting python-json-logger==2.0.7 (from -r src/backend/requirements.txt (line 38))
+2025-08-14T18:06:42.556824897Z   Using cached python_json_logger-2.0.7-py3-none-any.whl.metadata (6.5 kB)
+2025-08-14T18:06:42.598115922Z Collecting Werkzeug>=2.3.7 (from Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:42.599735294Z   Using cached werkzeug-3.1.3-py3-none-any.whl.metadata (3.7 kB)
+2025-08-14T18:06:42.660249109Z Collecting Jinja2>=3.1.2 (from Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:42.661975513Z   Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2025-08-14T18:06:42.680997819Z Collecting itsdangerous>=2.1.2 (from Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:42.68257063Z   Using cached itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+2025-08-14T18:06:42.709652871Z Collecting click>=8.1.3 (from Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:42.711357315Z   Using cached click-8.2.1-py3-none-any.whl.metadata (2.5 kB)
+2025-08-14T18:06:42.7319178Z Collecting blinker>=1.6.2 (from Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:42.733580363Z   Using cached blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+2025-08-14T18:06:42.803615862Z Collecting typing-extensions>=4.2.0 (from SQLAlchemy==2.0.20->-r src/backend/requirements.txt (line 7))
+2025-08-14T18:06:42.805287754Z   Using cached typing_extensions-4.14.1-py3-none-any.whl.metadata (3.0 kB)
+2025-08-14T18:06:42.945057835Z Collecting greenlet!=0.4.17 (from SQLAlchemy==2.0.20->-r src/backend/requirements.txt (line 7))
+2025-08-14T18:06:42.946851391Z   Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (4.1 kB)
+2025-08-14T18:06:42.991273325Z Collecting Mako (from alembic==1.11.3->-r src/backend/requirements.txt (line 8))
+2025-08-14T18:06:42.992920808Z   Using cached mako-1.3.10-py3-none-any.whl.metadata (2.9 kB)
+2025-08-14T18:06:43.038774879Z Collecting PyJWT<3.0,>=2.0 (from Flask-JWT-Extended==4.5.2->-r src/backend/requirements.txt (line 11))
+2025-08-14T18:06:43.040437612Z   Using cached PyJWT-2.10.1-py3-none-any.whl.metadata (4.0 kB)
+2025-08-14T18:06:43.170754581Z Collecting cffi>=1.12 (from cryptography==41.0.3->-r src/backend/requirements.txt (line 14))
+2025-08-14T18:06:43.172575807Z   Using cached cffi-1.17.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.5 kB)
+2025-08-14T18:06:43.227199232Z Collecting packaging>=17.0 (from marshmallow==3.20.1->-r src/backend/requirements.txt (line 17))
+2025-08-14T18:06:43.228338741Z   Using cached packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-08-14T18:06:43.312371578Z Collecting six>=1.5 (from python-dateutil==2.8.2->-r src/backend/requirements.txt (line 21))
+2025-08-14T18:06:43.31400146Z   Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-08-14T18:06:43.444259607Z Collecting backcall (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.445874138Z   Using cached backcall-0.2.0-py2.py3-none-any.whl.metadata (2.0 kB)
+2025-08-14T18:06:43.467598784Z Collecting decorator (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.469189884Z   Using cached decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+2025-08-14T18:06:43.499220501Z Collecting jedi>=0.16 (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.500761151Z   Using cached jedi-0.19.2-py2.py3-none-any.whl.metadata (22 kB)
+2025-08-14T18:06:43.518256298Z Collecting matplotlib-inline (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.519883829Z   Using cached matplotlib_inline-0.1.7-py3-none-any.whl.metadata (3.9 kB)
+2025-08-14T18:06:43.537818267Z Collecting pickleshare (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.539422288Z   Using cached pickleshare-0.7.5-py2.py3-none-any.whl.metadata (1.5 kB)
+2025-08-14T18:06:43.583762761Z Collecting prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30 (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.585491245Z   Using cached prompt_toolkit-3.0.51-py3-none-any.whl.metadata (6.4 kB)
+2025-08-14T18:06:43.617696628Z Collecting pygments>=2.4.0 (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.619293439Z   Using cached pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+2025-08-14T18:06:43.640167582Z Collecting stack-data (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.641728212Z   Using cached stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+2025-08-14T18:06:43.669998734Z Collecting traitlets>=5 (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.671625466Z   Using cached traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+2025-08-14T18:06:43.691256107Z Collecting pexpect>4.3 (from ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:43.692856308Z   Using cached pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+2025-08-14T18:06:43.722465514Z Collecting iniconfig (from pytest==7.4.0->-r src/backend/requirements.txt (line 29))
+2025-08-14T18:06:43.724133397Z   Using cached iniconfig-2.1.0-py3-none-any.whl.metadata (2.7 kB)
+2025-08-14T18:06:43.74932132Z Collecting pluggy<2.0,>=0.12 (from pytest==7.4.0->-r src/backend/requirements.txt (line 29))
+2025-08-14T18:06:43.751015084Z   Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2025-08-14T18:06:44.216226768Z Collecting coverage>=5.2.1 (from coverage[toml]>=5.2.1->pytest-cov==4.1.0->-r src/backend/requirements.txt (line 31))
+2025-08-14T18:06:44.217975513Z   Using cached coverage-7.10.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.9 kB)
+2025-08-14T18:06:44.293661756Z Collecting pycparser (from cffi>=1.12->cryptography==41.0.3->-r src/backend/requirements.txt (line 14))
+2025-08-14T18:06:44.295242166Z   Using cached pycparser-2.22-py3-none-any.whl.metadata (943 bytes)
+2025-08-14T18:06:44.362995747Z Collecting parso<0.9.0,>=0.8.4 (from jedi>=0.16->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.364832404Z   Using cached parso-0.8.4-py2.py3-none-any.whl.metadata (7.7 kB)
+2025-08-14T18:06:44.429181668Z Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->Flask==2.3.3->-r src/backend/requirements.txt (line 2))
+2025-08-14T18:06:44.430953413Z   Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.0 kB)
+2025-08-14T18:06:44.459331848Z Collecting ptyprocess>=0.5 (from pexpect>4.3->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.46097667Z   Using cached ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+2025-08-14T18:06:44.492835464Z Collecting wcwidth (from prompt-toolkit!=3.0.37,<3.1.0,>=3.0.30->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.494460445Z   Using cached wcwidth-0.2.13-py2.py3-none-any.whl.metadata (14 kB)
+2025-08-14T18:06:44.608857538Z Collecting executing>=1.2.0 (from stack-data->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.610535901Z   Using cached executing-2.2.0-py2.py3-none-any.whl.metadata (8.9 kB)
+2025-08-14T18:06:44.632483181Z Collecting asttokens>=2.1.0 (from stack-data->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.634087112Z   Using cached asttokens-3.0.0-py3-none-any.whl.metadata (4.7 kB)
+2025-08-14T18:06:44.649714611Z Collecting pure-eval (from stack-data->ipython==8.14.0->-r src/backend/requirements.txt (line 26))
+2025-08-14T18:06:44.651284592Z   Using cached pure_eval-0.2.3-py3-none-any.whl.metadata (6.3 kB)
+2025-08-14T18:06:44.71305354Z Using cached flask-2.3.3-py3-none-any.whl (96 kB)
+2025-08-14T18:06:44.714883816Z Using cached Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+2025-08-14T18:06:44.716457947Z Using cached flask_sqlalchemy-3.0.5-py3-none-any.whl (24 kB)
+2025-08-14T18:06:44.71815015Z Using cached SQLAlchemy-2.0.20-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.2 MB)
+2025-08-14T18:06:44.725276622Z Using cached alembic-1.11.3-py3-none-any.whl (225 kB)
+2025-08-14T18:06:44.727212281Z Using cached Flask_JWT_Extended-4.5.2-py2.py3-none-any.whl (22 kB)
+2025-08-14T18:06:44.728929745Z Using cached python_dotenv-1.0.0-py3-none-any.whl (19 kB)
+2025-08-14T18:06:44.730559757Z Using cached bcrypt-4.0.1-cp36-abi3-manylinux_2_28_x86_64.whl (593 kB)
+2025-08-14T18:06:44.733203174Z Using cached cryptography-41.0.3-cp37-abi3-manylinux_2_28_x86_64.whl (4.3 MB)
+2025-08-14T18:06:44.741848215Z Using cached marshmallow-3.20.1-py3-none-any.whl (49 kB)
+2025-08-14T18:06:44.743502297Z Using cached marshmallow_sqlalchemy-0.29.0-py2.py3-none-any.whl (16 kB)
+2025-08-14T18:06:44.745202151Z Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+2025-08-14T18:06:44.747173631Z Using cached pytz-2023.3-py2.py3-none-any.whl (502 kB)
+2025-08-14T18:06:44.749610183Z Using cached flask_shell_ipython-0.4.1-py2.py3-none-any.whl (3.5 kB)
+2025-08-14T18:06:44.751295006Z Using cached ipython-8.14.0-py3-none-any.whl (798 kB)
+2025-08-14T18:06:44.754146509Z Using cached pytest-7.4.0-py3-none-any.whl (323 kB)
+2025-08-14T18:06:44.756237263Z Using cached pytest_flask-1.2.0-py3-none-any.whl (10 kB)
+2025-08-14T18:06:44.757779272Z Using cached pytest_cov-4.1.0-py3-none-any.whl (21 kB)
+2025-08-14T18:06:44.759407804Z Using cached factory_boy-3.3.0-py2.py3-none-any.whl (36 kB)
+2025-08-14T18:06:44.76120622Z Using cached Faker-19.3.1-py3-none-any.whl (1.7 MB)
+2025-08-14T18:06:44.765701134Z Using cached gunicorn-21.2.0-py3-none-any.whl (80 kB)
+2025-08-14T18:06:44.767437959Z Using cached python_json_logger-2.0.7-py3-none-any.whl (8.1 kB)
+2025-08-14T18:06:44.769015659Z Using cached blinker-1.9.0-py3-none-any.whl (8.5 kB)
+2025-08-14T18:06:44.770760834Z Using cached cffi-1.17.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (467 kB)
+2025-08-14T18:06:44.773071863Z Using cached click-8.2.1-py3-none-any.whl (102 kB)
+2025-08-14T18:06:44.774839168Z Using cached coverage-7.10.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (248 kB)
+2025-08-14T18:06:44.77688193Z Using cached greenlet-3.2.4-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (587 kB)
+2025-08-14T18:06:44.779390624Z Using cached itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+2025-08-14T18:06:44.781002385Z Using cached jedi-0.19.2-py2.py3-none-any.whl (1.6 MB)
+2025-08-14T18:06:44.785737306Z Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-08-14T18:06:44.78783542Z Using cached packaging-25.0-py3-none-any.whl (66 kB)
+2025-08-14T18:06:44.793924835Z Using cached pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+2025-08-14T18:06:44.793943296Z Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+2025-08-14T18:06:44.795846115Z Using cached prompt_toolkit-3.0.51-py3-none-any.whl (387 kB)
+2025-08-14T18:06:44.798626975Z Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+2025-08-14T18:06:44.804401613Z Using cached PyJWT-2.10.1-py3-none-any.whl (22 kB)
+2025-08-14T18:06:44.807051931Z Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-08-14T18:06:44.809642917Z Using cached traitlets-5.14.3-py3-none-any.whl (85 kB)
+2025-08-14T18:06:44.812466949Z Using cached typing_extensions-4.14.1-py3-none-any.whl (43 kB)
+2025-08-14T18:06:44.81522518Z Using cached werkzeug-3.1.3-py3-none-any.whl (224 kB)
+2025-08-14T18:06:44.818733489Z Using cached backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+2025-08-14T18:06:44.823026269Z Using cached decorator-5.2.1-py3-none-any.whl (9.2 kB)
+2025-08-14T18:06:44.824028364Z Using cached iniconfig-2.1.0-py3-none-any.whl (6.0 kB)
+2025-08-14T18:06:44.826387565Z Using cached mako-1.3.10-py3-none-any.whl (78 kB)
+2025-08-14T18:06:44.828845498Z Using cached matplotlib_inline-0.1.7-py3-none-any.whl (9.9 kB)
+2025-08-14T18:06:44.831270729Z Using cached pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+2025-08-14T18:06:44.833439745Z Using cached stack_data-0.6.3-py3-none-any.whl (24 kB)
+2025-08-14T18:06:44.835642701Z Using cached asttokens-3.0.0-py3-none-any.whl (26 kB)
+2025-08-14T18:06:44.837821177Z Using cached executing-2.2.0-py2.py3-none-any.whl (26 kB)
+2025-08-14T18:06:44.840022973Z Using cached MarkupSafe-3.0.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (23 kB)
+2025-08-14T18:06:44.842127477Z Using cached parso-0.8.4-py2.py3-none-any.whl (103 kB)
+2025-08-14T18:06:44.844429356Z Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+2025-08-14T18:06:44.84654407Z Using cached pure_eval-0.2.3-py3-none-any.whl (11 kB)
+2025-08-14T18:06:44.848618743Z Using cached pycparser-2.22-py3-none-any.whl (117 kB)
+2025-08-14T18:06:44.850940682Z Using cached wcwidth-0.2.13-py2.py3-none-any.whl (34 kB)
+2025-08-14T18:06:45.186192336Z Installing collected packages: wcwidth, pytz, pure-eval, ptyprocess, pickleshare, backcall, typing-extensions, traitlets, six, python-json-logger, python-dotenv, PyJWT, pygments, pycparser, prompt-toolkit, pluggy, pexpect, parso, packaging, MarkupSafe, itsdangerous, iniconfig, greenlet, executing, decorator, coverage, click, blinker, bcrypt, asttokens, Werkzeug, stack-data, SQLAlchemy, python-dateutil, pytest, matplotlib-inline, marshmallow, Mako, Jinja2, jedi, gunicorn, cffi, pytest-cov, marshmallow-sqlalchemy, ipython, Flask, faker, cryptography, alembic, pytest-flask, flask-testing, Flask-SQLAlchemy, flask-shell-ipython, Flask-JWT-Extended, Flask-CORS, factory-boy
+2025-08-14T18:06:51.845865242Z Successfully installed Flask-2.3.3 Flask-CORS-4.0.0 Flask-JWT-Extended-4.5.2 Flask-SQLAlchemy-3.0.5 Jinja2-3.1.6 Mako-1.3.10 MarkupSafe-3.0.2 PyJWT-2.10.1 SQLAlchemy-2.0.20 Werkzeug-3.1.3 alembic-1.11.3 asttokens-3.0.0 backcall-0.2.0 bcrypt-4.0.1 blinker-1.9.0 cffi-1.17.1 click-8.2.1 coverage-7.10.3 cryptography-41.0.3 decorator-5.2.1 executing-2.2.0 factory-boy-3.3.0 faker-19.3.1 flask-shell-ipython-0.4.1 flask-testing-0.8.1 greenlet-3.2.4 gunicorn-21.2.0 iniconfig-2.1.0 ipython-8.14.0 itsdangerous-2.2.0 jedi-0.19.2 marshmallow-3.20.1 marshmallow-sqlalchemy-0.29.0 matplotlib-inline-0.1.7 packaging-25.0 parso-0.8.4 pexpect-4.9.0 pickleshare-0.7.5 pluggy-1.6.0 prompt-toolkit-3.0.51 ptyprocess-0.7.0 pure-eval-0.2.3 pycparser-2.22 pygments-2.19.2 pytest-7.4.0 pytest-cov-4.1.0 pytest-flask-1.2.0 python-dateutil-2.8.2 python-dotenv-1.0.0 python-json-logger-2.0.7 pytz-2023.3 six-1.17.0 stack-data-0.6.3 traitlets-5.14.3 typing-extensions-4.14.1 wcwidth-0.2.13
+2025-08-14T18:06:51.925600119Z 
+2025-08-14T18:06:51.925628799Z [notice] A new release of pip is available: 24.0 -> 25.2
+2025-08-14T18:06:51.92563195Z [notice] To update, run: pip install --upgrade pip
+2025-08-14T18:06:52.413491242Z ==> Requesting Node.js version 18
+2025-08-14T18:06:53.071581133Z ==> Using Node.js version 18.20.8 via /opt/render/project/src/.nvmrc
+2025-08-14T18:06:53.0976895Z ==> Node.js version 18.20.8 has reached end-of-life.
+2025-08-14T18:06:53.097714841Z ==> Upgrade to a maintained version to receive important security updates.
+2025-08-14T18:06:53.097719771Z ==> Information on maintained Node.js versions: https://nodejs.org/en/about/previous-releases
+2025-08-14T18:06:53.097743142Z ==> Docs on specifying a Node.js version: https://render.com/docs/node-version
+2025-08-14T18:06:58.112159358Z ==> Uploading build...
+2025-08-14T18:07:13.501262242Z ==> Uploaded in 10.6s. Compression took 4.8s
+2025-08-14T18:07:13.56499045Z ==> Build successful 🎉
+2025-08-14T18:07:18.538310175Z ==> Deploying...
+2025-08-14T18:07:53.641005063Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-14T18:07:55.229229018Z Traceback (most recent call last):
+2025-08-14T18:07:55.22924677Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-14T18:07:55.22926141Z     sys.exit(run())
+2025-08-14T18:07:55.229296852Z              ^^^^^
+2025-08-14T18:07:55.229301012Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-14T18:07:55.229408457Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-14T18:07:55.229415107Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-14T18:07:55.229526703Z     super().run()
+2025-08-14T18:07:55.229533703Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-14T18:07:55.229583275Z     Arbiter(self).run()
+2025-08-14T18:07:55.229614287Z     ^^^^^^^^^^^^^
+2025-08-14T18:07:55.229617287Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-14T18:07:55.229711192Z     self.setup(app)
+2025-08-14T18:07:55.229794916Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-14T18:07:55.2298751Z     self.app.wsgi()
+2025-08-14T18:07:55.22988264Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-14T18:07:55.229954273Z     self.callable = self.load()
+2025-08-14T18:07:55.229962464Z                     ^^^^^^^^^^^
+2025-08-14T18:07:55.229965274Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-14T18:07:55.230036147Z     return self.load_wsgiapp()
+2025-08-14T18:07:55.230043017Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230049208Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-14T18:07:55.230123131Z     return util.import_app(self.app_uri)
+2025-08-14T18:07:55.230125961Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230127712Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-14T18:07:55.230251767Z     mod = importlib.import_module(module)
+2025-08-14T18:07:55.230255008Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230256768Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-14T18:07:55.230340952Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-14T18:07:55.230369073Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230371593Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-14T18:07:55.230373313Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-14T18:07:55.230374964Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-14T18:07:55.230376764Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-14T18:07:55.230378394Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-14T18:07:55.230382404Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-14T18:07:55.230384154Z   File "/opt/render/project/src/src/backend/main.py", line 77, in <module>
+2025-08-14T18:07:55.230458508Z     app = create_app()
+2025-08-14T18:07:55.230463078Z           ^^^^^^^^^^^^
+2025-08-14T18:07:55.230465708Z   File "/opt/render/project/src/src/backend/main.py", line 27, in create_app
+2025-08-14T18:07:55.230552852Z     db.init_app(app)
+2025-08-14T18:07:55.230558712Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 329, in init_app
+2025-08-14T18:07:55.230690259Z     engines[key] = self._make_engine(key, options, app)
+2025-08-14T18:07:55.230700559Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230703809Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 617, in _make_engine
+2025-08-14T18:07:55.23093765Z     return sa.engine_from_config(options, prefix="")
+2025-08-14T18:07:55.230953761Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.230957061Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 803, in engine_from_config
+2025-08-14T18:07:55.231114489Z     return create_engine(url, **options)
+2025-08-14T18:07:55.231119459Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.231122199Z   File "<string>", line 2, in create_engine
+2025-08-14T18:07:55.231128809Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2025-08-14T18:07:55.231230414Z     return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2025-08-14T18:07:55.231235415Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.231237515Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 601, in create_engine
+2025-08-14T18:07:55.231369071Z     dbapi = dbapi_meth(**dbapi_args)
+2025-08-14T18:07:55.231374071Z             ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:07:55.231376351Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 690, in import_dbapi
+2025-08-14T18:07:55.231713877Z     import psycopg2
+2025-08-14T18:07:55.23176195Z ModuleNotFoundError: No module named 'psycopg2'
+2025-08-14T18:08:13.366606795Z ==> Exited with status 1
+2025-08-14T18:08:13.513544312Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-08-14T18:08:14.053688106Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-14T18:08:15.080136995Z Traceback (most recent call last):
+2025-08-14T18:08:15.080152966Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-14T18:08:15.080204398Z     sys.exit(run())
+2025-08-14T18:08:15.080212089Z              ^^^^^
+2025-08-14T18:08:15.080215129Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-14T18:08:15.080322784Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-14T18:08:15.080333225Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-14T18:08:15.08043613Z     super().run()
+2025-08-14T18:08:15.08044102Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-14T18:08:15.080525144Z     Arbiter(self).run()
+2025-08-14T18:08:15.080529524Z     ^^^^^^^^^^^^^
+2025-08-14T18:08:15.080531824Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-14T18:08:15.080612938Z     self.setup(app)
+2025-08-14T18:08:15.080622298Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-14T18:08:15.080712343Z     self.app.wsgi()
+2025-08-14T18:08:15.080783786Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-14T18:08:15.08087169Z     self.callable = self.load()
+2025-08-14T18:08:15.080883371Z                     ^^^^^^^^^^^
+2025-08-14T18:08:15.080885731Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-14T18:08:15.080978106Z     return self.load_wsgiapp()
+2025-08-14T18:08:15.080982966Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.081003747Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-14T18:08:15.081093491Z     return util.import_app(self.app_uri)
+2025-08-14T18:08:15.081101252Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.081103312Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-14T18:08:15.081256259Z     mod = importlib.import_module(module)
+2025-08-14T18:08:15.081261859Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.081268449Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-14T18:08:15.081377155Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-14T18:08:15.081389015Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.081403536Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-14T18:08:15.081409476Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-14T18:08:15.081418047Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-14T18:08:15.081420487Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-14T18:08:15.081422847Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-14T18:08:15.081425067Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-14T18:08:15.081430347Z   File "/opt/render/project/src/src/backend/main.py", line 77, in <module>
+2025-08-14T18:08:15.081533762Z     app = create_app()
+2025-08-14T18:08:15.081551243Z           ^^^^^^^^^^^^
+2025-08-14T18:08:15.081553493Z   File "/opt/render/project/src/src/backend/main.py", line 27, in create_app
+2025-08-14T18:08:15.081649598Z     db.init_app(app)
+2025-08-14T18:08:15.081672349Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 329, in init_app
+2025-08-14T18:08:15.081830516Z     engines[key] = self._make_engine(key, options, app)
+2025-08-14T18:08:15.081841467Z                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.081844887Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/flask_sqlalchemy/extension.py", line 617, in _make_engine
+2025-08-14T18:08:15.082004575Z     return sa.engine_from_config(options, prefix="")
+2025-08-14T18:08:15.082010985Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.082013575Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 803, in engine_from_config
+2025-08-14T18:08:15.082198464Z     return create_engine(url, **options)
+2025-08-14T18:08:15.082214115Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.082217455Z   File "<string>", line 2, in create_engine
+2025-08-14T18:08:15.082220395Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+2025-08-14T18:08:15.082339081Z     return fn(*args, **kwargs)  # type: ignore[no-any-return]
+2025-08-14T18:08:15.082345581Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.082348861Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/engine/create.py", line 601, in create_engine
+2025-08-14T18:08:15.082481447Z     dbapi = dbapi_meth(**dbapi_args)
+2025-08-14T18:08:15.082490058Z             ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-14T18:08:15.082493218Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/sqlalchemy/dialects/postgresql/psycopg2.py", line 690, in import_dbapi
+2025-08-14T18:08:15.082816774Z     import psycopg2
+2025-08-14T18:08:15.082827064Z ModuleNotFoundError: No module named 'psycopg2'
