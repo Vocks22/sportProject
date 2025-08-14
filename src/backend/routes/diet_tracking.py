@@ -27,10 +27,12 @@ def get_today_diet():
     """Récupère le statut de la diète du jour avec le repas actuel"""
     try:
         today = date.today()
-        current_hour = datetime.now().hour
+        now = datetime.now()
+        current_hour = now.hour
+        current_minute = now.minute
         
-        # Déterminer le repas actuel selon l'heure
-        current_meal_type = get_current_meal_type(current_hour)
+        # Déterminer le repas actuel selon l'heure et les minutes
+        current_meal_type = get_current_meal_type(current_hour, current_minute)
         
         # Récupérer tous les repas du programme
         meals = DietProgram.query.order_by(DietProgram.order_index).all()
@@ -64,6 +66,7 @@ def get_today_diet():
                 'meal_type': meal.meal_type,
                 'meal_name': meal.meal_name,
                 'time_slot': meal.time_slot,
+                'order_index': meal.order_index,  # Ajout de l'ordre
                 'foods': meal.foods,
                 'completed': tracking.completed if tracking else False,
                 'completed_at': tracking.completed_at.isoformat() if tracking and tracking.completed_at else None
@@ -218,21 +221,48 @@ def get_diet_history(date_str):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
-def get_current_meal_type(hour):
-    """Détermine le type de repas selon l'heure actuelle"""
-    if 6 <= hour < 10:
-        return 'repas1'
-    elif 10 <= hour < 12:
-        return 'collation1'
-    elif 12 <= hour < 15:
-        return 'repas2'
-    elif 15 <= hour < 18:
-        return 'collation2'
-    elif 18 <= hour < 22:
-        return 'repas3'
-    else:
-        # Avant 6h ou après 22h, on montre le petit-déjeuner du lendemain
-        return 'repas1'
+def get_current_meal_type(hour, minute=0):
+    """Détermine le type de repas selon l'heure actuelle en utilisant les vrais horaires"""
+    from models.diet_program import DietProgram
+    import re
+    
+    # Récupérer tous les repas avec leurs horaires
+    meals = DietProgram.query.order_by(DietProgram.order_index).all()
+    
+    current_time = hour * 60 + minute  # Convertir en minutes pour faciliter la comparaison
+    
+    for meal in meals:
+        # Parser le time_slot (format: "6h-9h" ou "19h30-23h00")
+        time_slot = meal.time_slot
+        match = re.match(r'(\d+)h?(\d*)-(\d+)h?(\d*)', time_slot)
+        
+        if match:
+            start_hour = int(match.group(1))
+            start_min = int(match.group(2)) if match.group(2) else 0
+            end_hour = int(match.group(3))
+            end_min = int(match.group(4)) if match.group(4) else 0
+            
+            start_time = start_hour * 60 + start_min
+            end_time = end_hour * 60 + end_min
+            
+            # Gérer le cas où la fin est le lendemain (ex: 23h-2h)
+            if end_time < start_time:
+                # Si on est après minuit mais avant la fin
+                if current_time < end_time:
+                    return meal.meal_type
+                # Si on est après le début le soir
+                elif current_time >= start_time:
+                    return meal.meal_type
+            else:
+                # Cas normal
+                if start_time <= current_time < end_time:
+                    return meal.meal_type
+    
+    # Si aucun repas ne correspond, retourner le premier repas
+    if meals:
+        return meals[0].meal_type
+    
+    return 'repas1'  # Fallback
 
 
 def update_streak_stats():

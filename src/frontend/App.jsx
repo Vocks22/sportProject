@@ -9,6 +9,7 @@ import { Shopping } from './components/Shopping'
 import { ProgressPage } from './components/Progress'
 import ProfilePage from './pages/ProfilePage'
 import MeasurementsPage from './pages/MeasurementsPage'
+import DietAdmin from './components/DietAdmin'
 import './App.css'
 
 function App() {
@@ -68,6 +69,7 @@ function App() {
               <Route path="/progress" element={<ProgressPage />} />
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/measurements" element={<MeasurementsPage />} />
+              <Route path="/diet-admin" element={<DietAdmin />} />
             </Routes>
           </main>
         </div>

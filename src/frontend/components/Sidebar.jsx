@@ -23,6 +23,7 @@ export function Sidebar({ isOpen, setIsOpen, isMobile }) {
     { name: 'Suivi', href: '/progress', icon: TrendingUp },
     { name: 'Mesures', href: '/measurements', icon: Activity },
     { name: 'Profil', href: '/profile', icon: User },
+    { name: '⚙️ Admin Repas', href: '/diet-admin', icon: LayoutDashboard },
   ]
 
   const handleLinkClick = () => {

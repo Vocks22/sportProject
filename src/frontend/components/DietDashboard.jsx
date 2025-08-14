@@ -200,7 +200,7 @@ export default function DietDashboard() {
         </h2>
 
         <div className="space-y-3">
-          {todayDiet?.meals?.map((meal) => (
+          {todayDiet?.meals?.sort((a, b) => (a.order_index || 0) - (b.order_index || 0)).map((meal) => (
             <div
               key={meal.id}
               className={`flex items-center justify-between p-4 rounded-lg border ${

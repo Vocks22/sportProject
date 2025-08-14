@@ -47,7 +47,7 @@ def create_app(config_name=None):
     else:
         # En développement, liste explicite
         CORS(app, 
-             origins=["http://localhost:5173", "http://localhost:3000", "http://localhost:5000"],
+             origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:3000", "http://localhost:5000"],
              allow_headers=["Content-Type", "Authorization", "Access-Control-Allow-Credentials"],
              supports_credentials=True,
              expose_headers=["Content-Range", "X-Content-Range"],
@@ -60,6 +60,7 @@ def create_app(config_name=None):
     from routes.meal_plans import meal_plans_bp
     from routes.meal_tracking import meal_tracking_bp
     from routes.diet_tracking import diet_tracking_bp
+    from routes.diet_admin import diet_admin_bp
     
     api_prefix = app.config.get('API_PREFIX', '/api')
     app.register_blueprint(user_bp, url_prefix=api_prefix)
@@ -68,6 +69,7 @@ def create_app(config_name=None):
     app.register_blueprint(meal_plans_bp, url_prefix=api_prefix)
     app.register_blueprint(meal_tracking_bp, url_prefix=api_prefix)
     app.register_blueprint(diet_tracking_bp)
+    app.register_blueprint(diet_admin_bp, url_prefix=api_prefix)
     
     # Health check endpoint
     @app.route('/health')
