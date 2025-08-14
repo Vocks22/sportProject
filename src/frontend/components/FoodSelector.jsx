@@ -40,6 +40,11 @@ const FoodSelector = ({ foods = [], onChange, mealName = '' }) => {
   // Calculer le total des calories à chaque changement
   useEffect(() => {
     const total = foods.reduce((sum, food) => {
+      // Si l'aliment a déjà des calories calculées, les utiliser
+      if (food.calories) {
+        return sum + food.calories;
+      }
+      // Sinon, calculer à partir de foodId
       const foodData = getFoodById(food.foodId);
       if (foodData && foodData.units[food.unit]) {
         return sum + (foodData.units[food.unit].calories * food.quantity);
