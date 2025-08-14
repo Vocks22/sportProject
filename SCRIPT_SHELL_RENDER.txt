@@ -1,0 +1,29 @@
+cd src/backend && python -c "
+import sys
+sys.path.insert(0, '/opt/render/project/src/src/backend')
+from database import db
+from main import create_app
+from models.diet_program import DietProgram
+
+app = create_app()
+with app.app_context():
+    db.create_all()
+    if DietProgram.query.count() == 0:
+        meals = [
+            {'meal_type': 'repas1', 'meal_name': 'Petit-déjeuner', 'time_slot': '6h-9h', 'order_index': 1, 'foods': []},
+            {'meal_type': 'collation1', 'meal_name': 'Collation du matin', 'time_slot': '10h-11h', 'order_index': 2, 'foods': []},
+            {'meal_type': 'repas2', 'meal_name': 'Déjeuner', 'time_slot': '12h-14h', 'order_index': 3, 'foods': []},
+            {'meal_type': 'collation2', 'meal_name': 'Collation après-midi', 'time_slot': '16h-17h', 'order_index': 4, 'foods': []},
+            {'meal_type': 'repas3', 'meal_name': 'Dîner', 'time_slot': '19h-21h', 'order_index': 5, 'foods': []}
+        ]
+        for m in meals:
+            db.session.add(DietProgram(**m))
+        db.session.commit()
+        print('✅ 5 repas créés!')
+    else:
+        print('✅ Repas déjà présents')
+"
+m2 = DietProgram(meal_type='collation1', meal_name='Collation', time_slot='10h-11h', order_index=2, foods=[])
+m3 = DietProgram(meal_type='repas2', meal_name='Déjeuner', time_slot='12h-14h', order_index=3, foods=[])
+m4 = DietProgram(meal_type='collation2', meal_name='Goûter', time_slot='16h-17h', order_index=4, foods=[])
+m5 = DietProgram(meal_type='repas3', meal_name='Dîner', time_slot='19h-21h', order_index=5, foods=[])

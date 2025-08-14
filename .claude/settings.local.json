@@ -51,7 +51,11 @@
       "Bash(venv/bin/pip install:*)",
       "Bash(./venv/bin/pip install:*)",
       "Bash(./venv/bin/python:*)",
-      "Bash(kill:*)"
+      "Bash(kill:*)",
+      "Bash(true)",
+      "Bash(gh auth:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(git reset:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
