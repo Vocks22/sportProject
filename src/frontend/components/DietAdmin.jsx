@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock, Utensils } from 'lucide-react';
+import { Trash2, Edit, Plus, Save, X, RefreshCw, ChefHat, Clock, Utensils, PlusCircle } from 'lucide-react';
 import TimeRangePicker from './ui/TimeRangePicker';
+import FoodSelector from './FoodSelector';
 
 const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 const API_URL = BASE_URL.includes('/api') ? BASE_URL : `${BASE_URL}/api`;
@@ -21,7 +22,8 @@ const DietAdmin = () => {
   });
   const [showNewForm, setShowNewForm] = useState(false);
   const [expandedMeal, setExpandedMeal] = useState(null);
-  const [newFood, setNewFood] = useState({ name: '', quantity: '', unit: '' });
+  const [showCustomFood, setShowCustomFood] = useState(false);
+  const [customFood, setCustomFood] = useState({ name: '', defaultUnit: 'g', caloriesPerUnit: 0 });
 
   useEffect(() => {
     fetchMeals();
@@ -170,31 +172,52 @@ const DietAdmin = () => {
     }
   };
 
-  const handleAddFood = (mealId) => {
-    if (!newFood.name || !newFood.quantity || !newFood.unit) {
-      alert('Veuillez remplir tous les champs');
-      return;
-    }
-
+  const handleFoodsChange = (mealId, newFoods) => {
     const meal = meals.find(m => m.id === mealId);
     if (meal) {
+      const formattedFoods = newFoods.map(f => ({
+        name: f.name,
+        quantity: f.quantity.toString(),
+        unit: f.unit,
+        calories: f.calories
+      }));
       const updatedMeal = {
         ...meal,
-        foods: [...(meal.foods || []), { ...newFood }]
+        foods: formattedFoods
       };
       handleUpdateMeal(updatedMeal);
-      setNewFood({ name: '', quantity: '', unit: '' });
     }
   };
 
-  const handleRemoveFood = (mealId, foodIndex) => {
-    const meal = meals.find(m => m.id === mealId);
-    if (meal) {
-      const updatedFoods = [...(meal.foods || [])];
-      updatedFoods.splice(foodIndex, 1);
-      const updatedMeal = { ...meal, foods: updatedFoods };
-      handleUpdateMeal(updatedMeal);
+  const handleAddCustomFood = () => {
+    if (!customFood.name || !customFood.defaultUnit || !customFood.caloriesPerUnit) {
+      alert('Veuillez remplir tous les champs');
+      return;
     }
+    
+    // Ici on pourrait sauvegarder l'aliment personnalisé dans le localStorage
+    // ou l'envoyer au backend
+    const customFoods = JSON.parse(localStorage.getItem('customFoods') || '[]');
+    const newCustomFood = {
+      id: `custom_${Date.now()}`,
+      name: customFood.name,
+      category: 'custom',
+      defaultUnit: customFood.defaultUnit,
+      units: {
+        [customFood.defaultUnit]: { 
+          calories: parseFloat(customFood.caloriesPerUnit),
+          protein: 0,
+          carbs: 0,
+          fat: 0
+        }
+      }
+    };
+    customFoods.push(newCustomFood);
+    localStorage.setItem('customFoods', JSON.stringify(customFoods));
+    
+    alert(`Aliment "${customFood.name}" ajouté avec succès !`);
+    setCustomFood({ name: '', defaultUnit: 'g', caloriesPerUnit: 0 });
+    setShowCustomFood(false);
   };
 
   if (loading) {
@@ -386,65 +409,23 @@ const DietAdmin = () => {
                         </div>
                       </div>
                       
-                      {/* Section aliments */}
+                      {/* Section aliments avec sélecteur et calcul des calories */}
                       {expandedMeal === meal.id && (
                         <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                          <h5 className="font-semibold mb-3">🍽️ Aliments du repas</h5>
+                          <h5 className="font-semibold mb-3">🍽️ Gestion des aliments</h5>
                           
-                          {/* Liste des aliments existants */}
-                          <div className="space-y-2 mb-4">
-                            {meal.foods && meal.foods.length > 0 ? (
-                              meal.foods.map((food, index) => (
-                                <div key={index} className="flex items-center justify-between bg-white p-2 rounded border">
-                                  <span className="font-medium">{food.name}</span>
-                                  <div className="flex items-center space-x-2">
-                                    <span className="text-gray-600">{food.quantity} {food.unit}</span>
-                                    <Button
-                                      onClick={() => handleRemoveFood(meal.id, index)}
-                                      size="sm"
-                                      variant="destructive"
-                                    >
-                                      <X className="w-3 h-3" />
-                                    </Button>
-                                  </div>
-                                </div>
-                              ))
-                            ) : (
-                              <p className="text-gray-500 italic">Aucun aliment défini</p>
-                            )}
-                          </div>
-                          
-                          {/* Formulaire ajout aliment */}
-                          <div className="border-t pt-3">
-                            <p className="text-sm font-medium mb-2">Ajouter un aliment :</p>
-                            <div className="flex gap-2">
-                              <Input
-                                placeholder="Nom de l'aliment"
-                                value={newFood.name}
-                                onChange={(e) => setNewFood({...newFood, name: e.target.value})}
-                                className="flex-1"
-                              />
-                              <Input
-                                placeholder="Quantité"
-                                value={newFood.quantity}
-                                onChange={(e) => setNewFood({...newFood, quantity: e.target.value})}
-                                className="w-24"
-                              />
-                              <Input
-                                placeholder="Unité"
-                                value={newFood.unit}
-                                onChange={(e) => setNewFood({...newFood, unit: e.target.value})}
-                                className="w-24"
-                              />
-                              <Button
-                                onClick={() => handleAddFood(meal.id)}
-                                className="bg-green-600 hover:bg-green-700"
-                                size="sm"
-                              >
-                                <Plus className="w-4 h-4" />
-                              </Button>
-                            </div>
-                          </div>
+                          {/* Utilisation du nouveau sélecteur d'aliments */}
+                          <FoodSelector
+                            foods={meal.foods?.map(f => ({
+                              foodId: f.foodId || `legacy_${f.name}`,
+                              name: f.name,
+                              quantity: parseFloat(f.quantity) || 1,
+                              unit: f.unit || 'g',
+                              calories: f.calories || 0
+                            })) || []}
+                            onChange={(newFoods) => handleFoodsChange(meal.id, newFoods)}
+                            mealName={meal.meal_name}
+                          />
                         </div>
                       )}
                     </div>
@@ -454,14 +435,78 @@ const DietAdmin = () => {
             )}
           </div>
 
+          {/* Section pour ajouter des aliments personnalisés */}
+          <div className="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-lg">
+            <div className="flex justify-between items-center mb-3">
+              <h4 className="font-bold text-purple-800">🍴 Aliments personnalisés</h4>
+              <Button
+                onClick={() => setShowCustomFood(!showCustomFood)}
+                className="bg-purple-600 hover:bg-purple-700"
+                size="sm"
+              >
+                <PlusCircle className="w-4 h-4 mr-2" />
+                Ajouter un aliment
+              </Button>
+            </div>
+            
+            {showCustomFood && (
+              <div className="mt-3 p-3 bg-white rounded border">
+                <p className="text-sm font-medium mb-2">Nouvel aliment personnalisé :</p>
+                <div className="grid grid-cols-3 gap-2 mb-2">
+                  <Input
+                    placeholder="Nom de l'aliment"
+                    value={customFood.name}
+                    onChange={(e) => setCustomFood({...customFood, name: e.target.value})}
+                  />
+                  <Input
+                    placeholder="Unité (g, ml, unité...)"
+                    value={customFood.defaultUnit}
+                    onChange={(e) => setCustomFood({...customFood, defaultUnit: e.target.value})}
+                  />
+                  <Input
+                    type="number"
+                    placeholder="Calories par unité"
+                    value={customFood.caloriesPerUnit}
+                    onChange={(e) => setCustomFood({...customFood, caloriesPerUnit: e.target.value})}
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    onClick={handleAddCustomFood}
+                    className="bg-green-600 hover:bg-green-700"
+                    size="sm"
+                  >
+                    <Save className="w-4 h-4 mr-2" />
+                    Enregistrer
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      setShowCustomFood(false);
+                      setCustomFood({ name: '', defaultUnit: 'g', caloriesPerUnit: 0 });
+                    }}
+                    variant="outline"
+                    size="sm"
+                  >
+                    <X className="w-4 h-4 mr-2" />
+                    Annuler
+                  </Button>
+                </div>
+              </div>
+            )}
+            
+            <p className="text-xs text-purple-600 mt-2">
+              💡 Vous pouvez ajouter vos propres aliments avec leurs calories pour un suivi personnalisé
+            </p>
+          </div>
+
           {/* Instructions */}
           <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
             <h4 className="font-bold text-yellow-800 mb-2">📝 Instructions :</h4>
             <ul className="text-sm text-yellow-700 space-y-1">
-              <li>• Les types de repas doivent être uniques (repas1, collation1, etc.)</li>
-              <li>• L'ordre détermine l'affichage dans le suivi quotidien</li>
+              <li>• Sélectionnez les aliments dans la liste prédéfinie</li>
+              <li>• Les calories sont calculées automatiquement</li>
+              <li>• Vous pouvez ajouter des aliments personnalisés</li>
               <li>• Les modifications sont appliquées immédiatement</li>
-              <li>• Utilisez "Initialiser 5 repas" pour une configuration rapide</li>
             </ul>
           </div>
         </CardContent>
