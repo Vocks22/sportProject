@@ -1,0 +1,159 @@
+✅ Tables de base de données créées/vérifiées
+Redis not available - Cache disabled
+✅ Tables de base de données créées/vérifiées
+[
+  {
+    "meal_type": "repas1",
+    "meal_name": "Petit-déjeuner",
+    "time_slot": "6h-9h",
+    "order_index": 1,
+    "foods": [
+      {
+        "name": "Blanc d'œuf",
+        "quantity": "3",
+        "unit": "unité",
+        "calories": 51
+      },
+      {
+        "name": "Noix de cajou",
+        "quantity": "40",
+        "unit": "g",
+        "calories": 221
+      },
+      {
+        "name": "Jus de pomme",
+        "quantity": "1",
+        "unit": "verre",
+        "calories": 115
+      },
+      {
+        "name": "Café",
+        "quantity": "1",
+        "unit": "tasse",
+        "calories": 2
+      },
+      {
+        "name": "CLA (supplément)",
+        "quantity": "3000",
+        "unit": "mg",
+        "calories": 0
+      }
+    ]
+  },
+  {
+    "meal_type": "collation1",
+    "meal_name": "Collation du matin",
+    "time_slot": "10h-11h",
+    "order_index": 2,
+    "foods": [
+      {
+        "name": "Lait d'amandes",
+        "quantity": "150",
+        "unit": "ml",
+        "calories": 26
+      },
+      {
+        "name": "Avoine (flocons)",
+        "quantity": "60",
+        "unit": "g",
+        "calories": 233
+      },
+      {
+        "name": "Pomme",
+        "quantity": "50",
+        "unit": "g",
+        "calories": 27
+      },
+      {
+        "name": "Chocolat noir 70%",
+        "quantity": "1",
+        "unit": "carré",
+        "calories": 30
+      }
+    ]
+  },
+  {
+    "meal_type": "repas2",
+    "meal_name": "Déjeuner",
+    "time_slot": "12h-14h",
+    "order_index": 3,
+    "foods": [
+      {
+        "name": "Viande blanche maigre",
+        "quantity": "180",
+        "unit": "g",
+        "calories": 297
+      },
+      {
+        "name": "Légumes verts",
+        "quantity": "150",
+        "unit": "g",
+        "calories": 38
+      },
+      {
+        "name": "Huile d'olive",
+        "quantity": "5",
+        "unit": "ml",
+        "calories": 40
+      },
+      {
+        "name": "CLA (supplément)",
+        "quantity": "3000",
+        "unit": "mg",
+        "calories": 0
+      }
+    ]
+  },
+  {
+    "meal_type": "collation2",
+    "meal_name": "Collation de l'après-midi",
+    "time_slot": "16h-17h",
+    "order_index": 4,
+    "foods": [
+      {
+        "name": "Blanc d'œuf",
+        "quantity": "3",
+        "unit": "unité",
+        "calories": 51
+      },
+      {
+        "name": "Amandes",
+        "quantity": "40",
+        "unit": "g",
+        "calories": 232
+      },
+      {
+        "name": "Pomme",
+        "quantity": "50",
+        "unit": "g",
+        "calories": 27
+      }
+    ]
+  },
+  {
+    "meal_type": "repas3",
+    "meal_name": "Dîner",
+    "time_slot": "19h-23h",
+    "order_index": 5,
+    "foods": [
+      {
+        "name": "Poisson blanc maigre",
+        "quantity": "200",
+        "unit": "g",
+        "calories": 164
+      },
+      {
+        "name": "Salade verte",
+        "quantity": "100",
+        "unit": "g",
+        "calories": 15
+      },
+      {
+        "name": "Huile d'olive",
+        "quantity": "5",
+        "unit": "ml",
+        "calories": 40
+      }
+    ]
+  }
+]
