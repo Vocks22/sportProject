@@ -51,14 +51,14 @@ export default function DietDashboard() {
     }
   };
 
-  const validateMeal = async (mealId, completed) => {
+  const toggleMealCompleted = async (mealId, currentStatus) => {
     try {
       // Ajouter /api seulement si pas déjà présent dans l'URL
       const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`;
-      const response = await fetch(`${apiUrl}/diet/validate`, {
+      const response = await fetch(`${apiUrl}/diet/track/${mealId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ meal_id: mealId, completed })
+        body: JSON.stringify({ completed: !currentStatus })
       });
       const data = await response.json();
       if (data.success) {
@@ -90,8 +90,41 @@ export default function DietDashboard() {
   const currentMeal = todayDiet?.current_meal;
   const nextMeal = todayDiet?.next_meal;
 
+  // Calculer les calories consommées
+  const consumedCalories = todayDiet?.today_meals?.reduce((total, meal) => {
+    if (meal.completed && meal.foods) {
+      const mealCalories = meal.foods.reduce((sum, food) => sum + (food.calories || 0), 0);
+      return total + mealCalories;
+    }
+    return total;
+  }, 0) || 0;
+
+  const totalPlannedCalories = todayDiet?.today_meals?.reduce((total, meal) => {
+    if (meal.foods) {
+      const mealCalories = meal.foods.reduce((sum, food) => sum + (food.calories || 0), 0);
+      return total + mealCalories;
+    }
+    return total;
+  }, 0) || 0;
+
   return (
     <div className="space-y-6">
+      {/* Barre de progression des calories */}
+      <div className="bg-white rounded-lg p-4 shadow-sm border">
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-sm font-medium text-gray-700">Calories consommées</span>
+          <span className="text-sm font-bold">
+            {consumedCalories} / {totalPlannedCalories} kcal
+          </span>
+        </div>
+        <div className="w-full bg-gray-200 rounded-full h-3">
+          <div 
+            className="bg-green-600 h-3 rounded-full transition-all duration-300"
+            style={{ width: `${Math.min(100, (consumedCalories / totalPlannedCalories) * 100)}%` }}
+          />
+        </div>
+      </div>
+
       {/* Zone 1: MAINTENANT - Le repas actuel */}
       <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border-2 border-green-300">
         <div className="flex items-center justify-between mb-4">
@@ -113,12 +146,13 @@ export default function DietDashboard() {
                 {currentMeal.meal_name}
               </h3>
               <button
-                onClick={() => validateMeal(currentMeal.id, !currentMeal.completed)}
+                onClick={() => toggleMealCompleted(currentMeal.id, currentMeal.completed)}
                 className={`p-3 rounded-lg transition-all ${
                   currentMeal.completed
                     ? 'bg-green-600 text-white hover:bg-green-700'
                     : 'bg-gray-200 hover:bg-green-500 hover:text-white'
                 }`}
+                title={currentMeal.completed ? "Marquer comme non mangé" : "Marquer comme mangé"}
               >
                 <Check className="h-6 w-6" />
               </button>
@@ -212,7 +246,7 @@ export default function DietDashboard() {
               <div className="flex-1">
                 <div className="flex items-center">
                   <button
-                    onClick={() => validateMeal(meal.id, !meal.completed)}
+                    onClick={() => toggleMealCompleted(meal.id, meal.completed)}
                     className={`mr-3 p-2 rounded-full transition-all ${
                       meal.completed
                         ? 'bg-green-600 text-white'
@@ -221,9 +255,17 @@ export default function DietDashboard() {
                   >
                     <Check className="h-4 w-4" />
                   </button>
-                  <div>
+                  <div className="flex-1">
                     <h4 className="font-semibold text-gray-900">{meal.meal_name}</h4>
                     <p className="text-sm text-gray-500">{meal.time_slot}</p>
+                    {/* Afficher les aliments et calories */}
+                    <div className="mt-1 text-xs text-gray-600">
+                      {meal.foods && meal.foods.length > 0 && (
+                        <span>
+                          {meal.foods.reduce((sum, food) => sum + (food.calories || 0), 0)} kcal
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
