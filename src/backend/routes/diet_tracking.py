@@ -7,8 +7,25 @@ from models.diet_program import DietProgram, DietTracking, DietStreak
 from datetime import datetime, date, timedelta
 from sqlalchemy import and_, or_, func
 import re
+import pytz
 
 diet_tracking_bp = Blueprint('diet_tracking', __name__)
+
+
+@diet_tracking_bp.route('/api/diet/server-time', methods=['GET'])
+def get_server_time():
+    """Retourne l'heure du serveur et l'heure en France pour debug"""
+    france_tz = pytz.timezone('Europe/Paris')
+    now_france = datetime.now(france_tz)
+    now_server = datetime.now()
+    
+    return jsonify({
+        'server_time': now_server.strftime('%Y-%m-%d %H:%M:%S'),
+        'france_time': now_france.strftime('%Y-%m-%d %H:%M:%S'),
+        'server_timezone': 'UTC (probable)',
+        'france_timezone': 'Europe/Paris',
+        'current_meal': get_current_meal_type(now_france.hour, now_france.minute)
+    })
 
 
 def calculate_meal_calories(foods):
@@ -26,9 +43,15 @@ def calculate_meal_calories(foods):
 def get_today_diet():
     """Récupère les repas du jour avec leur statut"""
     try:
-        today = date.today()
-        current_hour = datetime.now().hour
-        current_minute = datetime.now().minute
+        # Utiliser le fuseau horaire de la France
+        france_tz = pytz.timezone('Europe/Paris')
+        now_france = datetime.now(france_tz)
+        
+        today = now_france.date()
+        current_hour = now_france.hour
+        current_minute = now_france.minute
+        
+        print(f"Heure en France: {now_france.strftime('%H:%M')} - Heure serveur: {datetime.now().strftime('%H:%M')}")
         
         # Déterminer le repas actuel selon l'heure et les minutes
         current_meal_type = get_current_meal_type(current_hour, current_minute)
@@ -146,7 +169,9 @@ def validate_meal():
         
         # Mettre à jour le statut
         tracking.completed = completed
-        tracking.completed_at = datetime.now() if completed else None
+        # Utiliser l'heure de France pour completed_at
+        france_tz = pytz.timezone('Europe/Paris')
+        tracking.completed_at = datetime.now(france_tz) if completed else None
         tracking.notes = notes
         
         db.session.commit()
