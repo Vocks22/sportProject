@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -16,6 +16,8 @@ import { Badge } from './ui/badge'
 import { useMealPlanningWeek } from '../hooks/useISOWeek'
 import MealTracker from './MealTracker'
 
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000'
+
 export function MealPlanning() {
   const {
     weekInfo,
@@ -29,6 +31,141 @@ export function MealPlanning() {
   
   // État pour basculer entre Planning et Suivi
   const [activeView, setActiveView] = useState('planning') // 'planning' ou 'tracking'
+  
+  // État pour stocker les repas consommés (jour-repas : boolean)
+  const [consumedMeals, setConsumedMeals] = useState({})
+  const [todayMeals, setTodayMeals] = useState([])
+  
+  // Charger les données depuis l'API au montage
+  useEffect(() => {
+    fetchTodayMeals()
+    
+    // Écouter les changements depuis le Dashboard
+    const handleMealStatusChange = (event) => {
+      console.log('Planning: Événement reçu depuis Dashboard', event.detail)
+      fetchTodayMeals()
+    }
+    window.addEventListener('mealStatusChanged', handleMealStatusChange)
+    
+    // Écouter le focus de la fenêtre pour rafraîchir
+    const handleFocus = () => {
+      console.log('Planning: Fenêtre en focus, rafraîchissement...')
+      fetchTodayMeals()
+    }
+    window.addEventListener('focus', handleFocus)
+    
+    // Rafraîchir toutes les 5 minutes (300 secondes)
+    const interval = setInterval(() => {
+      fetchTodayMeals()
+    }, 5 * 60 * 1000)
+    
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('mealStatusChanged', handleMealStatusChange)
+      window.removeEventListener('focus', handleFocus)
+    }
+  }, [])
+  
+  // Recharger les repas depuis l'API à chaque changement de semaine
+  useEffect(() => {
+    const fetchWeekMeals = async () => {
+      try {
+        const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`
+        const response = await fetch(`${apiUrl}/diet/week/${weekInfo.weekNumber}/${weekInfo.year}`)
+        const data = await response.json()
+        
+        if (data.success && data.meals) {
+          const weekMeals = {}
+          
+          // Convertir les données de l'API au format attendu
+          Object.keys(data.meals).forEach(day => {
+            Object.keys(data.meals[day]).forEach(mealType => {
+              const key = `${day}-${mealType}`
+              // data.meals[day][mealType] contient le statut boolean (completed)
+              weekMeals[key] = data.meals[day][mealType]
+            })
+          })
+          
+          console.log('Planning: Données reçues de l\'API pour la semaine:', data.meals)
+          console.log('Planning: État consumedMeals qui sera appliqué:', weekMeals)
+          
+          // Si on est sur la semaine courante, fusionner avec les données d'aujourd'hui
+          if (weekInfo.isCurrentWeek) {
+            fetchTodayMeals() // Rafraîchir les données d'aujourd'hui
+          }
+          
+          setConsumedMeals(prevState => {
+            // Pour toutes les semaines, fusionner les données de l'API avec l'état existant
+            // en gardant priorité aux données les plus récentes d'aujourd'hui si on est sur la semaine courante
+            if (weekInfo.isCurrentWeek) {
+              const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+              const todayMealsFromState = {}
+              
+              // Garder les repas d'aujourd'hui de l'état actuel
+              Object.keys(prevState).forEach(key => {
+                if (key.startsWith(today + '-')) {
+                  todayMealsFromState[key] = prevState[key]
+                }
+              })
+              
+              // Fusionner : d'abord les données de l'API, puis écraser avec les données d'aujourd'hui
+              return {
+                ...weekMeals,
+                ...todayMealsFromState
+              }
+            }
+            
+            // Pour les autres semaines, utiliser les données de l'API
+            return weekMeals
+          })
+        }
+      } catch (err) {
+        console.error('Erreur chargement semaine:', err)
+      }
+    }
+    
+    fetchWeekMeals()
+    console.log(`Planning: Chargement des repas de la semaine ${weekInfo.weekNumber} depuis l'API`)
+  }, [weekInfo.weekNumber, weekInfo.year]) // Se déclenche à chaque changement de semaine
+  
+  const fetchTodayMeals = async () => {
+    try {
+      const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`
+      const response = await fetch(`${apiUrl}/diet/today`)
+      const data = await response.json()
+      
+      if (data.success && data.meals) {
+        const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+        
+        // Préserver l'état existant des repas qui ne sont pas d'aujourd'hui
+        setConsumedMeals(prevState => {
+          const newState = { ...prevState }
+          
+          // Mettre à jour uniquement les repas d'aujourd'hui
+          data.meals.forEach((meal) => {
+            const mealTypeMap = {
+              'repas1': 'repas1',
+              'collation1': 'collation1',
+              'repas2': 'repas2',
+              'collation2': 'collation2',
+              'repas3': 'repas3'
+            }
+            
+            const mealTypeKey = mealTypeMap[meal.meal_type]
+            if (mealTypeKey) {
+              newState[`${today}-${mealTypeKey}`] = meal.completed
+            }
+          })
+          
+          return newState
+        })
+        
+        setTodayMeals(data.meals)
+      }
+    } catch (err) {
+      console.error('Erreur chargement repas:', err)
+    }
+  }
   
   // Données simulées du planning
   const weekPlan = {
@@ -101,6 +238,148 @@ export function MealPlanning() {
   const calculateWeekAverage = () => {
     const dailyTotals = Object.values(weekPlan).map(calculateDayTotal)
     return Math.round(dailyTotals.reduce((sum, total) => sum + total, 0) / dailyTotals.length)
+  }
+  
+  // Fonction pour marquer un repas comme consommé ou non
+  const toggleMealConsumed = async (dayKey, mealTypeKey) => {
+    // Vérifier si c'est dans le passé, présent ou futur
+    const today = new Date()
+    const todayWeekday = today.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+    
+    // Si on est sur une semaine future
+    if (weekInfo.isFutureWeek) {
+      alert("Vous ne pouvez pas cocher les repas des semaines futures")
+      return
+    }
+    
+    // Si on est sur la semaine courante
+    if (weekInfo.isCurrentWeek) {
+      // Obtenir l'index du jour actuel (0 = lundi, 6 = dimanche)
+      const weekDaysOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+      const todayIndex = weekDaysOrder.indexOf(todayWeekday)
+      const selectedDayIndex = weekDaysOrder.indexOf(dayKey)
+      
+      // Si le jour sélectionné est après aujourd'hui dans la semaine courante
+      if (selectedDayIndex > todayIndex) {
+        alert("Vous ne pouvez pas cocher les repas futurs")
+        return
+      }
+    }
+    // Si on est sur une semaine passée, tout est permis
+    
+    const key = `${dayKey}-${mealTypeKey}`
+    const newStatus = !consumedMeals[key]
+    
+    // Pour les jours passés, on doit créer/mettre à jour différemment
+    // On utilise une approche simplifiée pour le moment
+    if (dayKey === todayWeekday) {
+      // Pour aujourd'hui, utiliser la logique existante
+      const meal = todayMeals.find(m => m.meal_type === mealTypeKey)
+      if (!meal) {
+        console.error('Repas non trouvé:', mealTypeKey)
+        return
+      }
+      
+      try {
+        const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`
+        const response = await fetch(`${apiUrl}/diet/validate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            meal_id: meal.id, 
+            completed: newStatus 
+          })
+        })
+      
+        const data = await response.json()
+        if (data.success) {
+          // Mettre à jour l'état local
+          setConsumedMeals({
+            ...consumedMeals,
+            [key]: newStatus
+          })
+          
+          // Déclencher un événement pour synchroniser avec Dashboard
+          console.log('Planning: Émission événement mealStatusChanged', { mealId: meal.id, completed: newStatus })
+          window.dispatchEvent(new CustomEvent('mealStatusChanged', { 
+            detail: { mealId: meal.id, completed: newStatus } 
+          }))
+        }
+      } catch (err) {
+        console.error('Erreur validation:', err)
+        alert('Erreur lors de la sauvegarde')
+      }
+    } else {
+      // Pour les jours passés, on doit calculer la date et utiliser l'API
+      try {
+        // Utiliser les dates exactes fournies par weekDays qui contient les bonnes dates
+        const selectedDay = weekDays.find(d => d.key === dayKey)
+        if (!selectedDay || !selectedDay.dateISO) {
+          console.error('Impossible de trouver la date pour', dayKey)
+          return
+        }
+        
+        // Utiliser directement la date ISO qui est au format YYYY-MM-DD
+        const targetDateStr = selectedDay.dateISO
+        
+        // Trouver le meal_id en utilisant le meal_type
+        // On suppose que les repas ont toujours les mêmes IDs (1-5)
+        const mealTypeToId = {
+          'repas1': 1,
+          'collation1': 2,
+          'repas2': 3,
+          'collation2': 4,
+          'repas3': 5
+        }
+        const mealId = mealTypeToId[mealTypeKey]
+        
+        if (!mealId) {
+          console.error('Type de repas non reconnu:', mealTypeKey)
+          return
+        }
+        
+        const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`
+        console.log(`Planning: Envoi validation pour repas passé - Date: ${targetDateStr}, Meal ID: ${mealId}, Status: ${newStatus}`)
+        
+        const response = await fetch(`${apiUrl}/diet/validate`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ 
+            meal_id: mealId,
+            completed: newStatus,
+            date: targetDateStr // Format YYYY-MM-DD
+          })
+        })
+        
+        const data = await response.json()
+        console.log('Planning: Réponse API validation:', data)
+        
+        if (data.success) {
+          // Mettre à jour l'état local
+          setConsumedMeals({
+            ...consumedMeals,
+            [key]: newStatus
+          })
+          
+          console.log(`Planning: Repas passé ${targetDateStr} - ${dayKey} - ${mealTypeKey} sauvé avec succès`)
+        }
+      } catch (err) {
+        console.error('Erreur sauvegarde repas passé:', err)
+        alert('Erreur lors de la sauvegarde')
+      }
+    }
+  }
+  
+  // Calculer les calories réellement consommées pour un jour
+  const calculateConsumedDayTotal = (dayKey, dayMeals) => {
+    let total = 0
+    Object.entries(dayMeals).forEach(([mealTypeKey, meal]) => {
+      const key = `${dayKey}-${mealTypeKey}`
+      if (consumedMeals[key] && meal?.calories) {
+        total += meal.calories
+      }
+    })
+    return total
   }
 
   return (
@@ -277,19 +556,65 @@ export function MealPlanning() {
                       const isToday = day.isToday
                       const isWeekend = day.isWeekend
                       
+                      // Déterminer si c'est passé, présent ou futur
+                      let isPast = false
+                      let isFuture = false
+                      
+                      if (weekInfo.isPastWeek) {
+                        // Toute la semaine passée est dans le passé
+                        isPast = true
+                      } else if (weekInfo.isFutureWeek) {
+                        // Toute la semaine future est dans le futur
+                        isFuture = true
+                      } else if (weekInfo.isCurrentWeek) {
+                        // Pour la semaine courante, vérifier jour par jour
+                        const weekDaysOrder = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+                        const todayWeekday = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase()
+                        const todayIndex = weekDaysOrder.indexOf(todayWeekday)
+                        const dayIndex = weekDaysOrder.indexOf(day.key)
+                        isPast = dayIndex < todayIndex
+                        isFuture = dayIndex > todayIndex
+                      }
+                      
+                      const isConsumed = consumedMeals[`${day.key}-${mealType.key}`]
+                      
                       return (
-                        <td key={`${day.key}-${mealType.key}`} className={`p-2 ${isWeekend ? 'bg-gray-50' : ''}`}>
+                        <td key={`${day.key}-${mealType.key}`} className={`p-2 ${isWeekend ? 'bg-gray-50' : ''} ${isPast ? 'bg-gray-50/50' : ''}`}>
                           {meal ? (
-                            <div className={`bg-white border rounded-lg p-3 hover:shadow-md transition-shadow cursor-pointer ${
-                              isToday ? 'border-blue-300 ring-1 ring-blue-200' : 'border-gray-200'
-                            }`}>
-                              <div className="text-center">
+                            <div 
+                              onClick={() => !isFuture && toggleMealConsumed(day.key, mealType.key)}
+                              className={`bg-white border-2 rounded-lg p-3 transition-all ${
+                                isFuture ? 'opacity-50 cursor-not-allowed' : 'hover:shadow-md cursor-pointer'
+                              } ${
+                                isToday ? 'border-blue-300 ring-1 ring-blue-200' : 'border-gray-200'
+                              } ${isConsumed ? 'bg-green-100 border-green-400 shadow-md' : 'hover:border-gray-400'} ${
+                                isPast && !isConsumed ? 'bg-orange-50 border-orange-200' : ''
+                              }`}
+                              title={
+                                isFuture ? "Les repas futurs ne peuvent pas être cochés" :
+                                isConsumed ? "Cliquez pour marquer comme non mangé" : 
+                                isPast ? "Cliquez pour rattraper ce repas passé" :
+                                "Cliquez pour marquer comme mangé"
+                              }
+                            >
+                              <div className="text-center relative">
+                                {/* Indicateur visuel de validation */}
+                                {isConsumed && (
+                                  <div className="absolute -top-2 -right-2 bg-green-500 rounded-full p-1">
+                                    <CheckCircle className="h-4 w-4 text-white" />
+                                  </div>
+                                )}
                                 <div className="text-2xl mb-1">{meal.image}</div>
-                                <div className="text-xs font-medium text-gray-900 leading-tight">
+                                <div className={`text-xs font-medium leading-tight ${
+                                  isConsumed ? 'text-green-800 font-bold' : 'text-gray-900'
+                                }`}>
                                   {meal.name.length > 20 ? meal.name.substring(0, 20) + '...' : meal.name}
                                 </div>
-                                <div className="text-xs text-gray-500 mt-1">
+                                <div className={`text-xs mt-1 ${
+                                  isConsumed ? 'text-green-600 font-bold' : 'text-gray-500'
+                                }`}>
                                   {meal.calories} kcal
+                                  {isConsumed && ' ✓'}
                                 </div>
                               </div>
                             </div>

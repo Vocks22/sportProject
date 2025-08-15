@@ -221,6 +221,47 @@ def get_diet_history(date_str):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
+@diet_tracking_bp.route('/api/diet/week/<int:week_number>/<int:year>', methods=['GET'])
+def get_week_diet(week_number, year):
+    """Récupère les repas validés pour une semaine spécifique"""
+    try:
+        # Calculer les dates de début et fin de semaine
+        jan1 = date(year, 1, 1)
+        week_start = jan1 + timedelta(days=(week_number - 1) * 7 - jan1.weekday())
+        week_end = week_start + timedelta(days=6)
+        
+        # Récupérer tous les trackings de la semaine
+        trackings = DietTracking.query.filter(
+            DietTracking.date >= week_start,
+            DietTracking.date <= week_end
+        ).all()
+        
+        # Organiser par jour
+        week_data = {}
+        for tracking in trackings:
+            # Obtenir le nom du jour en anglais
+            day_name = tracking.date.strftime('%A').lower()
+            
+            if day_name not in week_data:
+                week_data[day_name] = {}
+            
+            # Récupérer le meal pour avoir le meal_type
+            meal = DietProgram.query.get(tracking.meal_id)
+            if meal:
+                week_data[day_name][meal.meal_type] = tracking.completed
+        
+        return jsonify({
+            'success': True,
+            'week_number': week_number,
+            'year': year,
+            'week_start': week_start.isoformat(),
+            'week_end': week_end.isoformat(),
+            'meals': week_data
+        }), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
 def get_current_meal_type(hour, minute=0):
     """Détermine le type de repas selon l'heure actuelle en utilisant les vrais horaires"""
     from models.diet_program import DietProgram
