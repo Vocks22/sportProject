@@ -3,14 +3,16 @@ Routes d'administration pour la gestion des repas de la diète
 """
 from flask import Blueprint, jsonify, request
 from database import db
-from models.diet_program import DietProgram
+from models.diet_program import DietProgram, DietTracking, DietStreak
+from models.recipe import Recipe
+from models.ingredient import Ingredient
 from datetime import datetime
 import os
 import requests
 
 diet_admin_bp = Blueprint('diet_admin', __name__)
 
-@diet_admin_bp.route('/api/admin/database-info', methods=['GET'])
+@diet_admin_bp.route('/admin/database-info', methods=['GET'])
 def get_database_info():
     """Affiche toutes les informations de la base de données pour debug"""
     try:
