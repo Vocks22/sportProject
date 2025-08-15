@@ -8,10 +8,18 @@ export default function DietDashboard() {
   const [stats, setStats] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
     fetchTodayDiet();
     fetchStats();
+    
+    // Mettre à jour l'horloge toutes les secondes
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    
+    return () => clearInterval(timer);
     
     // Écouter les changements depuis Planning
     const handleMealStatusChange = (event) => {
@@ -141,6 +149,21 @@ export default function DietDashboard() {
 
   return (
     <div className="space-y-6">
+      {/* Affichage de l'heure en haut à droite */}
+      <div className="flex justify-end mb-4">
+        <div className="bg-white rounded-lg px-4 py-2 shadow-sm border flex items-center gap-2">
+          <Clock className="h-4 w-4 text-gray-500" />
+          <span className="text-sm font-medium text-gray-700">
+            {currentTime.toLocaleTimeString('fr-FR', { 
+              hour: '2-digit', 
+              minute: '2-digit',
+              second: '2-digit'
+            })}
+          </span>
+          <span className="text-xs text-gray-500">France</span>
+        </div>
+      </div>
+      
       {/* Barre de progression des calories */}
       <div className="bg-white rounded-lg p-4 shadow-sm border">
         <div className="flex justify-between items-center mb-2">
