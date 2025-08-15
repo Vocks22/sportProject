@@ -2,6 +2,7 @@
 Routes d'administration pour la gestion des repas de la diète
 """
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from database import db
 from models.diet_program import DietProgram, DietTracking, DietStreak
 from models.recipe import Recipe
@@ -13,6 +14,7 @@ import requests
 diet_admin_bp = Blueprint('diet_admin', __name__)
 
 @diet_admin_bp.route('/admin/database-info', methods=['GET'])
+@jwt_required()
 def get_database_info():
     """Affiche toutes les informations de la base de données pour debug"""
     try:
@@ -82,6 +84,7 @@ def get_database_info():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals', methods=['GET'])
+@jwt_required()
 def get_all_meals():
     """Récupérer tous les repas configurés"""
     try:
@@ -95,6 +98,7 @@ def get_all_meals():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals', methods=['POST'])
+@jwt_required()
 def create_meal():
     """Créer un nouveau repas"""
     try:
@@ -127,6 +131,7 @@ def create_meal():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/<int:meal_id>', methods=['PUT'])
+@jwt_required()
 def update_meal(meal_id):
     """Modifier un repas existant"""
     try:
@@ -151,6 +156,7 @@ def update_meal(meal_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/<int:meal_id>', methods=['DELETE'])
+@jwt_required()
 def delete_meal(meal_id):
     """Supprimer un repas"""
     try:
@@ -174,6 +180,7 @@ def delete_meal(meal_id):
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/init', methods=['POST'])
+@jwt_required()
 def init_default_meals():
     """Initialiser les 5 repas par défaut"""
     try:
@@ -239,6 +246,7 @@ def init_default_meals():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/clear', methods=['DELETE'])
+@jwt_required()
 def clear_all_meals():
     """Supprimer tous les repas (DANGER!)"""
     try:
@@ -270,6 +278,7 @@ def clear_all_meals():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/init-foods', methods=['POST'])
+@jwt_required()
 def init_default_foods():
     """Initialiser les aliments par défaut pour tous les repas"""
     try:
@@ -346,6 +355,7 @@ def init_default_foods():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/export', methods=['GET'])
+@jwt_required()
 def export_meals():
     """Exporter tous les repas avec leurs aliments"""
     try:
@@ -372,6 +382,7 @@ def export_meals():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/sync-to-production', methods=['POST'])
+@jwt_required()
 def sync_to_production():
     """Synchroniser les repas de préprod vers production"""
     try:
@@ -429,6 +440,7 @@ def sync_to_production():
         return jsonify({'success': False, 'error': str(e)}), 500
 
 @diet_admin_bp.route('/diet/admin/meals/import-from-preprod', methods=['POST'])
+@jwt_required()
 def import_from_preprod():
     """Importer les repas depuis la préprod (endpoint production)"""
     try:

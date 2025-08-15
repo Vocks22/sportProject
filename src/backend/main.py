@@ -7,8 +7,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from flask import Flask, send_from_directory, request
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 from database import db
 from database.config import get_config
+import secrets
 
 def create_app(config_name=None):
     """Application factory pattern"""
@@ -23,8 +25,13 @@ def create_app(config_name=None):
     config = get_config(config_name)
     app.config.from_object(config)
     
+    # Configuration JWT
+    app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', secrets.token_hex(32))
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = 86400  # 24 heures en secondes
+    
     # Initialize extensions
     db.init_app(app)
+    jwt = JWTManager(app)
     
     # Créer les tables au démarrage
     with app.app_context():
@@ -54,6 +61,7 @@ def create_app(config_name=None):
              max_age=3600)
     
     # Register blueprints
+    from routes.auth import auth_bp
     from routes.user import user_bp
     from routes.recipes import recipes_bp
     from routes.ingredients import ingredients_bp
@@ -63,6 +71,7 @@ def create_app(config_name=None):
     from routes.diet_admin import diet_admin_bp
     
     api_prefix = app.config.get('API_PREFIX', '/api')
+    app.register_blueprint(auth_bp)  # Auth routes déjà préfixées avec /api/auth
     app.register_blueprint(user_bp, url_prefix=api_prefix)
     app.register_blueprint(recipes_bp, url_prefix=api_prefix)
     app.register_blueprint(ingredients_bp, url_prefix=api_prefix)

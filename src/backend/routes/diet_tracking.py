@@ -2,6 +2,7 @@
 Routes pour le suivi de la diète quotidienne
 """
 from flask import Blueprint, request, jsonify
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from database import db
 from models.diet_program import DietProgram, DietTracking, DietStreak
 from datetime import datetime, date, timedelta
@@ -13,6 +14,7 @@ diet_tracking_bp = Blueprint('diet_tracking', __name__)
 
 
 @diet_tracking_bp.route('/api/diet/server-time', methods=['GET'])
+@jwt_required()
 def get_server_time():
     """Retourne l'heure du serveur et l'heure en France pour debug"""
     france_tz = pytz.timezone('Europe/Paris')
@@ -40,6 +42,7 @@ def calculate_meal_calories(foods):
 
 
 @diet_tracking_bp.route('/api/diet/today', methods=['GET'])
+@jwt_required()
 def get_today_diet():
     """Récupère les repas du jour avec leur statut"""
     try:
@@ -124,6 +127,7 @@ def get_today_diet():
 
 
 @diet_tracking_bp.route('/api/diet/validate', methods=['POST'])
+@jwt_required()
 def validate_meal():
     """Valide qu'un repas a été consommé"""
     try:
@@ -191,6 +195,7 @@ def validate_meal():
 
 
 @diet_tracking_bp.route('/api/diet/stats', methods=['GET'])
+@jwt_required()
 def get_diet_stats():
     """Récupère les statistiques de suivi (streak, taux de respect, etc.)"""
     try:
@@ -248,6 +253,7 @@ def get_diet_stats():
 
 
 @diet_tracking_bp.route('/api/diet/history/<date_str>', methods=['GET'])
+@jwt_required()
 def get_diet_history(date_str):
     """Récupère l'historique d'un jour spécifique"""
     try:
@@ -296,6 +302,7 @@ def get_diet_history(date_str):
 
 
 @diet_tracking_bp.route('/api/diet/week/<int:week_number>/<int:year>', methods=['GET'])
+@jwt_required()
 def get_week_diet(week_number, year):
     """Récupère les repas validés pour une semaine spécifique avec calories"""
     try:
