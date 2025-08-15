@@ -10,6 +10,7 @@ import { ProgressPage } from './components/Progress'
 import ProfilePage from './pages/ProfilePage'
 import MeasurementsPage from './pages/MeasurementsPage'
 import DietAdmin from './components/DietAdmin'
+import { DatabaseViewer } from './components/DatabaseViewer'
 import './App.css'
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
               <Route path="/profile" element={<ProfilePage />} />
               <Route path="/measurements" element={<MeasurementsPage />} />
               <Route path="/diet-admin" element={<DietAdmin />} />
+              <Route path="/database" element={<DatabaseViewer />} />
             </Routes>
           </main>
         </div>

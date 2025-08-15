@@ -106,6 +106,7 @@ def validate_meal():
     try:
         data = request.get_json()
         meal_id = data.get('meal_id')
+        meal_type = data.get('meal_type')  # Nouveau: accepter meal_type en plus
         completed = data.get('completed', True)
         notes = data.get('notes', '')
         tracking_date = data.get('date', date.today().isoformat())
@@ -113,6 +114,20 @@ def validate_meal():
         # Convertir la date si fournie
         if isinstance(tracking_date, str):
             tracking_date = date.fromisoformat(tracking_date)
+        
+        # Si meal_type est fourni et pas meal_id, trouver le meal_id correspondant
+        if meal_type and not meal_id:
+            meal = DietProgram.query.filter_by(meal_type=meal_type).first()
+            if meal:
+                meal_id = meal.id
+            else:
+                return jsonify({'success': False, 'error': f'Meal type {meal_type} not found'}), 404
+        
+        # Vérifier que le meal_id existe
+        if meal_id:
+            meal_exists = DietProgram.query.get(meal_id)
+            if not meal_exists:
+                return jsonify({'success': False, 'error': f'Meal ID {meal_id} not found'}), 404
         
         # Trouver ou créer le tracking
         tracking = DietTracking.query.filter(

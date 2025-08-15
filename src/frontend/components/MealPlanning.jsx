@@ -322,30 +322,14 @@ export function MealPlanning() {
         // Utiliser directement la date ISO qui est au format YYYY-MM-DD
         const targetDateStr = selectedDay.dateISO
         
-        // Trouver le meal_id en utilisant le meal_type
-        // On suppose que les repas ont toujours les mêmes IDs (1-5)
-        const mealTypeToId = {
-          'repas1': 1,
-          'collation1': 2,
-          'repas2': 3,
-          'collation2': 4,
-          'repas3': 5
-        }
-        const mealId = mealTypeToId[mealTypeKey]
-        
-        if (!mealId) {
-          console.error('Type de repas non reconnu:', mealTypeKey)
-          return
-        }
-        
         const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`
-        console.log(`Planning: Envoi validation pour repas passé - Date: ${targetDateStr}, Meal ID: ${mealId}, Status: ${newStatus}`)
+        console.log(`Planning: Envoi validation pour repas passé - Date: ${targetDateStr}, Meal Type: ${mealTypeKey}, Status: ${newStatus}`)
         
         const response = await fetch(`${apiUrl}/diet/validate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ 
-            meal_id: mealId,
+            meal_type: mealTypeKey,  // Envoyer le meal_type au lieu du meal_id
             completed: newStatus,
             date: targetDateStr // Format YYYY-MM-DD
           })

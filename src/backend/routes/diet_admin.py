@@ -10,6 +10,75 @@ import requests
 
 diet_admin_bp = Blueprint('diet_admin', __name__)
 
+@diet_admin_bp.route('/api/admin/database-info', methods=['GET'])
+def get_database_info():
+    """Affiche toutes les informations de la base de données pour debug"""
+    try:
+        # Récupérer tous les repas du programme
+        meals = DietProgram.query.order_by(DietProgram.order_index).all()
+        meals_data = []
+        for meal in meals:
+            meals_data.append({
+                'id': meal.id,
+                'meal_type': meal.meal_type,
+                'meal_name': meal.meal_name,
+                'time_slot': meal.time_slot,
+                'order_index': meal.order_index,
+                'foods': meal.foods
+            })
+        
+        # Récupérer les derniers trackings
+        recent_trackings = DietTracking.query.order_by(DietTracking.date.desc()).limit(20).all()
+        trackings_data = []
+        for tracking in recent_trackings:
+            trackings_data.append({
+                'id': tracking.id,
+                'date': tracking.date.isoformat(),
+                'meal_id': tracking.meal_id,
+                'meal_type': tracking.meal.meal_type if tracking.meal else 'N/A',
+                'meal_name': tracking.meal.meal_name if tracking.meal else 'N/A',
+                'completed': tracking.completed,
+                'completed_at': tracking.completed_at.isoformat() if tracking.completed_at else None
+            })
+        
+        # Récupérer les stats
+        stats = DietStreak.query.first()
+        stats_data = None
+        if stats:
+            stats_data = {
+                'current_streak': stats.current_streak,
+                'longest_streak': stats.longest_streak,
+                'total_days_tracked': stats.total_days_tracked,
+                'total_meals_completed': stats.total_meals_completed,
+                'last_tracked_date': stats.last_tracked_date.isoformat() if stats.last_tracked_date else None
+            }
+        
+        # Compter les recettes
+        recipes_count = Recipe.query.count()
+        
+        # Compter les ingrédients  
+        ingredients_count = Ingredient.query.count()
+        
+        return jsonify({
+            'success': True,
+            'database_info': {
+                'diet_program': {
+                    'count': len(meals_data),
+                    'meals': meals_data
+                },
+                'recent_trackings': {
+                    'count': len(trackings_data),
+                    'trackings': trackings_data
+                },
+                'stats': stats_data,
+                'recipes_count': recipes_count,
+                'ingredients_count': ingredients_count,
+                'server_time': datetime.now().isoformat()
+            }
+        }), 200
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)}), 500
+
 @diet_admin_bp.route('/diet/admin/meals', methods=['GET'])
 def get_all_meals():
     """Récupérer tous les repas configurés"""

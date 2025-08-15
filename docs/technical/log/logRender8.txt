@@ -1,0 +1,50 @@
+2025-08-15T12:38:17.625941159Z ModuleNotFoundError: No module named 'requests'
+2025-08-15T12:38:26.563214661Z ==> Exited with status 1
+2025-08-15T12:38:26.7082951Z ==> Common ways to troubleshoot your deploy: https://render.com/docs/troubleshooting-deploys
+2025-08-15T12:38:27.924917772Z ==> Running 'cd src/backend && gunicorn main:app --bind 0.0.0.0:$PORT'
+2025-08-15T12:38:30.919673106Z ✅ Tables de base de données créées/vérifiées
+2025-08-15T12:38:30.919695346Z Redis not available - Cache disabled
+2025-08-15T12:38:30.919702036Z Traceback (most recent call last):
+2025-08-15T12:38:30.919711147Z   File "/opt/render/project/src/.venv/bin/gunicorn", line 8, in <module>
+2025-08-15T12:38:30.919768968Z     sys.exit(run())
+2025-08-15T12:38:30.919775698Z              ^^^^^
+2025-08-15T12:38:30.919788058Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 67, in run
+2025-08-15T12:38:30.91988663Z     WSGIApplication("%(prog)s [OPTIONS] [APP_MODULE]").run()
+2025-08-15T12:38:30.91989912Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 236, in run
+2025-08-15T12:38:30.920023693Z     super().run()
+2025-08-15T12:38:30.920030703Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 72, in run
+2025-08-15T12:38:30.920130426Z     Arbiter(self).run()
+2025-08-15T12:38:30.920138306Z     ^^^^^^^^^^^^^
+2025-08-15T12:38:30.920142496Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 58, in __init__
+2025-08-15T12:38:30.920231238Z     self.setup(app)
+2025-08-15T12:38:30.920236148Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/arbiter.py", line 118, in setup
+2025-08-15T12:38:30.92034539Z     self.app.wsgi()
+2025-08-15T12:38:30.92035077Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/base.py", line 67, in wsgi
+2025-08-15T12:38:30.920417882Z     self.callable = self.load()
+2025-08-15T12:38:30.920448132Z                     ^^^^^^^^^^^
+2025-08-15T12:38:30.920450553Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 58, in load
+2025-08-15T12:38:30.920520244Z     return self.load_wsgiapp()
+2025-08-15T12:38:30.920525214Z            ^^^^^^^^^^^^^^^^^^^
+2025-08-15T12:38:30.920527464Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/app/wsgiapp.py", line 48, in load_wsgiapp
+2025-08-15T12:38:30.920643027Z     return util.import_app(self.app_uri)
+2025-08-15T12:38:30.920686428Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-15T12:38:30.920691798Z   File "/opt/render/project/src/.venv/lib/python3.11/site-packages/gunicorn/util.py", line 371, in import_app
+2025-08-15T12:38:30.92080719Z     mod = importlib.import_module(module)
+2025-08-15T12:38:30.920822861Z           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-15T12:38:30.920825431Z   File "/opt/render/project/python/Python-3.11.10/lib/python3.11/importlib/__init__.py", line 126, in import_module
+2025-08-15T12:38:30.920928983Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-08-15T12:38:30.920965344Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-08-15T12:38:30.920968354Z   File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+2025-08-15T12:38:30.920970074Z   File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+2025-08-15T12:38:30.920971754Z   File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+2025-08-15T12:38:30.920975624Z   File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+2025-08-15T12:38:30.920977354Z   File "<frozen importlib._bootstrap_external>", line 940, in exec_module
+2025-08-15T12:38:30.920979364Z   File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+2025-08-15T12:38:30.920982824Z   File "/opt/render/project/src/src/backend/main.py", line 98, in <module>
+2025-08-15T12:38:30.921084206Z     app = create_app()
+2025-08-15T12:38:30.921108577Z           ^^^^^^^^^^^^
+2025-08-15T12:38:30.921112067Z   File "/opt/render/project/src/src/backend/main.py", line 63, in create_app
+2025-08-15T12:38:30.921195049Z     from routes.diet_admin import diet_admin_bp
+2025-08-15T12:38:30.921213369Z   File "/opt/render/project/src/src/backend/routes/diet_admin.py", line 9, in <module>
+2025-08-15T12:38:30.921289461Z     import requests
+2025-08-15T12:38:30.921301791Z ModuleNotFoundError: No module named 'requests'
