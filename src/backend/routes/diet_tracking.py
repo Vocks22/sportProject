@@ -1,35 +1,34 @@
 """
-API Routes pour le suivi quotidien de la diète
+Routes pour le suivi de la diète quotidienne
 """
-from flask import Blueprint, jsonify, request
-from datetime import datetime, date, timedelta
+from flask import Blueprint, request, jsonify
 from database import db
 from models.diet_program import DietProgram, DietTracking, DietStreak
-from sqlalchemy import and_
+from datetime import datetime, date, timedelta
+from sqlalchemy import and_, or_, func
+import re
 
 diet_tracking_bp = Blueprint('diet_tracking', __name__)
 
-@diet_tracking_bp.route('/api/diet/program', methods=['GET'])
-def get_diet_program():
-    """Récupère le programme alimentaire complet"""
-    try:
-        meals = DietProgram.query.order_by(DietProgram.order_index).all()
-        return jsonify({
-            'success': True,
-            'program': [meal.to_dict() for meal in meals]
-        }), 200
-    except Exception as e:
-        return jsonify({'success': False, 'error': str(e)}), 500
+
+def calculate_meal_calories(foods):
+    """Calcule le total des calories d'un repas à partir de la liste des aliments"""
+    if not foods:
+        return 0
+    total = 0
+    for food in foods:
+        if isinstance(food, dict) and 'calories' in food:
+            total += food.get('calories', 0)
+    return total
 
 
 @diet_tracking_bp.route('/api/diet/today', methods=['GET'])
 def get_today_diet():
-    """Récupère le statut de la diète du jour avec le repas actuel"""
+    """Récupère les repas du jour avec leur statut"""
     try:
         today = date.today()
-        now = datetime.now()
-        current_hour = now.hour
-        current_minute = now.minute
+        current_hour = datetime.now().hour
+        current_minute = datetime.now().minute
         
         # Déterminer le repas actuel selon l'heure et les minutes
         current_meal_type = get_current_meal_type(current_hour, current_minute)
@@ -68,6 +67,7 @@ def get_today_diet():
                 'time_slot': meal.time_slot,
                 'order_index': meal.order_index,  # Ajout de l'ordre
                 'foods': meal.foods,
+                'calories': calculate_meal_calories(meal.foods),  # Calcul des calories
                 'completed': tracking.completed if tracking else False,
                 'completed_at': tracking.completed_at.isoformat() if tracking and tracking.completed_at else None
             }
@@ -224,16 +224,47 @@ def get_diet_stats():
 
 @diet_tracking_bp.route('/api/diet/history/<date_str>', methods=['GET'])
 def get_diet_history(date_str):
-    """Récupère l'historique d'une date spécifique"""
+    """Récupère l'historique d'un jour spécifique"""
     try:
         target_date = date.fromisoformat(date_str)
         
-        trackings = DietTracking.query.filter_by(date=target_date).all()
+        # Récupérer tous les repas du programme
+        meals = DietProgram.query.order_by(DietProgram.order_index).all()
+        
+        # Récupérer le tracking du jour
+        day_trackings = DietTracking.query.filter_by(date=target_date).all()
+        tracking_dict = {t.meal_id: t for t in day_trackings}
+        
+        # Préparer la réponse
+        meals_status = []
+        for meal in meals:
+            tracking = tracking_dict.get(meal.id)
+            meal_data = {
+                'id': meal.id,
+                'meal_type': meal.meal_type,
+                'meal_name': meal.meal_name,
+                'time_slot': meal.time_slot,
+                'foods': meal.foods,
+                'calories': calculate_meal_calories(meal.foods),
+                'completed': tracking.completed if tracking else False,
+                'completed_at': tracking.completed_at.isoformat() if tracking and tracking.completed_at else None,
+                'notes': tracking.notes if tracking else ''
+            }
+            meals_status.append(meal_data)
+        
+        # Calculer les statistiques du jour
+        completed_count = sum(1 for m in meals_status if m['completed'])
+        completion_percentage = (completed_count / len(meals)) * 100 if meals else 0
         
         return jsonify({
             'success': True,
-            'date': date_str,
-            'trackings': [t.to_dict() for t in trackings]
+            'date': target_date.isoformat(),
+            'meals': meals_status,
+            'stats': {
+                'completed': completed_count,
+                'total': len(meals),
+                'percentage': round(completion_percentage, 1)
+            }
         }), 200
     except Exception as e:
         return jsonify({'success': False, 'error': str(e)}), 500
@@ -241,7 +272,7 @@ def get_diet_history(date_str):
 
 @diet_tracking_bp.route('/api/diet/week/<int:week_number>/<int:year>', methods=['GET'])
 def get_week_diet(week_number, year):
-    """Récupère les repas validés pour une semaine spécifique"""
+    """Récupère les repas validés pour une semaine spécifique avec calories"""
     try:
         # Calculer les dates de début et fin de semaine
         jan1 = date(year, 1, 1)
@@ -254,7 +285,10 @@ def get_week_diet(week_number, year):
             DietTracking.date <= week_end
         ).all()
         
-        # Organiser par jour
+        # Récupérer tous les repas pour avoir les infos complètes
+        meals_dict = {m.id: m for m in DietProgram.query.all()}
+        
+        # Organiser par jour avec calories
         week_data = {}
         for tracking in trackings:
             # Obtenir le nom du jour en anglais
@@ -263,10 +297,15 @@ def get_week_diet(week_number, year):
             if day_name not in week_data:
                 week_data[day_name] = {}
             
-            # Récupérer le meal pour avoir le meal_type
-            meal = DietProgram.query.get(tracking.meal_id)
+            # Récupérer le meal pour avoir le meal_type et les calories
+            meal = meals_dict.get(tracking.meal_id)
             if meal:
-                week_data[day_name][meal.meal_type] = tracking.completed
+                week_data[day_name][meal.meal_type] = {
+                    'completed': tracking.completed,
+                    'calories': calculate_meal_calories(meal.foods),
+                    'meal_name': meal.meal_name,
+                    'foods': meal.foods
+                }
         
         return jsonify({
             'success': True,
@@ -291,9 +330,10 @@ def get_current_meal_type(hour, minute=0):
     current_time = hour * 60 + minute  # Convertir en minutes pour faciliter la comparaison
     
     for meal in meals:
-        # Parser le time_slot (format: "6h-9h" ou "19h30-23h00")
+        # Parser le time_slot (format: "6h-9h" ou "7h00-9h00" ou "19h30-23h00")
         time_slot = meal.time_slot
-        match = re.match(r'(\d+)h?(\d*)-(\d+)h?(\d*)', time_slot)
+        # Regex amélioré pour capturer tous les formats
+        match = re.match(r'(\d+)[h:]?(\d*)[\s-]+(\d+)[h:]?(\d*)', time_slot)
         
         if match:
             start_hour = int(match.group(1))
@@ -317,11 +357,11 @@ def get_current_meal_type(hour, minute=0):
                 if start_time <= current_time < end_time:
                     return meal.meal_type
     
-    # Si aucun repas ne correspond, retourner le premier repas
+    # Si aucun créneau ne correspond, retourner le premier repas de la journée
     if meals:
         return meals[0].meal_type
     
-    return 'repas1'  # Fallback
+    return 'repas1'  # Défaut
 
 
 def update_streak_stats():
