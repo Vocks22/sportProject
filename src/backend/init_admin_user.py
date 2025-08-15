@@ -8,7 +8,7 @@ import getpass
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from database import db
-from models.auth import User
+from models.user import User
 from main import create_app
 
 

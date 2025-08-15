@@ -4,7 +4,7 @@ Routes d'authentification
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, get_jwt
 from database import db
-from models.auth import User
+from models.user import User
 from datetime import datetime, timedelta
 import os
 

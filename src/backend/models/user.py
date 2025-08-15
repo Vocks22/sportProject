@@ -2,6 +2,7 @@ from database import db
 from datetime import datetime, date, timedelta
 from sqlalchemy.orm import relationship
 from typing import Dict, Any, Optional, List
+from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
 class User(db.Model):
@@ -11,6 +12,11 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False, index=True)
     email = db.Column(db.String(120), unique=True, nullable=False, index=True)
+    
+    # Authentication fields
+    password_hash = db.Column(db.String(255), nullable=True)  # nullable for backward compatibility
+    is_active = db.Column(db.Boolean, default=True)
+    last_login = db.Column(db.DateTime)
     
     # Informations personnelles pour la diète
     current_weight = db.Column(db.Float, nullable=True)
@@ -63,9 +69,7 @@ class User(db.Model):
     last_profile_update = db.Column(db.DateTime, default=datetime.utcnow)
     
     # Sécurité et audit
-    last_login = db.Column(db.DateTime, nullable=True)
     login_count = db.Column(db.Integer, default=0, nullable=False)
-    is_active = db.Column(db.Boolean, default=True, nullable=False)
     deactivated_at = db.Column(db.DateTime, nullable=True)
     
     # Timestamps
@@ -83,6 +87,17 @@ class User(db.Model):
     
     def __repr__(self):
         return f'<User {self.username} (ID: {self.id})>'
+    
+    # Méthodes d'authentification
+    def set_password(self, password):
+        """Hash le mot de passe avant de le stocker"""
+        self.password_hash = generate_password_hash(password)
+    
+    def check_password(self, password):
+        """Vérifie si le mot de passe fourni correspond au hash"""
+        if not self.password_hash:
+            return False
+        return check_password_hash(self.password_hash, password)
     
     # Propriétés calculées
     @property

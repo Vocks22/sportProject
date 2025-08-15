@@ -7,7 +7,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from database import db
-from models.auth import User
+from models.user import User
 from main import create_app
 
 def create_admin():
