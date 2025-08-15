@@ -136,14 +136,17 @@ def validate_meal():
         
         db.session.commit()
         
-        # Mettre à jour les statistiques de streak
-        update_streak_stats()
+        # Mettre à jour les statistiques de streak seulement pour aujourd'hui
+        if tracking_date == date.today():
+            update_streak_stats()
         
         return jsonify({
             'success': True,
             'tracking': tracking.to_dict()
         }), 200
     except Exception as e:
+        db.session.rollback()
+        print(f"Erreur dans validate_meal: {str(e)}")
         return jsonify({'success': False, 'error': str(e)}), 500
 
 
