@@ -12,6 +12,7 @@ import ProfilePage from './pages/ProfilePage'
 import MeasurementsPage from './pages/MeasurementsPage'
 import DietAdmin from './components/DietAdmin'
 import { DatabaseViewer } from './components/DatabaseViewer'
+import { WithingsCallback } from './pages/WithingsCallback'
 import './App.css'
 
 function App() {
@@ -101,65 +102,63 @@ function App() {
     )
   }
 
-  // Si non authentifié, afficher la page de login
-  if (!isAuthenticated) {
-    return (
-      <Router>
-        <Routes>
-          <Route path="*" element={<Login onLogin={handleLogin} />} />
-        </Routes>
-      </Router>
-    )
-  }
-
-  // Application principale (utilisateur authentifié)
+  // Rendu conditionnel basé sur l'authentification
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        {/* Header unifié avec bouton menu et logout */}
-        <Header 
-          sidebarOpen={sidebarOpen} 
-          setSidebarOpen={setSidebarOpen}
-          user={user}
-          onLogout={handleLogout}
-        />
-        
-        {/* Conteneur principal */}
-        <div className="flex pt-16 relative">
-          {/* Overlay pour mobile quand sidebar est ouvert */}
-          {sidebarOpen && isMobile && (
-            <div 
-              className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
-              onClick={() => setSidebarOpen(false)}
-            />
-          )}
-          
-          {/* Sidebar rétractable unifié */}
-          <Sidebar 
-            isOpen={sidebarOpen} 
-            setIsOpen={setSidebarOpen}
-            isMobile={isMobile}
+      {!isAuthenticated ? (
+        // Pages publiques (login et callback Withings)
+        <Routes>
+          <Route path="/withings/callback" element={<WithingsCallback />} />
+          <Route path="*" element={<Login onLogin={handleLogin} />} />
+        </Routes>
+      ) : (
+        // Application principale (utilisateur authentifié)
+        <div className="min-h-screen bg-gray-50">
+          {/* Header unifié avec bouton menu et logout */}
+          <Header 
+            sidebarOpen={sidebarOpen} 
+            setSidebarOpen={setSidebarOpen}
+            user={user}
+            onLogout={handleLogout}
           />
           
-          {/* Contenu principal avec marge dynamique */}
-          <main className={`
-            flex-1 p-4 lg:p-6 transition-all duration-300
-            ${sidebarOpen && !isMobile ? 'ml-64' : 'ml-0'}
-          `}>
-            <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/planning" element={<MealPlanning />} />
-              <Route path="/recipes" element={<Recipes />} />
-              <Route path="/shopping" element={<Shopping />} />
-              <Route path="/progress" element={<ProgressPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/measurements" element={<MeasurementsPage />} />
-              <Route path="/diet-admin" element={<DietAdmin />} />
-              <Route path="/database" element={<DatabaseViewer />} />
-            </Routes>
-          </main>
+          {/* Conteneur principal */}
+          <div className="flex pt-16 relative">
+            {/* Overlay pour mobile quand sidebar est ouvert */}
+            {sidebarOpen && isMobile && (
+              <div 
+                className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+                onClick={() => setSidebarOpen(false)}
+              />
+            )}
+            
+            {/* Sidebar rétractable unifié */}
+            <Sidebar 
+              isOpen={sidebarOpen} 
+              setIsOpen={setSidebarOpen}
+              isMobile={isMobile}
+            />
+            
+            {/* Contenu principal avec marge dynamique */}
+            <main className={`
+              flex-1 p-4 lg:p-6 transition-all duration-300
+              ${sidebarOpen && !isMobile ? 'ml-64' : 'ml-0'}
+            `}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/planning" element={<MealPlanning />} />
+                <Route path="/recipes" element={<Recipes />} />
+                <Route path="/shopping" element={<Shopping />} />
+                <Route path="/progress" element={<ProgressPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/measurements" element={<MeasurementsPage />} />
+                <Route path="/diet-admin" element={<DietAdmin />} />
+                <Route path="/database" element={<DatabaseViewer />} />
+              </Routes>
+            </main>
+          </div>
         </div>
-      </div>
+      )}
     </Router>
   )
 }

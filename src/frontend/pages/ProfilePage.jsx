@@ -10,6 +10,7 @@ import { Badge } from '../components/ui/badge';
 import { Progress } from '../components/ui/progress';
 import { useUserProfile } from '../hooks/useUserProfile';
 import { WeightChartWithControls } from '../components/WeightChart';
+import { WithingsConnection } from '../components/WithingsConnection';
 import {
   User,
   Target,
@@ -861,6 +862,11 @@ const ProfilePage = () => {
             </CardContent>
           </Card>
         </div>
+      </div>
+
+      {/* Intégration Withings */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <WithingsConnection />
       </div>
 
       {/* Modal édition profil */}

@@ -69,6 +69,7 @@ def create_app(config_name=None):
     from routes.meal_tracking import meal_tracking_bp
     from routes.diet_tracking import diet_tracking_bp
     from routes.diet_admin import diet_admin_bp
+    from routes.withings import withings_bp
     
     api_prefix = app.config.get('API_PREFIX', '/api')
     app.register_blueprint(auth_bp)  # Auth routes déjà préfixées avec /api/auth
@@ -79,6 +80,7 @@ def create_app(config_name=None):
     app.register_blueprint(meal_tracking_bp, url_prefix=api_prefix)
     app.register_blueprint(diet_tracking_bp)
     app.register_blueprint(diet_admin_bp, url_prefix=api_prefix)
+    app.register_blueprint(withings_bp)  # Routes Withings avec /api/withings
     
     # Health check endpoint
     @app.route('/health')
