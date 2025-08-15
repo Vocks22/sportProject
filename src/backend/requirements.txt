@@ -20,6 +20,7 @@ marshmallow-sqlalchemy==0.29.0
 # Utils
 python-dateutil==2.8.2
 pytz==2023.3
+requests==2.31.0
 
 # Development
 flask-shell-ipython==0.4.1
