@@ -12,12 +12,34 @@ export default function DietDashboard() {
   useEffect(() => {
     fetchTodayDiet();
     fetchStats();
-    // Rafraîchir toutes les 5 minutes
+    
+    // Écouter les changements depuis Planning
+    const handleMealStatusChange = (event) => {
+      console.log('Dashboard: Événement reçu depuis Planning', event.detail);
+      fetchTodayDiet();
+      fetchStats();
+    }
+    window.addEventListener('mealStatusChanged', handleMealStatusChange);
+    
+    // Écouter le focus de la fenêtre pour rafraîchir
+    const handleFocus = () => {
+      console.log('Dashboard: Fenêtre en focus, rafraîchissement...');
+      fetchTodayDiet();
+      fetchStats();
+    }
+    window.addEventListener('focus', handleFocus);
+    
+    // Rafraîchir toutes les 5 minutes (300 secondes)
     const interval = setInterval(() => {
       fetchTodayDiet();
       fetchStats();
     }, 5 * 60 * 1000);
-    return () => clearInterval(interval);
+    
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('mealStatusChanged', handleMealStatusChange);
+      window.removeEventListener('focus', handleFocus);
+    };
   }, []);
 
   const fetchTodayDiet = async () => {
@@ -53,17 +75,27 @@ export default function DietDashboard() {
 
   const toggleMealCompleted = async (mealId, currentStatus) => {
     try {
+      console.log('Dashboard: Toggle meal', { mealId, currentStatus, newStatus: !currentStatus });
       // Ajouter /api seulement si pas déjà présent dans l'URL
       const apiUrl = API_URL.includes('/api') ? API_URL : `${API_URL}/api`;
-      const response = await fetch(`${apiUrl}/diet/track/${mealId}`, {
+      const response = await fetch(`${apiUrl}/diet/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ completed: !currentStatus })
+        body: JSON.stringify({ 
+          meal_id: mealId, 
+          completed: !currentStatus 
+        })
       });
       const data = await response.json();
+      console.log('Dashboard: Réponse API', data);
       if (data.success) {
-        fetchTodayDiet();
-        fetchStats();
+        await fetchTodayDiet();
+        await fetchStats();
+        // Déclencher un événement pour synchroniser avec Planning
+        console.log('Dashboard: Émission événement mealStatusChanged', { mealId, completed: !currentStatus });
+        window.dispatchEvent(new CustomEvent('mealStatusChanged', { 
+          detail: { mealId, completed: !currentStatus } 
+        }));
       }
     } catch (err) {
       console.error('Erreur validation:', err);

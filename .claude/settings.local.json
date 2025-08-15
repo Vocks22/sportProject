@@ -55,7 +55,8 @@
       "Bash(true)",
       "Bash(gh auth:*)",
       "Bash(git remote set-url:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": [],
     "defaultMode": "acceptEdits"
