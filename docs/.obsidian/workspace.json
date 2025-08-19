@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "technical/user-stories/notes 15-08-2025.md",
+                "file": "WITHINGS_INTEGRATION_GUIDE.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "notes 15-08-2025"
+              "title": "WITHINGS_INTEGRATION_GUIDE"
             }
           }
         ]
@@ -170,13 +170,14 @@
   },
   "active": "d9517b99a4adf829",
   "lastOpenFiles": [
+    "technical/user-stories/notes 15-08-2025.md",
+    "WITHINGS_INTEGRATION_GUIDE.md",
     "technical/log/logRender8.txt",
     "saveImpEcr/DietTracker-Votre-assistant-nutrition-08-15-2025_01_59_PM.png",
     "saveImpEcr/Non confirmé 273368.crdownload",
     "saveImpEcr/DietTracker-Votre-assistant-nutrition-08-15-2025_01_58_PM.png",
     "saveImpEcr/Non confirmé 469552.crdownload",
     "technical/user-stories/notes 14-08-2025.md",
-    "technical/user-stories/notes 15-08-2025.md",
     "technical/user-stories/notes 14-08-2025.md.tmp.768.1755238213755",
     "technical/user-stories/notes 14-08-2025.md.tmp.768.1755238173669",
     "technical/user-stories/notes 14-08-2025.md.tmp.768.1755237971748",
@@ -189,7 +190,6 @@
     "saveImpEcr/Non confirmé 463579.crdownload",
     "saveImpEcr/DietTracker-Votre-assistant-nutrition-08-14-2025_09_51_PM.png",
     "saveImpEcr/Non confirmé 827821.crdownload",
-    "saveImpEcr",
     "technical/FAST_DEVELOPMENT_WORKFLOW.md",
     "technical/INIT_DATABASE_RENDER.md",
     "technical/user-stories/notes 14-08-2025_clean.md",

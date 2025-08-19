@@ -94,6 +94,8 @@ Notification URL:
 
 ### Étape 3 : Configurer les permissions (Scopes)
 
+
+
 Cochez les permissions suivantes :
 - ✅ `user.info` - Informations de base de l'utilisateur
 - ✅ `user.metrics` - Mesures de poids et composition corporelle
@@ -106,6 +108,14 @@ Après avoir sauvegardé, vous obtiendrez :
 Client ID: abc123def456...
 Client Secret: xyz789uvw012...
 ```
+
+Client ID
+8f8ed19b380f99a9b3ed5ffdd5d570511031e28686469a84c8219636026f81bb
+
+Secret
+73f838ecc1e4d4c741a419717a08d0b96fe687dab8117bd14ed9ae912d029285
+
+2kl7wpw6rsjtc7uu
 
 ⚠️ **IMPORTANT** : Gardez ces clés secrètes et sécurisées !
 
